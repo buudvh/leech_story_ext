@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "name": "qsbread",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "https://www.qsbread.com",
+    "regexp": "(www.|m.)(qiushubang|qsbread)(.com|.me)/index/\\d+/?$",
+    "description": "Đọc truyện trên trang qsbread.com",
+    "locale": "zh-CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "detail": "detail.js",
+    "page": "page.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

@@ -1,0 +1,13 @@
+.idea/*
+*.iml
+test.json
+data.json
+*.rar
+*.bak
+_*/
+.test
+.DS_Store
+.DS_Store
+*.bk
+test.ipynb
+/*.ipynb

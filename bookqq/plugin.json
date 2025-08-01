@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "name": "Book QQ from Nhocconsr",
+    "author": "HuongMT",
+    "version": 14,
+    "source": "https://book.qq.com",
+    "regexp": "(www.)?(ubook.reader|book).qq.com/book-detail/\\d+/?$",
+    "description": "Book QQ",
+    "locale": "zh-CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

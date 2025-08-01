@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "qidian-vp",
+    "author": "HuongMT",
+    "version": 21,
+    "source": "https://qidian-vp.com/",
+    "regexp": "qidian-vp.com/truyen/.*?",
+    "description": "Đọc truyện trên trang qidian-vp.com",
+    "locale": "vi_VN",
+    "type": "novel",
+    "language": "javascript"
+  },
+  "script": {
+    "home": "home.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "page": "page.js", //dành cho trường hợp nhiều page
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
