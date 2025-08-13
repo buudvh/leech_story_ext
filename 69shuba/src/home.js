@@ -1,7 +1,7 @@
 function execute() {
     return Response.success([
 
-        { title: "官场职场 - 新更新", input: "quantruongcholamviec,", script: "tag.js" },
+        { title: "官场 - 新更新", input: "quantruongcholamviec,", script: "tag.js" },
         { title: "诸天流 - 新更新", input: "chư thiên&update", script: "search.js" },
         { title: "诸天流 - 69shu", input: "/诸天流/{0}/", script: "gen2.js" },
         { title: "无限流 - 69shu", input: "/无限流/{0}/", script: "gen2.js" },
@@ -46,7 +46,7 @@ function execute() {
         { title: "科幻空间", input: "/ajax_novels/full/6/{0}.htm", script: "gen.js" },
         { title: "悬疑惊悚", input: "/ajax_novels/full/7/{0}.htm", script: "gen.js" },
         { title: "同人小说", input: "/ajax_novels/full/8/{0}.htm", script: "gen.js" },
-        { title: "官场职场", input: "/ajax_novels/full/10/{0}.htm", script: "gen.js" },
+        { title: "官场", input: "/ajax_novels/full/10/{0}.htm", script: "gen.js" },
         { title: "青春校园", input: "/ajax_novels/full/12/{0}.htm", script: "gen.js" },
     ]);
 }

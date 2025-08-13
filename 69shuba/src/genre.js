@@ -9,12 +9,12 @@ function execute() {
         {title: "诸天流 - 关注数", input: "chư thiên&following", script: "search.js"},
         {title: "诸天流 - 收藏数", input: "chư thiên&bookmarked", script: "search.js"},
         
-        {title: "官场职场 - 新更新", input: "quantruongcholamviec,", script: "tag.js"},
-        {title: "官场职场 - 新入库", input: "quantruongcholamviec,&new", script: "tag.js"},
-        {title: "官场职场 - 总阅读量", input: "quantruongcholamviec,&view", script: "tag.js"},
-        {title: "官场职场 - 本周阅读量", input: "quantruongcholamviec,&viewweek", script: "tag.js"},
-        {title: "官场职场 - 今日阅读量", input: "quantruongcholamviec,&viewday", script: "tag.js"},
-        {title: "官场职场 - 收藏数", input: "quantruongcholamviec,&bookmarked", script: "tag.js"},
+        {title: "官场 - 新更新", input: "quantruongcholamviec,", script: "tag.js"},
+        {title: "官场 - 新入库", input: "quantruongcholamviec,&new", script: "tag.js"},
+        {title: "官场 - 总阅读量", input: "quantruongcholamviec,&view", script: "tag.js"},
+        {title: "官场 - 本周阅读量", input: "quantruongcholamviec,&viewweek", script: "tag.js"},
+        {title: "官场 - 今日阅读量", input: "quantruongcholamviec,&viewday", script: "tag.js"},
+        {title: "官场 - 收藏数", input: "quantruongcholamviec,&bookmarked", script: "tag.js"},
 
         {title: "武侠 - 新更新", input: "vuhiep,", script: "tag.js"},
         {title: "武侠 - 新入库", input: "vuhiep,&new", script: "tag.js"},
