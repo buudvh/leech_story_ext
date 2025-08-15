@@ -6,7 +6,7 @@ function execute(bookid, next) {
         let response = fetch("http://14.225.254.182/io/comment/webComments", {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 "start": next,
@@ -38,14 +38,8 @@ function execute(bookid, next) {
             return Response.success(comments, null);
         }
 
-        return Response.success([{
-            name: "LOG BUG",
-            content: "bookid: " + bookid + " next: " + next + "  status: " + response.status,
-        }], null);
+        return Response.error('fetch ' + url + ' status: ' + response.status);
     } catch (ex) {
-        return Response.success([{
-            name: "LOG BUG",
-            content: "bookid: " + bookid + " next: " + next + "  exception: " + ex.message,
-        }], null);
+        return Response.error('fetch ' + url + ' failed: ' + ex.message);
     }
 }
