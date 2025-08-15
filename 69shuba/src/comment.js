@@ -6,7 +6,7 @@ function execute(bookid, next) {
         let response = fetch("http://14.225.254.182/io/comment/webComments", {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: JSON.stringify({
                 "start": next,
