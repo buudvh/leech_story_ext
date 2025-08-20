@@ -3,7 +3,11 @@ load('libs.js');
 function execute(bookid, next) {
     if (!next) next = "0"
     try {
-        let params = "start=" + next + "&objectid=" + bookid + "&objecttype=69shu";
+        var params = encodeFormData({
+            start: next,
+            objectid: bookid,
+            objecttype: "69shu"
+        });
         let response = fetch("http://14.225.254.182/io/comment/webComments", {
             method: 'POST',
             headers: {
@@ -39,4 +43,14 @@ function execute(bookid, next) {
     } catch (ex) {
         return Response.error('fetch ' + url + ' failed: ' + ex.message);
     }
+}
+
+function encodeFormData(data) {
+    var pairs = [];
+    for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+            pairs.push(encodeURIComponent(key) + "=" + encodeURIComponent(data[key]));
+        }
+    }
+    return pairs.join("&");
 }
