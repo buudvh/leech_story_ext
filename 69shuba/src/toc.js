@@ -19,9 +19,9 @@ function execute(url) {
 
         var seenIds = {};
         for (var i = 0; i < elems.length; i++) {
-            var e = $.Q(elems[i], "a");
+            var e = $.Q(elems[i], "a:not(#bookcase)");
             var id = elems[i].attr('data-num');
-            if (!seenIds[id] && $.Q(elems[i], "a:not(#bookcase)")) { 
+            if (!seenIds[id] && $.QA(elems[i], "a:not(#bookcase)").length) { 
                 data.push({
                     name: formatName(e.text()),
                     url: e.attr('href'),
