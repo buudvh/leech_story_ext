@@ -13,22 +13,22 @@ function execute(url) {
         browser.close();
 
         var data = [];
-        var elems = $.QA(doc, 'div.catalog > ul > li > a:not(#bookcase)');
+        var elems = $.QA(doc, 'div.catalog > ul > li');
 
         if (!elems.length) return trySTV(url);
 
         var seenIds = {};
         for (var i = 0; i < elems.length; i++) {
-            var e = elems[i];
-            var id = e.attr('data-num');
-            if (!seenIds[id]) {  // chưa có thì push
+            var e = $.Q(elems[i], "a");
+            var id = elems[i].attr('data-num');
+            if (!seenIds[id] && $.Q(elems[i], "a:not(#bookcase)")) { 
                 data.push({
                     name: formatName(e.text()),
                     url: e.attr('href'),
                     host: BASE_URL,
                     id: id
                 });
-                seenIds[id] = true; // đánh dấu đã gặp
+                seenIds[id] = true;
             }
         }
 
