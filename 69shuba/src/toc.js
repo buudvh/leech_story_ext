@@ -17,14 +17,19 @@ function execute(url) {
 
         if (!elems.length) return trySTV(url);
 
+        var seenIds = {};
         for (var i = 0; i < elems.length; i++) {
             var e = elems[i];
-            data.push({
-                name: formatName(e.text()),
-                url: e.attr('href'),
-                host: BASE_URL,
-                id: e.attr('data-num')
-            });
+            var id = e.attr('data-num');
+            if (!seenIds[id]) {  // chưa có thì push
+                data.push({
+                    name: formatName(e.text()),
+                    url: e.attr('href'),
+                    host: BASE_URL,
+                    id: id
+                });
+                seenIds[id] = true; // đánh dấu đã gặp
+            }
         }
 
         // data = data.reverse();
@@ -85,7 +90,7 @@ function trySTV(url) {
             var chapterName = parts[2];
 
             result.push({
-                name: chapterName.trim().replace(/([\t\n]+|<br>| )/g, "").replace(/([\t\n]+|<br>|&nbsp;)/g,"").replace(/Thứ ([\d\,]+) chương/,"Chương $1:"),
+                name: chapterName.trim().replace(/([\t\n]+|<br>| )/g, "").replace(/([\t\n]+|<br>|&nbsp;)/g, "").replace(/Thứ ([\d\,]+) chương/, "Chương $1:"),
                 url: BASE_URL + '/txt/' + book_id + '/' + chapterId,
                 host: "",
                 id: chapterId
