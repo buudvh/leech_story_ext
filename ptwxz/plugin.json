@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "name": "ptwxz by hajljnopera",
+    "name": "ptwxz (+stv)",
     "author": "HuongMT",
-    "version": 1,
+    "version": 2,
     "source": "https://www.piaotia.com",
     "regexp": "www\\.(ptwxz|piaotian|piaotia)\\.com/bookinfo/\\d+/\\d+\\.html$",
     "description": "Đọc truyện trên trang ptwxz",

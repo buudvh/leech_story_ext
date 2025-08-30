@@ -68,10 +68,10 @@
       "description": "Đọc truyện trên trang uukanshu.cc"
     },
     {
-      "name": "ptwxz by hajljnopera",
+      "name": "ptwxz (+stv)",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ptwxz/ptwxz.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://www.piaotia.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ptwxz/icon.png",
       "description": "Đọc truyện trên trang piaotia.com"

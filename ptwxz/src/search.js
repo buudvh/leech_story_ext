@@ -1,68 +1,46 @@
 load('libs.js');
 load('config.js');
+load('common.js');
 
 function execute(key, page) {
-    page = page || '1';
-
-    var gbkEncode = function(s) {
-        load('gbk.js');
-        return GBK.encode(s);
+    let arrKey = key.split("&");
+    if (!page) page = '1';
+    let sort = 'update';
+    if (arrKey.length == 2) {
+        sort = arrKey[1];
     }
 
-    var url = String.format('{0}/modules/article/search.php?searchtype=articlename&searchkey={1}&page={2}', BASE_URL, gbkEncode(key), page);
-    // log(url);
+    var url = STVHOST + '/io/searchtp/searchBooks/?findinname=' + encodeURIComponent(arrKey[0]) +
+        '&sort=' + sort + '&host=ptwxz&minc=0&tag=&p=' + page;
 
-    var response = fetch(url);
-    if (response.ok) {
-        var doc = response.html('gbk');
-
-        var data = [];
-
-        if ($.Q(doc, '#content h1').text()) { // detail.js
-            var bid = http.string().match(/addbookcase\.php\?bid=(\d+)/);
-            if (bid && bid[1]) {
-                return Response.success([{
-                    name: $.Q(doc, '#content h1').text(),
-                    link: String.format('{0}/bookinfo/{1}/{2}.html', BASE_URL, Math.floor(parseInt(bid[1],10)/1000), bid[1]),
-                    cover: $.Q(doc, '#content table table a > img[align][hspace][vspace]').attr('src'),
-                    description: '',
-                    host: BASE_URL
-                }]);
-            }
-        }
-
-        var elems = $.QA(doc, 'table tr:not([align])');
-        if (elems.length) {
-            elems.forEach(function(e) {
-                var link = $.Q(e, 'a').attr('href');
-                data.push({
-                    name: $.Q(e, 'a').text().trim(),
-                    link: $.Q(e, 'a').attr('href'),
-                    cover: genCover(link),
-                    description: $.Q(e, 'td.odd', 1).text(),
-                    host: BASE_URL
-                })
-            })
-            // log(data);
-            return Response.success(data);
-        }
-
-        return Response.error(key);
+    if (key.indexOf("find=") === 0) {
+        url = STVHOST + '/io/searchtp/searchBooks/?find=' + encodeURIComponent(arrKey[0].replace("find=", "")) +
+            '&sort=' + sort + '&host=ptwxz&minc=0&tag=&p=' + page;
     }
-    return null;
+    let response = fetch(url);
 
-    var http = Http.get(url);
-    var doc = http.html('gbk');
+    if (!response.ok) return Response.error('fetch ' + url + ' failed: status ' + response.status);
 
-}
+    let doc = response.html()
+    let next = parseInt(page, 10) + 1;
+    let el = doc.select("a.booksearch")
+    let data = [];
+    el.forEach(e => {
+        let stv_story_link = e.select("a").first().attr("href");
+        let bookid = stv_story_link.split("/")[4];
+        data.push({
+            name: toCapitalize(e.select(".searchbooktitle").first().text()),
+            link: BASE_URL + '/bookinfo/15/' + bookid + '.html',
+            cover: 'https://www.piaotia.com/files/article/image/' +
+                bookid.slice(0, bookid.length - 3) + '/' +
+                bookid + '/' +
+                bookid + 's.jpg',
+            description: e.select("div > span.searchtag").last().text(),
+            host: ""
+        });
+    });
 
-function genCover(bookUrl) {
-    var m, id;
+    return Response.success(data, next.toString());
 
-    if ((m = bookUrl.match(/(\d+)\.html$/)) && m[1] && (id = m[1])) {
-        // https://www.ptwxz.com/files/article/image/12/12450/12450s.jpg
-        return String.format('{0}/files/article/image/{1}/{2}/{3}s.jpg', BASE_URL, Math.floor(id / 1000), id, id);
-    }
 
-    return 'https://www.ptwxz.com/modules/article/images/nocover.jpg';
 }
