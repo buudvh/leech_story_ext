@@ -2,7 +2,7 @@
   "metadata": {
     "name": "ptwxz (+stv)",
     "author": "HuongMT",
-    "version": 2,
+    "version": 3,
     "source": "https://www.piaotia.com",
     "regexp": "www\\.(ptwxz|piaotian|piaotia)\\.com/bookinfo/\\d+/\\d+\\.html$",
     "description": "Đọc truyện trên trang ptwxz",
