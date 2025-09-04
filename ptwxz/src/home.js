@@ -1,14 +1,13 @@
 function execute() {
     return Response.success([
         { title: "新更新", input: "&update", script: "search.js" },
+        { title: "诸天流", input: "chư thiên&update", script: "search.js" },
         { title: "Huyền huyễn (STV)", input: "huyenhuyenmaphap,", script: "tag.js" },
         { title: "Võ hiệp (STV)", input: "vohieptuchan,", script: "tag.js" },
         { title: "Lịch sử (STV)", input: "lichsuquansu,", script: "tag.js" },
         { title: "Khoa huyễn (STV)", input: "khoahuyen,", script: "tag.js" },
         { title: "Đồng nhân 1 (STV)", input: "dongnhanmanga,", script: "tag.js" },
         { title: "Đồng nhân 2 (STV)", input: "cungnguoimanga,", script: "tag.js" },
-        { title: "诸天流", input: "chư thiên&update", script: "search.js" },
-        { title: "新更新", input: "&update", script: "search.js" },
         { title: "新入库", input: "&new", script: "search.js" },
         { title: "本周阅读量", input: "&viewweek", script: "search.js" },
         { title: "今日阅读量", input: "&viewday", script: "search.js" },
