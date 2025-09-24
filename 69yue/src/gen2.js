@@ -10,10 +10,11 @@ function execute(url, page) {
         if (response.ok) {
             let json = response.json();
             let stories = json.data;
+            let data = [];
 
             for (let i = 0; i < stories.length; i++) {
                 data.push({
-                    name: stories.title,
+                    name: stories[i].title,
                     link: BASE_URL + stories[i].infourl,
                     cover: BASE_URL + stories[i].coverUrl,
                     description: stories[i].description,
@@ -26,6 +27,6 @@ function execute(url, page) {
         }
         return Response.error("Status: " + response.status + " " + url);
     } catch (error) {
-        return Response.error(error.message);
+        return Response.error(url + " " + error.message);
     }
 }
