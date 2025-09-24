@@ -1,5 +1,4 @@
-//    var host = 'https://www.69shuba.com';
-let BASE_URL = 'https://www.69shu.pro';
+let BASE_URL = 'https://www.69yue.top';
 try {
     if (CONFIG_URL) {
         BASE_URL = CONFIG_URL;
