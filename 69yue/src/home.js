@@ -4,10 +4,18 @@ function execute() {
         { title: "欢迎", input: "/api/list/0/0/1/{0}.json", script: "gen2.js" },
         { title: "完本", input: "/api/list/0/1/2/{0}.json", script: "gen2.js" },
 
-
-        { title: "今日上新·值得一试的佳作", input: "https://www.69yue.top/shudan/3.html", script: "gen.js" },
-        { title: "只此一人·单女主的心动时刻", input: "https://www.69yue.top/shudan/4.html", script: "gen.js" },
-        { title: "清风有信·修仙慢行", input: "https://www.69yue.top/shudan/1.html", script: "gen.js" },
-        { title: "跨越大洋的灯火·美利坚群像选读", input: "https://www.69yue.top/shudan/2.html", script: "gen.js" },
+        { title: "玄幻魔法 - new", input: "/api/list/1/0/4/{0}.json", script: "gen2.js" },
+        { title: "修真武侠 - new", input: "/api/list/2/0/4/{0}.json", script: "gen2.js" },
+        { title: "言情小说 - new", input: "/api/list/3/0/4/{0}.json", script: "gen2.js" },
+        { title: "历史军事 - new", input: "/api/list/4/0/4/{0}.json", script: "gen2.js" },
+        { title: "游戏竞技 - new", input: "/api/list/5/0/4/{0}.json", script: "gen2.js" },
+        { title: "科幻空间 - new", input: "/api/list/6/0/4/{0}.json", script: "gen2.js" },
+        { title: "悬疑惊悚 - new", input: "/api/list/7/0/4/{0}.json", script: "gen2.js" },
+        { title: "同人小说 - new", input: "/api/list/8/0/4/{0}.json", script: "gen2.js" },
+        { title: "都市小说 - new", input: "/api/list/9/0/4/{0}.json", script: "gen2.js" },
+        { title: "官场职场 - new", input: "/api/list/10/0/4/{0}.json", script: "gen2.js" },
+        { title: "穿越时空 - new", input: "/api/list/11/0/4/{0}.json", script: "gen2.js" },
+        { title: "青春校园 - new", input: "/api/list/12/0/4/{0}.json", script: "gen2.js" },
+        { title: "其他   - new", input: "/api/list/13/0/4/{0}.json", script: "gen2.js" },
     ]);
 }

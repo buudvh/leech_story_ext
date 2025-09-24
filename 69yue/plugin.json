@@ -2,7 +2,7 @@
     "metadata": {
       "name": "69yue.top",
       "author": "HuongMT",
-      "version": 9,
+      "version": 10,
       "source": "https://www.69yue.top",
       "regexp": "(www|m).69yue.top\/articlecategroy\/(.*?).html",
       "description": "Đọc truyện trên trang 69yue.top",
