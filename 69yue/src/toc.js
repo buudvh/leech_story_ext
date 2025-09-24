@@ -14,7 +14,7 @@ function execute(url) {
 
             for (let i = 0; i < chapterList.length; i++) {
                 data.push({
-                    name: formatName(TongWen.toSimplified(chapterList[i].chaptername || chapterList[i].cn || '未命名章节')),
+                    name: formatName(convertT2S(chapterList[i].chaptername || chapterList[i].cn || '未命名章节')),
                     url: BASE_URL + '/article/' + (chapterList[i].chapterid || chapterList[i].cid) + '.html',
                     host: BASE_URL,
                     id: (chapterList[i].chapterid || chapterList[i].cid)

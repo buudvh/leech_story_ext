@@ -15,10 +15,10 @@ function execute(url, page) {
 
             for (let i = 0; i < stories.length; i++) {
                 data.push({
-                    name: TongWen.toSimplified(stories[i].title),
+                    name: convertT2S(stories[i].title),
                     link: BASE_URL + stories[i].infourl,
                     cover: BASE_URL + stories[i].coverUrl,
-                    description: TongWen.toSimplified(stories[i].description),
+                    description: convertT2S(stories[i].description),
                     host: BASE_URL
                 });
             }
