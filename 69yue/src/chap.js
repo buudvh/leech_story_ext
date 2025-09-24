@@ -1,15 +1,11 @@
 load('config.js');
 load('libs.js');
 function execute(url) {
-    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     let response = fetch(url);
     if (response.ok) {
-        let doc = response.html('gbk');
-        if(doc.html().includes("69shubaV1")) {
-            var browser = Engine.newBrowser() // Khởi tạo browser
-            doc = browser.launch(url, 4000)
-        }
-        var htm = doc.select(".txtnav")
+        let doc = response.html();
+        var htm = doc.select(".reading-content")
+        htm.select("div").remove()
         htm.select(".contentadv").remove()
         htm.select(".bottom-ad").remove()
         htm.select(".txtinfo").remove()

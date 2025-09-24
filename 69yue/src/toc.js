@@ -4,25 +4,31 @@ load('config.js');
 function execute(url) {
     const match = url.match(/\/([A-Za-z0-9]+)\.html$/);
     let book_id = match[1];
-    let response = fetch(BASE_URL + "/api/articleitems/" + book_id + ".json");
-    if (response.ok) {
-        let json = response.json();
-        let chapterList = json.items;
-        let data = [];
+    try {
+        let response = fetch(BASE_URL + "/api/articleitems/" + book_id + ".json");
+        if (response.ok) {
+            let json = response.json();
+            let chapterList = json.items;
+            let data = [];
 
-        for (let i = 0; i < chapterList.length; i++) {
-            data.push({
-                name: formatName(chapterList[i].chaptername || chapterList[i].cn || '未命名章节'),
-                url: BASE_URL + '/article/' + (chapterList[i].chapterid || chapterList[i].cid) + '.html',
-                host: BASE_URL,
-                id: (chapterList[i].chapterid || chapterList[i].cid)
-            });
+            for (let i = 0; i < chapterList.length; i++) {
+                data.push({
+                    name: formatName(chapterList[i].chaptername || chapterList[i].cn || '未命名章节'),
+                    url: BASE_URL + '/article/' + (chapterList[i].chapterid || chapterList[i].cid) + '.html',
+                    host: BASE_URL,
+                    id: (chapterList[i].chapterid || chapterList[i].cid)
+                });
+            }
+
+            data = data.reverse();
+
+            return Response.success(data);
         }
 
-        return Response.success(data);
+        return Response.error("Status: " + response.status + " " + url);
+    } catch (error) {
+        return Response.error(error.message);
     }
-
-    return Response.error("Status: " + response.status + " " + url);
 }
 
 function formatName(name) {
