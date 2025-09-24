@@ -1,5 +1,6 @@
 load('libs.js');
 load('config.js');
+load('tongWen.js');
 
 function execute(url) {
     const match = url.match(/\/([A-Za-z0-9]+)\.html$/);
@@ -13,7 +14,7 @@ function execute(url) {
 
             for (let i = 0; i < chapterList.length; i++) {
                 data.push({
-                    name: formatName(chapterList[i].chaptername || chapterList[i].cn || '未命名章节'),
+                    name: formatName(TongWen.toSimplified(chapterList[i].chaptername || chapterList[i].cn || '未命名章节')),
                     url: BASE_URL + '/article/' + (chapterList[i].chapterid || chapterList[i].cid) + '.html',
                     host: BASE_URL,
                     id: (chapterList[i].chapterid || chapterList[i].cid)

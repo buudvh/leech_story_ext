@@ -1,5 +1,6 @@
 load('libs.js');
 load('config.js');
+load('tongWen.js');
 
 function execute(url, page) {
     page = page || '1';
@@ -14,10 +15,10 @@ function execute(url, page) {
 
             for (let i = 0; i < stories.length; i++) {
                 data.push({
-                    name: stories[i].title,
+                    name: TongWen.toSimplified(stories[i].title),
                     link: BASE_URL + stories[i].infourl,
                     cover: BASE_URL + stories[i].coverUrl,
-                    description: stories[i].description,
+                    description: TongWen.toSimplified(stripHtml(stories[i].description)),
                     host: BASE_URL
                 });
             }
@@ -30,3 +31,9 @@ function execute(url, page) {
         return Response.error(url + " " + error.message);
     }
 }
+
+function stripHtml(html){
+    if (!html) return '';
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    return doc.body.textContent || "";
+};
