@@ -12,10 +12,10 @@ function execute(url) {
 
         for (let i = 0; i < chapterList.length; i++) {
             data.push({
-                name: formatName(chapter.chaptername || chapter.cn || '未命名章节'),
-                url: BASE_URL + '/article/' + (chapter.chapterid || chapter.cid) + '.html',
+                name: formatName(chapterList[i].chaptername || chapterList[i].cn || '未命名章节'),
+                url: BASE_URL + '/article/' + (chapterList[i].chapterid || chapterList[i].cid) + '.html',
                 host: BASE_URL,
-                id: (chapter.chapterid || chapter.cid)
+                id: (chapterList[i].chapterid || chapterList[i].cid)
             });
         }
 
