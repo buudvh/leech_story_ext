@@ -18,7 +18,7 @@ function execute(url, page) {
                     name: TongWen.toSimplified(stories[i].title),
                     link: BASE_URL + stories[i].infourl,
                     cover: BASE_URL + stories[i].coverUrl,
-                    description: TongWen.toSimplified(stripHtml(stories[i].description)),
+                    description: TongWen.toSimplified(stories[i].description),
                     host: BASE_URL
                 });
             }
@@ -31,9 +31,3 @@ function execute(url, page) {
         return Response.error(url + " " + error.message);
     }
 }
-
-function stripHtml(html){
-    if (!html) return '';
-    const doc = new DOMParser().parseFromString(html, 'text/html');
-    return doc.body.textContent || "";
-};
