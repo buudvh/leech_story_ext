@@ -1,6 +1,5 @@
 load('libs.js');
 load('config.js');
-load('tongWen.js');
 
 function execute(url) {
     const match = url.match(/\/([A-Za-z0-9]+)\.html$/);
