@@ -1,12 +1,12 @@
 function execute() {
     return Response.success([
 
-        { title: "官场 - 新更新", input: "quantruongcholamviec,", script: "tag.js" },
-        { title: "诸天流 - 新更新", input: "chư thiên&update", script: "search.js" },
+        { title: "官场 - Update", input: "quantruongcholamviec,", script: "tag.js" },
+        { title: "诸天流 - Update", input: "chư thiên&update", script: "search.js" },
         { title: "诸天流 - 69shu", input: "/诸天流/{0}/", script: "gen2.js" },
         { title: "无限流 - 69shu", input: "/无限流/{0}/", script: "gen2.js" },
-        { title: "武侠 - 新更新", input: "vuhiep,", script: "tag.js" },
-        { title: "同人 - 新更新", input: "dongnhan,", script: "tag.js" },
+        { title: "武侠 - Update", input: "vuhiep,", script: "tag.js" },
+        { title: "同人 - Update", input: "dongnhan,", script: "tag.js" },
         { title: "诸天流 - 今日阅读量", input: "chư thiên&viewday", script: "search.js" },
         { title: "诸天流 - 本周阅读量", input: "chư thiên&viewweek", script: "search.js" },
         { title: "诸天流 - 总阅读量", input: "chư thiên&view", script: "search.js" },
@@ -15,8 +15,8 @@ function execute() {
         { title: "诸天流 - 关注数", input: "chư thiên&following", script: "search.js" },
         { title: "诸天流 - 收藏数", input: "chư thiên&bookmarked", script: "search.js" },
 
-        { title: "时空 - 新更新", input: "xuyenquathoikhong,", script: "tag.js" },
-        { title: "玄幻魔法 - 新更新", input: "huyenhuyenmaphap,", script: "tag.js" },
+        { title: "时空 - Update", input: "xuyenquathoikhong,", script: "tag.js" },
+        { title: "玄幻魔法 - Update", input: "huyenhuyenmaphap,", script: "tag.js" },
 
         { title: "新入库", input: "&new", script: "search.js" },
         { title: "新更新", input: "&update", script: "search.js" },
