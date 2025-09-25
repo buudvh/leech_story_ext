@@ -11,7 +11,7 @@ function execute(url) {
                 name: TongWen.toSimplified(doc.select("h1").text()),
                 cover: doc.select("img.object-cover").attr("src") || "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
                 author: '',
-                description: '',
+                description: doc.select('#book-description').text(),
                 detail: $.QA(doc, 'p.text-base', { m: x => x.text(), j: '<br>' }),
                 host: BASE_URL
             })

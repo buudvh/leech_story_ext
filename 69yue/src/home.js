@@ -2,7 +2,6 @@ function execute() {
     return Response.success([
         { title: "新书", input: "/api/list/0/0/4/{0}.json", script: "gen.js" },
         { title: "欢迎", input: "/api/list/0/0/1/{0}.json", script: "gen.js" },
-        { title: "完本", input: "/api/list/0/1/2/{0}.json", script: "gen.js" },
 
         { title: "玄幻魔法 - new", input: "/api/list/1/0/4/{0}.json", script: "gen.js" },
         { title: "修真武侠 - new", input: "/api/list/2/0/4/{0}.json", script: "gen.js" },
