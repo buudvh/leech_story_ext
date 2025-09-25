@@ -24,6 +24,9 @@ function execute(key, page) {
     let doc = response.html()
     let next = parseInt(page, 10) + 1;
     let el = doc.select("a.booksearch")
+
+    if (!el.length) return null;
+
     let data = [];
     el.forEach(e => {
         let stv_story_link = e.select("a").first().attr("href");
