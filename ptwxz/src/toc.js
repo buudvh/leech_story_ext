@@ -20,7 +20,7 @@ function execute(url) {
 
     elems.forEach(function(e){
         data.push({
-            name: e.text(),
+            name: formatName(e.text()),
             url: e.attr('href').mayBeFillHost(url),
             host: BASE_URL,
         })
