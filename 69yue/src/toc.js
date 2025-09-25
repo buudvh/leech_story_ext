@@ -11,6 +11,8 @@ function execute(url) {
             let chapterList = json.items;
             let data = [];
 
+            if (!chapterList.length) return Response.error(url + "  Empty");
+
             for (let i = 0; i < chapterList.length; i++) {
                 data.push({
                     name: formatName(TongWen.toSimplified(chapterList[i].chaptername || chapterList[i].cn || '未命名章节')),

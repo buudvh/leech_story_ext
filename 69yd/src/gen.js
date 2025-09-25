@@ -13,6 +13,8 @@ function execute(url, page) {
             let stories = json.data;
             let data = [];
 
+            if (!stories.length) return Response.error(url + "  Empty");
+
             for (let i = 0; i < stories.length; i++) {
                 data.push({
                     name: TongWen.toSimplified(stories[i].title),
