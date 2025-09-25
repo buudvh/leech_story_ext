@@ -5,7 +5,13 @@ function execute(url) {
     const match = url.match(/\/([A-Za-z0-9]+)\.html$/);
     let book_id = match[1];
     try {
-        let response = fetch(BASE_URL + "/api/articleitems/" + book_id + ".json");
+        let response = fetch(BASE_URL + "/api/articleitems/" + book_id + ".json",
+            {
+                headers: {
+                    referer: url,
+                }
+            }
+        );
         if (response.ok) {
             let json = response.json();
             let chapterList = json.items;
