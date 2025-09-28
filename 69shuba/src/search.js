@@ -3,9 +3,9 @@ load('config.js');
 load('common.js');
 
 function execute(key, page) {
-    let arrKey = key.split("&");
+    var arrKey = key.split("&");
     if (!page) page = '1';
-    let sort = 'update';
+    var sort = '';
     if (arrKey.length == 2) {
         sort = arrKey[1];
     }
@@ -17,20 +17,20 @@ function execute(key, page) {
         url = STVHOST + '/io/searchtp/searchBooks/?find=' + encodeURIComponent(arrKey[0].replace("find=", "")) +
             '&sort=' + sort + '&host=69shu&minc=0&tag=&p=' + page;
     }
-    let response = fetch(url);
+    var response = fetch(url);
 
     if (!response.ok) return Response.error('fetch ' + url + ' failed: status ' + response.status);
 
-    let doc = response.html()
-    let next = parseInt(page, 10) + 1;
-    let el = doc.select("a.booksearch")
+    var doc = response.html();
+    var next = (parseInt(page, 10) + 1).toString();
+    var el = doc.select("a.booksearch");
 
     if (!el.length) return null;
 
-    let data = [];
-    el.forEach(e => {
-        let stv_story_link = e.select("a").first().attr("href");
-        let bookid = stv_story_link.split("/")[4];
+    var data = [];
+    el.forEach(function (e) {
+        var stv_story_link = e.select("a").first().attr("href");
+        var bookid = stv_story_link.split("/")[4];
         data.push({
             name: toCapitalize(e.select(".searchbooktitle").first().text()),
             link: BASE_URL + '/book/' + bookid + '.htm',
@@ -43,7 +43,5 @@ function execute(key, page) {
         });
     });
 
-    return Response.success(data, next.toString());
-
-
+    return Response.success(data, next);
 }
