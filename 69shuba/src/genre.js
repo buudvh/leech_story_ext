@@ -1,5 +1,12 @@
 function execute() {
     return Response.success([
+        { title: "不限人气", input: "/ajax_novels/monthvisit_0_0_{0}.htm", script: "gen.js" },
+        { title: "连载人气", input: "/ajax_novels/monthvisit_0_2_{0}.htm", script: "gen.js" },
+        { title: "全本人气", input: "/ajax_novels/monthvisit_0_1_{0}.htm", script: "gen.js" },
+        { title: "不限推荐", input: "/ajax_novels/allvote_0_0_{0}.htm", script: "gen.js" },
+        { title: "连载推荐", input: "/ajax_novels/allvote_0_2_{0}.htm", script: "gen.js" },
+        { title: "全本推荐", input: "/ajax_novels/allvote_0_1_{0}.htm", script: "gen.js" },
+
         {title: "诸天流 - New", input: "chư thiên&new", script: "search.js"},
         {title: "诸天流 - Update", input: "chư thiên&update", script: "search.js"},
         {title: "诸天流 - View", input: "chư thiên&view", script: "search.js"},
@@ -60,14 +67,14 @@ function execute() {
         {title: "聊天群 - Follow", input: "chat group&following", script: "search.js"},
         {title: "聊天群 - Bookmark", input: "chat group&bookmarked", script: "search.js"},
 
-        {title: "新入库", input: "&new", script: "search.js"},
-        {title: "新更新", input: "&update", script: "search.js"},
-        {title: "本周阅读量", input: "&viewweek", script: "search.js"},
-        {title: "今日阅读量", input: "&viewday", script: "search.js"},
-        {title: "总阅读量", input: "&view", script: "search.js"},
-        {title: "点赞数", input: "&like", script: "search.js"},
-        {title: "关注数", input: "&following", script: "search.js"},
-        {title: "收藏数", input: "&bookmarked", script: "search.js"},
+        { title: "New", input: "&new", script: "search.js" },
+        { title: "Update", input: "&update", script: "search.js" },
+        { title: "View Week", input: "&viewweek", script: "search.js" },
+        { title: "View Day", input: "&viewday", script: "search.js" },
+        { title: "View", input: "&view", script: "search.js" },
+        { title: "Like", input: "&like", script: "search.js" },
+        { title: "Follow", input: "&following", script: "search.js" },
+        { title: "Bookmark", input: "&bookmarked", script: "search.js" },
         
         { title: "思路清奇", input: "/思路清奇/{0}/", script: "gen2.js" },
         { title: "穿越", input: "/穿越/{0}/", script: "gen2.js" },
