@@ -13,19 +13,13 @@ function execute(url) {
         var author = doc.select(".detail_bkauthor").first().text();
         var title = doc.select(".detail_bkinfo .detail_bkname a").text();
         var coverImg = doc.select(".detail_bkinfo .book_img > img").attr("src");
-        var category = doc.select(".detail_bkgrade > span:nth-child(2)").html().replace(/<span>/g, '<br>');
-        var tag = doc.select(".detail_bkgrade").last().select("span");
+        var tag = doc.select(".detail_bkgrade > span:not(.light_box)");
         var descriptionMeta = doc.select(".bk_brief .brief_con").html();
         var status = doc.select(".detail_bkgrade > span.light_box").html();
-        var views = doc.select(".bk_fontinfo").html().replace(/<span>/g, '<br>');
+        var views = doc.select(".bk_fontinfo").html().replace(/<span>/g, ' ');
         var rating = doc.select(".detail_bkinfo_rig strong").text();
 
         var genres = [];
-        genres.push({
-            title: category,
-            input: '&update',
-            script: "search.js"
-        });
 
         for (var i = 0; i < tag.size(); i++) {
             var e = tag.get(i);
