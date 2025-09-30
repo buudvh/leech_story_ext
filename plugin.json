@@ -32,31 +32,13 @@
       "description": "Đọc truyện trên trang https://www.69yd.top"
     },
     {
-      "name": "Book QQ nhocconsrr",
+      "name": "Book QQ",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/bookqq/plugin.zip",
       "version": 14,
       "source": "https://book.qq.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/bookqq/icon.png",
       "description": "Đọc truyện trên trang book.qq.com"
-    },
-    {
-      "name": "html5qq by Moleys",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/html5qq/html5qq.zip",
-      "version": 1,
-      "source": "https://bookshelf.html5.qq.com",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/html5qq/icon.png",
-      "description": "Đọc truyện trên trang https://bookshelf.html5.qq.com"
-    },
-    {
-      "name": "Fanqie by Nahona",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/Fanqienovel/Fanqienovel.zip",
-      "version": 3,
-      "source": "https://fanqienovel.com",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/Fanqienovel/icon.png",
-      "description": "Đọc truyện trên trang Fanqienovel.com"
     },
     {
       "name": "Qidian-VP",
@@ -95,10 +77,10 @@
       "description": "Đọc truyện trên trang piaotia.com"
     },
     {
-      "name": "idejian by duongden",
+      "name": "idejian (+stv)",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/idejian/idejian.zip",
-      "version": 2,
+      "version": 4,
       "source": "https://www.idejian.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/idejian/icon.png",
       "description": "Đọc truyện trên trang https://bookshelf.html5.qq.com"
