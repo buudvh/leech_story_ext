@@ -2,7 +2,7 @@
   "metadata": {
     "name": "ptwxz (+stv)",
     "author": "HuongMT",
-    "version": 8,
+    "version": 9,
     "source": "https://www.piaotia.com",
     "regexp": "www\\.(ptwxz|piaotian|piaotia)\\.com/bookinfo/\\d+/\\d+\\.html$",
     "description": "Đọc truyện trên trang ptwxz",
@@ -15,6 +15,7 @@
     "home": "home.js",
     "toc": "toc.js",
     "chap": "chap.js",
+    "genre": "genre.js",
     "search": "search.js"
   }
 }
