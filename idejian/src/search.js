@@ -35,11 +35,11 @@ function execute(key, page) {
             var stv_story_link = e.select("a").first().attr("href") || "";
             var parts = stv_story_link.split("/");
             var bookid = parts.length > 4 ? parts[4] : "";
-
+            // e.select("a:nth-child(1) > img").attr("src")
             data.push({
                 name: toCapitalize(e.select(".searchbooktitle").first().text()),
                 link: BASE_URL + '/book/' + bookid + '/',
-                cover: e.select("a:nth-child(1) > img").attr("src") || DEFAULT_COVER,
+                cover: DEFAULT_COVER,
                 description: e.select("div > span.searchtag").last().text(),
                 host: BASE_URL
             });

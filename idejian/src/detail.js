@@ -34,7 +34,7 @@ function execute(url) {
 
         return Response.success({
             name: title,
-            cover: coverImg,
+            cover: DEFAULT_COVER,
             author: author,
             description: descriptionMeta,
             detail: detail,
