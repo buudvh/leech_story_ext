@@ -2,1383 +2,1383 @@ function execute() {
     var tags = [
         {
             "data": "namtan",
-            "name": "Nam Tần(10607)"
+            "name": "Nam Tần"
         },
         {
             "data": "dothi",
-            "name": "Đô Thị(5221)"
+            "name": "Đô Thị"
         },
         {
             "data": "nhiethuyet",
-            "name": "Nhiệt Huyết(4480)"
+            "name": "Nhiệt Huyết"
         },
         {
             "data": "satphatquadoan",
-            "name": "Sát Phạt Quả Đoán(3256)"
+            "name": "Sát Phạt Quả Đoán"
         },
         {
             "data": "huyenhuyen",
-            "name": "Huyền Huyễn(2863)"
+            "name": "Huyền Huyễn"
         },
         {
             "data": "nutan",
-            "name": "Nữ Tần(1797)"
+            "name": "Nữ Tần"
         },
         {
             "data": "lichsuvocancu",
-            "name": "Lịch Sử Vô Căn Cứ(1770)"
+            "name": "Lịch Sử Vô Căn Cứ"
         },
         {
             "data": "sangvan",
-            "name": "Sảng Văn(1668)"
+            "name": "Sảng Văn"
         },
         {
             "data": "dothicaothu",
-            "name": "Đô Thị Cao Thủ(1631)"
+            "name": "Đô Thị Cao Thủ"
         },
         {
             "data": "lichsu",
-            "name": "Lịch Sử(1567)"
+            "name": "Lịch Sử"
         },
         {
             "data": "giaheoanthitho",
-            "name": "Giả Heo Ăn Thịt Hổ(1538)"
+            "name": "Giả Heo Ăn Thịt Hổ"
         },
         {
             "data": "dongphuonghuyenhuyen",
-            "name": "Đông Phương Huyền Huyễn(1449)"
+            "name": "Đông Phương Huyền Huyễn"
         },
         {
             "data": "hohoacaothu",
-            "name": "Hộ Hoa Cao Thủ(1433)"
+            "name": "Hộ Hoa Cao Thủ"
         },
         {
             "data": "nghichtap",
-            "name": "Nghịch Tập(1430)"
+            "name": "Nghịch Tập"
         },
         {
             "data": "codaingontinh",
-            "name": "Cổ Đại Ngôn Tình(1353)"
+            "name": "Cổ Đại Ngôn Tình"
         },
         {
             "data": "vodao",
-            "name": "Võ Đạo(1339)"
+            "name": "Võ Đạo"
         },
         {
             "data": "thangcapluu",
-            "name": "Thăng Cấp Lưu(1218)"
+            "name": "Thăng Cấp Lưu"
         },
         {
             "data": "cuocsongdothi",
-            "name": "Cuộc Sống Đô Thị(1203)"
+            "name": "Cuộc Sống Đô Thị"
         },
         {
             "data": "muuluoc",
-            "name": "Mưu Lược(1123)"
+            "name": "Mưu Lược"
         },
         {
             "data": "xuyenqua",
-            "name": "Xuyên Qua(1063)"
+            "name": "Xuyên Qua"
         },
         {
             "data": "xaubung",
-            "name": "Xấu Bụng(1007)"
+            "name": "Xấu Bụng"
         },
         {
             "data": "luyencong",
-            "name": "Luyện Công(908)"
+            "name": "Luyện Công"
         },
         {
             "data": "machsuynghithanhky",
-            "name": "Mạch Suy Nghĩ Thanh Kỳ(893)"
+            "name": "Mạch Suy Nghĩ Thanh Kỳ"
         },
         {
             "data": "cuonggiatrove",
-            "name": "Cường Giả Trở Về(886)"
+            "name": "Cường Giả Trở Về"
         },
         {
             "data": "kiemtien",
-            "name": "Kiếm Tiền(871)"
+            "name": "Kiếm Tiền"
         },
         {
             "data": "bacsiluu",
-            "name": "Bác Sĩ Lưu(855)"
+            "name": "Bác Sĩ Lưu"
         },
         {
             "data": "tinhyeu",
-            "name": "Tình Yêu(835)"
+            "name": "Tình Yêu"
         },
         {
             "data": "linhdi",
-            "name": "Linh Dị(803)"
+            "name": "Linh Dị"
         },
         {
             "data": "dithedailuc",
-            "name": "Dị Thế Đại Lục(790)"
+            "name": "Dị Thế Đại Lục"
         },
         {
             "data": "trungsinh",
-            "name": "Trùng Sinh(772)"
+            "name": "Trùng Sinh"
         },
         {
             "data": "tienhiep",
-            "name": "Tiên Hiệp(763)"
+            "name": "Tiên Hiệp"
         },
         {
             "data": "tranhba",
-            "name": "Tranh Bá(738)"
+            "name": "Tranh Bá"
         },
         {
             "data": "huyennghiluu",
-            "name": "Huyền Nghi Lưu(678)"
+            "name": "Huyền Nghi Lưu"
         },
         {
             "data": "hiendaiquybi",
-            "name": "Hiện Đại Quỷ Bí(677)"
+            "name": "Hiện Đại Quỷ Bí"
         },
         {
             "data": "tridau",
-            "name": "Trí Đấu(672)"
+            "name": "Trí Đấu"
         },
         {
             "data": "ngotsung",
-            "name": "Ngọt Sủng(661)"
+            "name": "Ngọt Sủng"
         },
         {
             "data": "dithuatsieunang",
-            "name": "Dị Thuật Siêu Năng(640)"
+            "name": "Dị Thuật Siêu Năng"
         },
         {
             "data": "hiendaingontinh",
-            "name": "Hiện Đại Ngôn Tình(628)"
+            "name": "Hiện Đại Ngôn Tình"
         },
         {
             "data": "danhmat",
-            "name": "Đánh Mặt(603)"
+            "name": "Đánh Mặt"
         },
         {
             "data": "xuyenquathoikhong",
-            "name": "Xuyên Qua Thời Không(587)"
+            "name": "Xuyên Qua Thời Không"
         },
         {
             "data": "hiendaituchan",
-            "name": "Hiện Đại Tu Chân(578)"
+            "name": "Hiện Đại Tu Chân"
         },
         {
             "data": "thuongngayvan",
-            "name": "Thường Ngày Văn(560)"
+            "name": "Thường Ngày Văn"
         },
         {
             "data": "nuthan",
-            "name": "Nữ Thần(544)"
+            "name": "Nữ Thần"
         },
         {
             "data": "tienhiepcodien",
-            "name": "Tiên Hiệp Cổ Điển(528)"
+            "name": "Tiên Hiệp Cổ Điển"
         },
         {
             "data": "baothu",
-            "name": "Báo Thù(501)"
+            "name": "Báo Thù"
         },
         {
             "data": "thanhthuc",
-            "name": "Thành Thục(500)"
+            "name": "Thành Thục"
         },
         {
             "data": "chitonluu",
-            "name": "Chí Tôn Lưu(482)"
+            "name": "Chí Tôn Lưu"
         },
         {
             "data": "nhenhom",
-            "name": "Nhẹ Nhõm(482)"
+            "name": "Nhẹ Nhõm"
         },
         {
             "data": "thamhiem",
-            "name": "Thám Hiểm(468)"
+            "name": "Thám Hiểm"
         },
         {
             "data": "trochoi",
-            "name": "Trò Chơi(465)"
+            "name": "Trò Chơi"
         },
         {
             "data": "thientailuu",
-            "name": "Thiên Tài Lưu(461)"
+            "name": "Thiên Tài Lưu"
         },
         {
             "data": "vodichluu",
-            "name": "Vô Địch Lưu(460)"
+            "name": "Vô Địch Lưu"
         },
         {
             "data": "trithongminhtaituyen",
-            "name": "Trí Thông Minh Tại Tuyến(453)"
+            "name": "Trí Thông Minh Tại Tuyến"
         },
         {
             "data": "tonggiamdochaomon",
-            "name": "Tổng Giám Đốc Hào Môn(451)"
+            "name": "Tổng Giám Đốc Hào Môn"
         },
         {
             "data": "quyenmuu",
-            "name": "Quyền Mưu(445)"
+            "name": "Quyền Mưu"
         },
         {
             "data": "nguoioreluu",
-            "name": "Người Ở Rể Lưu(442)"
+            "name": "Người Ở Rể Lưu"
         },
         {
             "data": "khoahuyen",
-            "name": "Khoa Huyễn(439)"
+            "name": "Khoa Huyễn"
         },
         {
             "data": "soicoquatkhoi",
-            "name": "Sợi Cỏ Quật Khởi(414)"
+            "name": "Sợi Cỏ Quật Khởi"
         },
         {
             "data": "binhvuong",
-            "name": "Binh Vương(391)"
+            "name": "Binh Vương"
         },
         {
             "data": "loanthe",
-            "name": "Loạn Thế(390)"
+            "name": "Loạn Thế"
         },
         {
             "data": "trieudinhgiangho",
-            "name": "Triều Đình Giang Hồ(365)"
+            "name": "Triều Đình Giang Hồ"
         },
         {
             "data": "ydaothanhthu",
-            "name": "Y Đạo Thánh Thủ(357)"
+            "name": "Y Đạo Thánh Thủ"
         },
         {
             "data": "hethongluu",
-            "name": "Hệ Thống Lưu(355)"
+            "name": "Hệ Thống Lưu"
         },
         {
             "data": "tonggiamdoc",
-            "name": "Tổng Giám Đốc(349)"
+            "name": "Tổng Giám Đốc"
         },
         {
             "data": "tinhtao",
-            "name": "Tỉnh Táo(342)"
+            "name": "Tỉnh Táo"
         },
         {
             "data": "kinhdikinhkhung",
-            "name": "Kinh Dị Kinh Khủng(341)"
+            "name": "Kinh Dị Kinh Khủng"
         },
         {
             "data": "cokinh",
-            "name": "Cổ Kính(326)"
+            "name": "Cổ Kính"
         },
         {
             "data": "naodonglon",
-            "name": "Não Động Lớn(320)"
+            "name": "Não Động Lớn"
         },
         {
             "data": "dinang",
-            "name": "Dị Năng(314)"
+            "name": "Dị Năng"
         },
         {
             "data": "trieudinh",
-            "name": "Triều Đình(307)"
+            "name": "Triều Đình"
         },
         {
             "data": "lamruong",
-            "name": "Làm Ruộng(305)"
+            "name": "Làm Ruộng"
         },
         {
             "data": "cuonggialuu",
-            "name": "Cường Giả Lưu(294)"
+            "name": "Cường Giả Lưu"
         },
         {
             "data": "batdauluu",
-            "name": "Bắt Đầu Lưu(294)"
+            "name": "Bắt Đầu Lưu"
         },
         {
             "data": "duhidigioi",
-            "name": "Du Hí Dị Giới(284)"
+            "name": "Du Hí Dị Giới"
         },
         {
             "data": "luongtongnguyenminh",
-            "name": "Lưỡng Tống Nguyên Minh(284)"
+            "name": "Lưỡng Tống Nguyên Minh"
         },
         {
             "data": "luyendan",
-            "name": "Luyện Đan(275)"
+            "name": "Luyện Đan"
         },
         {
             "data": "laungaysinhtinh",
-            "name": "Lâu Ngày Sinh Tình(268)"
+            "name": "Lâu Ngày Sinh Tình"
         },
         {
             "data": "daonguoc",
-            "name": "Đảo Ngược(267)"
+            "name": "Đảo Ngược"
         },
         {
             "data": "thegioituonglai",
-            "name": "Thế Giới Tương Lai(264)"
+            "name": "Thế Giới Tương Lai"
         },
         {
             "data": "nhanhtiettau",
-            "name": "Nhanh Tiết Tấu(260)"
+            "name": "Nhanh Tiết Tấu"
         },
         {
             "data": "dothitutien",
-            "name": "Đô Thị Tu Tiên(258)"
+            "name": "Đô Thị Tu Tiên"
         },
         {
             "data": "nucuong",
-            "name": "Nữ Cường(254)"
+            "name": "Nữ Cường"
         },
         {
             "data": "minhtrieu",
-            "name": "Minh Triều(252)"
+            "name": "Minh Triều"
         },
         {
             "data": "vongdu",
-            "name": "Võng Du(242)"
+            "name": "Võng Du"
         },
         {
             "data": "haomon",
-            "name": "Hào Môn(215)"
+            "name": "Hào Môn"
         },
         {
             "data": "thuongnghiepongtrum",
-            "name": "Thương Nghiệp Ông Trùm(213)"
+            "name": "Thương Nghiệp Ông Trùm"
         },
         {
             "data": "dithexuyenqua",
-            "name": "Dị Thế Xuyên Qua(207)"
+            "name": "Dị Thế Xuyên Qua"
         },
         {
             "data": "giatoc",
-            "name": "Gia Tộc(206)"
+            "name": "Gia Tộc"
         },
         {
             "data": "thamtusuyluan",
-            "name": "Thám Tử Suy Luận(205)"
+            "name": "Thám Tử Suy Luận"
         },
         {
             "data": "phandau",
-            "name": "Phấn Đấu(197)"
+            "name": "Phấn Đấu"
         },
         {
             "data": "kinhdoanh",
-            "name": "Kinh Doanh(195)"
+            "name": "Kinh Doanh"
         },
         {
             "data": "chienthanluu",
-            "name": "Chiến Thần Lưu(192)"
+            "name": "Chiến Thần Lưu"
         },
         {
             "data": "tanthenguyco",
-            "name": "Tận Thế Nguy Cơ(192)"
+            "name": "Tận Thế Nguy Cơ"
         },
         {
             "data": "tucuong",
-            "name": "Tự Cường(191)"
+            "name": "Tự Cường"
         },
         {
             "data": "tanthe",
-            "name": "Tận Thế(186)"
+            "name": "Tận Thế"
         },
         {
             "data": "nutonggiamdoc",
-            "name": "Nữ Tổng Giám Đốc(185)"
+            "name": "Nữ Tổng Giám Đốc"
         },
         {
             "data": "canthan",
-            "name": "Cẩn Thận(184)"
+            "name": "Cẩn Thận"
         },
         {
             "data": "huyenhoc",
-            "name": "Huyền Học(181)"
+            "name": "Huyền Học"
         },
         {
             "data": "tuhanche",
-            "name": "Tự Hạn Chế(171)"
+            "name": "Tự Hạn Chế"
         },
         {
             "data": "caothuxuongnui",
-            "name": "Cao Thủ Xuống Núi(170)"
+            "name": "Cao Thủ Xuống Núi"
         },
         {
             "data": "kyhuyentuchan",
-            "name": "Kỳ Huyễn Tu Chân(168)"
+            "name": "Kỳ Huyễn Tu Chân"
         },
         {
             "data": "niendaivan",
-            "name": "Niên Đại Văn(166)"
+            "name": "Niên Đại Văn"
         },
         {
             "data": "badao",
-            "name": "Bá Đạo(164)"
+            "name": "Bá Đạo"
         },
         {
             "data": "cuopquyen",
-            "name": "Cướp Quyền(158)"
+            "name": "Cướp Quyền"
         },
         {
             "data": "cuimucluu",
-            "name": "Củi Mục Lưu(156)"
+            "name": "Củi Mục Lưu"
         },
         {
             "data": "kyhuyen",
-            "name": "Kỳ Huyễn(154)"
+            "name": "Kỳ Huyễn"
         },
         {
             "data": "nongthon",
-            "name": "Nông Thôn(154)"
+            "name": "Nông Thôn"
         },
         {
             "data": "cungdautrachdau",
-            "name": "Cung Đấu Trạch Đấu(147)"
+            "name": "Cung Đấu Trạch Đấu"
         },
         {
             "data": "tinhyeuvahonnhan",
-            "name": "Tình Yêu Và Hôn Nhân(145)"
+            "name": "Tình Yêu Và Hôn Nhân"
         },
         {
             "data": "hunghivongdu",
-            "name": "Hư Nghĩ Võng Du(143)"
+            "name": "Hư Nghĩ Võng Du"
         },
         {
             "data": "cungnguoitacpham",
-            "name": "Cùng Người Tác Phẩm(141)"
+            "name": "Cùng Người Tác Phẩm"
         },
         {
             "data": "vohiep",
-            "name": "Võ Hiệp(139)"
+            "name": "Võ Hiệp"
         },
         {
             "data": "dichnu",
-            "name": "Đích Nữ(135)"
+            "name": "Đích Nữ"
         },
         {
             "data": "sinhtonkhieuchien",
-            "name": "Sinh Tồn Khiêu Chiến(131)"
+            "name": "Sinh Tồn Khiêu Chiến"
         },
         {
             "data": "truythe",
-            "name": "Truy Thê(131)"
+            "name": "Truy Thê"
         },
         {
             "data": "chientranh",
-            "name": "Chiến Tranh(128)"
+            "name": "Chiến Tranh"
         },
         {
             "data": "truongsinh",
-            "name": "Trường Sinh(128)"
+            "name": "Trường Sinh"
         },
         {
             "data": "sungthe",
-            "name": "Sủng Thê(128)"
+            "name": "Sủng Thê"
         },
         {
             "data": "tanhantamquoc",
-            "name": "Tần Hán Tam Quốc(127)"
+            "name": "Tần Hán Tam Quốc"
         },
         {
             "data": "nhieunuchinh",
-            "name": "Nhiều Nữ Chính(126)"
+            "name": "Nhiều Nữ Chính"
         },
         {
             "data": "nongmon",
-            "name": "Nông Môn(125)"
+            "name": "Nông Môn"
         },
         {
             "data": "thany",
-            "name": "Thần Y(119)"
+            "name": "Thần Y"
         },
         {
             "data": "honghoang",
-            "name": "Hồng Hoang(118)"
+            "name": "Hồng Hoang"
         },
         {
             "data": "bathackluu",
-            "name": "Bật Hack Lưu(114)"
+            "name": "Bật Hack Lưu"
         },
         {
             "data": "khoihai",
-            "name": "Khôi Hài(111)"
+            "name": "Khôi Hài"
         },
         {
             "data": "tienhoa",
-            "name": "Tiến Hóa(110)"
+            "name": "Tiến Hóa"
         },
         {
             "data": "hoangtu",
-            "name": "Hoàng Tử(110)"
+            "name": "Hoàng Tử"
         },
         {
             "data": "luongtantuyduong",
-            "name": "Lưỡng Tấn Tùy Đường(108)"
+            "name": "Lưỡng Tấn Tùy Đường"
         },
         {
             "data": "thanthoai",
-            "name": "Thần Thoại(107)"
+            "name": "Thần Thoại"
         },
         {
             "data": "vuichoigiaitri",
-            "name": "Vui Chơi Giải Trí(106)"
+            "name": "Vui Chơi Giải Trí"
         },
         {
             "data": "phongthan",
-            "name": "Phong Thần(103)"
+            "name": "Phong Thần"
         },
         {
             "data": "tamquoc",
-            "name": "Tam Quốc(102)"
+            "name": "Tam Quốc"
         },
         {
             "data": "hocsinh",
-            "name": "Học Sinh(102)"
+            "name": "Học Sinh"
         },
         {
             "data": "duongtrieu",
-            "name": "Đường Triều(102)"
+            "name": "Đường Triều"
         },
         {
             "data": "thuongchien",
-            "name": "Thương Chiến(102)"
+            "name": "Thương Chiến"
         },
         {
             "data": "tayphuongkyhuyen",
-            "name": "Tây Phương Kỳ Huyễn(100)"
+            "name": "Tây Phương Kỳ Huyễn"
         },
         {
             "data": "lapnghiep",
-            "name": "Lập Nghiệp(100)"
+            "name": "Lập Nghiệp"
         },
         {
             "data": "khoahockythuat",
-            "name": "Khoa Học Kỹ Thuật(98)"
+            "name": "Khoa Học Kỹ Thuật"
         },
         {
             "data": "giaitriminhtinh",
-            "name": "Giải Trí Minh Tinh(95)"
+            "name": "Giải Trí Minh Tinh"
         },
         {
             "data": "huongthosinhhoat",
-            "name": "Hương Thổ Sinh Hoạt(95)"
+            "name": "Hương Thổ Sinh Hoạt"
         },
         {
             "data": "huyentuongngontinh",
-            "name": "Huyễn Tưởng Ngôn Tình(91)"
+            "name": "Huyễn Tưởng Ngôn Tình"
         },
         {
             "data": "truyenthongvohiep",
-            "name": "Truyền Thống Võ Hiệp(90)"
+            "name": "Truyền Thống Võ Hiệp"
         },
         {
             "data": "thegia",
-            "name": "Thế Gia(89)"
+            "name": "Thế Gia"
         },
         {
             "data": "suyluanhuyennghi",
-            "name": "Suy Luận Huyền Nghi(89)"
+            "name": "Suy Luận Huyền Nghi"
         },
         {
             "data": "cungdau",
-            "name": "Cung Đấu(85)"
+            "name": "Cung Đấu"
         },
         {
             "data": "maphap",
-            "name": "Ma Pháp(83)"
+            "name": "Ma Pháp"
         },
         {
             "data": "trochoinguoichoi",
-            "name": "Trò Chơi Người Chơi(83)"
+            "name": "Trò Chơi Người Chơi"
         },
         {
             "data": "yeunhau",
-            "name": "Yêu Nhau(82)"
+            "name": "Yêu Nhau"
         },
         {
             "data": "giambao",
-            "name": "Giám Bảo(81)"
+            "name": "Giám Bảo"
         },
         {
             "data": "minhtinh",
-            "name": "Minh Tinh(81)"
+            "name": "Minh Tinh"
         },
         {
             "data": "trachdau",
-            "name": "Trạch Đấu(81)"
+            "name": "Trạch Đấu"
         },
         {
             "data": "tiende",
-            "name": "Tiên Đế(77)"
+            "name": "Tiên Đế"
         },
         {
             "data": "dithuluu",
-            "name": "Dị Thú Lưu(76)"
+            "name": "Dị Thú Lưu"
         },
         {
             "data": "daosi",
-            "name": "Đạo Sĩ(75)"
+            "name": "Đạo Sĩ"
         },
         {
             "data": "hoanhioangia",
-            "name": "Hoan Hỉ Oan Gia(75)"
+            "name": "Hoan Hỉ Oan Gia"
         },
         {
             "data": "thaigiam",
-            "name": "Thái Giám(75)"
+            "name": "Thái Giám"
         },
         {
             "data": "honghoangphongthan",
-            "name": "Hồng Hoang Phong Thần(73)"
+            "name": "Hồng Hoang Phong Thần"
         },
         {
             "data": "laoban",
-            "name": "Lão Bản(72)"
+            "name": "Lão Bản"
         },
         {
             "data": "tinhte",
-            "name": "Tinh Tế(72)"
+            "name": "Tinh Tế"
         },
         {
             "data": "hoangu",
-            "name": "Hoa Ngu(71)"
+            "name": "Hoa Ngu"
         },
         {
             "data": "thidau",
-            "name": "Thi Đấu(65)"
+            "name": "Thi Đấu"
         },
         {
             "data": "quansu",
-            "name": "Quân Sự(63)"
+            "name": "Quân Sự"
         },
         {
             "data": "thinhthe",
-            "name": "Thịnh Thế(63)"
+            "name": "Thịnh Thế"
         },
         {
             "data": "santruong",
-            "name": "Sân Trường(62)"
+            "name": "Sân Trường"
         },
         {
             "data": "phongthuyhuyenthuat",
-            "name": "Phong Thuỷ Huyền Thuật(62)"
+            "name": "Phong Thuỷ Huyền Thuật"
         },
         {
             "data": "danhdau",
-            "name": "Đánh Dấu(62)"
+            "name": "Đánh Dấu"
         },
         {
             "data": "linhkhikhoiphuc",
-            "name": "Linh Khí Khôi Phục(61)"
+            "name": "Linh Khí Khôi Phục"
         },
         {
             "data": "cholamviec",
-            "name": "Chỗ Làm Việc(61)"
+            "name": "Chỗ Làm Việc"
         },
         {
             "data": "tamquandang",
-            "name": "Tam Quan Đang(59)"
+            "name": "Tam Quan Đang"
         },
         {
             "data": "ngotnguoc",
-            "name": "Ngọt Ngược(58)"
+            "name": "Ngọt Ngược"
         },
         {
             "data": "nguoccanba",
-            "name": "Ngược Cặn Bã(58)"
+            "name": "Ngược Cặn Bã"
         },
         {
             "data": "tongmon",
-            "name": "Tông Môn(57)"
+            "name": "Tông Môn"
         },
         {
             "data": "doansung",
-            "name": "Đoàn Sủng(57)"
+            "name": "Đoàn Sủng"
         },
         {
             "data": "thiemhon",
-            "name": "Thiểm Hôn(57)"
+            "name": "Thiểm Hôn"
         },
         {
             "data": "docsung",
-            "name": "Độc Sủng(56)"
+            "name": "Độc Sủng"
         },
         {
             "data": "kythuatluu",
-            "name": "Kỹ Thuật Lưu(54)"
+            "name": "Kỹ Thuật Lưu"
         },
         {
             "data": "tanhan",
-            "name": "Tần Hán(54)"
+            "name": "Tần Hán"
         },
         {
             "data": "truoctiencuoisauthich",
-            "name": "Trước Tiên Cưới Sau Thích(54)"
+            "name": "Trước Tiên Cưới Sau Thích"
         },
         {
             "data": "donnuchinh",
-            "name": "Đơn Nữ Chính(53)"
+            "name": "Đơn Nữ Chính"
         },
         {
             "data": "diencanh",
-            "name": "Điện Cạnh(53)"
+            "name": "Điện Cạnh"
         },
         {
             "data": "kieuhung",
-            "name": "Kiêu Hùng(52)"
+            "name": "Kiêu Hùng"
         },
         {
             "data": "tienhiephuyentinh",
-            "name": "Tiên Hiệp Huyễn Tình(50)"
+            "name": "Tiên Hiệp Huyễn Tình"
         },
         {
             "data": "aolot",
-            "name": "Áo Lót(49)"
+            "name": "Áo Lót"
         },
         {
             "data": "taydu",
-            "name": "Tây Du(48)"
+            "name": "Tây Du"
         },
         {
             "data": "kiemcungmaphap",
-            "name": "Kiếm Cùng Ma Pháp(47)"
+            "name": "Kiếm Cùng Ma Pháp"
         },
         {
             "data": "manhbao",
-            "name": "Manh Bảo(47)"
+            "name": "Manh Bảo"
         },
         {
             "data": "dailao",
-            "name": "Đại Lão(47)"
+            "name": "Đại Lão"
         },
         {
             "data": "linhcan",
-            "name": "Linh Căn(46)"
+            "name": "Linh Căn"
         },
         {
             "data": "luyencongluu",
-            "name": "Luyện Công Lưu(45)"
+            "name": "Luyện Công Lưu"
         },
         {
             "data": "nongdan",
-            "name": "Nông Dân(45)"
+            "name": "Nông Dân"
         },
         {
             "data": "sapdatluu",
-            "name": "Sắp Đặt Lưu(45)"
+            "name": "Sắp Đặt Lưu"
         },
         {
             "data": "guongvolailanh",
-            "name": "Gương Vỡ Lại Lành(44)"
+            "name": "Gương Vỡ Lại Lành"
         },
         {
             "data": "lamgiau",
-            "name": "Làm Giàu(42)"
+            "name": "Làm Giàu"
         },
         {
             "data": "trieuhoanluu",
-            "name": "Triệu Hoán Lưu(41)"
+            "name": "Triệu Hoán Lưu"
         },
         {
             "data": "phiasaumanluu",
-            "name": "Phía Sau Màn Lưu(40)"
+            "name": "Phía Sau Màn Lưu"
         },
         {
             "data": "mythuc",
-            "name": "Mỹ Thực(40)"
+            "name": "Mỹ Thực"
         },
         {
             "data": "xuyenthu",
-            "name": "Xuyên Thư(40)"
+            "name": "Xuyên Thư"
         },
         {
             "data": "chuthienluu",
-            "name": "Chư Thiên Lưu(39)"
+            "name": "Chư Thiên Lưu"
         },
         {
             "data": "lyhon",
-            "name": "Ly Hôn(39)"
+            "name": "Ly Hôn"
         },
         {
             "data": "vuongphi",
-            "name": "Vương Phi(37)"
+            "name": "Vương Phi"
         },
         {
             "data": "thienkim",
-            "name": "Thiên Kim(37)"
+            "name": "Thiên Kim"
         },
         {
             "data": "thucteao",
-            "name": "Thực Tế Ảo(36)"
+            "name": "Thực Tế Ảo"
         },
         {
             "data": "cuongcuong",
-            "name": "Cường Cường(36)"
+            "name": "Cường Cường"
         },
         {
             "data": "anhtrangsang",
-            "name": "Ánh Trăng Sáng(36)"
+            "name": "Ánh Trăng Sáng"
         },
         {
             "data": "phamnhanluu",
-            "name": "Phàm Nhân Lưu(35)"
+            "name": "Phàm Nhân Lưu"
         },
         {
             "data": "docogiambao",
-            "name": "Đồ Cổ Giám Bảo(35)"
+            "name": "Đồ Cổ Giám Bảo"
         },
         {
             "data": "trochoikiepsong",
-            "name": "Trò Chơi Kiếp Sống(35)"
+            "name": "Trò Chơi Kiếp Sống"
         },
         {
             "data": "satthu",
-            "name": "Sát Thủ(35)"
+            "name": "Sát Thủ"
         },
         {
             "data": "amap",
-            "name": "Ấm Áp(35)"
+            "name": "Ấm Áp"
         },
         {
             "data": "nguoichoi",
-            "name": "Người Chơi(34)"
+            "name": "Người Chơi"
         },
         {
             "data": "nutonnucuong",
-            "name": "Nữ Tôn Nữ Cường(34)"
+            "name": "Nữ Tôn Nữ Cường"
         },
         {
             "data": "kiemtu",
-            "name": "Kiếm Tu(33)"
+            "name": "Kiếm Tu"
         },
         {
             "data": "chientranhkhangnhat",
-            "name": "Chiến Tranh Kháng Nhật(33)"
+            "name": "Chiến Tranh Kháng Nhật"
         },
         {
             "data": "duongthanh",
-            "name": "Dưỡng Thành(32)"
+            "name": "Dưỡng Thành"
         },
         {
             "data": "luyenkhi",
-            "name": "Luyện Khí(32)"
+            "name": "Luyện Khí"
         },
         {
             "data": "vohanluu",
-            "name": "Vô Hạn Lưu(31)"
+            "name": "Vô Hạn Lưu"
         },
         {
             "data": "quanlu",
-            "name": "Quân Lữ(31)"
+            "name": "Quân Lữ"
         },
         {
             "data": "vuem",
-            "name": "Vú Em(31)"
+            "name": "Vú Em"
         },
         {
             "data": "tuongaituongsat",
-            "name": "Tương Ái Tương Sát(31)"
+            "name": "Tương Ái Tương Sát"
         },
         {
             "data": "lamruongkinhthuong",
-            "name": "Làm Ruộng Kinh Thương(31)"
+            "name": "Làm Ruộng Kinh Thương"
         },
         {
             "data": "nuphoi",
-            "name": "Nữ Phối(31)"
+            "name": "Nữ Phối"
         },
         {
             "data": "cachep",
-            "name": "Cá Chép(31)"
+            "name": "Cá Chép"
         },
         {
             "data": "nghenghiepvan",
-            "name": "Nghề Nghiệp Văn(30)"
+            "name": "Nghề Nghiệp Văn"
         },
         {
             "data": "theducthidau",
-            "name": "Thể Dục Thi Đấu(30)"
+            "name": "Thể Dục Thi Đấu"
         },
         {
             "data": "tongtrieu",
-            "name": "Tống Triều(30)"
+            "name": "Tống Triều"
         },
         {
             "data": "truoctiencuoisauyeu",
-            "name": "Trước Tiên Cưới Sau Yêu(28)"
+            "name": "Trước Tiên Cưới Sau Yêu"
         },
         {
             "data": "dongbinh",
-            "name": "Dong Binh(27)"
+            "name": "Dong Binh"
         },
         {
             "data": "phithang",
-            "name": "Phi Thăng(27)"
+            "name": "Phi Thăng"
         },
         {
             "data": "tuonglaivongdu",
-            "name": "Tương Lai Võng Du(27)"
+            "name": "Tương Lai Võng Du"
         },
         {
             "data": "vuonggiavinhquang",
-            "name": "Vương Giả Vinh Quang(26)"
+            "name": "Vương Giả Vinh Quang"
         },
         {
             "data": "hoangdacausinh",
-            "name": "Hoang Dã Cầu Sinh(26)"
+            "name": "Hoang Dã Cầu Sinh"
         },
         {
             "data": "kieptruocvakiepnay",
-            "name": "Kiếp Trước Và Kiếp Này(26)"
+            "name": "Kiếp Trước Và Kiếp Này"
         },
         {
             "data": "thaohan",
-            "name": "Tháo Hán(26)"
+            "name": "Tháo Hán"
         },
         {
             "data": "dinanggia",
-            "name": "Dị Năng Giả(25)"
+            "name": "Dị Năng Giả"
         },
         {
             "data": "lamquai",
-            "name": "Làm Quái(24)"
+            "name": "Làm Quái"
         },
         {
             "data": "tuongquan",
-            "name": "Tướng Quân(24)"
+            "name": "Tướng Quân"
         },
         {
             "data": "canhsat",
-            "name": "Cảnh Sát(23)"
+            "name": "Cảnh Sát"
         },
         {
             "data": "hoangdeluu",
-            "name": "Hoàng Đế Lưu(23)"
+            "name": "Hoàng Đế Lưu"
         },
         {
             "data": "tienhoabiendi",
-            "name": "Tiến Hóa Biến Dị(23)"
+            "name": "Tiến Hóa Biến Dị"
         },
         {
             "data": "nganhgiaitri",
-            "name": "Ngành Giải Trí(23)"
+            "name": "Ngành Giải Trí"
         },
         {
             "data": "thanhmaitrucma",
-            "name": "Thanh Mai Trúc Mã(23)"
+            "name": "Thanh Mai Trúc Mã"
         },
         {
             "data": "hoankho",
-            "name": "Hoàn Khố(23)"
+            "name": "Hoàn Khố"
         },
         {
             "data": "thuongcotientan",
-            "name": "Thượng Cổ Tiên Tần(22)"
+            "name": "Thượng Cổ Tiên Tần"
         },
         {
             "data": "camyve",
-            "name": "Cẩm Y Vệ(22)"
+            "name": "Cẩm Y Vệ"
         },
         {
             "data": "rutthuong",
-            "name": "Rút Thưởng(22)"
+            "name": "Rút Thưởng"
         },
         {
             "data": "thienluong",
-            "name": "Thiện Lương(22)"
+            "name": "Thiện Lương"
         },
         {
             "data": "kinhdikinhkhung",
-            "name": "Kinh Dị Kinh Khủng(22)"
+            "name": "Kinh Dị Kinh Khủng"
         },
         {
             "data": "hinhsutrinhsat",
-            "name": "Hình Sự Trinh Sát(21)"
+            "name": "Hình Sự Trinh Sát"
         },
         {
             "data": "thiethuyet",
-            "name": "Thiết Huyết(21)"
+            "name": "Thiết Huyết"
         },
         {
             "data": "laosu",
-            "name": "Lão Sư(21)"
+            "name": "Lão Sư"
         },
         {
             "data": "baotieu",
-            "name": "Bảo Tiêu(21)"
+            "name": "Bảo Tiêu"
         },
         {
             "data": "ngaokieu",
-            "name": "Ngạo Kiều(21)"
+            "name": "Ngạo Kiều"
         },
         {
             "data": "vuonghau",
-            "name": "Vương Hầu(21)"
+            "name": "Vương Hầu"
         },
         {
             "data": "tuyduong",
-            "name": "Tùy Đường(21)"
+            "name": "Tùy Đường"
         },
         {
             "data": "nguthuluu",
-            "name": "Ngự Thú Lưu(21)"
+            "name": "Ngự Thú Lưu"
         },
         {
             "data": "sungvat",
-            "name": "Sủng Vật(21)"
+            "name": "Sủng Vật"
         },
         {
             "data": "sachluocluu",
-            "name": "Sách Lược Lưu(21)"
+            "name": "Sách Lược Lưu"
         },
         {
             "data": "quyenthan",
-            "name": "Quyền Thần(21)"
+            "name": "Quyền Thần"
         },
         {
             "data": "baoan",
-            "name": "Bảo An(20)"
+            "name": "Bảo An"
         },
         {
             "data": "nguocvan",
-            "name": "Ngược Văn(20)"
+            "name": "Ngược Văn"
         },
         {
             "data": "hocba",
-            "name": "Học Bá(19)"
+            "name": "Học Bá"
         },
         {
             "data": "cucpham",
-            "name": "Cực Phẩm(19)"
+            "name": "Cực Phẩm"
         },
         {
             "data": "nhanhxuyen",
-            "name": "Nhanh Xuyên(19)"
+            "name": "Nhanh Xuyên"
         },
         {
             "data": "phansaolo",
-            "name": "Phản Sáo Lộ(19)"
+            "name": "Phản Sáo Lộ"
         },
         {
             "data": "muontao",
-            "name": "Muộn Tao(18)"
+            "name": "Muộn Tao"
         },
         {
             "data": "trachnam",
-            "name": "Trạch Nam(18)"
+            "name": "Trạch Nam"
         },
         {
             "data": "thanhsudanquoc",
-            "name": "Thanh Sử Dân Quốc(18)"
+            "name": "Thanh Sử Dân Quốc"
         },
         {
             "data": "nhanvatphandien",
-            "name": "Nhân Vật Phản Diện(18)"
+            "name": "Nhân Vật Phản Diện"
         },
         {
             "data": "khonggian",
-            "name": "Không Gian(18)"
+            "name": "Không Gian"
         },
         {
             "data": "tutien",
-            "name": "Tu Tiên(18)"
+            "name": "Tu Tiên"
         },
         {
             "data": "thatgiathienkim",
-            "name": "Thật Giả Thiên Kim(18)"
+            "name": "Thật Giả Thiên Kim"
         },
         {
             "data": "tuchan",
-            "name": "Tu Chân(18)"
+            "name": "Tu Chân"
         },
         {
             "data": "linhdacchung",
-            "name": "Lính Đặc Chủng(17)"
+            "name": "Lính Đặc Chủng"
         },
         {
             "data": "daukhithegioi",
-            "name": "Đấu Khí Thế Giới(17)"
+            "name": "Đấu Khí Thế Giới"
         },
         {
             "data": "thanhthanluu",
-            "name": "Thành Thần Lưu(17)"
+            "name": "Thành Thần Lưu"
         },
         {
             "data": "nhiethuyetsantruong",
-            "name": "Nhiệt Huyết Sân Trường(17)"
+            "name": "Nhiệt Huyết Sân Trường"
         },
         {
             "data": "viencothanthoai",
-            "name": "Viễn Cổ Thần Thoại(17)"
+            "name": "Viễn Cổ Thần Thoại"
         },
         {
             "data": "ngabailuu",
-            "name": "Ngả Bài Lưu(17)"
+            "name": "Ngả Bài Lưu"
         },
         {
             "data": "docphi",
-            "name": "Độc Phi(17)"
+            "name": "Độc Phi"
         },
         {
             "data": "thaituphi",
-            "name": "Thái Tử Phi(17)"
+            "name": "Thái Tử Phi"
         },
         {
             "data": "giakhong",
-            "name": "Giá Không(17)"
+            "name": "Giá Không"
         },
         {
             "data": "sieucapkhoahockythuat",
-            "name": "Siêu Cấp Khoa Học Kỹ Thuật(16)"
+            "name": "Siêu Cấp Khoa Học Kỹ Thuật"
         },
         {
             "data": "khongkimthuchi",
-            "name": "Không Kim Thủ Chỉ(16)"
+            "name": "Không Kim Thủ Chỉ"
         },
         {
             "data": "chientranhgiuacachanhtinh",
-            "name": "Chiến Tranh Giữa Các Hành Tinh(16)"
+            "name": "Chiến Tranh Giữa Các Hành Tinh"
         },
         {
             "data": "chatgroup",
-            "name": "Chat Group(16)"
+            "name": "Chat Group"
         },
         {
             "data": "huyennghisuyluan",
-            "name": "Huyền Nghi Suy Luận(16)"
+            "name": "Huyền Nghi Suy Luận"
         },
         {
             "data": "manhhe",
-            "name": "Manh Hệ(16)"
+            "name": "Manh Hệ"
         },
         {
             "data": "hoangthuc",
-            "name": "Hoàng Thúc(16)"
+            "name": "Hoàng Thúc"
         },
         {
             "data": "santruongsinhhoat",
-            "name": "Sân Trường Sinh Hoạt(16)"
+            "name": "Sân Trường Sinh Hoạt"
         },
         {
             "data": "mangbenminhluu",
-            "name": "Mang Bên Mình Lưu(15)"
+            "name": "Mang Bên Mình Lưu"
         },
         {
             "data": "thientai",
-            "name": "Thiên Tài(15)"
+            "name": "Thiên Tài"
         },
         {
             "data": "loraanhsangluu",
-            "name": "Lộ Ra Ánh Sáng Lưu(15)"
+            "name": "Lộ Ra Ánh Sáng Lưu"
         },
         {
             "data": "thoikhongvan",
-            "name": "Thời Không Văn(14)"
+            "name": "Thời Không Văn"
         },
         {
             "data": "chiensi",
-            "name": "Chiến Sĩ(14)"
+            "name": "Chiến Sĩ"
         },
         {
             "data": "thiendinhvan",
-            "name": "Thiên Đình Văn(14)"
+            "name": "Thiên Đình Văn"
         },
         {
             "data": "daiga",
-            "name": "Đại Gả(14)"
+            "name": "Đại Gả"
         },
         {
             "data": "dilam",
-            "name": "Đi Làm(14)"
+            "name": "Đi Làm"
         },
         {
             "data": "chuatri",
-            "name": "Chữa Trị(14)"
+            "name": "Chữa Trị"
         },
         {
             "data": "daccong",
-            "name": "Đặc Công(14)"
+            "name": "Đặc Công"
         },
         {
             "data": "vuonggia",
-            "name": "Vương Gia(14)"
+            "name": "Vương Gia"
         },
         {
             "data": "doithumotmatmotcon",
-            "name": "Đối Thủ Một Mất Một Còn(14)"
+            "name": "Đối Thủ Một Mất Một Còn"
         },
         {
             "data": "baochekhuyetdiem",
-            "name": "Bao Che Khuyết Điểm(14)"
+            "name": "Bao Che Khuyết Điểm"
         },
         {
             "data": "hachoa",
-            "name": "Hắc Hóa(14)"
+            "name": "Hắc Hóa"
         },
         {
             "data": "vuongtrieutranhba",
-            "name": "Vương Triều Tranh Bá(13)"
+            "name": "Vương Triều Tranh Bá"
         },
         {
             "data": "khoacu",
-            "name": "Khoa Cử(13)"
+            "name": "Khoa Cử"
         },
         {
             "data": "miengphao",
-            "name": "Miệng Pháo(13)"
+            "name": "Miệng Pháo"
         },
         {
             "data": "nhagiaunhat",
-            "name": "Nhà Giàu Nhất(13)"
+            "name": "Nhà Giàu Nhất"
         },
         {
             "data": "taichinh",
-            "name": "Tài Chính(13)"
+            "name": "Tài Chính"
         },
         {
             "data": "benhkieu",
-            "name": "Bệnh Kiều(13)"
+            "name": "Bệnh Kiều"
         },
         {
             "data": "trungyluu",
-            "name": "Trung Y Lưu(12)"
+            "name": "Trung Y Lưu"
         },
         {
             "data": "daotac",
-            "name": "Đạo Tặc(12)"
+            "name": "Đạo Tặc"
         },
         {
             "data": "cuongquoc",
-            "name": "Cường Quốc(12)"
+            "name": "Cường Quốc"
         },
         {
             "data": "phapsu",
-            "name": "Pháp Sư(12)"
+            "name": "Pháp Sư"
         },
         {
             "data": "trinhquan",
-            "name": "Trinh Quán(12)"
+            "name": "Trinh Quán"
         },
         {
             "data": "kyhuyenlichsu",
-            "name": "Kỳ Huyễn Lịch Sử(12)"
+            "name": "Kỳ Huyễn Lịch Sử"
         },
         {
             "data": "daisuhuynh",
-            "name": "Đại Sư Huynh(12)"
+            "name": "Đại Sư Huynh"
         },
         {
             "data": "tieubinh",
-            "name": "Tiểu Binh(12)"
+            "name": "Tiểu Binh"
         },
         {
             "data": "bachlienhoa",
-            "name": "Bạch Liên Hoa(12)"
+            "name": "Bạch Liên Hoa"
         },
         {
             "data": "thuanai",
-            "name": "Thuần Ái(12)"
+            "name": "Thuần Ái"
         },
         {
             "data": "lamdangiau",
-            "name": "Làm Dân Giàu(12)"
+            "name": "Làm Dân Giàu"
         },
         {
             "data": "hiendaivohiep",
-            "name": "Hiện Đại Võ Hiệp(11)"
+            "name": "Hiện Đại Võ Hiệp"
         },
         {
             "data": "thuatsi",
-            "name": "Thuật Sĩ(11)"
+            "name": "Thuật Sĩ"
         },
         {
             "data": "maphapsantruong",
-            "name": "Ma Pháp Sân Trường(11)"
+            "name": "Ma Pháp Sân Trường"
         },
         {
             "data": "doatxa",
-            "name": "Đoạt Xá(11)"
+            "name": "Đoạt Xá"
         },
         {
             "data": "thosan",
-            "name": "Thợ Săn(11)"
+            "name": "Thợ Săn"
         },
         {
             "data": "diemthe",
-            "name": "Điềm Thê(11)"
+            "name": "Điềm Thê"
         },
         {
             "data": "caolanh",
-            "name": "Cao Lãnh(11)"
+            "name": "Cao Lãnh"
         },
         {
             "data": "hanmontude",
-            "name": "Hàn Môn Tử Đệ(11)"
+            "name": "Hàn Môn Tử Đệ"
         },
         {
             "data": "vuamananh",
-            "name": "Vua Màn Ảnh(11)"
+            "name": "Vua Màn Ảnh"
         },
         {
             "data": "thangcap",
-            "name": "Thăng Cấp(11)"
+            "name": "Thăng Cấp"
         },
         {
             "data": "yeutinhtinhduyen",
-            "name": "Yêu Tinh Tình Duyên(11)"
+            "name": "Yêu Tinh Tình Duyên"
         },
         {
             "data": "ngudai",
-            "name": "Ngu Dại(11)"
+            "name": "Ngu Dại"
         },
         {
             "data": "vidien",
-            "name": "Vị Diện(11)"
+            "name": "Vị Diện"
         },
         {
             "data": "bacsi",
-            "name": "Bác Sĩ(11)"
+            "name": "Bác Sĩ"
         },
         {
             "data": "thuoctinhluu",
-            "name": "Thuộc Tính Lưu(10)"
+            "name": "Thuộc Tính Lưu"
         },
         {
             "data": "khangchien",
-            "name": "Kháng Chiến(10)"
+            "name": "Kháng Chiến"
         },
         {
             "data": "khoahockythuattuchan",
-            "name": "Khoa Học Kỹ Thuật Tu Chân(10)"
+            "name": "Khoa Học Kỹ Thuật Tu Chân"
         },
         {
             "data": "namthan",
-            "name": "Nam Thần(10)"
+            "name": "Nam Thần"
         },
         {
             "data": "nhathietke",
-            "name": "Nhà Thiết Kế(10)"
+            "name": "Nhà Thiết Kế"
         },
         {
             "data": "ramat",
-            "name": "Ra Mắt(10)"
+            "name": "Ra Mắt"
         },
         {
             "data": "phoma",
-            "name": "Phò Mã(10)"
+            "name": "Phò Mã"
         },
         {
             "data": "khongnuchinh",
-            "name": "Không Nữ Chính(10)"
+            "name": "Không Nữ Chính"
         },
         {
             "data": "hikichtinh",
-            "name": "Hí Kịch Tinh(10)"
+            "name": "Hí Kịch Tinh"
         },
         {
             "data": "nuchinhmanhembe",
-            "name": "Nữ Chính Manh Em Bé(10)"
+            "name": "Nữ Chính Manh Em Bé"
         },
         {
             "data": "tongman",
-            "name": "Tổng Mạn(10)"
+            "name": "Tổng Mạn"
         }
     ];
 
