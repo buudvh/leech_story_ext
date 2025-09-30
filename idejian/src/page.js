@@ -18,9 +18,9 @@ function execute(url) {
             return Response.success(data);
         }
 
-        return Response.success(["https://www.idejian.com/catelog/13359714/1?page=2"]);;
+        return null;
     } catch (error) {
-        return Response.success(["https://www.idejian.com/catelog/13359714/1?page=1"]);
+        return Response.error(error.message);
     }
 
 }
