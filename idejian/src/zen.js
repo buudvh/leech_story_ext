@@ -1,5 +1,5 @@
 load('config.js');
-function execute(url,page) {
+function execute(url, page) {
     url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     if (!page) page = 1;
     if (url.indexOf("&page=") === -1) {
@@ -9,15 +9,16 @@ function execute(url,page) {
     if (response.ok) {
         let doc = response.html();
         const data = [];
-		doc.select(".v_books li").forEach(e => {
+        doc.select(".v_books li").forEach(e => {
             data.push({
+                cover: DEFAULT_COVER,
                 name: e.select(".bkitem_name a").first().text(),
-                link: DEFAULT_COVER,
+                link: BASE_URL + e.select(".bkitem_name a").first().attr("href"),
                 description: e.select(".bkitem_author").first().text(),
                 host: BASE_URL
             })
         });
-        var next = (parseInt(page)+1).toString();
+        var next = (parseInt(page) + 1).toString();
         return Response.success(data, next)
     }
     return null;
