@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "name": "idejian",
+    "name": "idejian (+stv)",
     "author": "HuongMT",
-    "version": 9,
+    "version": 10,
     "source": "https://www.idejian.com",
     "regexp": "www.idejian.(.*?)/book/\\d+/?",
     "description": "Đọc truyện trên idejian",

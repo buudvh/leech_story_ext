@@ -6,14 +6,13 @@ function execute(url,page) {
         url = url + "&order=2" + "&page=" + page;
     }
     let response = fetch(BASE_URL + url);
-    console.log(BASE_URL + url)
     if (response.ok) {
         let doc = response.html();
         const data = [];
 		doc.select(".v_books li").forEach(e => {
             data.push({
                 name: e.select(".bkitem_name a").first().text(),
-                link: BASE_URL + e.select(".bkitem_name a").first().attr("href"),
+                link: DEFAULT_COVER,
                 description: e.select(".bkitem_author").first().text(),
                 host: BASE_URL
             })
