@@ -6,7 +6,6 @@ function execute(url,page) {
         url = url + "?page=" + page;
     }
     let response = fetch(BASE_URL + url);
-    console.log(BASE_URL + url)
     if (response.ok) {
         let doc = response.html();
         const data = [];
@@ -14,7 +13,7 @@ function execute(url,page) {
             data.push({
                 cover:e.select("img").first().attr("src"),
                 name: e.select(".rank_bkname a").first().text(),
-                link: BASE_URL + e.select(".rank_bkname a").first().attr("href"),
+                link: DEFAULT_COVER,
                 description: e.select(".author").first().text(),
                 host: BASE_URL
             })
