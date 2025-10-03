@@ -15,11 +15,12 @@ function execute(url, page) {
 
             if (!stories.length) return Response.error(url + "  Empty");
 
+            //BASE_URL + stories[i].coverUrl
             for (let i = 0; i < stories.length; i++) {
                 data.push({
                     name: TongWen.toSimplified(stories[i].title),
                     link: BASE_URL + stories[i].infourl,
-                    cover: BASE_URL + stories[i].coverUrl,
+                    cover: DEFAULT_COVER,
                     description: TongWen.toSimplified(stories[i].description),
                     host: BASE_URL
                 });
