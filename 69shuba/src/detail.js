@@ -5,6 +5,7 @@ load('common.js');
 
 function execute(url) {
     try {
+        var baseUrl = url;
         var isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
         var bookid = extractBookId(url, isSTV);
         url = buildFinalUrl(bookid);
@@ -25,7 +26,12 @@ function execute(url) {
 
         if (text(doc, 'div.booknav2 > h1 > a') === '') return trySTV(url);
 
-        var genres = buildGenres(doc);
+        var genres = [{
+            title: isSTV ? "Link 69shuba" : "Link STV",
+            input: isSTV ? url : (STVHOST + "/truyen/69shu/1/" + bookid + "/"),
+            script: "otherurl.js"
+        }];
+        genres = genres.concat(buildGenres(doc));
         var comments = [{
             title: "评论",
             input: bookid,
@@ -39,11 +45,13 @@ function execute(url) {
             description: $.Q(doc, 'div.navtxt > p') ? $.Q(doc, 'div.navtxt > p').html() : '',
             detail: $.QA(doc, 'div.booknav2 p', { m: function (x) { return x.text(); }, j: '<br>' }) + '<br>书籍编号: ' + bookid + '<br>',
             host: BASE_URL,
-            suggests: [{
-                title: "同作者",
-                input: encodeAuthorUrl($.Q(doc, 'div.booknav2 > p:nth-child(2) > a') ? $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr("href") : ''),
-                script: "author.js"
-            }],
+            suggests: [
+                {
+                    title: "同作者",
+                    input: encodeAuthorUrl($.Q(doc, 'div.booknav2 > p:nth-child(2) > a') ? $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr("href") : ''),
+                    script: "author.js"
+                }
+            ],
             genres: genres,
             comments: comments
         });
