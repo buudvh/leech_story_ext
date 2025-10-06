@@ -33,7 +33,7 @@ function execute(key, page) {
         var bookid = stv_story_link.split("/")[4];
         data.push({
             name: toCapitalize(e.select(".searchbooktitle").first().text()),
-            link: BASE_URL + '/book/' + bookid + '.htm',
+            link: STVHOST + "/truyen/69shu/1/" + bookid + "/",
             cover: 'https://static.69shuba.com/files/article/image/' +
                 bookid.slice(0, bookid.length - 3) + '/' +
                 bookid + '/' +

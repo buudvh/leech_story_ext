@@ -5,8 +5,8 @@ load('common.js');
 
 function execute(url) {
     try {
-        var baseUrl = url;
         var isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
+        var source = isSTV ? "STV" : "69shu"
         var bookid = extractBookId(url, isSTV);
         url = buildFinalUrl(bookid);
 
@@ -27,11 +27,12 @@ function execute(url) {
         if (text(doc, 'div.booknav2 > h1 > a') === '') return trySTV(url);
 
         var genres = [{
-            title: isSTV ? "Link 69shuba" : "Link STV",
+            title: "TIỆN ÍCH",
             input: isSTV ? url : (STVHOST + "/truyen/69shu/1/" + bookid + "/"),
             script: "otherurl.js"
         }];
         genres = genres.concat(buildGenres(doc));
+
         var comments = [{
             title: "评论",
             input: bookid,
@@ -39,7 +40,7 @@ function execute(url) {
         }];
 
         return Response.success({
-            name: text(doc, 'div.booknav2 > h1 > a'),
+            name: text(doc, 'div.booknav2 > h1 > a') + "【" + source + "】",
             cover: 'https://static.69shuba.com/files/article/image/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '/' + bookid + 's.jpg',
             author: text(doc, 'div.booknav2 > p:nth-child(2) > a'),
             description: $.Q(doc, 'div.navtxt > p') ? $.Q(doc, 'div.navtxt > p').html() : '',
