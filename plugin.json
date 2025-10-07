@@ -14,10 +14,10 @@
       "description": "Đọc truyện trên trang https://www.69shuba.com"
     },
     {
-      "name": "qidian miễn phí",
+      "name": "qidian",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian/qidian.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://www.qidian.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian/icon.png",
       "description": "Đọc truyện trên trang https://www.qidian.com (chap miễn phí)"

@@ -32,8 +32,6 @@ function execute(url) {
             comments: comments,
         }
 
-        
-
         return Response.success(data);
     } catch (error) {
         return Response.error('fetch ' + url + ' failed: ' + error.message);
