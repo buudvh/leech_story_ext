@@ -1,4 +1,4 @@
-var BASE_URL = 'https://69shuba.tw/';
+var BASE_URL = 'https://69shuba.tw';
 var DEFAULT_COVER = 'https://raw.githubusercontent.com/buudvh/leech_story_ext/main/asset/cover1.jpg';
 
 try {

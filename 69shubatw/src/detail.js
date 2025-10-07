@@ -13,7 +13,7 @@ function execute(url) {
         var genreElm = doc.select("div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(3) > a");
 
         return Response.success({
-            name: text(doc, '"div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(1) > strong"'),
+            name: text(doc, 'div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(1) > strong'),
             cover: DEFAULT_COVER,
             author: authorElm.text(),
             description: doc.select("div.intro").text(),

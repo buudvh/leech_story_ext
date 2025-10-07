@@ -5,7 +5,8 @@ function execute(url) {
     try {
         var response = fetch(url);
         if (!response.ok) throw new Error(`Status ${response.status}`)
-
+        
+        var doc = response.html();
         var htm = doc.select("#nr1");
         htm.select("div").remove();
         htm.select("a").remove();
