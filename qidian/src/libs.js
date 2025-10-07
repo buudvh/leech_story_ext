@@ -163,3 +163,8 @@ var $ = {
     }
 
 }
+
+function getBookId(url) {
+  const m = url.match(/\/(\d+)\/?$/);
+  return m ? m[1] : null;
+}

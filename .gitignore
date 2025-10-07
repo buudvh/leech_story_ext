@@ -11,3 +11,4 @@ _*/
 *.bk
 test.ipynb
 /*.ipynb
+/qidian/.vs
