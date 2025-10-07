@@ -30,7 +30,7 @@ function getTocQidian(url) {
     q_list.forEach((q) => {
         q.cs.forEach((e) => {
             data.push({
-                name: e.cN,
+                name: formatName(e.cN) + (e.sS == 1 ? "" : "(¥)"),
                 url: "https://m.qidian.com/chapter/" + idBook + "/" + e.id + "/", //
                 pay: e.sS == 1 ? false : true,
             })

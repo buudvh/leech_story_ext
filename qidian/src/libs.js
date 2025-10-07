@@ -168,3 +168,22 @@ function getBookId(url) {
   const m = url.match(/\/(\d+)\/?$/);
   return m ? m[1] : null;
 }
+
+function formatName(name) {
+    var re = /^(\d+)\.第(\d+)章\s*/;
+    var result = name.replace(re, '第$2章 ');
+
+    var lastParenIndex = Math.max(result.lastIndexOf('('), result.lastIndexOf('（'));
+    if (lastParenIndex !== -1) {
+        result = result.slice(0, lastParenIndex);
+    }
+
+    var onlyBracket = /^第\d+章\s*【[^】]*】?\s*$/;
+    if (onlyBracket.test(result)) {
+        return result.trim();
+    }
+
+    result = result.replace(/【.*$/, '');
+
+    return result.trim();
+}
