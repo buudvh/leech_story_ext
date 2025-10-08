@@ -3,45 +3,53 @@ load('config.js');
 load('common.js');
 
 function execute(key, page) {
-    var arrKey = key.split("&");
-    if (!page) page = '1';
-    var sort = '';
-    if (arrKey.length == 2) {
-        sort = arrKey[1];
-    }
+    try {
+        page = page || '1';
+        url = BASE_URL + "/search/";
+        var data = [];
 
-    var url = STVHOST + '/io/searchtp/searchBooks/?findinname=' + encodeURIComponent(arrKey[0]) +
-        '&sort=' + sort + '&host=69shu&minc=0&tag=&p=' + page;
-
-    if (key.indexOf("find=") === 0) {
-        url = STVHOST + '/io/searchtp/searchBooks/?find=' + encodeURIComponent(arrKey[0].replace("find=", "")) +
-            '&sort=' + sort + '&host=69shu&minc=0&tag=&p=' + page;
-    }
-    var response = fetch(url);
-
-    if (!response.ok) return Response.error('fetch ' + url + ' failed: status ' + response.status);
-
-    var doc = response.html();
-    var next = (parseInt(page, 10) + 1).toString();
-    var el = doc.select("a.booksearch");
-
-    if (!el.length) return null;
-
-    var data = [];
-    el.forEach(function (e) {
-        var stv_story_link = e.select("a").first().attr("href");
-        var bookid = stv_story_link.split("/")[4];
-        data.push({
-            name: toCapitalize(e.select(".searchbooktitle").first().text()),
-            link: STVHOST + "/truyen/69shu/1/" + bookid + "/",
-            cover: 'https://static.69shuba.com/files/article/image/' +
-                bookid.slice(0, bookid.length - 3) + '/' +
-                bookid + '/' +
-                bookid + 's.jpg',
-            description: e.select("div > span.searchtag").last().text(),
-            host: ""
+        var params = encodeFormData({
+            searchkey: key,
+            searchtype: "all",
+            t_btnsearch: ""
         });
-    });
 
-    return Response.success(data, next);
+        var response = fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: params
+        });
+        if (!response.ok) throw new Error(`Status ${response.status}`)
+
+        var doc = response.html();
+        var elms = doc.select(".list-item");
+
+        if (!elms.length) throw new Error(`Length = 0`);
+
+        elms.forEach(function (e) {
+            data.push({
+                name: convertT2S(e.select(".article > a").first().text()),
+                link: BASE_URL + e.select(".article > a").first().attr("href"),
+                cover: e.select("img").first().attr("src") || DEFAULT_COVER,
+                description: convertT2S(e.text()),
+                host: BASE_URL
+            });
+        });
+
+        return Response.success(data);
+    } catch (e) {
+        Response.error(`fetch ${url} failed: ${e.message}`);
+    }
+}
+
+function encodeFormData(data) {
+    var pairs = [];
+    for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+            pairs.push(encodeURIComponent(key) + "=" + encodeURIComponent(data[key]));
+        }
+    }
+    return pairs.join("&");
 }

@@ -1,7 +1,5 @@
 load('libs.js');
 load('config.js');
-load('gbk.js');
-load('common.js');
 
 function execute(url) {
     try {
@@ -13,11 +11,11 @@ function execute(url) {
         var genreElm = doc.select("div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(3) > a");
 
         return Response.success({
-            name: text(doc, 'div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(1) > strong'),
-            cover: DEFAULT_COVER,
+            name: convertT2S(text(doc, 'div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(1) > strong')),
+            cover: doc.select(".bookinfo img").first().attr("src") || DEFAULT_COVER,
             author: authorElm.text(),
-            description: doc.select("div.intro").text(),
-            detail: $.QA(doc, 'div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p', { m: function (x) { return x.text(); }, j: '<br>' }),
+            description: convertT2S(doc.select("div.intro").text()),
+            detail: convertT2S($.QA(doc, 'div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p', { m: function (x) { return x.text(); }, j: '<br>' })),
             host: BASE_URL,
             suggests: [
                 {
@@ -30,7 +28,7 @@ function execute(url) {
                 {
                     title: genreElm.text(),
                     input: genreElm.attr("href"),
-                    script: "gen.js"
+                    script: "gen2.js"
                 }
             ],
         });
