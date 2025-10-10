@@ -14,10 +14,10 @@ function execute(url) {
 
         elms.forEach(function (e) {
             data.push({
-                name: e.select("a").first().text(), //e.select('a:nth-child(2)').text(),
+                name: convertT2S(e.select("a").first().text()), //e.select('a:nth-child(2)').text(),
                 link: BASE_URL + e.select("a").first().attr("href"),
                 cover: DEFAULT_COVER,
-                description: e.text(),
+                description: convertT2S(e.text()),
                 host: BASE_URL
             });
         });
