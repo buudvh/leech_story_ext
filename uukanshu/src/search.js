@@ -8,8 +8,7 @@ function execute(key, page) {
         //https://uukanshu.cc/search/%E5%BE%A1%E5%85%BD_1.html
         url = "https://uukanshu.cc/search/" + encodeURIComponent(key) + "_" + page + ".html";
         var browser = Engine.newBrowser(); // Khởi tạo browser
-        browser.launch(url, 4000);
-        browser.waitUrl("https://uukanshu.cc/search/", timeout); // Đợi urls load với timeout
+        browser.launch(url, 10000);
         var doc = browser.html(); // Trả về Document object của trang web
         browser.close();
 
