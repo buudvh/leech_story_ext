@@ -7,15 +7,10 @@ function execute(key, page) {
         if (!loginSearch(key)) throw new Error(`Can not login search`);
 
         page = page || '1';
-        //https://uukanshu.cc/search/%E5%BE%A1%E5%85%BD_1.html
-        url = "https://uukanshu.cc/search/" + encodeURIComponent(key) + "_" + page + ".html";
-        var response = fetch(url, {
-            method: "GET",
-            headers: {
-                'Content-Type': 'text/html; charset=UTF-8',
-                "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1",
-            },
-        });
+
+        url = "https://uukanshu.cc/search/" + encodeURIComponent(key) + "/" + page + ".html";
+        var response = fetch(url);
+
         if (!response.ok) throw new Error(`Status ${response.status}`)
 
         var doc = response.html();

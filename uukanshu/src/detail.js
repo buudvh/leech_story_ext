@@ -3,7 +3,7 @@ load('libs.js');
 
 function execute(url) {
     try {
-        var fetchUrl = url.replace('https', 'http');
+        var fetchUrl = url.replace('https', PROTOCOL);
         if (!fetchUrl.endsWith("/")) {
             fetchUrl = fetchUrl + "/";
         }
@@ -20,6 +20,13 @@ function execute(url) {
             description: convertT2S(doc.select("p.bookintro").first().text()),
             detail: convertT2S(doc.select("p.booktime").first().text()),
             host: BASE_URL,
+            suggests: [
+                {
+                    title: "同作者",
+                    input: BASE_URL + doc.select(".booktag a").first().attr("href"),
+                    script: "gen.js"
+                }
+            ],
         });
     } catch (error) {
         return Response.error('fetch: ' + url + '\nfailed: ' + error.message);

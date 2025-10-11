@@ -4,7 +4,7 @@ load('libs.js');
 function execute(url, page) {
     try {
         if (!page) page = '1';
-        var url = String.format(url.replace('https', 'http'), page);
+        var url = String.format(url.replace('https', PROTOCOL), page);
         var response = fetch(url);
 
         if (!response.ok) throw new Error(`Status ${response.status}`);

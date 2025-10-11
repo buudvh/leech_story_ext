@@ -1,7 +1,10 @@
+load('config.js');
+load('libs.js');
+
 function execute(url) {
     let charpters = [];
     try {
-        var url = url.replace('https', 'http');
+        var url = url.replace('https', PROTOCOL);
         if (!url.endsWith("/")) {
             url = url + "/";
         }
