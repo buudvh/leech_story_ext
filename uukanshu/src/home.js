@@ -1,6 +1,5 @@
 function execute() {
     return Response.success([
-        { title: "Test", input: "御兽", script: "search.js" },
         { title: "Update", input: "https://uukanshu.cc/top/lastupdate_{0}.html", script: "gen.js" },
         { title: "New", input: "https://uukanshu.cc/top/postdate_{0}.html", script: "gen.js" },
         { title: "View tuần", input: "https://uukanshu.cc/top/weekvisit_{0}.html", script: "gen.js" },

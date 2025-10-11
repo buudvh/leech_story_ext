@@ -4,22 +4,15 @@ load('config.js');
 function execute(key, page) {
     var url;
     try {
-        if (!loginSearch(key)) throw new Error(`Can not login search`);
-
         page = page || '1';
         //https://uukanshu.cc/search/%E5%BE%A1%E5%85%BD_1.html
         url = "https://uukanshu.cc/search/" + encodeURIComponent(key) + "_" + page + ".html";
-        var response = fetch(url, {
-            method: "GET",
-            headers: {
-                'Content-Type': 'text/html; charset=UTF-8',
-                "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1",
-            },
-            body: params
-        });
-        if (!response.ok) throw new Error(`Status ${response.status}`)
+        var browser = Engine.newBrowser(); // Khởi tạo browser
+        browser.launch(url, 4000);
+        browser.waitUrl("https://uukanshu.cc/search/", timeout); // Đợi urls load với timeout
+        var doc = browser.html(); // Trả về Document object của trang web
+        browser.close();
 
-        var doc = response.html();
         var data = [];
         var elems = doc.select('div.bookbox');
 
@@ -51,24 +44,24 @@ function execute(key, page) {
     }
 }
 
-function loginSearch(key) {
-    var url = "https://uukanshu.cc/search";
+// function loginSearch(key) {
+//     var url = "https://uukanshu.cc/search";
 
-    var params = encodeFormData({
-        searchtype: "all",
-        searchkey: key,
-        action: "login",
-        submit: ""
-    });
+//     var params = encodeFormData({
+//         searchtype: "all",
+//         searchkey: key,
+//         action: "login",
+//         submit: ""
+//     });
 
-    var response = fetch(url, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'text/html; charset=UTF-8',
-            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1",
-        },
-        body: params
-    });
+//     var response = fetch(url, {
+//         method: "POST",
+//         headers: {
+//             'Content-Type': 'text/html; charset=UTF-8',
+//             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1",
+//         },
+//         body: params
+//     });
 
-    return response.ok;
-}
+//     return response.ok;
+// }
