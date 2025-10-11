@@ -1,17 +1,19 @@
+load('config.js');
 load('libs.js');
+
 function execute(url) {
     try {
-        let response = fetch(url.replace('https','http'));
-        if (response.ok) {
-            let doc = response.html();
-            let elm = doc.select("div.readcotent");
-            let htm = elm.html();
-            htm = cleanHtml(htm).replace(/^第\d+章.*?<br>/, '') // Ex: '  第11745章 大结局，终<br>'
+        var response = fetch(url.replace('https', 'http'));
+
+        if (!response.ok) throw new Error(`Status ${response.status}`);
+
+        var doc = response.html();
+        var elm = doc.select("div.readcotent");
+        var htm = elm.html();
+        htm = convertT2S(cleanHtml(htm)).replace(/^第\d+章.*?<br>/, '') // Ex: '  第11745章 大结局，终<br>'
             .replace('(本章完)', '');
-            return Response.success(htm);
-        }
-        return null;
+        return Response.success(htm);
     } catch (error) {
-        return Response.success(error.message);
+        return Response.error('fetch: ' + url + '\nfailed: ' + error.message);
     }
 }
