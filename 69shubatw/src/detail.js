@@ -14,7 +14,7 @@ function execute(url) {
             name: convertT2S(text(doc, 'div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(1) > strong')),
             cover: doc.select(".bookinfo img").first().attr("src") || DEFAULT_COVER,
             author: authorElm.text(),
-            description: convertT2S(doc.select("div.intro").text()),
+            description: convertT2S(cleanHtml(doc.select("div.intro").html())),
             detail: convertT2S($.QA(doc, 'div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p', { m: function (x) { return x.text(); }, j: '<br>' })),
             host: BASE_URL,
             suggests: [
