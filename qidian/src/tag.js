@@ -25,7 +25,7 @@ function execute(tag, page) {
                 data.push({
                     name: toCapitalize(e.select(".searchbooktitle").first().text()),
                     link: STVHOST + "/truyen/qidian/1/" + bookid + "/",
-                    cover: DEFAULT_COVER,
+                    cover: e.select("img").attr("src") || DEFAULT_COVER,
                     description: e.select(" div > span.searchtag").last().text(),
                     host: ""
                 })

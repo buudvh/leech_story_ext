@@ -10,13 +10,18 @@ function execute(url) {
         var doc = response.html();
         var elms = doc.select("body > ul > li");
 
-        if(!elms.length) throw new Error(`Length = 0`);
+        if (!elms.length) throw new Error(`Length = 0`);
 
         elms.forEach(function (e) {
+            var bookurl = BASE_URL + e.select("a").first().attr("href");
+            var match = bookurl.match(/\/book\/(\d+)\/?$/);
+            var bookId = match ? match[1] : null;
             data.push({
                 name: convertT2S(e.select("a").first().text()), //e.select('a:nth-child(2)').text(),
                 link: BASE_URL + e.select("a").first().attr("href"),
-                cover: DEFAULT_COVER,
+                ///image/36/36755/36755s.jpg
+                cover: bookId ? `${BASE_URL}/image/${bookId.slice(0, bookId.length - 3)}/${bookId}/${bookId}s.jpg`
+                    : DEFAULT_COVER,
                 description: convertT2S(e.text()),
                 host: BASE_URL
             });
