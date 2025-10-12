@@ -1,5 +1,9 @@
 function execute() {
     return Response.success([
+        { title: "诸天", input: "诸天", script: "search.js" },
+        { title: "聊天群", input: "聊天群", script: "search.js" },
+        { title: "万界", input: "万界", script: "search.js" },
+        { title: "无限", input: "无限", script: "search.js" },
         { title: "動漫同人", input: "https://uukanshu.cc/class_9_{0}.html", script: "gen.js" },
         { title: "玄幻奇幻", input: "https://uukanshu.cc/class_1_{0}.html", script: "gen.js" },
         { title: "武俠仙俠", input: "https://uukanshu.cc/class_2_{0}.html", script: "gen.js" },

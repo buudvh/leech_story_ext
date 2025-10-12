@@ -23,7 +23,8 @@ function execute(url, page) {
                 link: e.select("h4.bookname a").first().attr('href'),
                 //https://image.uukanshu.cc/25/25950/25950s.jpg
                 cover: bookid ? createCoverImgFromBookid(bookid) : DEFAULT_COVER,
-                description: convertT2S(e.select("div.cat").text()),
+                description: convertT2S(e.select("div.author").first().text()
+                    + "\n" + e.select("div.update").text().replace('簡介：', '')),
             })
         })
 

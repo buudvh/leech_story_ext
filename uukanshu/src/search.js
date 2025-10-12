@@ -8,6 +8,7 @@ function execute(key, page) {
 
         page = page || '1';
 
+        //https://uukanshu.cc/search/%E6%AD%A6%E9%81%93/1.html
         url = "https://uukanshu.cc/search/" + encodeURIComponent(key) + "/" + page + ".html";
         var response = fetch(url);
 
@@ -20,14 +21,15 @@ function execute(key, page) {
         if (!elems.length) throw new Error(`Length = 0`);
 
         elems.forEach(function (e) {
-            var booklink = e.select("h4.bookname a").first().attr('href');
+            var booklink = e.select("div.bookname a").first().attr('href');
             var bookid = getBookId(booklink);
             data.push({
-                name: convertT2S(e.select("h4.bookname").text()),
-                link: e.select("h4.bookname a").first().attr('href'),
+                name: convertT2S(e.select("div.bookname").text()),
+                link: e.select("div.bookname a").first().attr('href'),
                 //https://image.uukanshu.cc/25/25950/25950s.jpg
                 cover: bookid ? createCoverImgFromBookid(bookid) : DEFAULT_COVER,
-                description: convertT2S(e.select("div.cat").text()),
+                description: convertT2S(e.select("div.author").first().text()
+                    + "\n" + e.select("div.update").text().replace('簡介：', '')),
             })
         });
 
