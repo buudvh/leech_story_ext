@@ -36,14 +36,13 @@ function execute(key, page) {
         var next_page = parseInt(page) + 1;
         return Response.success(data, next_page.toString());
     } catch (e) {
-        // Response.error(`fetch ${url} \nfailed: ${e.message}`);
-        return Response.success([{
-            name: e.message,
-            link: "",
-            //https://image.uukanshu.cc/25/25950/25950s.jpg
-            cover: DEFAULT_COVER,
-            description: "",
-        }]);
+        return Response.error(`fetch ${url} \nfailed: ${e.message}`);
+        // return Response.success([{
+        //     name: e.message,
+        //     link: "",
+        //     cover: DEFAULT_COVER,
+        //     description: "",
+        // }]);
     }
 }
 

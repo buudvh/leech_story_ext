@@ -32,6 +32,12 @@ function execute(url, page) {
         return Response.success(data, next_page.toString());
     } catch (error) {
         return Response.error('fetch: ' + url + '\nfailed: ' + error.message);
+        // return Response.success([{
+        //     name: e.message,
+        //     link: "",
+        //     cover: DEFAULT_COVER,
+        //     description: "",
+        // }]);
     }
 
 }

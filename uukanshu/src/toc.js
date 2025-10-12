@@ -19,9 +19,9 @@ function execute(url) {
 
         elems.forEach(function (e) {
             charpters.push({
-                name: e.text(),
+                name: convertT2S(e.text()),
                 url: e.attr('href'),
-                host: "https://uukanshu.cc",
+                host: BASE_URL,
             });
         })
 

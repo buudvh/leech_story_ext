@@ -7,5 +7,4 @@ try {
         BASE_URL = CONFIG_URL;
     }
 } catch (error) {
-    // Bỏ qua nếu lỗi
 }
