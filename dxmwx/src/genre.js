@@ -1,5 +1,9 @@
 function execute() {
     return Response.success([
+        { title: "诸天", input: "诸天", script: "search.js" },
+        { title: "聊天群", input: "聊天群", script: "search.js" },
+        { title: "万界", input: "万界", script: "search.js" },
+        { title: "无限", input: "无限", script: "search.js" },
         { "title": "玄幻", "input": "/list/玄幻.html", "script": "gen.js" },
         { "title": "奇幻", "input": "/list/奇幻.html", "script": "gen.js" },
         { "title": "武侠", "input": "/list/武侠.html", "script": "gen.js" },
