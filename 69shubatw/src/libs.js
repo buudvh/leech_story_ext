@@ -92,6 +92,9 @@ function log(o, msg) {
 }
 
 function cleanHtml(html) {
+    //remove <p> 第1章如來神掌之穿越 </p>
+    html = html.replace(/<p>\s*第[^<]+章[^<]*<\/p>\s*/gi, "");
+    //
     html = html.replace(/\n/g, '<br>');
     // remove duplicate br tags
     html = html.replace(/(<br>\s*){2,}/gm, '<br>');
