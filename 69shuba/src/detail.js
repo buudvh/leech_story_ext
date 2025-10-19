@@ -1,7 +1,6 @@
 load('libs.js');
 load('config.js');
 load('gbk.js');
-load('common.js');
 
 function execute(url) {
     try {
@@ -27,7 +26,7 @@ function execute(url) {
         if (text(doc, 'div.booknav2 > h1 > a') === '') return trySTV(url);
 
         var genres = [{
-            title: "TIỆN ÍCH",
+            title: "【" + source + "】",
             input: isSTV ? url : (STVHOST + "/truyen/69shu/1/" + bookid + "/"),
             script: "otherurl.js"
         }];
@@ -40,11 +39,12 @@ function execute(url) {
         }];
 
         return Response.success({
-            name: text(doc, 'div.booknav2 > h1 > a') + "【" + source + "】",
+            name: text(doc, 'div.booknav2 > h1 > a'),
             cover: 'https://static.69shuba.com/files/article/image/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '/' + bookid + 's.jpg',
             author: text(doc, 'div.booknav2 > p:nth-child(2) > a'),
             description: $.Q(doc, 'div.navtxt > p') ? $.Q(doc, 'div.navtxt > p').html() : '',
-            detail: $.QA(doc, 'div.booknav2 p', { m: function (x) { return x.text(); }, j: '<br>' }) + '<br>书籍编号: ' + bookid + '<br>',
+            detail: $.QA(doc, 'div.booknav2 p', { m: function (x) { return x.text(); }, j: '<br>' }) + 
+                '<br>BookId: ' + bookid + '<br>',
             host: BASE_URL,
             suggests: [
                 {

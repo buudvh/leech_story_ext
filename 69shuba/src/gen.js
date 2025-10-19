@@ -15,12 +15,12 @@ function execute(url, page) {
             var elems = $.QA(doc, 'li');
             if (!elems.length) return Response.error(url);
             elems.forEach(function (e) {
+                var bookid = extractBookId($.Q(e, 'h3 > a').attr('href'), false);
                 data.push({
                     name: $.Q(e, '.newnav h3 > a:not([class])').text().trim(),
-                    link: $.Q(e, 'h3 > a').attr('href'),
+                    link: STVHOST + "/truyen/69shu/1/" + bookid + "/",
                     cover: e.select("img").attr("data-src") || DEFAULT_COVER,
                     description: $.Q(e, '.zxzj > p').text().replace('最近章节', ''),
-                    host: BASE_URL
                 })
             })
             var next = parseInt(page, 10) + 1;

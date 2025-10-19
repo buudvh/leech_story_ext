@@ -1,6 +1,5 @@
 load('libs.js');
 load('config.js');
-load('common.js');
 
 function execute(key, page) {
     var arrKey = key.split("&");
