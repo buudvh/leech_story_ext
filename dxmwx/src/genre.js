@@ -6,7 +6,7 @@ function execute() {
         { title: "无限", input: "无限", script: "search.js" },
 
         { title: "吞噬", input: "吞噬", script: "search.js" },
-        { title: "吞噬", input: "吞噬", script: "search.js" },
+        { title: "凡人", input: "凡人", script: "search.js" },
         { title: "完美世界", input: "完美世界", script: "search.js" },
         { title: "遮天", input: "遮天", script: "search.js" },
         { title: "圣墟", input: "圣墟", script: "search.js" },
@@ -17,6 +17,7 @@ function execute() {
         { title: "庆余年", input: "庆余年", script: "search.js" },
         { title: "斗罗", input: "斗罗", script: "search.js" },
         { title: "妖神记", input: "妖神记", script: "search.js" },
+        { title: "师兄啊", input: "师兄啊", script: "search.js" },
         
         { "title": "玄幻", "input": "/list/玄幻.html", "script": "gen.js" },
         { "title": "奇幻", "input": "/list/奇幻.html", "script": "gen.js" },
