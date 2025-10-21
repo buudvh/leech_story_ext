@@ -77,6 +77,15 @@
       "description": "Đọc truyện trên trang qidian-vp.com"
     },
     {
+      "name": "nhieutruyen",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/nhieutruyen/nhieutruyen.zip",
+      "version": 1,
+      "source": "https://nhieutruyen.com",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/nhieutruyen/icon.png",
+      "description": "Đọc truyện trên trang nhieutruyen.com"
+    },
+    {
       "name": "qsbread.com",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qsbread/qsbread.zip",
