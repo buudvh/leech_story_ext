@@ -16,7 +16,7 @@ function execute(url) {
         descriptionElm.select('h2').remove();
 
         return Response.success({
-            name: doc.select("h1.mb-2").text(),
+            name: doc.select("h1.mb-2").text().replace(/·/g, ''),
             cover: doc.select("a img.mx-auto").attr("src"),
             author: doc.select("h1.mb-2 + .mb-6").first().text(),
             genres: genres,
@@ -24,6 +24,11 @@ function execute(url) {
                 {
                     title: "Cùng tác giả: ",
                     input: doc.select('div.mb-2 a').first().attr('href'),
+                    script: "gen.js"
+                },
+                {
+                    title: "Cùng người đăng: ",
+                    input: doc.select('a[href^="https://nhieutruyen.com/dich-gia/"]').first().attr('href'),
                     script: "gen.js"
                 }
             ],

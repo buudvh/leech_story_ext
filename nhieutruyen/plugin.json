@@ -2,7 +2,7 @@
   "metadata": {
     "name": "nhieutruyen",
     "author": "HuongMT",
-    "version": 2,
+    "version": 3,
     "source": "https://nhieutruyen.com/",
     "regexp": "nhieutruyen.com/truyen/.*?",
     "description": "Đọc truyện trên trang qidian-vp.com",
@@ -14,6 +14,7 @@
     "home": "home.js",
     "detail": "detail.js",
     "search": "search.js",
+    "genre": "genre.js",
     "toc": "toc.js",
     "chap": "chap.js"
   }

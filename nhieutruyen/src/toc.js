@@ -15,7 +15,7 @@ function execute(url) {
         const data = [];
         elms.forEach(e => {
             data.push({
-                name: e.select("h3").text(),
+                name: e.select("h3").text().replace(/·/g, ''),
                 url: e.attr("href")
             });
         })

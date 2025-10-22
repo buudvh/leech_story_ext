@@ -5,6 +5,5 @@ function execute() {
         { title: "Truyện tạm ngưng", input: "https://nhieutruyen.com/danh-sach/truyen-tam-ngung", script: "gen.js" },
         { title: "Lượt đọc", input: "https://nhieutruyen.com/xep-hang/luot-doc", script: "gen.js" },
         { title: "Đề cử", input: "https://nhieutruyen.com/xep-hang/de-cu", script: "gen.js" },
-        { title: "Đề cử", input: "https://nhieutruyen.com/tac-gia/13166-than-uy-giao-uy", script: "gen.js" },
     ]);
 }
