@@ -1,6 +1,6 @@
 function execute(key, page) {
     var key = encodeURIComponent(key)
-    let response = fetch("https://qidian-vp.com/tim-kiem?term=" + key)
+    let response = fetch("https://nhieutruyen.com/tim-kiem?term=" + key)
     if (response) {
         let doc = response.html()
         var el = doc.select(".content-start article a" );

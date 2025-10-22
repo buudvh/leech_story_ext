@@ -11,6 +11,10 @@ function execute(url) {
                 script: "gen.js"
             });
         });
+
+        var descriptionElm = doc.select("#synopsis");
+        descriptionElm.select('h2').remove();
+
         return Response.success({
             name: doc.select("h1.mb-2").text(),
             cover: doc.select("a img.mx-auto").attr("src"),
@@ -18,12 +22,12 @@ function execute(url) {
             genres: genres,
             suggests: [
                 {
-                    title: "Đề cử sách: ",
-                    input: doc.select("div.mx-2.mt-5").html(),
-                    script: "similar.js"
+                    title: "Cùng tác giả: ",
+                    input: doc.select('div.mb-2 a').first().attr('href'),
+                    script: "gen.js"
                 }
             ],
-            description: doc.select("#synopsis").html().replace(/·/g, '')
+            description: descriptionElm.text().replace(/\n/g, "<br>").replace(/·/g, '')
         })
     }
     return null;
