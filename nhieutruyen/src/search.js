@@ -10,7 +10,7 @@ function execute(key, page) {
         for (var i = 0; i < el.size(); i++) {
             var e = el.get(i);
             data.push({
-                name: e.select("h3").text(),
+                name: e.select("h3").text().replace(/·/g, ''),
                 link: e.attr("href"),
                 description: e.select("h4").first().text(),
                 cover: e.select("img").attr("src"),
