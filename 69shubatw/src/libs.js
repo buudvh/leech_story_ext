@@ -4317,9 +4317,3 @@ function convertT2S(text) {
         return _fallbackT2S[ch] ? _fallbackT2S[ch] : ch;
     }).join('');
 }
-
-function getAuthorName(text){
-    //作者:星域　86萬字
-    const match = text.match(/^作者:(.+?)\u3000[\d一二三四五六七八九十百千万萬]+字$/);
-    const author = match ? match[1].trim() : null;
-}

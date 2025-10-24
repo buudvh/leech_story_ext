@@ -22,7 +22,8 @@ function execute(url) {
                 ///image/36/36755/36755s.jpg
                 cover: bookId ? `${BASE_URL}/image/${bookId.slice(0, bookId.length - 3)}/${bookId}/${bookId}s.jpg`
                     : DEFAULT_COVER,
-                description: convertT2S(e.text()),
+                description: convertT2S(e.select("span").first().text())
+                    + "\n最新： " + convertT2S(e.select(".gray").first().text()),
                 host: BASE_URL
             });
         });

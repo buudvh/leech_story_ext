@@ -15,7 +15,10 @@ function execute(url) {
             cover: doc.select(".bookinfo img").first().attr("src") || DEFAULT_COVER,
             author: authorElm.text(),
             description: convertT2S(cleanHtml(doc.select("div.intro").html())),
-            detail: convertT2S($.QA(doc, 'div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p', { m: function (x) { return x.text(); }, j: '<br>' })),
+            detail: convertT2S(
+                $.QA(doc, 'div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p',
+                    { m: function (x) { return x.text().indexOf("更新：") === 0 || x.text().indexOf("最新：") === 0 ? x.text() : ""; }, j: '<br>' })
+            ),
             host: BASE_URL,
             suggests: [
                 {

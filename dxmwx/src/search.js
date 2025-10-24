@@ -25,7 +25,8 @@ function execute(key, page) {
                     name: text(e, "div.right_wid > div.margin0h5 > a.fonttext"),
                     link: attr(e, "div.right_wid > div.margin0h5 > a.fonttext", "href"),
                     cover: e.select("img.imgwidth").first().attr("src") || DEFAULT_COVER,
-                    description: text(e, "div.right_wid > div:nth-child(4) > a") + "\n" + text(e, "div.right_wid > div.neirongh5 > a"),
+                    description: "更新： " + text(e, ".lefth5")
+                        + "\n" + text(e, "div.right_wid > div.neirongh5 > a"),
                     host: BASE_URL
                 });
             }

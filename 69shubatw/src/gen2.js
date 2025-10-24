@@ -19,7 +19,9 @@ function execute(url, page) {
                 name: convertT2S(e.select(".article > a").first().text()),
                 link: BASE_URL + e.select(".article > a").first().attr("href"),
                 cover: e.select("img").first().attr("src") || DEFAULT_COVER,
-                description: convertT2S(e.select("span.mr15").first().text()) + "\n" +convertT2S(e.select("span.fs12").first().text()),
+                // description: convertT2S(e.select("span.mr15").first().text()) + "\n" +convertT2S(e.select("span.fs12").first().text()),
+                description: '作者: ' + getAuthorName(convertT2S(e.select("span.mr15").first().text()))
+                    + "\n" + convertT2S(e.select("span.fs12").first().text()),
                 host: BASE_URL
             });
         });
@@ -31,9 +33,15 @@ function execute(url, page) {
     }
 }
 
+function getAuthorName(text){
+    //作者:星域　86萬字
+    const match = text.match(/^作者:(.+?)\u3000[\d一二三四五六七八九十百千万萬]+字$/);
+    return (match ? match[1].trim() : null);
+}
+
 function replacePageBySegments(url, page) {
     var parts = url.split("/");
-    if(parts.length == 5){
+    if (parts.length == 5) {
         parts[3] = page;
         return parts.join("/")
     }
