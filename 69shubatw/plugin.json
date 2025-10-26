@@ -2,10 +2,10 @@
   "metadata": {
     "name": "69shuba.tw",
     "author": "HuongMT",
-    "version": 14,
+    "version": 15,
     "source": "https://69shuba.tw/",
     "regexp": "^https?:\\/\\/(?:www\\.)?69shuba\\.tw\\/book\\/(\\d+)\\/?$",
-    "description": "Đọc truyện trên trang 69shuba.com",
+    "description": "Đọc truyện trên trang 69shuba.tw",
     "locale": "zh_CN",
     "language": "javascript",
     "type": "chinese_novel"

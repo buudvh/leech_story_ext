@@ -28,6 +28,8 @@ function execute() {
         { title: "斗罗", input: "斗罗", script: "search.js" },
         { title: "妖神记", input: "妖神记", script: "search.js" },
         { title: "师兄啊", input: "师兄啊", script: "search.js" },
+        { title: "全職獵人", input: "全職獵人", script: "search.js" },
+        { title: "全職法師", input: "全職法師", script: "search.js" },
 
         { title: "玄幻", input: "/fenlei/xuanhuan/1/", script: "gen2.js" },
         { title: "仙侠", input: "/fenlei/wuxia/1/", script: "gen2.js" },
