@@ -13,6 +13,7 @@ function execute() {
         { title: "圣墟", input: "圣墟", script: "search.js" },
         { title: "龙珠", input: "龙珠", script: "search.js" },
         { title: "火影", input: "火影", script: "search.js" },
+        { title: "木叶", input: "火影", script: "search.js" },
         { title: "鸣人", input: "鸣人", script: "search.js" },
         { title: "犬夜叉", input: "犬夜叉", script: "search.js" },
         { title: "海贼", input: "海贼", script: "search.js" },
@@ -31,6 +32,8 @@ function execute() {
         { title: "师兄啊", input: "师兄啊", script: "search.js" },
         { title: "全職獵人", input: "全職獵人", script: "search.js" },
         { title: "全職法師", input: "全職法師", script: "search.js" },
+        { title: "剑来", input: "剑来", script: "search.js" },
+        { title: "雪中", input: "雪中", script: "search.js" },
         
         { "title": "玄幻", "input": "/list/玄幻.html", "script": "gen.js" },
         { "title": "奇幻", "input": "/list/奇幻.html", "script": "gen.js" },
