@@ -9,6 +9,7 @@ function execute() {
         { title: "凡人", input: "凡人", script: "search.js" },
         { title: "完美世界", input: "完美世界", script: "search.js" },
         { title: "遮天", input: "遮天", script: "search.js" },
+        { title: "神墓", input: "神墓", script: "search.js" },
         { title: "圣墟", input: "圣墟", script: "search.js" },
         { title: "龙珠", input: "龙珠", script: "search.js" },
         { title: "火影", input: "火影", script: "search.js" },
