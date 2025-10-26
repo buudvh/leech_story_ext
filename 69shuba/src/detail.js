@@ -43,7 +43,9 @@ function execute(url) {
             cover: 'https://static.69shuba.com/files/article/image/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '/' + bookid + 's.jpg',
             author: text(doc, 'div.booknav2 > p:nth-child(2) > a'),
             description: $.Q(doc, 'div.navtxt > p') ? $.Q(doc, 'div.navtxt > p').html() : '',
-            detail: $.QA(doc, 'div.booknav2 p', { m: function (x) { return x.text(); }, j: '<br>' }) + 
+            detail: $.QA(doc, 'div.booknav2 p', {
+                m: function (x) { return x.text().indexOf("更新") == 0 ? x.text() : ""; }, j: '<br>'
+            }) +
                 '<br>BookId: ' + bookid + '<br>',
             host: BASE_URL,
             suggests: [
