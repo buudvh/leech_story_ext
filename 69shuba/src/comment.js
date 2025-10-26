@@ -1,8 +1,9 @@
 load('config.js');
 load('libs.js');
 function execute(bookid, next) {
-    if (!next) next = "0"
     try {
+        next = next || "0";
+
         var params = encodeFormData({
             start: next,
             objectid: bookid,
@@ -15,33 +16,35 @@ function execute(bookid, next) {
             },
             body: params
         });
-        if (response.ok) {
-            let doc = response.html();
-            let comments = [];
-            let listCmtElm = doc.select('div.flex')
 
-            if (listCmtElm.length == 0) {
-                return Response.success(comments, null);
-            }
+        if (!response.ok) throw new Error(`Status ${response.status}`);
 
-            listCmtElm.forEach(function (elm) {
-                comments.push({
-                    name: elm.select('div.sec-bot a').text(),
-                    content: cleanHtml(elm.select('div.sec-top').html()),
-                });
+        let doc = response.html();
+        let comments = [];
+        let listCmtElm = doc.select('div.flex');
+
+        if (!listCmtElm.length) throw new Error(`No comments!`);
+
+        listCmtElm.forEach(function (elm) {
+            comments.push({
+                name: elm.select('div.sec-bot a').text(),
+                content: cleanHtml(elm.select('div.sec-top').html()),
             });
+        });
 
-            var nextpage = doc.select('#cmtwd').attr('data-start');
-            if (nextpage != next) {
-                return Response.success(comments, nextpage + "");
-            }
+        var nextpage = doc.select('#cmtwd').attr('data-start');
 
-            return Response.success(comments, null);
+        if (nextpage != next) {
+            return Response.success(comments, nextpage + "");
         }
 
-        return Response.error('fetch ' + url + ' status: ' + response.status);
+        return Response.success(comments, null);
     } catch (ex) {
-        return Response.error('fetch ' + url + ' failed: ' + ex.message);
+        // return Response.error('fetch ' + url + ' failed: ' + ex.message);
+        return Response.success([{
+            name: "信息",
+            content: ex.message,
+        }], null);
     }
 }
 
