@@ -12,18 +12,18 @@ function execute(url) {
 
         return Response.success({
             name: convertT2S(text(doc, 'div.booknav2 > h1')),
-            cover: doc.select(".bookimg2 img").first().attr("src") || DEFAULT_COVER,
+            cover: getCoverUrl(doc.select(".bookimg2 img").first().attr("src")),
             author: convertT2S(authorElm.text()),
             description: convertT2S(cleanHtml(doc.select("#tab_info > div").html())),
             detail: convertT2S(text(doc, 'div.booknav2 > p:nth-child(5)')),
             host: BASE_URL,
-            suggests: [
-                {
-                    title: "同作者",
-                    input: authorElm.attr("href"),
-                    script: "author.js"
-                }
-            ],
+            // suggests: [
+            //     {
+            //         title: "同作者",
+            //         input: authorElm.attr("href"),
+            //         script: "author.js"
+            //     }
+            // ],
             genres: [
                 {
                     title: genreElm.text(),
@@ -41,4 +41,8 @@ function execute(url) {
     } catch (error) {
         return Response.error('fetch ' + url + ' failed: ' + error.message);
     }
+}
+
+function getCoverUrl(url) {
+    return url && url != 'https://twkan.com/modules/article/images/nocover.jpg' ? url : DEFAULT_COVER;
 }
