@@ -35,7 +35,7 @@ function execute(key, page) {
         var next = parseInt(page, 10) + 1;
         return Response.success(data, next.toString());
     } catch (e) {
-        Response.error(`fetch ${url} failed: ${e.message}`);
+        return Response.error(`fetch ${url} failed: ${e.message}`);
     }
 }
 

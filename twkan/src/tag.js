@@ -4,7 +4,7 @@ load('config.js');
 function execute(url, page) {
     try {
         page = page || '1';
-        url = url.replace(/_\d+\.html$/, '_' + page + '.html');
+        url = url + '/' + page;
         var data = [];
         var response = fetch(url);
         if (!response.ok) throw new Error(`Status ${response.status}`)
@@ -12,7 +12,7 @@ function execute(url, page) {
         var doc = response.html();
         var elms = doc.select("#article_list_content li");
 
-        if(!elms.length) throw new Error(`Length = 0`);
+        if (!elms.length) throw new Error(`Length = 0`);
 
         elms.forEach(function (e) {
             data.push({
@@ -25,7 +25,13 @@ function execute(url, page) {
 
         var next = parseInt(page, 10) + 1;
         return Response.success(data, next.toString());
-    } catch (e) {
-        return Response.error(`fetch ${url} failed: ${e.message}`);
+    } catch (err) {
+        return Response.error(`fetch ${url} failed: ${err.message}`);
+        // return Response.success([{
+        //     name: err.message,
+        //     link: 'https://twkan.com/book/78813.html',
+        //     cover: 'https://twkan.com/files/article/image/78/78813/78813s.jpg',
+        //     description: convertT2S('作者：佚名'),
+        // }]);
     }
 }
