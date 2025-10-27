@@ -25,12 +25,7 @@ function execute(url) {
 
         if (text(doc, 'div.booknav2 > h1 > a') === '') return trySTV(url);
 
-        var genres = [{
-            title: "【" + source + "】",
-            input: isSTV ? url : (STVHOST + "/truyen/69shu/1/" + bookid + "/"),
-            script: "otherurl.js"
-        }];
-        genres = genres.concat(buildGenres(doc));
+        var genres = buildGenres(doc) || [];
 
         var comments = [{
             title: "评论",
@@ -38,17 +33,31 @@ function execute(url) {
             script: "comment.js"
         }];
 
+        var bookName = text(doc, 'div.booknav2 > h1 > a');
+        var cover = 'https://static.69shuba.com/files/article/image/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '/' + bookid + 's.jpg';
+
         return Response.success({
-            name: text(doc, 'div.booknav2 > h1 > a'),
-            cover: 'https://static.69shuba.com/files/article/image/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '/' + bookid + 's.jpg',
+            name: bookName,
+            cover: cover,
             author: text(doc, 'div.booknav2 > p:nth-child(2) > a'),
             description: $.Q(doc, 'div.navtxt > p') ? $.Q(doc, 'div.navtxt > p').html() : '',
             detail: $.QA(doc, 'div.booknav2 p', {
                 m: function (x) { return x.text().indexOf("更新") == 0 ? x.text() : ""; }, j: '<br>'
-            }) +
-                '<br>BookId: ' + bookid + '<br>',
+            })
+                + '<br>BookId: ' + bookid
+                + '<br>Source: 【' + source + '】<br>',
             host: BASE_URL,
             suggests: [
+                {
+                    title: "其他来源",
+                    input: JSON.stringify({
+                        name: bookName,
+                        cover: cover,
+                        url: isSTV ? url : (STVHOST + "/truyen/69shu/1/" + bookid + "/"),
+                        source: (isSTV ? "69shu" : "STV"),
+                    }),
+                    script: "otherurl.js"
+                },
                 {
                     title: "同作者",
                     input: encodeAuthorUrl($.Q(doc, 'div.booknav2 > p:nth-child(2) > a') ? $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr("href") : ''),
