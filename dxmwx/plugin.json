@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Gấu trúc (dxmwx)",
     "author": "HuongMT",
-    "version": 11,
+    "version": 12,
     "source": "https://www.dxmwx.org/",
     "regexp": "^https?://(?:www\\.)?dxmwx\\.org/book/\\d+\\.html$",
     "description": "Đọc truyện trên trang https://www.dxmwx.org/",
