@@ -41,7 +41,7 @@ function execute(key, page) {
 
         return Response.success(data);
     } catch (e) {
-        Response.error(`fetch ${url} failed: ${e.message}`);
+        return Response.error(`fetch ${url} failed: ${e.message}`);
     }
 }
 
