@@ -44,25 +44,25 @@ function execute(url) {
             detail: $.QA(doc, 'div.booknav2 p', {
                 m: function (x) { return x.text().indexOf("更新") == 0 ? x.text() : ""; }, j: '<br>'
             })
-                + '<br>BookId: ' + bookid
+                + '<br>BookId: 【' + bookid + '】'
                 + '<br>Source: 【' + source + '】<br>',
             host: BASE_URL,
             suggests: [
                 {
-                    title: "其他来源",
+                    title: "同作者",
+                    input: encodeAuthorUrl($.Q(doc, 'div.booknav2 > p:nth-child(2) > a') ? $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr("href") : ''),
+                    script: "author.js"
+                },
+                {
+                    title: "Nguồn khác",
                     input: JSON.stringify({
                         name: bookName,
                         cover: cover,
                         url: isSTV ? url : (STVHOST + "/truyen/69shu/1/" + bookid + "/"),
-                        source: (isSTV ? "69shu" : "STV"),
+                        source: (isSTV ? "69shuba" : "STV"),
                     }),
                     script: "otherurl.js"
                 },
-                {
-                    title: "同作者",
-                    input: encodeAuthorUrl($.Q(doc, 'div.booknav2 > p:nth-child(2) > a') ? $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr("href") : ''),
-                    script: "author.js"
-                }
             ],
             genres: genres,
             comments: comments
