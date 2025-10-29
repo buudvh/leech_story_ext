@@ -16,20 +16,26 @@ function execute(url) {
             author: convertT2S(authorElm.text()),
             description: convertT2S(cleanHtml(doc.select("#info div.intro").html())),
             detail: "更新：" + convertT2S(doc.select("div.novel_info_main > div > div.flex.to100 > .s_gray").text()),
-            suggests: [
-                {
-                    title: convertT2S("懸疑"),
-                    input: doc.select("div.reviews div.review").html(),
-                    script: "recommend.js"
-                }
-            ],
+            // suggests: [
+            //     {
+            //         title: 'Recommend',
+            //         input: doc.select(".side_commend").html(),
+            //         script: "recommend.js"
+            //     }
+            // ],
             genres: [
                 {
                     title: genreElm.text(),
-                    input: doc.select("div.reviews div.review").html(),
+                    input: "",
                     script: "recommend.js"
                 }
             ],
+            comments: [{
+                title: "Reviews",
+                input: doc.select('.reviews').html(),
+                // input: url,
+                script: "reviews.js"
+            }],
         });
     } catch (error) {
         return Response.error('fetch ' + url + ' failed: ' + error.message);
