@@ -4,6 +4,7 @@ load('gbk.js');
 
 function execute(url) {
     try {
+        var firstUrl = url;
         var isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
         var source = isSTV ? "STV" : "69shu"
         var bookid = extractBookId(url, isSTV);
@@ -23,7 +24,7 @@ function execute(url) {
         var doc = browser.html();
         browser.close();
 
-        if (text(doc, 'div.booknav2 > h1 > a') === '') return trySTV(url);
+        if (text(doc, 'div.booknav2 > h1 > a') === '') return trySTV(firstUrl);
 
         var genres = buildGenres(doc) || [];
 
@@ -130,19 +131,37 @@ function trySTV(url) {
         }];
 
         var authorName = getAuhtorNameSTV(doc);
+        var bookName = text(doc, '#oriname');
+        var cover = 'https://static.69shuba.com/files/article/image/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '/' + bookid + 's.jpg';
 
         return Response.success({
-            name: text(doc, '#oriname'),
-            cover: 'https://static.69shuba.com/files/article/image/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '/' + bookid + 's.jpg',
+            name: bookName,
+            cover: cover,
             author: text(doc, 'h2'),
             description: $.QA(doc, '#book-sumary p', { m: function (x) { return x.text(); }, j: '<br>' }),
-            detail: 'GET FROM STV ID: ' + bookid,
+            detail: '【Thông tin lấy từ Sangtacviet】'
+                + '<br>Bookid: ' + bookid
+                + '<br>Source: 【' + (isSTV ? "STV" : "69shuba") + '】',
             host: BASE_URL,
-            suggests: [{
-                title: "同作者",
-                input: encodeAuthorUrl('https://www.69shuba.com/modules/article/author.php?author=' + authorName),
-                script: "author.js"
-            }],
+            suggests: [
+                {
+                    title: "同作者",
+                    input: encodeAuthorUrl('https://www.69shuba.com/modules/article/author.php?author=' + authorName),
+                    script: "author.js"
+                },
+                {
+                    title: "Nguồn khác",
+                    input: JSON.stringify({
+                        name: bookName,
+                        cover: cover,
+                        // url: BASE_URL + '/book/' + bookid + '.html',
+                        // source: "69shuba",
+                        url: isSTV ? (BASE_URL + '/book/' + bookid + '.html') : (STVHOST + "/truyen/69shu/1/" + bookid + "/"),
+                        source: (isSTV ? "69shuba" : "STV"),
+                    }),
+                    script: "otherurl.js"
+                },
+            ],
             comments: comments
         });
     } catch (error) {
