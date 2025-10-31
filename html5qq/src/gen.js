@@ -16,7 +16,7 @@ function execute(url, page) {
                         name: e.resourceName,
                         link: "https://bookshelf.html5.qq.com/autojump/intro?bookid=" + e.resourceID,
                         cover: e.picurl,
-                        description: e.author,
+                        description: e.summary,
                         host: "https://bookshelf.html5.qq.com"
                     })
             });
@@ -27,4 +27,22 @@ function execute(url, page) {
         }
     }
     return null;
+}
+
+function formatDateTime(date) {
+    var year = date.getFullYear();
+    // getMonth() returns 0-11, so add 1 for actual month
+    var month = date.getMonth() + 1; 
+    var day = date.getDate();
+    var hour = date.getHours(); // 0-23 (24-hour clock)
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
+
+    // Helper function to ensure two digits by padding with a leading zero
+    function pad(n) {
+        return n < 10 ? '0' + n : n;
+    }
+
+    return year + '-' + pad(month) + '-' + pad(day) + ' ' + 
+           pad(hour) + ':' + pad(minute) + ':' + pad(second);
 }
