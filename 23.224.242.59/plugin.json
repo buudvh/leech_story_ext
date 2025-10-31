@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "name": "23.224.242.59",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "http://23.224.242.59/",
+    "regexp": "^https?:\\/\\/(?:www\\.)?23\\.224\\.242\\.59\\/book\\/(\\d+)\\/?$",
+    "description": "Đọc truyện trên trang http://23.224.242.59/",
+    "locale": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "page": "page.js",
+    "chap": "chap.js",
+    "genre": "genre.js",
+    "search": "search.js"
+  }
+}
