@@ -11,7 +11,7 @@ function execute(url) {
         for (let i = 0;i < el.length; i++) {
             let link = "https://bookshelf.html5.qq.com/qbread/api/wenxue/buy/ad-chapter/v3?resourceid="+ resourceid +"&serialid="+ el[i].serial_id +"&apn=1&readnum=1&duration=2&srcCh="
             data.push({
-                name: el[i].serial_name,
+                name: formatName(el[i].serial_name),
                 url: link,
                 host: "https://bookshelf.html5.qq.com"
             })
@@ -19,4 +19,23 @@ function execute(url) {
         return Response.success(data);
     }
     return null;
+}
+
+function formatName(name) {
+    var re = /^(\d+)\.第(\d+)章\s*/;
+    var result = name.replace(re, '第$2章 ');
+
+    var lastParenIndex = Math.max(result.lastIndexOf('('), result.lastIndexOf('（'));
+    if (lastParenIndex !== -1) {
+        result = result.slice(0, lastParenIndex);
+    }
+
+    var onlyBracket = /^第\d+章\s*【[^】]*】?\s*$/;
+    if (onlyBracket.test(result)) {
+        return result.trim();
+    }
+
+    result = result.replace(/【.*$/, '');
+
+    return result.trim();
 }
