@@ -19,10 +19,14 @@ function execute(key, page) {
                     link: "https://bookshelf.html5.qq.com/autojump/intro?bookid=" + extractBookId(e1.jump_url),
                     cover: e1.cover_url,
                     description: e1.author,
+                    author: e1.author,
                     host: "https://novel.html5.qq.com"
                 })
             }
         });
+
+        data = data.filter(p => p.author == key);
+
         return Response.success(data);
     } catch (error) {
         return Response.error('fetch ' + url + ' failed: ' + error.message);
