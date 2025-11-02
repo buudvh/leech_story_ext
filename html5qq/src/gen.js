@@ -12,13 +12,14 @@ function execute(url, page) {
         const data = [];
         if (rows.length > 0) {
             rows.forEach(e => {
-                    data.push({
-                        name: e.resourceName,
-                        link: "https://bookshelf.html5.qq.com/autojump/intro?bookid=" + e.resourceID,
-                        cover: e.picurl,
-                        description: e.summary,
-                        host: "https://bookshelf.html5.qq.com"
-                    })
+                data.push({
+                    name: e.resourceName,
+                    link: "https://bookshelf.html5.qq.com/autojump/intro?bookid=" + e.resourceID,
+                    cover: e.picurl,
+                    description: '作者: ' + e.author
+                        + "\n" + e.summary,
+                    host: "https://bookshelf.html5.qq.com"
+                })
             });
             let next = parseInt(page, 10) + 1;
             return Response.success(data, next);
@@ -32,7 +33,7 @@ function execute(url, page) {
 function formatDateTime(date) {
     var year = date.getFullYear();
     // getMonth() returns 0-11, so add 1 for actual month
-    var month = date.getMonth() + 1; 
+    var month = date.getMonth() + 1;
     var day = date.getDate();
     var hour = date.getHours(); // 0-23 (24-hour clock)
     var minute = date.getMinutes();
@@ -43,6 +44,6 @@ function formatDateTime(date) {
         return n < 10 ? '0' + n : n;
     }
 
-    return year + '-' + pad(month) + '-' + pad(day) + ' ' + 
-           pad(hour) + ':' + pad(minute) + ':' + pad(second);
+    return year + '-' + pad(month) + '-' + pad(day) + ' ' +
+        pad(hour) + ':' + pad(minute) + ':' + pad(second);
 }

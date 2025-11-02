@@ -21,8 +21,8 @@ function execute(url) {
         book.tag.split("|").forEach(element => {
             genres.push({
                 title: element,
-                input: element,
-                script: "search.js"
+                input: "groupid=1512&start={{page}}&count=20&sort=0&sub=" + element,
+                script: "gen.js"
             })
         });
 
