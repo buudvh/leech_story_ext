@@ -1,3 +1,5 @@
+load("config.js")
+
 function execute(url) {
     try {
         const bookidRegex = /bookid=(\d+)/;
@@ -19,9 +21,10 @@ function execute(url) {
         let isAdsBook = book.isAdsBook
         var genres = [];
         book.tag.split("|").forEach(element => {
+            var genresObj = CONST_GENRES.find(p => p.title == element);
             genres.push({
                 title: element,
-                input: "groupid=1512&start={{page}}&count=20&sort=0&sub=" + element,
+                input: genresObj ? genresObj.input : CONST_DEFAULT_INPUT,
                 script: "gen.js"
             })
         });
