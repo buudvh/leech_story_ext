@@ -1,6 +1,7 @@
 function execute() {
     return Response.success([
-        { title: "Home", input: "https://69shuba.tw/", script: "gen.js" },
+        { title: "Home", input: "/fenlei/{0}/", script: "gen2.js" },
+        { title: "Mới update", input: "https://69shuba.tw/", script: "gen.js" },
         { title: "玄幻", input: "/fenlei/xuanhuan/1/", script: "gen2.js" },
         { title: "仙侠", input: "/fenlei/wuxia/1/", script: "gen2.js" },
         { title: "都市", input: "/fenlei/dushi/1/", script: "gen2.js" },
