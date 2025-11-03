@@ -39,13 +39,6 @@ function getAuthorName(text){
     return (match ? match[1].trim() : null);
 }
 
-function format(str) {
-    var args = Array.prototype.slice.call(arguments, 1);
-    return str.replace(/{(\d+)}/g, function(match, index) {
-        return typeof args[index] != 'undefined' ? args[index] : match;
-    });
-}
-
 function replacePageBySegments(url, page) {
     url = String.format(url, page);
 

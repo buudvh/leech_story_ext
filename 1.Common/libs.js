@@ -4323,6 +4323,16 @@ function formatName(name) {
     return convertT2S(result.trim());
 }
 
+function encodeFormData(data) {
+    var pairs = [];
+    for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+            pairs.push(encodeURIComponent(key) + "=" + encodeURIComponent(data[key]));
+        }
+    }
+    return pairs.join("&");
+}
+
 function cleanHtml(html) {
     //remove <p> 第1章如來神掌之穿越 </p>
     html = html.replace(/<p>\s*第[^<]+章[^<]*<\/p>\s*/gi, "");
