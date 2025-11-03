@@ -19,7 +19,7 @@ function execute(key, page) {
                     link: "https://bookshelf.html5.qq.com/autojump/intro?bookid=" + extractBookId(e1.jump_url),
                     cover: e1.cover_url,
                     description: '作者: ' + e1.author
-                        + "\n" + e1.abstract,
+                        + "\n" + (e1.abstract || ''),
                     host: "https://novel.html5.qq.com"
                 })
             }

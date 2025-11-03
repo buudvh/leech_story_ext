@@ -1,4 +1,5 @@
-load("config.js")
+load("config.js");
+load("common.js");
 
 function execute(url) {
     try {
@@ -18,7 +19,6 @@ function execute(url) {
 
         let doc = response.json();
         let book = doc.data.bookInfo
-        let isAdsBook = book.isAdsBook
         var genres = [];
         book.tag.split("|").forEach(element => {
             var genresObj = CONST_GENRES.find(p => p.title == element);
@@ -29,12 +29,16 @@ function execute(url) {
             })
         });
 
+        genres = !genres.length ? genres : null;
+
         return Response.success({
             name: book.resourceName,
             cover: book.picurl,
             author: book.author,
             description: book.summary.replace(/\n/g, "<br>"),
-            detail: "作者： " + book.author + "<br>" + book.subject,
+            // detail: "最新章节： " + book.lastSerialname
+            //     + "<br>最后更新： " + formatDate(book.lastUpdatetime, "yyyy-MM-dd HH:mm:ss"),
+            detail: "最新章节： " + book.lastSerialname,
             ongoing: !book.isfinish,
             host: "https://bookshelf.html5.qq.com",
             genres: genres,
@@ -44,7 +48,12 @@ function execute(url) {
                     input: book.author,
                     script: "author.js"
                 },
-            ]
+            ],
+            comments: [{
+                title: "评论",
+                input: bookid,
+                script: "comment.js"
+            }]
         });
 
     } catch (error) {
