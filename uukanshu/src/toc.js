@@ -19,7 +19,7 @@ function execute(url) {
 
         elems.forEach(function (e) {
             charpters.push({
-                name: convertT2S(e.text()),
+                name: formatName(e.text()),
                 url: e.attr('href'),
                 host: BASE_URL,
             });

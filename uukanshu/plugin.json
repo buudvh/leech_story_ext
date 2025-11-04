@@ -2,7 +2,7 @@
   "metadata": {
     "name": "uukanshu",
     "author": "HuongMT",
-    "version": 35,
+    "version": 36,
     "source": "https://uukanshu.cc",
     "regexp": "https://uukanshu.cc/book/\\d+/",
     "description": "Đọc truyện trên trang https://uukanshu.cc",

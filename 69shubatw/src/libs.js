@@ -183,6 +183,10 @@ function formatName(name) {
     var reLeading = /^(\d+)\.第(\d+)章\s*/;
     var result = name.replace(reLeading, '第$2章 ');
 
+    // Bước 1.5: Nếu có "第X集 第Y章 ..." → bỏ "第X集"
+    var reEpisodeChapter = /第[一二三四五六七八九十百千\d]+集\s*(第[一二三四五六七八九十百千\d]+章\s*)/;
+    result = result.replace(reEpisodeChapter, '$1');
+
     // Bước 2: Chuẩn hóa dạng "第1章 1xxx" → "第1章 xxx"
     var reDuplicate = /^第([0-9]+)章\s+\1\s*(.*)$/;
     if (reDuplicate.test(result)) {
