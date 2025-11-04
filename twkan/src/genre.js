@@ -6,6 +6,7 @@ function execute() {
         { title: "无限", input: "无限", script: "search.js" },
         { title: "同时穿越", input: "同时穿越", script: "search.js" }, //Đồng thời xuyên qua
         { title: "轮回", input: "轮回", script: "search.js" }, //Luân Hồi
+        { title: "御兽", input: "御兽", script: "search.js" }, //Ngự thú
 
         //Tu chân liêu thiên quần
         { title: "修真聊天群", input: "修真聊天群", script: "search.js" },
@@ -16,6 +17,7 @@ function execute() {
         { title: "盘龙", input: "盘龙", script: "search.js" }, //Bàn Long
         { title: "吞噬", input: "吞噬", script: "search.js" }, //Thôn Phệ
         { title: "星辰变", input: "星辰变", script: "search.js" }, //Tinh thần biến
+        { title: "沧元图", input: "沧元图", script: "search.js" }, //Thương nguyên đồ
 
         //Trạch Trư
         { title: "牧神记", input: "牧神记", script: "search.js" }, //Mục thần ký
@@ -28,7 +30,11 @@ function execute() {
         { title: "完美世界", input: "完美世界", script: "search.js" }, //Hoàn Mỹ Thế Giới
         { title: "圣墟", input: "圣墟", script: "search.js" }, //Thánh Khư
 
+        //Vong ngữ
         { title: "凡人", input: "凡人", script: "search.js" }, //Phàm Nhân
+
+        //Nhĩ căn
+        { title: "仙逆", input: "仙逆", script: "search.js" }, //Tiên nghịch
 
         //Lão mực
         { title: "一世之尊", input: "一世之尊", script: "search.js" }, //Nhất thế chi tôn
@@ -40,10 +46,14 @@ function execute() {
         { title: "阳神", input: "阳神", script: "search.js" }, //Dương Thần
 
         { title: "西游", input: "西游", script: "search.js" }, //Tây du
+        { title: "洪荒", input: "洪荒", script: "search.js" }, //Hồng hoang
         { title: "大奉", input: "大奉", script: "search.js" }, //Đại Phụng
         { title: "庆余年", input: "庆余年", script: "search.js" }, //Khánh dư niên
+
+        //Tam thiếu
         { title: "斗罗", input: "斗罗", script: "search.js" }, //Đấu la
         { title: "武魂", input: "武魂", script: "search.js" }, //Võ hồn
+        { title: "神印", input: "神印", script: "search.js" }, //Thần ấn
 
         //Đấu phá
         { title: "斗破", input: "斗破", script: "search.js" }, //Đấu phá
@@ -89,6 +99,8 @@ function execute() {
         { title: "死神", input: "死神", script: "search.js" }, //Bleach
         { title: "全職獵人", input: "全職獵人", script: "search.js" }, //HunterxHunter
         { title: "鬼灭之刃", input: "鬼灭之刃", script: "search.js" }, //Kimetsu no Yaiba
+        { title: "美食", input: "美食", script: "search.js" }, //Toriko
+        { title: "柯南", input: "柯南", script: "search.js" }, //Conan
 
         { title: "All", input: "https://twkan.com/novels/class/0_1.html", script: "gen2.js" },
         { title: "動漫同人", input: "https://twkan.com/novels/class/9_1.html", script: "gen2.js" },

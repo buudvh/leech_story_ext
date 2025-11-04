@@ -26,7 +26,7 @@
       "name": "Gấu trúc (dxmwx)",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/dxmwx/dxmwx.zip",
-      "version": 13,
+      "version": 14,
       "source": "https://www.dxmwx.org/",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/dxmwx/icon.png",
       "description": "Đọc truyện trên trang https://www.dxmwx.org/"
@@ -35,7 +35,7 @@
       "name": "69shubatw",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/69shubatw/69shubatw.zip",
-      "version": 23,
+      "version": 24,
       "source": "https://www.69shuba.tw",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/69shubatw/icon.png",
       "description": "Đọc truyện trên trang https://www.69shuba.tw"
@@ -44,7 +44,7 @@
       "name": "twkan",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/twkan/twkan.zip",
-      "version": 9,
+      "version": 10,
       "source": "https://twkan.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/twkan/icon.png",
       "description": "Đọc truyện trên trang https://twkan.com"
@@ -107,7 +107,7 @@
       "name": "uukanshu",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/uukanshu/uukanshu.zip",
-      "version": 34,
+      "version": 35,
       "source": "https://uukanshu.cc",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/uukanshu/icon.png",
       "description": "Đọc truyện trên trang uukanshu.cc"
@@ -134,7 +134,7 @@
       "name": "html5.qq.com",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/html5qq/html5qq.zip",
-      "version": 7,
+      "version": 8,
       "source": "https://bookshelf.html5.qq.com/qbread/categorylist?traceid=0809004&sceneid=FeedsTab&strageid=&ch=001995&tabfrom=top&feeds_version=8516&reader_version=0&groupid=1502&tag_type_id=1%27",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/html5qq/icon.png",
       "description": "Đọc truyện trên trang https://bookshelf.html5.qq.com"
