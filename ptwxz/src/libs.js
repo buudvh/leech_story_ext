@@ -178,5 +178,5 @@ function formatName(name) {
     result = result.replace(/【.*$/, '');
 
     // Bước 6: Chuyển từ phồn thể sang giản thể
-    return convertT2S(result.trim());
+    return result.trim();
 }
