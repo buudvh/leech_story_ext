@@ -9,9 +9,10 @@ function execute(url) {
         var doc = response.html();
         var authorElm = doc.select('div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(2) > a');
         var genreElm = doc.select("div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(3) > a");
+        var bookName = convertT2S(text(doc, 'div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(1) > strong'));
 
         return Response.success({
-            name: convertT2S(text(doc, 'div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(1) > strong')),
+            name: bookName,
             cover: doc.select(".bookinfo img").first().attr("src") || DEFAULT_COVER,
             author: authorElm.text(),
             description: convertT2S(cleanHtml(doc.select("div.intro").html())),
@@ -34,6 +35,13 @@ function execute(url) {
                     script: "gen2.js"
                 }
             ],
+            comments: [
+                {
+                    title: "评论",
+                    input: bookName,
+                    script: "comment.js"
+                }
+            ]
         });
     } catch (error) {
         return Response.error('fetch ' + url + ' failed: ' + error.message);
