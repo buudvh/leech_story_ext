@@ -37,7 +37,7 @@ function execute(url) {
             ],
             comments: [
                 {
-                    title: "评论",
+                    title: "QQ Comments",
                     input: bookName,
                     script: "comment.js"
                 }

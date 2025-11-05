@@ -30,8 +30,10 @@ function execute(url) {
         '其他类型': '/booksort9/0/{0}.html',
     };
 
+    var bookName = $.Q(doc, '#content h1').text();
+
     return Response.success({
-        name: $.Q(doc, '#content h1').text(),
+        name: bookName,
         cover: cover,
         author: author,
         description: description,
@@ -43,29 +45,36 @@ function execute(url) {
                 input: categories[category],
                 script: "gen.js"
             }
+        ],
+        comments: [
+            {
+                title: "QQ Comments",
+                input: bookName,
+                script: "qqcomment.js"
+            },
         ]
     });
 }
 
 function extractCategory(str) {
-  if (!str || typeof str !== 'string') { return ''; }
+    if (!str || typeof str !== 'string') { return ''; }
 
-  // 1) chuẩn hóa khoảng trắng (nhiều khoảng trắng -> 1) và trim
-  var s = str.replace(/\s+/g, ' ').trim();
+    // 1) chuẩn hóa khoảng trắng (nhiều khoảng trắng -> 1) và trim
+    var s = str.replace(/\s+/g, ' ').trim();
 
-  // 2) regex tìm "类 别" / "类别" / "类目" + dấu hai chấm (半角 hoặc 全角) + phần còn lại
-  var re = /(?:类\s*别|类别|类目)\s*[:：]\s*(.+)$/;
-  var m = s.match(re);
-  if (m && m[1]) {
-    return m[1].trim();
-  }
+    // 2) regex tìm "类 别" / "类别" / "类目" + dấu hai chấm (半角 hoặc 全角) + phần còn lại
+    var re = /(?:类\s*别|类别|类目)\s*[:：]\s*(.+)$/;
+    var m = s.match(re);
+    if (m && m[1]) {
+        return m[1].trim();
+    }
 
-  // 3) fallback: nếu có dấu hai chấm, lấy phần sau dấu hai chấm cuối cùng
-  var idx = Math.max(s.lastIndexOf(':'), s.lastIndexOf('：'));
-  if (idx !== -1 && idx + 1 < s.length) {
-    return s.slice(idx + 1).trim();
-  }
+    // 3) fallback: nếu có dấu hai chấm, lấy phần sau dấu hai chấm cuối cùng
+    var idx = Math.max(s.lastIndexOf(':'), s.lastIndexOf('：'));
+    if (idx !== -1 && idx + 1 < s.length) {
+        return s.slice(idx + 1).trim();
+    }
 
-  // 4) không tìm thấy -> trả về rỗng
-  return '';
+    // 4) không tìm thấy -> trả về rỗng
+    return '';
 }

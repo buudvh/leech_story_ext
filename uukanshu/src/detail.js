@@ -13,8 +13,10 @@ function execute(url) {
 
         var doc = response.html();
 
+        var bookName = convertT2S(doc.select("h1").first().text());
+
         return Response.success({
-            name: convertT2S(doc.select("h1").first().text()),
+            name: bookName,
             cover: createCoverImg(doc.select("div.bookcover img").first().attr("src")),
             author: convertT2S(doc.select("div.bookinfo a").first().text()),
             description: convertT2S(doc.select("p.bookintro").first().text()),
@@ -27,6 +29,13 @@ function execute(url) {
                     script: "gen.js"
                 }
             ],
+            comments: [
+                {
+                    title: "QQ Comments",
+                    input: bookName,
+                    script: "comment.js"
+                }
+            ]
         });
     } catch (error) {
         return Response.error('fetch: ' + url + '\nfailed: ' + error.message);

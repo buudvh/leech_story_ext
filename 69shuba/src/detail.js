@@ -28,12 +28,6 @@ function execute(url) {
 
         var genres = buildGenres(doc) || [];
 
-        var comments = [{
-            title: "评论",
-            input: bookid,
-            script: "comment.js"
-        }];
-
         var bookName = text(doc, 'div.booknav2 > h1 > a');
         var cover = 'https://static.69shuba.com/files/article/image/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '/' + bookid + 's.jpg';
 
@@ -66,7 +60,18 @@ function execute(url) {
                 },
             ],
             genres: genres,
-            comments: comments
+            comments: [
+                {
+                    title: "评论",
+                    input: bookid,
+                    script: "comment.js"
+                },
+                {
+                    title: "QQ Comments",
+                    input: bookName,
+                    script: "qqcomment.js"
+                },
+            ]
         });
     } catch (error) {
         return Response.error('fetch ' + url + ' failed: ' + error.message);
