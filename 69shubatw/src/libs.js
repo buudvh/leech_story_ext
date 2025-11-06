@@ -212,6 +212,22 @@ function formatName(name) {
     return convertT2S(result.trim());
 }
 
+function removeParentheses(name){
+    var result = name;
+    var lastParenIndex = Math.max(result.lastIndexOf('('), result.lastIndexOf('（'));
+    if (lastParenIndex !== -1) {
+        result = result.slice(0, lastParenIndex);
+    }
+
+    // Bước 4: Nếu chỉ còn "第X章 【...】", thì return luôn
+    var onlyBracket = /^第\d+章\s*【[^】]*】?\s*$/;
+    if (onlyBracket.test(result)) {
+        return result.trim();
+    }
+
+    return result.trim().length == 0 ? name : result;
+}
+
 var _fallbackT2S = {
     "㑮": "𫝈",
     "㑯": "㑔",

@@ -12,7 +12,7 @@ function execute(url) {
         var bookName = convertT2S(text(doc, 'div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(1) > strong'));
 
         return Response.success({
-            name: bookName,
+            name: removeParentheses(bookName),
             cover: doc.select(".bookinfo img").first().attr("src") || DEFAULT_COVER,
             author: authorElm.text(),
             description: convertT2S(cleanHtml(doc.select("div.intro").html())),
