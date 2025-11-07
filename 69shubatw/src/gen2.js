@@ -21,7 +21,7 @@ function execute(url, page) {
                 cover: e.select("img").first().attr("src") || DEFAULT_COVER,
                 // description: convertT2S(e.select("span.mr15").first().text()) + "\n" +convertT2S(e.select("span.fs12").first().text()),
                 description: '作者: ' + getAuthorName(convertT2S(e.select("span.mr15").first().text()))
-                    + "\n" + convertT2S(e.select("span.fs12").first().text()),
+                    + "\n" + convertT2S(e.select("span.fs12.gray").first().text()),
                 host: BASE_URL
             });
         });

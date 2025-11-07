@@ -34,7 +34,7 @@ function execute(key, page) {
                 link: BASE_URL + e.select(".article > a").first().attr("href"),
                 cover: e.select("img").first().attr("src") || DEFAULT_COVER,
                 description: convertT2S(e.select("span.mr15").first().text())
-                    + "\n" + convertT2S(e.select("span.fs12").first().text()),
+                    + "\n" + convertT2S(e.select("span.fs12.gray").first().text()),
                 host: BASE_URL
             });
         });
