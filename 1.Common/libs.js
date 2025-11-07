@@ -4323,8 +4323,14 @@ function formatName(name) {
     // Bước 5: Xóa phần sau "【"
     result = result.replace(/【.*$/, '');
 
-    // Bước 6: Chuyển từ phồn thể sang giản thể
-    return convertT2S(result.trim());
+    // Bước 6: Cắt bỏ phần ngoặc〔...〕
+    var lastParenIndex = result.lastIndexOf('〔');
+    if (lastParenIndex > 0) {
+        result = result.slice(0, lastParenIndex);
+    }
+
+    // Bước 7: Chuyển từ phồn thể sang giản thể
+    return result.trim().length == 0 ? name : convertT2S(result.trim());
 }
 
 function encodeFormData(data) {
