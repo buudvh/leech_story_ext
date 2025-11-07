@@ -135,8 +135,8 @@
       "author": "HuongMT",
       "version": 1,
       "source": "https://www.google.com",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/g.tts/g.tts.zip",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/g.tts/icon.png",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/g.tts/g.tts.zip",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/g.tts/icon.png",
       "description": "Nghe truyện bằng Google TTS",
       "type": "tts"
     },
@@ -145,8 +145,8 @@
       "author": "HuongMT",
       "version": 1,
       "source": "https://www.bing.com/translator",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/b.tts/b.tts.zip",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/b.tts/icon.png",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/b.tts/b.tts.zip",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/b.tts/icon.png",
       "description": "Nghe truyện bằng Bing TTS",
       "type": "tts"
     }
