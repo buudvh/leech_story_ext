@@ -2,7 +2,7 @@
   "metadata": {
     "name": "twkan.com",
     "author": "HuongMT",
-    "version": 10,
+    "version": 11,
     "source": "https://twkan.com/",
     "regexp": "^https?:\\/\\/twkan\\.com\\/book\\/\\d+\\.html$",
     "description": "Đọc truyện trên trang twkan.com",

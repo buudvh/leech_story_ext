@@ -31,7 +31,8 @@ function execute(tag, page) {
                     name: toCapitalize(e.select(".searchbooktitle").first().text()),
                     link: BASE_URL + '/book/' + bookid + '/',
                     cover: DEFAULT_COVER,
-                    description: e.select("div > span.searchtag").last().text(),
+                    description: e.select("div > span.searchtag").first().text() + "|" + e.select("div > span.searchbookauthor").first().text()
+                        + "\n" + e.select("div > span.lhr").last().text(),
                     host: BASE_URL
                 });
             });

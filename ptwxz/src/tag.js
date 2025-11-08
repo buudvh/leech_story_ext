@@ -24,10 +24,10 @@ function execute(tag, page) {
                 let bookid = stv_story_link.split("/")[4];
                 data.push({
                     name: toCapitalize(e.select(".searchbooktitle").first().text()),
-                    link: BASE_URL + '/bookinfo/'+ bookid.slice(0, bookid.length - 3) + '/' + bookid + '.html',
+                    link: BASE_URL + '/bookinfo/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '.html',
                     cover: 'https://www.piaotia.com/files/article/image/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '/' + bookid + 's.jpg',
-                    description: e.select(" div > span.searchtag").last().text(),
-                    host: ""
+                    description: e.select("div > span.searchtag").first().text() + "|" + e.select("div > span.searchbookauthor").first().text()
+                        + "\n" + e.select("div > span.lhr").last().text(),
                 })
             });
 

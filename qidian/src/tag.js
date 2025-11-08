@@ -26,7 +26,7 @@ function execute(tag, page) {
                     name: toCapitalize(e.select(".searchbooktitle").first().text()),
                     link: STVHOST + "/truyen/qidian/1/" + bookid + "/",
                     cover: e.select("img").attr("src") || DEFAULT_COVER,
-                    description: e.select("div > span.searchbookauthor").first().text()
+                    description: e.select("div > span.searchtag").first().text() + "|" + e.select("div > span.searchbookauthor").first().text()
                         + "\n" + e.select("div > span.lhr").last().text(),
                 })
             });

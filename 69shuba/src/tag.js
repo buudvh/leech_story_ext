@@ -25,7 +25,7 @@ function execute(tag, page) {
                     name: toCapitalize(e.select(".searchbooktitle").first().text()),
                     link: STVHOST + "/truyen/69shu/1/" + bookid + "/",
                     cover: 'https://static.69shuba.com/files/article/image/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '/' + bookid + 's.jpg',
-                    description: e.select("div > span.searchbookauthor").first().text()
+                    description: e.select("div > span.searchtag").first().text() + "|" + e.select("div > span.searchbookauthor").first().text()
                         + "\n" + e.select("div > span.lhr").last().text(),
                 })
             });

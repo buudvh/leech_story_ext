@@ -8,7 +8,7 @@
       "name": "69shuba",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/69shuba/69shuba.zip",
-      "version": 31,
+      "version": 32,
       "source": "https://www.69shuba.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/69shuba/icon.png",
       "description": "Đọc truyện trên trang https://www.69shuba.com"
@@ -17,7 +17,7 @@
       "name": "qidian",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian/qidian.zip",
-      "version": 5,
+      "version": 6,
       "source": "https://www.qidian.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian/icon.png",
       "description": "Đọc truyện trên trang https://www.qidian.com (chap miễn phí)"
@@ -26,7 +26,7 @@
       "name": "Gấu trúc (dxmwx)",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/dxmwx/dxmwx.zip",
-      "version": 14,
+      "version": 16,
       "source": "https://www.dxmwx.org/",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/dxmwx/icon.png",
       "description": "Đọc truyện trên trang https://www.dxmwx.org/"
@@ -98,7 +98,7 @@
       "name": "ptwxz (+stv)",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ptwxz/ptwxz.zip",
-      "version": 13,
+      "version": 14,
       "source": "https://www.piaotia.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ptwxz/icon.png",
       "description": "Đọc truyện trên trang piaotia.com"
@@ -107,7 +107,7 @@
       "name": "idejian (+stv)",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/idejian/idejian.zip",
-      "version": 15,
+      "version": 16,
       "source": "https://www.idejian.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/idejian/icon.png",
       "description": "Đọc truyện trên trang idejian"

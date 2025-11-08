@@ -15,24 +15,23 @@ function execute(url) {
 
         var cover = doc.select('meta[property="og:image"]').first().attr("content").replace("/cdn/images/nc.jpg", "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg")
 
-        var comments = [{
-            title: "评论",
-            input: idBook,
-            script: "comment.js"
-        }];
-
-        let data = {
+        return Response.success({
             name: doc.select("#oriname").text(),
             cover: cover,
             author: author || 'Unknow',
             description: des,
-            detail: "BookId: " + idBook,
+            detail: "BookId: " + idBook
+                + "\nChương mới: " + doc.select("#lastupdatetime").text(),
             ongoing: true,
             host: STVHOST,
-            comments: comments,
-        }
-
-        return Response.success(data);
+            comments: [
+                {
+                    title: "评论",
+                    input: idBook,
+                    script: "comment.js"
+                }
+            ],
+        });
     } catch (error) {
         return Response.error('fetch ' + url + ' failed: ' + error.message);
     }

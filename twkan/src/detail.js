@@ -31,8 +31,10 @@ function execute(url) {
         }];
         genres = genres.concat(buildGenres(doc));
 
+        var bookName = convertT2S(text(doc, 'div.booknav2 > h1'));
+
         return Response.success({
-            name: convertT2S(text(doc, 'div.booknav2 > h1')),
+            name: bookName,
             cover: getCoverUrl(doc.select(".bookimg2 img").first().attr("src")),
             author: convertT2S(authorElm.text()),
             description: convertT2S(cleanHtml(doc.select("#tab_info > div").html())),
@@ -46,12 +48,18 @@ function execute(url) {
             //     }
             // ],
             genres: genres,
-            comments: [{
-                title: "Reviews",
-                input: doc.select('.review-list').html(),
-                // input: url,
-                script: "review.js"
-            }],
+            comments: [
+                {
+                    title: "Reviews",
+                    input: doc.select('.review-list').html(),
+                    script: "review.js"
+                },
+                {
+                    title: "QQ Comments",
+                    input: bookName,
+                    script: "qqcomment.js"
+                },
+            ],
         });
     } catch (error) {
         return Response.error('fetch ' + url + ' failed: ' + error.message);
