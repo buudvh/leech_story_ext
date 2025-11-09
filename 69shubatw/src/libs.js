@@ -214,8 +214,24 @@ function formatName(name) {
         result = result.slice(0, lastParenIndex);
     }
 
-    // Bước 7: Chuyển từ phồn thể sang giản thể
-    return result.trim().length == 0 ? name : convertT2S(result.trim());
+    // Bước 7: Cắt bỏ phần 求月票, hoặc 求首訂
+    var lastTextIndex = result.lastIndexOf('求月票');
+    if (lastTextIndex > 0) {
+        result = result.slice(0, lastTextIndex);
+    }
+
+    lastTextIndex = result.lastIndexOf('求個月票');
+    if (lastTextIndex > 0) {
+        result = result.slice(0, lastTextIndex);
+    }
+
+    lastTextIndex = result.lastIndexOf('求首訂');
+    if (lastTextIndex > 0) {
+        result = result.slice(0, lastTextIndex);
+    }
+
+    // Bước 8: Chuyển từ phồn thể sang giản thể
+    return result.trim().length == 0 ? convertT2S(name) : convertT2S(result.trim());
 }
 
 function removeParentheses(name) {

@@ -177,6 +177,28 @@ function formatName(name) {
     // Bước 5: Xóa phần sau "【"
     result = result.replace(/【.*$/, '');
 
-    // Bước 6: Chuyển từ phồn thể sang giản thể
-    return result.trim();
+    // Bước 6: Cắt bỏ phần ngoặc〔...〕
+    var lastParenIndex = result.lastIndexOf('〔');
+    if (lastParenIndex > 0) {
+        result = result.slice(0, lastParenIndex);
+    }
+
+    // Bước 7: Cắt bỏ phần 求月票, hoặc 求首訂
+    var lastTextIndex = result.lastIndexOf('求月票');
+    if (lastTextIndex > 0) {
+        result = result.slice(0, lastTextIndex);
+    }
+
+    lastTextIndex = result.lastIndexOf('求個月票');
+    if (lastTextIndex > 0) {
+        result = result.slice(0, lastTextIndex);
+    }
+
+    lastTextIndex = result.lastIndexOf('求首訂');
+    if (lastTextIndex > 0) {
+        result = result.slice(0, lastTextIndex);
+    }
+
+    // Bước 8: Chuyển từ phồn thể sang giản thể
+    return result.trim().length == 0 ? name : result.trim();
 }

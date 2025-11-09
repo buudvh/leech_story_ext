@@ -17,7 +17,7 @@
       "name": "qidian",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian/qidian.zip",
-      "version": 6,
+      "version": 7,
       "source": "https://www.qidian.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian/icon.png",
       "description": "Đọc truyện trên trang https://www.qidian.com (chap miễn phí)"
@@ -26,7 +26,7 @@
       "name": "Gấu trúc (dxmwx)",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/dxmwx/dxmwx.zip",
-      "version": 16,
+      "version": 17,
       "source": "https://www.dxmwx.org/",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/dxmwx/icon.png",
       "description": "Đọc truyện trên trang https://www.dxmwx.org/"
@@ -35,7 +35,7 @@
       "name": "69shubatw",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/69shubatw/69shubatw.zip",
-      "version": 30,
+      "version": 31,
       "source": "https://www.69shuba.tw",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/69shubatw/icon.png",
       "description": "Đọc truyện trên trang https://www.69shuba.tw"
@@ -44,7 +44,7 @@
       "name": "twkan",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/twkan/twkan.zip",
-      "version": 10,
+      "version": 12,
       "source": "https://twkan.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/twkan/icon.png",
       "description": "Đọc truyện trên trang https://twkan.com"
@@ -89,7 +89,7 @@
       "name": "uukanshu",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/uukanshu/uukanshu.zip",
-      "version": 37,
+      "version": 38,
       "source": "https://uukanshu.cc",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/uukanshu/icon.png",
       "description": "Đọc truyện trên trang uukanshu.cc"
@@ -98,7 +98,7 @@
       "name": "ptwxz (+stv)",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ptwxz/ptwxz.zip",
-      "version": 14,
+      "version": 15,
       "source": "https://www.piaotia.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ptwxz/icon.png",
       "description": "Đọc truyện trên trang piaotia.com"

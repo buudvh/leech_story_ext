@@ -170,20 +170,57 @@ function getBookId(url) {
 }
 
 function formatName(name) {
-    var re = /^(\d+)\.第(\d+)章\s*/;
-    var result = name.replace(re, '第$2章 ');
+    // Bước 1: Xử lý dạng "1.第1章 ..."
+    var reLeading = /^(\d+)\.第(\d+)章\s*/;
+    var result = name.replace(reLeading, '第$2章 ');
 
+    // Bước 1.5: Nếu có "第X集 第Y章 ..." → bỏ "第X集"
+    var reEpisodeChapter = /第[一二三四五六七八九十百千\d]+集\s*(第[一二三四五六七八九十百千\d]+章\s*)/;
+    result = result.replace(reEpisodeChapter, '$1');
+
+    // Bước 2: Chuẩn hóa dạng "第1章 1xxx" → "第1章 xxx"
+    var reDuplicate = /^第([0-9]+)章\s+\1\s*(.*)$/;
+    if (reDuplicate.test(result)) {
+        result = result.replace(reDuplicate, '第$1章 $2');
+    }
+
+    // Bước 3: Cắt bỏ phần ngoặc (...) hoặc （...）
     var lastParenIndex = Math.max(result.lastIndexOf('('), result.lastIndexOf('（'));
     if (lastParenIndex !== -1) {
         result = result.slice(0, lastParenIndex);
     }
 
+    // Bước 4: Nếu chỉ còn "第X章 【...】", thì return luôn
     var onlyBracket = /^第\d+章\s*【[^】]*】?\s*$/;
     if (onlyBracket.test(result)) {
         return result.trim();
     }
 
+    // Bước 5: Xóa phần sau "【"
     result = result.replace(/【.*$/, '');
 
-    return result.trim();
+    // Bước 6: Cắt bỏ phần ngoặc〔...〕
+    var lastParenIndex = result.lastIndexOf('〔');
+    if (lastParenIndex > 0) {
+        result = result.slice(0, lastParenIndex);
+    }
+
+    // Bước 7: Cắt bỏ phần 求月票, hoặc 求首訂
+    var lastTextIndex = result.lastIndexOf('求月票');
+    if (lastTextIndex > 0) {
+        result = result.slice(0, lastTextIndex);
+    }
+
+    lastTextIndex = result.lastIndexOf('求個月票');
+    if (lastTextIndex > 0) {
+        result = result.slice(0, lastTextIndex);
+    }
+
+    lastTextIndex = result.lastIndexOf('求首訂');
+    if (lastTextIndex > 0) {
+        result = result.slice(0, lastTextIndex);
+    }
+
+    // Bước 8: Chuyển từ phồn thể sang giản thể
+    return result.trim().length == 0 ? name : result.trim();
 }
