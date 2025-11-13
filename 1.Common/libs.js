@@ -4357,5 +4357,60 @@ function cleanHtml(html) {
     // trim br tags
     html = html.replace(/(^(\s*<br>\s*)+|(<br>\s*)+$)/gm, '');
 
-    return html.trim();
+    return replaceAllDateTime(html.trim());
+}
+
+function replaceAllDateTime(text) {
+    if (!text) return text;
+
+    // --- 1. Chuẩn hoá số full-width (４月→4月) ---
+    text = text.replace(/[\uFF10-\uFF19]/g, function(ch) {
+        return String.fromCharCode(ch.charCodeAt(0) - 0xFF10 + 0x30);
+    });
+
+    // --- 2. Chuyển các ký tự tiếng Trung sang dạng dễ xử lý ---
+    text = text
+        .replace(/年/g, '-')         // năm
+        .replace(/月/g, '-')         // tháng
+        .replace(/日|号/g, '')       // bỏ 日, 号
+        .replace(/时|點|点/g, ':')   // giờ
+        .replace(/分/g, ':')         // phút
+        .replace(/秒/g, '');         // giây
+
+    // --- 3. Chuẩn hoá khoảng trắng ---
+    text = text.replace(/\s+/g, ' ');
+
+    // --- 4. Dạng yyyy/MM/dd hoặc yyyy-MM-dd ---
+    text = text.replace(/\b(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})\b/g, function(_, y, m, d) {
+        return parseInt(d, 10) + " tháng " + parseInt(m, 10) + " năm " + y;
+    });
+
+    // --- 5. Dạng dd/MM/yyyy hoặc dd-MM-yyyy ---
+    text = text.replace(/\b(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})\b/g, function(_, d, m, y) {
+        return parseInt(d, 10) + " tháng " + parseInt(m, 10) + " năm " + y;
+    });
+
+    // --- 6. Dạng rút gọn kiểu tiếng Trung / Nhật ---
+    // a) 月初n hoặc -初n
+    text = text.replace(/\b(\d{1,2})(?:月|-)\s*初(\d{1,2})\b/g, function(_, m, d) {
+        return parseInt(d, 10) + " tháng " + parseInt(m, 10);
+    });
+
+    // b) 月n hoặc -n (ví dụ 3月9, 3-9)
+    text = text.replace(/\b(\d{1,2})(?:月|-)\s*(\d{1,2})\b/g, function(_, m, d) {
+        return parseInt(d, 10) + " tháng " + parseInt(m, 10);
+    });
+
+    // --- 7. Giờ phút giây ---
+    // hh:mm:ss → hh giờ mm phút ss giây
+    text = text.replace(/\b(\d{1,2}):(\d{1,2}):(\d{1,2})\b/g, function(_, h, m, s) {
+        return parseInt(h, 10) + " giờ " + parseInt(m, 10) + " phút " + parseInt(s, 10) + " giây";
+    });
+
+    // hh:mm → hh giờ mm phút
+    text = text.replace(/\b(\d{1,2}):(\d{1,2})\b/g, function(_, h, m) {
+        return parseInt(h, 10) + " giờ " + parseInt(m, 10) + " phút";
+    });
+
+    return text;
 }

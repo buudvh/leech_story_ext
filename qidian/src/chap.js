@@ -4,7 +4,7 @@ load('libs.js');
 function execute(url) {
     try {
         var data = getChapQidian(url);
-        return Response.success(convertT2S(data));
+        return Response.success(data);
     } catch (error) {
         return Response.error('fetch ' + url + ' failed: ' + error.message);
     }
@@ -23,5 +23,5 @@ function getChapQidian(url) {
     // if(author_say){
     //     htm = htm +"<br><br>PS:<br><br>"+  author_say;
     // }
-    return htm.replace(/<br\s*\/?>|\n/g, "<br><br>");
+    return cleanHtml(htm.replace(/<br\s*\/?>|\n/g, "<br><br>"));
 }

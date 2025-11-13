@@ -102,7 +102,48 @@ function cleanHtml(html) {
     // trim br tags
     html = html.replace(/(^(\s*<br>\s*)+|(<br>\s*)+$)/gm, '');
 
-    return html.trim();
+    return replaceAllDateTime(html.trim());
+}
+
+function replaceAllDateTime(text) {
+    if (!text) return text;
+
+    // 1️⃣ Chuẩn hoá số full-width -> half-width
+    text = text.replace(/[\uFF10-\uFF19]/g, function(ch) {
+        return String.fromCharCode(ch.charCodeAt(0) - 0xFF10 + 0x30);
+    });
+
+    // 2️⃣ yyyy年M月d日
+    text = text.replace(/(\d{4})年(\d{1,2})月(\d{1,2})[日号]?/g, function(_, y, m, d) {
+        return "ngày " + parseInt(d, 10) + " tháng " + parseInt(m, 10) + " năm " + y;
+    });
+
+    // 3️⃣ yyyy-M-d hoặc yyyy/M/d
+    text = text.replace(/(\d{4})[\/\-\.](\d{1,2})[\/\-\.](\d{1,2})/g, function(_, y, m, d) {
+        return "ngày " + parseInt(d, 10) + " tháng " + parseInt(m, 10) + " năm " + y;
+    });
+
+    // 4️⃣ M月初d
+    text = text.replace(/(\d{1,2})月初(\d{1,2})/g, function(_, m, d) {
+        return "ngày " + parseInt(d, 10) + " tháng " + parseInt(m, 10);
+    });
+
+    // 5️⃣ M月d日 hoặc M月d号
+    text = text.replace(/(\d{1,2})月(\d{1,2})[日号]?/g, function(_, m, d) {
+        return "ngày " + parseInt(d, 10) + " tháng " + parseInt(m, 10);
+    });
+
+    // 6️⃣ hh:mm:ss
+    text = text.replace(/(\d{1,2}):(\d{1,2}):(\d{1,2})/g, function(_, h, m, s) {
+        return parseInt(h, 10) + " giờ " + parseInt(m, 10) + " phút " + parseInt(s, 10) + " giây";
+    });
+
+    // 7️⃣ hh:mm
+    text = text.replace(/(\d{1,2}):(\d{1,2})(?!:)/g, function(_, h, m) {
+        return parseInt(h, 10) + " giờ " + parseInt(m, 10) + " phút";
+    });
+
+    return text;
 }
 
 
@@ -196,25 +237,6 @@ function text(doc, selector) {
     return '';
 }
 
-var _fallbackT2S = {
-    "０": "0",
-    "１": "1",
-    "２": "2",
-    "３": "3",
-    "４": "4",
-    "５": "5",
-    "６": "6",
-    "７": "7",
-    "８": "8",
-    "９": "9",
-}
-
-function convertT2S(text) {
-    return text.split('').map(function (ch) {
-        return _fallbackT2S[ch] ? _fallbackT2S[ch] : ch;
-    }).join('');
-}
-
 function formatName(name) {
     // Bước 1: Xử lý dạng "1.第1章 ..."
     var reLeading = /^(\d+)\.第(\d+)章\s*/;
@@ -239,12 +261,12 @@ function formatName(name) {
     // Bước 4: Nếu chỉ còn "第X章 【...】", thì return luôn
     var onlyBracket = /^第\d+章\s*【[^】]*】?\s*$/;
     if (onlyBracket.test(result)) {
-        return result.trim().length == 0 ? convertT2S(name) : convertT2S(result.trim());
+        return result.trim().length == 0 ? (name) : (result.trim());
     }
 
     // Bước 5: Xóa phần sau "【"
     result = result.replace(/【.*$/, '');
 
     // Bước 6: Chuyển từ phồn thể sang giản thể
-    return result.trim().length == 0 ? convertT2S(name) : convertT2S(result.trim());
+    return result.trim().length == 0 ? (name) : (result.trim());
 }
