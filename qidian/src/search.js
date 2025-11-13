@@ -37,8 +37,11 @@ function execute(key, page) {
             cover: e.select("img").attr("src") || DEFAULT_COVER,
             description: e.select("div > span.searchtag").first().text() + "|" + e.select("div > span.searchbookauthor").first().text()
                 + "\n" + e.select("div > span.lhr").last().text(),
+            source: e.select("div > span.searchtag").first().text().trim(),
         });
     });
+
+    data = data.filter(p => p.source == "qidian");
 
     return Response.success(data, next);
 }

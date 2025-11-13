@@ -39,8 +39,11 @@ function execute(key, page) {
                 bookid + 's.jpg',
             description: e.select("div > span.searchtag").first().text() + "|" + e.select("div > span.searchbookauthor").first().text()
                 + "\n" + e.select("div > span.lhr").last().text(),
+            source: e.select("div > span.searchtag").first().text().trim(),
         });
     });
+
+    data = data.filter(p => p.source == "69shu");
 
     return Response.success(data, next);
 }

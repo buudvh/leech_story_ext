@@ -42,9 +42,12 @@ function execute(key, page) {
                 cover: DEFAULT_COVER,
                 description: e.select("div > span.searchtag").first().text() + "|" + e.select("div > span.searchbookauthor").first().text()
                     + "\n" + e.select("div > span.lhr").last().text(),
-                host: BASE_URL
+                host: BASE_URL,
+                source: e.select("div > span.searchtag").first().text().trim(),
             });
         });
+
+        data = data.filter(p => p.source == "idejian");
 
         return Response.success(data, next);
     } catch (error) {
