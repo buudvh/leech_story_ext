@@ -202,7 +202,7 @@ function formatName(name) {
     // Bước 4: Nếu chỉ còn "第X章 【...】", thì return luôn
     var onlyBracket = /^第\d+章\s*【[^】]*】?\s*$/;
     if (onlyBracket.test(result)) {
-        return result.trim();
+        return result.trim().length == 0 ? convertT2S(name) : convertT2S(result.trim());
     }
 
     // Bước 5: Xóa phần sau "【"
@@ -244,13 +244,23 @@ function removeParentheses(name) {
     // Bước 4: Nếu chỉ còn "第X章 【...】", thì return luôn
     var onlyBracket = /^第\d+章\s*【[^】]*】?\s*$/;
     if (onlyBracket.test(result)) {
-        return result.trim();
+        return result.trim().length == 0 ? convertT2S(name) : convertT2S(result.trim());
     }
 
     return result.trim().length == 0 ? name : result;
 }
 
 var _fallbackT2S = {
+    "０": "0",
+    "１": "1",
+    "２": "2",
+    "３": "3",
+    "４": "4",
+    "５": "5",
+    "６": "6",
+    "７": "7",
+    "８": "8",
+    "９": "9",
     "㑮": "𫝈",
     "㑯": "㑔",
     "㑳": "㑇",

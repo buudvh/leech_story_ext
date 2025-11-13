@@ -195,3 +195,56 @@ function text(doc, selector) {
     }
     return '';
 }
+
+var _fallbackT2S = {
+    "０": "0",
+    "１": "1",
+    "２": "2",
+    "３": "3",
+    "４": "4",
+    "５": "5",
+    "６": "6",
+    "７": "7",
+    "８": "8",
+    "９": "9",
+}
+
+function convertT2S(text) {
+    return text.split('').map(function (ch) {
+        return _fallbackT2S[ch] ? _fallbackT2S[ch] : ch;
+    }).join('');
+}
+
+function formatName(name) {
+    // Bước 1: Xử lý dạng "1.第1章 ..."
+    var reLeading = /^(\d+)\.第(\d+)章\s*/;
+    var result = name.replace(reLeading, '第$2章 ');
+
+    // Bước 1.5: Nếu có "第X集 第Y章 ..." → bỏ "第X集"
+    var reEpisodeChapter = /第[一二三四五六七八九十百千\d]+集\s*(第[一二三四五六七八九十百千\d]+章\s*)/;
+    result = result.replace(reEpisodeChapter, '$1');
+
+    // Bước 2: Chuẩn hóa dạng "第1章 1xxx" → "第1章 xxx"
+    var reDuplicate = /^第([0-9]+)章\s+\1\s*(.*)$/;
+    if (reDuplicate.test(result)) {
+        result = result.replace(reDuplicate, '第$1章 $2');
+    }
+
+    // Bước 3: Cắt bỏ phần ngoặc (...) hoặc （...）
+    var lastParenIndex = Math.max(result.lastIndexOf('('), result.lastIndexOf('（'));
+    if (lastParenIndex !== -1) {
+        result = result.slice(0, lastParenIndex);
+    }
+
+    // Bước 4: Nếu chỉ còn "第X章 【...】", thì return luôn
+    var onlyBracket = /^第\d+章\s*【[^】]*】?\s*$/;
+    if (onlyBracket.test(result)) {
+        return result.trim().length == 0 ? convertT2S(name) : convertT2S(result.trim());
+    }
+
+    // Bước 5: Xóa phần sau "【"
+    result = result.replace(/【.*$/, '');
+
+    // Bước 6: Chuyển từ phồn thể sang giản thể
+    return result.trim().length == 0 ? convertT2S(name) : convertT2S(result.trim());
+}

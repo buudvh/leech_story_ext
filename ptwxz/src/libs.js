@@ -200,5 +200,24 @@ function formatName(name) {
     }
 
     // Bước 8: Chuyển từ phồn thể sang giản thể
-    return result.trim().length == 0 ? name : result.trim();
+    return result.trim().length == 0 ? convertT2S(name) : convertT2S(result.trim());
+}
+
+var _fallbackT2S = {
+    "０": "0",
+    "１": "1",
+    "２": "2",
+    "３": "3",
+    "４": "4",
+    "５": "5",
+    "６": "6",
+    "７": "7",
+    "８": "8",
+    "９": "9",
+}
+
+function convertT2S(text) {
+    return text.split('').map(function (ch) {
+        return _fallbackT2S[ch] ? _fallbackT2S[ch] : ch;
+    }).join('');
 }

@@ -4317,7 +4317,7 @@ function formatName(name) {
     // Bước 4: Nếu chỉ còn "第X章 【...】", thì return luôn
     var onlyBracket = /^第\d+章\s*【[^】]*】?\s*$/;
     if (onlyBracket.test(result)) {
-        return result.trim();
+        return result.trim().length == 0 ? convertT2S(name) : convertT2S(result.trim());
     }
 
     // Bước 5: Xóa phần sau "【"

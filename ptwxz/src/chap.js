@@ -10,7 +10,7 @@ function execute(url) {
                 .replace(/^第\d+章.*?<br>/, '') // Ex: '  第11745章 大结局，终<br>'
                 .replace('(本章完)', '');
 
-        return Response.success(htm);
+        return Response.success(convertT2S(htm));
     }
     return null;
 }
