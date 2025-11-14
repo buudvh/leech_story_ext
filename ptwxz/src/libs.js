@@ -94,7 +94,7 @@ function replaceAllDateTime(text) {
     if (!text) return text;
 
     // 1️⃣ Chuẩn hoá số full-width -> half-width
-    return str.replace(/[\uFF01-\uFF5E]/g, function(ch) {
+    text = text.replace(/[\uFF01-\uFF5E]/g, function(ch) {
         // Full-width '！' (U+FF01) → Half-width '!' (U+0021)
         return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
     });

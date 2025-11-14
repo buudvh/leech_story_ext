@@ -4364,7 +4364,7 @@ function replaceAllDateTime(text) {
     if (!text) return text;
 
     // --- 1. Chuẩn hoá số full-width (４月→4月) ---
-    return str.replace(/[\uFF01-\uFF5E]/g, function(ch) {
+    text = text.replace(/[\uFF01-\uFF5E]/g, function(ch) {
         // Full-width '！' (U+FF01) → Half-width '!' (U+0021)
         return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
     });
