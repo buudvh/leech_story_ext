@@ -4364,8 +4364,9 @@ function replaceAllDateTime(text) {
     if (!text) return text;
 
     // --- 1. Chuẩn hoá số full-width (４月→4月) ---
-    text = text.replace(/[\uFF10-\uFF19]/g, function(ch) {
-        return String.fromCharCode(ch.charCodeAt(0) - 0xFF10 + 0x30);
+    return str.replace(/[\uFF01-\uFF5E]/g, function(ch) {
+        // Full-width '！' (U+FF01) → Half-width '!' (U+0021)
+        return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
     });
 
     // --- 2. Chuyển các ký tự tiếng Trung sang dạng dễ xử lý ---

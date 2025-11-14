@@ -25,8 +25,8 @@ function execute(url, page) {
             return Response.success(data, next.toString());
         }
 
-        Response.error(`fetch ${url} failed: status ${response.status}`);
+        return Response.error(`fetch ${url} failed: status ${response.status}`);
     } catch (e) {
-        Response.error(`fetch ${url} failed: ${e.message}`);
+        return Response.error(`fetch ${url} failed: ${e.message}`);
     }
 }

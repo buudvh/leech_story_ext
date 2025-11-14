@@ -56,11 +56,11 @@ function trySTV(url) {
             }
         });
 
-        if (!response.ok) Response.error("Error try STV: status" + response.status);
+        if (!response.ok) return Response.error("Error try STV: status" + response.status);
 
         var objData = JSON.parse(response.text());
 
-        if (objData.code != '1') Response.error("Error try STV: x.code" + objData.code);
+        if (objData.code != '1') return Response.error("Error try STV: x.code" + objData.code);
 
         var chapters = objData.data.split("-//-");
 
