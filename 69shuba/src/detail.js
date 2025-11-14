@@ -30,7 +30,7 @@ function execute(url) {
         var genres = buildGenres(doc) || [];
 
         var bookName = text(doc, 'div.booknav2 > h1 > a');
-        var cover = 'https://static.69shuba.com/files/article/image/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '/' + bookid + 's.jpg';
+        var cover = buildCover(bookid);
 
         return Response.success({
             name: bookName,

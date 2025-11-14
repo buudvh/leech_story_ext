@@ -17,7 +17,7 @@ function getDetailSTV(url) {
 
         var authorName = getAuhtorNameSTV(doc);
         var bookName = text(doc, '#oriname');
-        var cover = 'https://static.69shuba.com/files/article/image/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '/' + bookid + 's.jpg';
+        var cover = buildCover(bookid);
 
         return Response.success({
             name: bookName,

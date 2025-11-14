@@ -270,3 +270,8 @@ function formatName(name) {
     // Bước 6: Chuyển từ phồn thể sang giản thể
     return result.trim().length == 0 ? (name) : (result.trim());
 }
+
+function buildCover(bookid) {
+    var folder = bookid.length <= 3 ? "0" : bookid.slice(0, bookid.length - 3);
+    return 'https://static.69shuba.com/files/article/image/' + folder + '/' + bookid + '/' + bookid + 's.jpg';
+}
