@@ -38,13 +38,13 @@ function execute(bookid, next) {
             return Response.success(comments, nextpage + "");
         }
 
-        return Response.success(comments, null);
+        return Response.success(comments);
     } catch (ex) {
         // return Response.error('fetch ' + url + ' failed: ' + ex.message);
         return Response.success([{
             name: "信息",
             content: ex.message,
-        }], null);
+        }]);
     }
 }
 
