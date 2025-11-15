@@ -30,11 +30,11 @@ function execute(url) {
 
         return Response.success(data);
     } catch (error) {
-        // return Response.error('fetch ' + url + ' failed: ' + error.message);
-        return Response.success([{
-            name: error.message,
-            url: '',
-            host: BASE_URL,
-        }]);
+        return Response.error('Url: ' + url + '\nMessage:' + error.message);
+        // return Response.success([{
+        //     name: error.message,
+        //     url: '',
+        //     host: BASE_URL,
+        // }]);
     }
 }
