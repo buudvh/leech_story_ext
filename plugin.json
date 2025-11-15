@@ -133,7 +133,7 @@
     {
       "name": "Google TTS",
       "author": "HuongMT",
-      "version": 1,
+      "version": 2,
       "source": "https://www.google.com",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/g.tts/g.tts.zip",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/g.tts/icon.png",

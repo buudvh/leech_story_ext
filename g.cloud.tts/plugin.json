@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "name": "Google TTS",
+    "name": "Google Cloud TTS",
     "author": "HuongMT",
-    "version": 2,
+    "version": 1,
     "source": "https://www.google.com",
-    "description": "Nghe truyện bằng Google TTS",
+    "description": "Nghe truyện bằng Google Cloud TTS",
     "type": "tts"
   },
   "script": {
