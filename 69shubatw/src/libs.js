@@ -112,38 +112,38 @@ function replaceAllDateTime(text) {
     if (!text) return text;
 
     // 1️⃣ Chuẩn hoá số full-width -> half-width
-    text = text.replace(/[\uFF01-\uFF5E]/g, function(ch) {
+    text = text.replace(/[\uFF01-\uFF5E]/g, function (ch) {
         // Full-width '！' (U+FF01) → Half-width '!' (U+0021)
         return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
     });
 
     // 2️⃣ yyyy年M月d日
-    text = text.replace(/(\d{4})年(\d{1,2})月(\d{1,2})[日号]?/g, function(_, y, m, d) {
+    text = text.replace(/(\d{4})年(\d{1,2})月(\d{1,2})[日号]?/g, function (_, y, m, d) {
         return "ngày " + parseInt(d, 10) + " tháng " + parseInt(m, 10) + " năm " + y;
     });
 
     // 3️⃣ yyyy-M-d hoặc yyyy/M/d
-    text = text.replace(/(\d{4})[\/\-\.](\d{1,2})[\/\-\.](\d{1,2})/g, function(_, y, m, d) {
+    text = text.replace(/(\d{4})[\/\-\.](\d{1,2})[\/\-\.](\d{1,2})/g, function (_, y, m, d) {
         return "ngày " + parseInt(d, 10) + " tháng " + parseInt(m, 10) + " năm " + y;
     });
 
     // 4️⃣ M月初d
-    text = text.replace(/(\d{1,2})月初(\d{1,2})/g, function(_, m, d) {
+    text = text.replace(/(\d{1,2})月初(\d{1,2})/g, function (_, m, d) {
         return "ngày " + parseInt(d, 10) + " tháng " + parseInt(m, 10);
     });
 
     // 5️⃣ M月d日 hoặc M月d号
-    text = text.replace(/(\d{1,2})月(\d{1,2})[日号]?/g, function(_, m, d) {
+    text = text.replace(/(\d{1,2})月(\d{1,2})[日号]?/g, function (_, m, d) {
         return "ngày " + parseInt(d, 10) + " tháng " + parseInt(m, 10);
     });
 
     // 6️⃣ hh:mm:ss
-    text = text.replace(/(\d{1,2}):(\d{1,2}):(\d{1,2})/g, function(_, h, m, s) {
+    text = text.replace(/(\d{1,2}):(\d{1,2}):(\d{1,2})/g, function (_, h, m, s) {
         return parseInt(h, 10) + " giờ " + parseInt(m, 10) + " phút " + parseInt(s, 10) + " giây";
     });
 
     // 7️⃣ hh:mm
-    text = text.replace(/(\d{1,2}):(\d{1,2})(?!:)/g, function(_, h, m) {
+    text = text.replace(/(\d{1,2}):(\d{1,2})(?!:)/g, function (_, h, m) {
         return parseInt(h, 10) + " giờ " + parseInt(m, 10) + " phút";
     });
 
@@ -220,59 +220,59 @@ function text(doc, selector) {
 }
 
 function formatName(name) {
-    // Bước 1: Xử lý dạng "1.第1章 ..."
-    var reLeading = /^(\d+)\.第(\d+)章\s*/;
-    var result = name.replace(reLeading, '第$2章 ');
+    try {
+        // Bước 1: Xử lý dạng "1.第1章 ..."
+        var reLeading = /^(\d+)\.第(\d+)章\s*/;
+        var result = name.replace(reLeading, '第$2章 ');
 
-    // Bước 1.5: Nếu có "第X集 第Y章 ..." → bỏ "第X集"
-    var reEpisodeChapter = /第[一二三四五六七八九十百千\d]+集\s*(第[一二三四五六七八九十百千\d]+章\s*)/;
-    result = result.replace(reEpisodeChapter, '$1');
+        // Bước 1.5: Nếu có "第X集 第Y章 ..." → bỏ "第X集"
+        var reEpisodeChapter = /第[一二三四五六七八九十百千\d]+集\s*(第[一二三四五六七八九十百千\d]+章\s*)/;
+        result = result.replace(reEpisodeChapter, '$1');
 
-    // Bước 2: Chuẩn hóa dạng "第1章 1xxx" → "第1章 xxx"
-    var reDuplicate = /^第([0-9]+)章\s+\1\s*(.*)$/;
-    if (reDuplicate.test(result)) {
-        result = result.replace(reDuplicate, '第$1章 $2');
-    }
+        // Bước 2: Chuẩn hóa dạng "第1章 1xxx" → "第1章 xxx"
+        var reDuplicate = /^第([0-9]+)章\s+\1\s*(.*)$/;
+        if (reDuplicate.test(result)) {
+            result = result.replace(reDuplicate, '第$1章 $2');
+        }
 
-    // Bước 3: Cắt bỏ phần ngoặc (...) hoặc （...）
-    var lastParenIndex = Math.max(result.lastIndexOf('('), result.lastIndexOf('（'));
-    if (lastParenIndex !== -1) {
-        result = result.slice(0, lastParenIndex);
-    }
+        // Bước 3: Cắt bỏ phần ngoặc (...) hoặc （...）
+        var lastParenIndex = Math.max(result.lastIndexOf('('), result.lastIndexOf('（'));
+        if (lastParenIndex !== -1) {
+            result = result.slice(0, lastParenIndex);
+        }
 
-    // Bước 4: Nếu chỉ còn "第X章 【...】", thì return luôn
-    var onlyBracket = /^第\d+章\s*【[^】]*】?\s*$/;
-    if (onlyBracket.test(result)) {
+        // Bước 4: Nếu chỉ còn "第X章 【...】", thì return luôn
+        var onlyBracket = /^第\d+章\s*【[^】]*】?\s*$/;
+        if (onlyBracket.test(result)) {
+            return result.trim().length == 0 ? (name) : (result.trim());
+        }
+
+        // Bước 5: Xóa phần sau "【"
+        result = result.replace(/【.*$/, '');
+
+        // Bước 6: Loại bỏ các phần có trong mảng
+        var arrTextRemove = [
+            '求月票',
+            '求個月票',
+            '求首訂',
+            '求关注',
+            '〔',
+            '{',
+        ];
+        var arrTextLastIndex = arrTextRemove.map(item => result.lastIndexOf(item));
+        var filtered = arrTextLastIndex.filter(x => x !== -1);
+        var lastTextIndex = filtered.length > 0
+            ? Math.min.apply(null, filtered)
+            : -1;
+        if (lastTextIndex > 0) {
+            result = result.slice(0, lastTextIndex);
+        }
+
+        // Bước 5: Chuyển từ phồn thể sang giản thể
         return result.trim().length == 0 ? convertT2S(name) : convertT2S(result.trim());
+    } catch (error) {
+        throw error;
     }
-
-    // Bước 5: Xóa phần sau "【"
-    result = result.replace(/【.*$/, '');
-
-    // Bước 6: Cắt bỏ phần ngoặc〔...〕
-    var lastParenIndex = result.lastIndexOf('〔');
-    if (lastParenIndex > 0) {
-        result = result.slice(0, lastParenIndex);
-    }
-
-    // Bước 7: Cắt bỏ phần 求月票, hoặc 求首訂
-    var lastTextIndex = result.lastIndexOf('求月票');
-    if (lastTextIndex > 0) {
-        result = result.slice(0, lastTextIndex);
-    }
-
-    lastTextIndex = result.lastIndexOf('求個月票');
-    if (lastTextIndex > 0) {
-        result = result.slice(0, lastTextIndex);
-    }
-
-    lastTextIndex = result.lastIndexOf('求首訂');
-    if (lastTextIndex > 0) {
-        result = result.slice(0, lastTextIndex);
-    }
-
-    // Bước 8: Chuyển từ phồn thể sang giản thể
-    return result.trim().length == 0 ? convertT2S(name) : convertT2S(result.trim());
 }
 
 function removeParentheses(name) {
@@ -288,7 +288,7 @@ function removeParentheses(name) {
         return result.trim().length == 0 ? convertT2S(name) : convertT2S(result.trim());
     }
 
-    return result.trim().length == 0 ? name : result;
+    return result.trim().length == 0 ? convertT2S(name) : convertT2S(result.trim());
 }
 
 var _fallbackT2S = {
