@@ -44,6 +44,4 @@ function execute(key, page) {
     data = data.filter(p => p.source == "ptwxz");
 
     return Response.success(data, next.toString());
-
-
 }

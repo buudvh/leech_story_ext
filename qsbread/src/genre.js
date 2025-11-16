@@ -1,7 +1,5 @@
 function execute() {
     return Response.success([
-        {title: "Update", input: "", script: "last_update.js"},
-        {title: "New", input: "", script: "last_add.js"},
         {title: "玄幻", input: "/sort/1", script: "gen.js"},
         {title: "奇幻", input: "/sort/2", script: "gen.js"},
         {title: "武侠", input: "/sort/3", script: "gen.js"},

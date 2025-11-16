@@ -34,6 +34,8 @@ function execute(url) {
 
         var bookName = $.Q(doc, '#content h1').text();
 
+        var bookSameAuthor = getListBookSameAuhtor(doc);
+
         return Response.success({
             name: bookName,
             cover: cover,
@@ -54,11 +56,36 @@ function execute(url) {
                     input: bookName,
                     script: "qqcomment.js"
                 },
-            ]
+            ],
+            suggests: [
+                {
+                    title: "同作者",
+                    input: JSON.stringify(bookSameAuthor),
+                    script: "author.js"
+                },
+            ],
         });
     } catch (error) {
-        return Response.error("url: " + url + "\n" + error.message);
+        return Response.error("Url: " + url + "\nMessage: " + error.message);
     }
+}
+
+function getListBookSameAuhtor(doc) {
+    var elms = doc.select(".sidebar-item");
+    if (!elms.length) return [];
+
+    var data = [];
+    elms.forEach(element => {
+        data.push({
+            name: element.select(".info a").first().text(),
+            link: element.select(".info a").first().attr("href"),
+            cover: element.select(".imgbox img").first().attr("src") || DEFAULT_COVER,
+            description: element.select(".info dd").first().text(),
+            host: BASE_URL
+        })
+    });
+
+    return data;
 }
 
 function extractCategory(strText) {

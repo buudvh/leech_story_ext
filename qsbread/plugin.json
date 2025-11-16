@@ -2,7 +2,7 @@
   "metadata": {
     "name": "qsbread",
     "author": "HuongMT",
-    "version": 2,
+    "version": 3,
     "source": "https://www.qsbread.com",
     "regexp": "(www.|m.)(qiushubang|qsbread)(.com|.me)/index/\\d+/?$",
     "description": "Đọc truyện trên trang qsbread.com",
@@ -12,9 +12,11 @@
   },
   "script": {
     "home": "home.js",
+    "genre": "genre.js",
     "detail": "detail.js",
     "page": "page.js",
     "toc": "toc.js",
-    "chap": "chap.js"
+    "chap": "chap.js",
+    "search": "search.js"
   }
 }
