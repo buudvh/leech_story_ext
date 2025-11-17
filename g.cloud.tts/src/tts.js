@@ -2,22 +2,17 @@ load("voice_list.js");
 
 function execute(text, voice) {
     try {
-        // let voiceInfo = voices.find(function (e) {
-        //     return e.id == voice;
-        // });
-        // let lang = "vi-VN"
-        // let voiceName = "via";
-        // if (voiceInfo) {
-        //     lang = voiceInfo.language;
-        //     voiceName = voice.id;
-        // }
+        let apiKey = localStorage.getItem("apiKey");
+
+        if(!apiKey) throw new Error("Vui lòng bỏ apiKey vào localstorage");
+
         let response = fetch("https://readaloud.googleapis.com/v1:generateAudioDocStream", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "x-goog-api-key": "",
+                "x-goog-api-key": apiKey,
             },
-            body: {
+            body: JSON.stringify({
                 "text": {
                     "textParts": text
                 },
@@ -32,11 +27,11 @@ function execute(text, voice) {
                     "voice_criteria_and_selections": [
                         {
                             "criteria": { "language": "vi" },
-                            "selection": { "default_voice": "via" }
+                            "selection": { "default_voice": voice }
                         }
                     ]
                 }
-            }
+            })
         });
 
         if (!response.ok) throw new Error("Status = " + response.status);

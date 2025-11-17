@@ -1,9 +1,8 @@
 let voices = [
-    { language: "vi-VN", id: "via" },
-    { language: "vi-VN", id: "vic" },
-    { language: "vi-VN", id: "vie" },
-    { language: "vi-VN", id: "vib" },
-    { language: "vi-VN", id: "vid" },
-    { language: "vi-VN", id: "vif" },
+    {id: "via", language: "vi"},
+    {id: "vic", language: "vi"},
+    {id: "via", language: "vi"},
+    {id: "vib", language: "vi"},
+    {id: "vid", language: "vi"},
+    {id: "vif", language: "vi"},
 ]
-
