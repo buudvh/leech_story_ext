@@ -1,3 +1,5 @@
+load('libs.js');
+
 function execute(url) {
     try {
         const [resourceId, serialId] = url.match(/resourceid=(\d+).*serialid=(\d+)/).slice(1);
@@ -23,7 +25,7 @@ function execute(url) {
 
         let doc = response.json();
         let content = doc.data.Content[0].Content[0];
-        content = content.replace(/\r\n/g, "<br>");
+        content = cleanHtml(content);
 
         return Response.success(content);
     } catch (error) {
