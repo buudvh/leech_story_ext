@@ -3,7 +3,7 @@
     "name": "Google Cloud TTS",
     "author": "HuongMT",
     "version": 1,
-    "source": "https://www.google.com",
+    "source": "https://cloud.google.com",
     "description": "Nghe truyện bằng Google Cloud TTS",
     "type": "tts"
   },
