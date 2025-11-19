@@ -4383,3 +4383,13 @@ function convertT2S(text) {
         return _fallbackT2S[ch] ? _fallbackT2S[ch] : ch;
     }).join('');
 }
+
+function getBookId(url) {
+    var match = url.match(/\/book\/(\d+)/);
+    return match ? match[1] : null;
+}
+
+function buildCover(bookid) {
+    var folder = bookid.length <= 3 ? "0" : bookid.slice(0, bookid.length - 3);
+    return 'http://www.2wxsi.com/files/article/image/' + folder + '/' + bookid + '/' + bookid + 's.jpg';
+}

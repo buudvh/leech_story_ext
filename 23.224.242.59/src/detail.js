@@ -37,6 +37,6 @@ function execute(url) {
             // ],
         });
     } catch (error) {
-        return Response.error('fetch ' + url + ' failed: ' + error.message);
+        return Response.error(`Url: ${url} \nMessage: ${error.message}`);
     }
 }

@@ -14,7 +14,7 @@ function execute(url) {
 
         return Response.success(convertT2S(content));
     } catch (error) {
-        return Response.error('fetch ' + url + ' failed: ' + error.message);
+        return Response.error(`Url: ${url} \nMessage: ${error.message}`);
     }
 }
 
