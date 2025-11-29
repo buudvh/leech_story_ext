@@ -2,7 +2,7 @@
   "metadata": {
     "name": "69shuba.tw",
     "author": "HuongMT",
-    "version": 37,
+    "version": 38,
     "source": "https://69shuba.tw/",
     "regexp": "^https?:\\/\\/(?:www\\.)?69shuba\\.tw\\/book\\/(\\d+)\\/?$",
     "description": "Đọc truyện trên trang 69shuba.tw",
@@ -13,6 +13,7 @@
   "script": {
     "home": "home.js",
     "detail": "detail.js",
+    "page": "page.js",
     "toc": "toc.js",
     "chap": "chap.js",
     "genre": "genre.js",

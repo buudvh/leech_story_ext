@@ -4,7 +4,7 @@ load('config.js');
 function execute(url) {
     try {
         var data = [];
-        var url = url.replace(/\/book\//, "/indexlist/");
+        var url = BASE_URL + url;
 
         // var response = fetch(url);
         // if (!response.ok) throw new Error(`Status ${response.status}`);
@@ -32,7 +32,7 @@ function execute(url) {
     } catch (error) {
         return Response.error('Url: ' + url + '\nMessage:' + error.message);
         // return Response.success([{
-        //     name: error.message,
+        //     name: 'Url: ' + url + ', Message:' + error.message,
         //     url: '',
         //     host: BASE_URL,
         // }]);
