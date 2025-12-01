@@ -8,7 +8,7 @@
       "name": "69shuba",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/69shuba/69shuba.zip",
-      "version": 38,
+      "version": 39,
       "source": "https://www.69shuba.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/69shuba/icon.png",
       "description": "Đọc truyện trên trang https://www.69shuba.com"
@@ -17,7 +17,7 @@
       "name": "qidian",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian/qidian.zip",
-      "version": 13,
+      "version": 14,
       "source": "https://www.qidian.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian/icon.png",
       "description": "Đọc truyện trên trang https://www.qidian.com (chap miễn phí)"
@@ -35,7 +35,7 @@
       "name": "69shubatw",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/69shubatw/69shubatw.zip",
-      "version": 38,
+      "version": 39,
       "source": "https://www.69shuba.tw",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/69shubatw/icon.png",
       "description": "Đọc truyện trên trang https://www.69shuba.tw"
@@ -116,7 +116,7 @@
       "name": "html5.qq.com",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/html5qq/html5qq.zip",
-      "version": 9,
+      "version": 10,
       "source": "https://bookshelf.html5.qq.com/qbread/categorylist?traceid=0809004&sceneid=FeedsTab&strageid=&ch=001995&tabfrom=top&feeds_version=8516&reader_version=0&groupid=1502&tag_type_id=1%27",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/html5qq/icon.png",
       "description": "Đọc truyện trên trang https://bookshelf.html5.qq.com"

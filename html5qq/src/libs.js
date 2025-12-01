@@ -195,20 +195,20 @@ function formatName(name) {
             result = result.replace(reDuplicate, '第$1章 $2');
         }
 
-        // Bước 3: Cắt bỏ phần ngoặc (...) hoặc （...）
-        var lastParenIndex = Math.max(result.lastIndexOf('('), result.lastIndexOf('（'));
-        if (lastParenIndex !== -1) {
-            result = result.slice(0, lastParenIndex);
-        }
+        // // Bước 3: Cắt bỏ phần ngoặc (...) hoặc （...）
+        // var lastParenIndex = Math.max(result.lastIndexOf('('), result.lastIndexOf('（'));
+        // if (lastParenIndex !== -1) {
+        //     result = result.slice(0, lastParenIndex);
+        // }
 
-        // Bước 4: Nếu chỉ còn "第X章 【...】", thì return luôn
-        var onlyBracket = /^第\d+章\s*【[^】]*】?\s*$/;
-        if (onlyBracket.test(result)) {
-            return result.trim().length == 0 ? (name) : (result.trim());
-        }
+        // // Bước 4: Nếu chỉ còn "第X章 【...】", thì return luôn
+        // var onlyBracket = /^第\d+章\s*【[^】]*】?\s*$/;
+        // if (onlyBracket.test(result)) {
+        //     return result.trim().length == 0 ? (name) : (result.trim());
+        // }
 
-        // Bước 5: Xóa phần sau "【"
-        result = result.replace(/【.*$/, '');
+        // // Bước 5: Xóa phần sau "【"
+        // result = result.replace(/【.*$/, '');
 
         // Bước 6: Loại bỏ các phần có trong mảng
         var arrTextRemove = [
@@ -218,6 +218,8 @@ function formatName(name) {
             '求关注',
             '〔',
             '{',
+            '(',
+            '（'
         ];
         var arrTextLastIndex = arrTextRemove.map(item => result.lastIndexOf(item));
         var filtered = arrTextLastIndex.filter(x => x !== -1);
