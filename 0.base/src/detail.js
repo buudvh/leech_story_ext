@@ -11,11 +11,18 @@ function execute(url) {
         var genreElm = doc.select("div.novel_info_main > div > p:nth-child(3) > span:nth-child(1)");
 
         return Response.success({
-            name: doc.select('h1').text().convertT2S(),
+            name: convertT2S(text(doc, 'h1')),
             cover: doc.select(".novel_info_main img").first().attr("src") || DEFAULT_COVER,
-            author: authorElm.text().convertT2S(),
-            description: doc.select("#info div.intro").html().cleanHtml(),
-            detail: "更新：" + doc.select("div.novel_info_main > div > div.flex.to100 > .s_gray").text().convertT2S(),
+            author: convertT2S(authorElm.text()),
+            description: convertT2S(cleanHtml(doc.select("#info div.intro").html())),
+            detail: "更新：" + convertT2S(doc.select("div.novel_info_main > div > div.flex.to100 > .s_gray").text()),
+            // suggests: [
+            //     {
+            //         title: 'Recommend',
+            //         input: doc.select(".side_commend").html(),
+            //         script: "recommend.js"
+            //     }
+            // ],
             genres: [
                 {
                     title: genreElm.text(),
@@ -26,6 +33,7 @@ function execute(url) {
             comments: [{
                 title: "Reviews",
                 input: doc.select('.reviews').html(),
+                // input: url,
                 script: "reviews.js"
             }],
         });

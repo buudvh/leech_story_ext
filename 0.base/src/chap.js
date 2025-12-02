@@ -13,10 +13,10 @@ function execute(url) {
         htm.select("h1").remove();
 
         htm = htm.html();
-        htm = htm.cleanHtml();
+        htm = htm.cleanHtml()
 
         return Response.success(convertT2S(htm));
     } catch (error) {
-        return Response.error('fetch ' + url + ' failed: ' + error.message);
+        return Response.error(`Url: ${url} \nMessage: ${error.message}`);
     }
 }

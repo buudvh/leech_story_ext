@@ -16,8 +16,8 @@ function execute(data) {
 
         reviewElms.forEach(function (e) {
             reviews.push({
-                name: e.select('.reviewer').text().convertT2S(),
-                content: e.select('.review-content').text().convertT2S(),
+                name: convertT2S(e.select('.reviewer').text()),
+                content: convertT2S(e.select('.review-content').text()),
             });
         });
 

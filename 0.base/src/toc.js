@@ -22,7 +22,7 @@ function execute(url) {
 
         chapterElms.forEach(function (e) {
             data.push({
-                name: (e.select("a").first().text() || e.select('span').first().text()).formatTocName(),
+                name: formatName(e.select("a").first().text() || e.select('span').first().text()),
                 url: e.select("a").first().attr('href') || e.select('span').first().attr('data-cid-url'),
                 host: BASE_URL,
             });
@@ -30,11 +30,11 @@ function execute(url) {
 
         return Response.success(data);
     } catch (error) {
-        // return Response.error('fetch ' + url + ' failed: ' + error.message);
-        return Response.success([{
-            name: error.message,
-            url: '',
-            host: BASE_URL,
-        }]);
+        return Response.error('fetch ' + url + ' failed: ' + error.message);
+        // return Response.success([{
+        //     name: 'fetch ' + url + ' failed: ' + error.messag,
+        //     url: '',
+        //     host: BASE_URL,
+        // }]);
     }
 }
