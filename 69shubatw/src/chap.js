@@ -13,12 +13,10 @@ function execute(url) {
         htm.select("h1").remove();
 
         htm = htm.html();
-        htm = cleanHtml(htm)
-            .replace(/^第\d+章.*?<br>/, '') // Ex: '  第11745章 大结局，终<br>'
-            .replace('(本章完)', '');
+        htm = htm.cleanHtml();
 
-        return Response.success(convertT2S(htm));
+        return Response.success(htm);
     } catch (error) {
-        return Response.error('fetch ' + url + ' failed: ' + error.message);
+        return Response.error(`Url ${url} \nMessage: ${error.message}`);
     }
 }

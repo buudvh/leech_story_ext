@@ -22,7 +22,7 @@ function execute(url) {
 
         chapterElms.forEach(function (e) {
             data.push({
-                name: formatName(e.select("a").first().text() || e.select('span').first().text()),
+                name: (e.select("a").first().text() || e.select('span').first().text()).formatTocName(),
                 url: e.select("a").first().attr('href') || e.select('span').first().attr('data-cid-url'),
                 host: BASE_URL,
             });
@@ -30,7 +30,7 @@ function execute(url) {
 
         return Response.success(data);
     } catch (error) {
-        return Response.error('Url: ' + url + '\nMessage:' + error.message);
+        return Response.error(`Url ${url} \nMessage: ${error.message}`);
         // return Response.success([{
         //     name: 'Url: ' + url + ', Message:' + error.message,
         //     url: '',

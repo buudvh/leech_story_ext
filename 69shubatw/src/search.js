@@ -30,18 +30,18 @@ function execute(key, page) {
 
         elms.forEach(function (e) {
             data.push({
-                name: convertT2S(e.select(".article > a").first().text()),
-                link: BASE_URL + e.select(".article > a").first().attr("href"),
+                name: e.select(".article > a").first().text().convertT2S(),
+                link: e.select(".article > a").first().attr("href"),
                 cover: e.select("img").first().attr("src") || DEFAULT_COVER,
-                description: convertT2S(e.select("span.mr15").first().text())
-                    + "\n" + convertT2S(e.select("span.fs12.gray").first().text()),
+                description: e.select("span.mr15").first().text().convertT2S()
+                    + "\n" + e.select("span.fs12.gray").first().text().convertT2S(),
                 host: BASE_URL
             });
         });
 
         return Response.success(data);
-    } catch (e) {
-        return Response.error(`fetch ${url} failed: ${e.message}`);
+    } catch (error) {
+        return Response.error(`Url ${url} \nMessage: ${error.message}`);
     }
 }
 

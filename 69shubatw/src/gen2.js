@@ -16,24 +16,23 @@ function execute(url, page) {
 
         elms.forEach(function (e) {
             data.push({
-                name: convertT2S(e.select(".article > a").first().text()),
-                link: BASE_URL + e.select(".article > a").first().attr("href"),
+                name: e.select(".article > a").first().text().convertT2S(),
+                link: e.select(".article > a").first().attr("href"),
                 cover: e.select("img").first().attr("src") || DEFAULT_COVER,
-                // description: convertT2S(e.select("span.mr15").first().text()) + "\n" +convertT2S(e.select("span.fs12").first().text()),
-                description: '作者: ' + getAuthorName(convertT2S(e.select("span.mr15").first().text()))
-                    + "\n" + convertT2S(e.select("span.fs12.gray").first().text()),
+                description: '作者: ' + getAuthorName(e.select("span.mr15").first().text().convertT2S())
+                    + "\n" + e.select("span.fs12.gray").first().text().convertT2S(),
                 host: BASE_URL
             });
         });
 
         var next = parseInt(page, 10) + 1;
         return Response.success(data, next.toString());
-    } catch (e) {
-        return Response.error(`fetch ${url} failed: ${e.message}`);
+    } catch (error) {
+        return Response.error(`Url ${url} \nMessage: ${error.message}`);
     }
 }
 
-function getAuthorName(text){
+function getAuthorName(text) {
     //作者:星域　86萬字
     const match = text.match(/^作者:(.+?)\u3000[\d一二三四五六七八九十百千万萬]+字$/);
     return (match ? match[1].trim() : null);

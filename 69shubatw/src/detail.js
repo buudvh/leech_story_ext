@@ -9,19 +9,18 @@ function execute(url) {
         var doc = response.html();
         var authorElm = doc.select('div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(2) > a');
         var genreElm = doc.select("div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(3) > a");
-        var bookName = convertT2S(text(doc, 'div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(1) > strong'));
+        var bookName = doc.select('div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(1) > strong').text().convertT2S();
+        var detail = $.QA(doc, 'div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p',
+            { m: function (x) { return x.text().indexOf("更新：") === 0 || x.text().indexOf("最新：") === 0 ? x.text() : ""; }, j: '<br>' });
 
         return Response.success({
-            name: removeParentheses(bookName),
+            name: bookName.formatTocName(),
             cover: doc.select(".bookinfo img").first().attr("src") || DEFAULT_COVER,
             author: authorElm.text(),
-            description: convertT2S(cleanHtml(doc.select("div.intro").html())).replace(/([.!?…]+)/g, function (match) {
+            description: doc.select("div.intro").html().cleanHtml().replace(/([.!?…]+)/g, function (match) {
                 return match + "\n";
             }),
-            detail: convertT2S(
-                $.QA(doc, 'div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p',
-                    { m: function (x) { return x.text().indexOf("更新：") === 0 || x.text().indexOf("最新：") === 0 ? x.text() : ""; }, j: '<br>' })
-            ),
+            detail: detail.convertT2S(),
             host: BASE_URL,
             suggests: [
                 {
@@ -46,6 +45,6 @@ function execute(url) {
             ]
         });
     } catch (error) {
-        return Response.error('fetch ' + url + ' failed: ' + error.message);
+        return Response.error(`Url ${url} \nMessage: ${error.message}`);
     }
 }
