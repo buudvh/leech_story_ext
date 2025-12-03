@@ -18,7 +18,7 @@ function execute(url) {
             doc = browser.launch(url, 4000);
             browser.close();
         } else {
-            return Response.error('fetch ' + url + ' failed: status ' + response.status);
+            throw new Error("Fail to fetch");
         }
 
         var htm = doc.select(".txtnav");
@@ -28,13 +28,10 @@ function execute(url) {
         htm.select("#txtright").remove();
         htm.select("h1").remove();
 
-        htm = htm.html();
-        htm = cleanHtml(htm)
-            .replace(/^第\d+章.*?<br>/, '') // Ex: '  第11745章 大结局，终<br>'
-            .replace('(本章完)', '');
+        htm = htm.html().cleanHtml();
 
         return Response.success(htm);
     } catch (error) {
-        return Response.error('fetch ' + url + ' failed: ' + error.message);
+        return Response.error(`Url: ${url} \nMessage: ${error.message}`);
     }
 }

@@ -16,13 +16,13 @@ function getDetailSTV(url) {
         }];
 
         var authorName = getAuhtorNameSTV(doc);
-        var bookName = text(doc, '#oriname');
+        var bookName = $.Q(doc, '#oriname').text();
         var cover = buildCover(bookid);
 
         return Response.success({
             name: bookName,
             cover: cover,
-            author: text(doc, 'h2'),
+            author: $.Q(doc, 'h2').text,
             description: $.QA(doc, '#book-sumary p', { m: function (x) { return x.text(); }, j: '<br>' }),
             detail: '【Thông tin lấy từ Sangtacviet】'
                 + '<br>Bookid: ' + bookid

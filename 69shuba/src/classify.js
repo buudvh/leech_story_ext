@@ -2,18 +2,23 @@ load('libs.js');
 load('config.js');
 
 function execute(url, page) {
-    page = page || '1';
-    url = url.replace("https://www.69shuba.com", "");
-    url = url.substring(1, url.lastIndexOf('.'));
-    url = 'ajax_' + url + '/' + page + '.htm';
-    url = "https://www.69shuba.com/" + url;
-    let response = fetch(url);
-    if (response.ok) {
+    try {
+        page = page || '1';
+        url = url.replace("https://www.69shuba.com", "");
+        url = url.substring(1, url.lastIndexOf('.'));
+        url = 'ajax_' + url + '/' + page + '.htm';
+        url = "https://www.69shuba.com/" + url;
+        let response = fetch(url);
+
+        if (!response.ok) throw new Error(`Status = ${response.status}`);
+
         let doc = response.html('gbk');
         var data = [];
         var elems = $.QA(doc, 'li');
-        if (!elems.length) return Response.error(url);
-        elems.forEach(function(e) {
+
+        if (!elems.length) throw new Error("Length = 0");
+
+        elems.forEach(function (e) {
             data.push({
                 name: $.Q(e, '.newnav h3 > a:not([class])').text().trim(),
                 link: $.Q(e, 'h3 > a').attr('href'),
@@ -24,6 +29,7 @@ function execute(url, page) {
         })
         var next = parseInt(page, 10) + 1;
         return Response.success(data, next.toString());
+    } catch (error) {
+        return Response.error(`Url: ${url} \nMessage: ${error.message}`);
     }
-    return null;
 }

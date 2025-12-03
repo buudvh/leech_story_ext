@@ -23,7 +23,7 @@ function execute(url) {
             var id = elems[i].attr('data-num');
             if (!seenIds[id] && $.QA(elems[i], "a:not(#bookcase)").length) { 
                 data.push({
-                    name: formatName(e.text()),
+                    name: e.text().formatTocName(),
                     url: e.attr('href'),
                     host: BASE_URL,
                     id: id
@@ -36,6 +36,6 @@ function execute(url) {
 
         return Response.success(data);
     } catch (error) {
-        return Response.error('fetch ' + url + ' failed: ' + error.message);
+        return Response.error(`Url: ${url} \nMessage: ${error.message}`);
     }
 }

@@ -25,17 +25,17 @@ function execute(url) {
         var doc = browser.html();
         browser.close();
 
-        if (text(doc, 'div.booknav2 > h1 > a') === '') return getDetailSTV(firstUrl);
+        if ($.Q(doc, 'div.booknav2 > h1 > a').text() === '') return getDetailSTV(firstUrl);
 
         var genres = buildGenres(doc) || [];
 
-        var bookName = text(doc, 'div.booknav2 > h1 > a');
+        var bookName = $.Q(doc, 'div.booknav2 > h1 > a').text();
         var cover = buildCover(bookid);
 
         return Response.success({
             name: bookName,
             cover: cover,
-            author: text(doc, 'div.booknav2 > p:nth-child(2) > a'),
+            author: $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').text(),
             description: $.Q(doc, 'div.navtxt > p') ? $.Q(doc, 'div.navtxt > p').html() : '',
             detail: $.QA(doc, 'div.booknav2 p', {
                 m: function (x) { return x.text().indexOf("更新") == 0 ? x.text() : ""; }, j: '<br>'
@@ -75,7 +75,7 @@ function execute(url) {
             ]
         });
     } catch (error) {
-        return Response.error('fetch ' + url + ' failed: ' + error.message);
+        return Response.error(`Url: ${url} \nMessage: ${error.message}`);
     }
 }
 

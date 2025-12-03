@@ -17,7 +17,7 @@ function execute(bookid, next) {
             body: params
         });
 
-        if (!response.ok) throw new Error(`Status ${response.status}`);
+        if (!response.ok) throw new Error(`Status = ${response.status}`);
 
         let doc = response.html();
         let comments = [];
@@ -28,7 +28,7 @@ function execute(bookid, next) {
         listCmtElm.forEach(function (elm) {
             comments.push({
                 name: elm.select('div.sec-bot a').text(),
-                content: cleanHtml(elm.select('div.sec-top').html()),
+                content: elm.select('div.sec-top').html().cleanHtml(),
             });
         });
 
