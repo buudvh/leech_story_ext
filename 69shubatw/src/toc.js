@@ -6,15 +6,15 @@ function execute(url) {
         var data = [];
         var url = BASE_URL + url;
 
-        // var response = fetch(url);
-        // if (!response.ok) throw new Error(`Status ${response.status}`);
+        var response = fetch(url);
+        if (!response.ok) throw new Error(`Status ${response.status}`);
 
-        // var doc = response.html();
+        var doc = response.html();
 
-        var browser = Engine.newBrowser(); // Khởi tạo browser
-        browser.launch(url, 10000); // Mở trang web với timeout
-        var doc = browser.html();
-        browser.close();
+        // var browser = Engine.newBrowser(); // Khởi tạo browser
+        // browser.launch(url, 10000); // Mở trang web với timeout
+        // var doc = browser.html();
+        // browser.close();
 
         chapterElms = doc.select("#alllist > div.lb_mulu > ul > li:not(.title)");
 
@@ -22,7 +22,7 @@ function execute(url) {
 
         chapterElms.forEach(function (e) {
             data.push({
-                name: (e.select("a").first().text() || e.select('span').first().text()).formatTocName(),
+                name: (e.select("a").first().text() || e.select('span').first().text()),
                 url: e.select("a").first().attr('href') || e.select('span').first().attr('data-cid-url'),
                 host: BASE_URL,
             });
