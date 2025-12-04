@@ -4250,8 +4250,10 @@ String.prototype.cleanHtml = function () {
     // trim br tags
     html = html.replace(/(^(\s*<br>\s*)+|(<br>\s*)+$)/gm, '');
     //
-    html = html.replace(/第\d+章 text<br>/g, '');
-
+    html = html.trim();
+    //
+    html = html.replace(/^第\d+章.*?<br>/, '');
+    //
     html = html.replace('(本章完)', '');
 
     return html.trim().normalizeChineseTime().convertT2S();
