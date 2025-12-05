@@ -103,6 +103,7 @@ function execute() {
         { title: "柯南", input: "柯南", script: "search.js" }, //Conan
 
         //Thể loại
+        { title: "同人", input: "/fenlei/tongren/1/", script: "gen2.js" },
         { title: "玄幻", input: "/fenlei/xuanhuan/1/", script: "gen2.js" },
         { title: "仙侠", input: "/fenlei/wuxia/1/", script: "gen2.js" },
         { title: "都市", input: "/fenlei/dushi/1/", script: "gen2.js" },
