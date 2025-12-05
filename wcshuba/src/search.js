@@ -5,59 +5,38 @@ load('common.js');
 function execute(key, page) {
     try {
         page = page || '1';
-        url = BASE_URL + "/search/";
+        url = BASE_URL + "/search/?searchkey=" + encodeURIComponent(key) + "/" + page;
         var data = [];
 
-        var params = encodeFormData({
-            searchkey: key,
-            searchtype: "all",
-            t_btnsearch: ""
+        var response = fetch(url, {
+            method: 'GET',
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1',
+            }
         });
 
-        var response = fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: params
-        });
         if (!response.ok) throw new Error(`Status ${response.status}`)
 
         var doc = response.html();
-        var elms = doc.select(".list-item");
+        var elms = doc.select(".content dl");
 
         if (!elms.length) throw new Error(`Length = 0`);
 
         elms.forEach(function (e) {
+            let link = e.select("dt:nth-child(2) > a").first().attr("href");
             data.push({
-                name: e.select(".article > a").first().text().convertT2S(),
-                link: e.select(".article > a").first().attr("href"),
-                cover: e.select("img").first().attr("src") || DEFAULT_COVER,
-                description: e.select("span.mr15").first().text().convertT2S()
-                    + "\n" + e.select("span.fs12.gray").first().text().convertT2S(),
+                name: e.select("dt:nth-child(2) > a").first().text().convertT2S(),
+                link: link,
+                cover: buildCover(getBookId(link)),
+                description: '作者: ' + e.select('dd:nth-child(4) > a').first().text().convertT2S()
+                    + "\n" + e.select("dd:nth-child(3)").first().text().convertT2S(),
                 host: BASE_URL
             });
         });
 
-        return Response.success(data);
+        var next = parseInt(page, 10) + 1;
+        return Response.success(data, next.toString());
     } catch (error) {
         return Response.error(`Url ${url} \nMessage: ${error.message}`);
     }
-}
-
-function encodeFormData(data) {
-    var pairs = [];
-    for (var key in data) {
-        if (data.hasOwnProperty(key)) {
-            pairs.push(encodeURIComponent(key) + "=" + encodeURIComponent(data[key]));
-        }
-    }
-    return pairs.join("&");
-}
-
-function getAuthorName(text) {
-    //作者:七年之期 閱讀:9 字數： 萬字
-    const match = text.match(/^作者:(.+?)\s*閱讀:/);
-
-    return (match ? match[1].trim() : null);
 }

@@ -103,13 +103,13 @@ function execute() {
         { title: "柯南", input: "柯南", script: "search.js" }, //Conan
 
         //Thể loại
-        { title: "玄幻", input: "/fenlei/xuanhuan/1/", script: "gen2.js" },
-        { title: "仙侠", input: "/fenlei/wuxia/1/", script: "gen2.js" },
-        { title: "都市", input: "/fenlei/dushi/1/", script: "gen2.js" },
-        { title: "歷史", input: "/fenlei/lishi/1/", script: "gen2.js" },
-        { title: "遊戲", input: "/fenlei/youxi/1/", script: "gen2.js" },
-        { title: "科幻", input: "/fenlei/kehu/1/", script: "gen2.js" },
-        { title: "女生", input: "/fenlei/kongbu/1/", script: "gen2.js" },
-        { title: "其他", input: "/fenlei/qita/1/", script: "gen2.js" },
+        { title: "同人", input: "/sort/9/", script: "gen.js" },
+        { title: "玄幻", input: "/sort/1/", script: "gen.js" },
+        { title: "仙侠", input: "/sort/2/", script: "gen.js" },
+        { title: "都市", input: "/sort/3/", script: "gen.js" },
+        { title: "歷史", input: "/sort/4/", script: "gen.js" },
+        { title: "遊戲", input: "/sort/5/", script: "gen.js" },
+        { title: "科幻", input: "/sort/6/", script: "gen.js" },
+        { title: "言情", input: "/sort/8/", script: "gen.js" },
     ]);
 }

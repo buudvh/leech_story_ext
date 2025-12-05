@@ -5,7 +5,12 @@ function execute(url) {
     try {
         url = BASE_URL + url
         var data = [];
-        var response = fetch(url);
+        var response = fetch(url, {
+            method: 'GET',
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
+            }
+        });
         if (!response.ok) throw new Error(`Status ${response.status}`)
 
         var doc = response.html();
@@ -18,7 +23,6 @@ function execute(url) {
                 name: e.select("img").first().attr("alt").convertT2S(),
                 link: e.attr("href"),
                 cover: e.select("img").first().attr("src") || DEFAULT_COVER,
-                description: e.text().convertT2S(),
                 host: BASE_URL
             });
         });

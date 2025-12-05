@@ -1,5 +1,6 @@
 var BASE_URL = 'https://wcshuba.com';
 var DEFAULT_COVER = 'https://raw.githubusercontent.com/buudvh/leech_story_ext/main/asset/cover1.jpg';
+var COVER_BASE = 'https://pic.wcshuba.com';
 
 try {
     if (typeof CONFIG_URL !== 'undefined' && CONFIG_URL) {

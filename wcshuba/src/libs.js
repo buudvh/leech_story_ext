@@ -4388,3 +4388,14 @@ var $ = {
         return arr;
     }
 }
+
+function buildCover(bookid) {
+    if(!bookid) return DEFAULT_COVER;
+    var folder = bookid.length <= 3 ? "0" : bookid.slice(0, bookid.length - 3);
+    return `${COVER_BASE}/${folder}/${bookid}/${bookid}s.jpg`;
+}
+
+function getBookId(url) {
+    const match = url.match(/\/book\/(\d+)\.html$/);
+    return match ? match[1] : null;
+}
