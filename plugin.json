@@ -5,6 +5,15 @@
   },
   "data": [
     {
+      "name": "1qxs",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/1qxs/1qxs.zip",
+      "version": 1,
+      "source": "https://www.1qxs.com",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/1qxs/icon.png",
+      "description": "Đọc truyện trên trang https://www.1qxs.com"
+    },
+    {
       "name": "wcshuba",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/wcshuba/wcshuba.zip",
