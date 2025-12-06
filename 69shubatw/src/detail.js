@@ -12,10 +12,12 @@ function execute(url) {
         var bookName = doc.select('div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(1) > strong').text().convertT2S();
         var detail = $.QA(doc, 'div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p',
             { m: function (x) { return x.text().indexOf("更新：") === 0 || x.text().indexOf("最新：") === 0 ? x.text() : ""; }, j: '<br>' });
+        var cover = doc.select(".bookinfo img").first().attr("src") || DEFAULT_COVER;
+        if(cover.indexOf('//') == 0) cover = "http:" + cover;
 
         return Response.success({
             name: bookName.formatTocName(),
-            cover: doc.select(".bookinfo img").first().attr("src") || DEFAULT_COVER,
+            cover: cover,
             author: authorElm.text(),
             description: doc.select("div.intro").html().cleanHtml().replace(/([.!?…]+)/g, function (match) {
                 return match + "\n";

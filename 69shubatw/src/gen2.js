@@ -15,10 +15,12 @@ function execute(url, page) {
         if (!elms.length) throw new Error(`Length = 0`);
 
         elms.forEach(function (e) {
+            var cover = e.select("img").first().attr("src") || DEFAULT_COVER
+            if(cover.indexOf('//') == 0) cover = "http:" + cover;
             data.push({
                 name: e.select(".article > a").first().text().convertT2S(),
                 link: e.select(".article > a").first().attr("href"),
-                cover: e.select("img").first().attr("src") || DEFAULT_COVER,
+                cover: cover,
                 description: '作者: ' + getAuthorName(e.select("span.mr15").first().text().convertT2S())
                     + "\n" + e.select("span.fs12.gray").first().text().convertT2S(),
                 host: BASE_URL

@@ -9,16 +9,15 @@ function execute(url) {
         if (!response.ok) throw new Error(`Status ${response.status}`)
 
         var doc = response.html();
-        var elms = doc.select("dt > a");
+        var elms = doc.select(".waps_one");
 
         if (!elms.length) throw new Error(`Length = 0`);
 
         elms.forEach(function (e) {
             data.push({
-                name: e.select("img").first().attr("alt").convertT2S(),
-                link: e.attr("href"),
-                cover: e.select("img").first().attr("src") || DEFAULT_COVER,
-                description: e.text().convertT2S(),
+                name: e.select("a.bookname").first().text().convertT2S(),
+                link: e.select("a.bookname").first().attr("href"),
+                cover: DEFAULT_COVER,
                 host: BASE_URL
             });
         });
