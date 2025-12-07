@@ -2,7 +2,7 @@
   "metadata": {
     "name": "sto55",
     "author": "HuongMT",
-    "version": 1,
+    "version": 2,
     "source": "https://sto55.com/",
     "regexp": "https://sto55.com/book/\\d+/",
     "description": "Đọc truyện trên trang sto55.com",
