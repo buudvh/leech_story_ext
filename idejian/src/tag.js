@@ -1,47 +1,42 @@
 load('libs.js');
 load('config.js');
-load('common.js');
 
 function execute(tag, page) {
+    var url = '';
     try {
-        var arrTag = tag.split("&");
+        let arrTag = tag.split("&");
         if (!page) page = '1';
-        var sort = 'update';
-        if (arrTag.length === 2) {
+        let sort = 'update';
+        if (arrTag.length == 2) {
             sort = arrTag[1];
         }
+        // let url = `${STVHOST}/io/searchtp/searchBooks/?find=&tag=${arrTag[0]}&sort=${sort}&host=69shu&minc=0&p=${page}`;
+        url = STVHOST + '/io/searchtp/searchBooks/?find=&tag=' + arrTag[0] + '&sort=' + sort + '&host=69shu&minc=0&p=' + page;
+        let response = fetch(url);
 
-        var url = STVHOST + '/io/searchtp/searchBooks/?find=&tag=' + arrTag[0] + '&sort=' + sort + '&host=idejian&minc=0&p=' + page;
-        var response = fetch(url);
+        if (!response.ok) throw new Error(`Status = ${response.status}`);
 
-        if (response.ok) {
-            var doc = response.html();
-            var el = doc.select("a.booksearch");
+        let doc = response.html()
+        let next = parseInt(page, 10) + 1;
+        let el = doc.select("a.booksearch")
+        let data = [];
 
-            if (!el.length) return null;
+        if (!el.length) throw new Error("Length = 0");
 
-            var next = (parseInt(page, 10) + 1).toString();
-            var data = [];
+        el.forEach(e => {
+            let stv_story_link = e.select("a").first().attr("href");
+            let bookid = stv_story_link.split("/")[4];
+            data.push({
+                name: toCapitalize(e.select(".searchbooktitle").first().text()),
+                link: STVHOST + "/truyen/69shu/1/" + bookid + "/",
+                cover: buildCover(bookid),
+                description: e.select("div > span.searchtag").first().text() + "|" + e.select("div > span.searchbookauthor").first().text()
+                    + "\n" + e.select("div > span.lhr").last().text(),
+            })
+        });
 
-            el.forEach(function (e) {
-                var stv_story_link = e.select("a").first().attr("href") || "";
-                var parts = stv_story_link.split("/");
-                var bookid = parts.length > 4 ? parts[4] : "";
-                data.push({
-                    name: toCapitalize(e.select(".searchbooktitle").first().text()),
-                    link: BASE_URL + '/book/' + bookid + '/',
-                    cover: DEFAULT_COVER,
-                    description: e.select("div > span.searchtag").first().text() + "|" + e.select("div > span.searchbookauthor").first().text()
-                        + "\n" + e.select("div > span.lhr").last().text(),
-                    host: BASE_URL
-                });
-            });
-
-            return Response.success(data, next);
-        }
-
-        return Response.error('fetch ' + url + ' failed: status ' + response.status);
+        return Response.success(data, next.toString());
     } catch (error) {
-        return Response.error('fetch ' + url + ' failed: ' + error.message);
+        return Response.error(`Url: ${url} \nMessage: ${error.message}`);
     }
 }

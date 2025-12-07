@@ -1,46 +1,88 @@
+load('libs.js');
 load('config.js');
 
-// https://wechat.idejian.com/api/wechat/book/13178363
-
 function execute(url) {
-    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
-    if (url.slice(-1) !== "/") {
-        url = url + "/";
-    }
-    var response = fetch(url);
-    if (response.ok) {
+    try {
+        var response = fetch(url, {
+            method: 'GET',
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
+            }
+        });
+
+        if (!response.ok) throw new Error(`Status ${response.status}`);
+
         var doc = response.html();
-        var author = doc.select(".detail_bkauthor").first().text();
-        var title = doc.select(".detail_bkinfo .detail_bkname a").text();
-        var coverImg = doc.select(".detail_bkinfo .book_img > img").attr("src");
-        var tag = doc.select(".detail_bkgrade > span:not(.light_box)");
-        var descriptionMeta = doc.select(".bk_brief .brief_con").html();
-        var status = doc.select(".detail_bkgrade > span.light_box").html();
-        var views = doc.select(".bk_fontinfo").html().replace(/<span>/g, ' ');
-        var rating = doc.select(".detail_bkinfo_rig strong").text();
-
-        var genres = [];
-
-        for (var i = 0; i < tag.size(); i++) {
-            var e = tag.get(i);
-            genres.push({
-                title: e.text(),
-                input: '&update',
-                script: "search.js"
-            });
-        }
-
-        var detail = status + "<br>‎<br>" + views + "<br>ㅤ‎<br>" + rating;
 
         return Response.success({
-            name: title,
-            cover: DEFAULT_COVER,
-            author: author,
-            description: descriptionMeta,
-            detail: detail,
+            name: doc.select('div.detail_bkname a').first().text(),
+            cover: doc.select('div.info_bookimg a img').first().attr('src'),
+            author: doc.select('div.detail_bkauthor').first().text(),
+            description: doc.select('div.bk_brief div.brief_con').html().cleanHtml(),
+            detail: `更新: ${doc.select('#next-chapter div div a').first().text()}`,
             host: BASE_URL,
-            genres: genres
+            // suggests: [
+            //     {
+            //         title: "同作者",
+            //         input: encodeAuthorUrl($.Q(doc, 'div.booknav2 > p:nth-child(2) > a') ? $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr("href") : ''),
+            //         script: "author.js"
+            //     }
+            // ],
+            // genres: genres,
+            // comments: [
+            //     {
+            //         title: "评论",
+            //         input: bookid,
+            //         script: "comment.js"
+            //     },
+            //     {
+            //         title: "QQ Comments",
+            //         input: bookName,
+            //         script: "qqcomment.js"
+            //     },
+            // ]
+        });
+    } catch (error) {
+        return Response.error(`Url: ${url} \nMessage: ${error.message}`);
+    }
+}
+
+function buildFinalUrl(bookid) {
+    return BASE_URL + '/book/' + bookid + '.htm';
+}
+
+function buildGenres(doc) {
+    var genres = [];
+
+    var mainGenreEl = $.Q(doc, 'div.booknav2 > p:nth-child(3) > a');
+    if (mainGenreEl && mainGenreEl.text()) {
+        genres.push({
+            title: mainGenreEl.text().trim(),
+            input: mainGenreEl.attr("href"),
+            script: "classify.js"
         });
     }
-    return null;
+
+    var tagStr = doc.select("#div-book-infor") && doc.select("#div-book-infor").attr('tagsData') || '';
+    var tags = tagStr.split("|");
+
+    for (var i = 0; i < tags.length; i++) {
+        var tag = tags[i];
+        if (tag) {
+            genres.push({
+                title: tag,
+                input: '/' + tag + '/{0}/',
+                script: "gen2.js"
+            });
+        }
+    }
+
+    return genres;
+}
+
+function encodeAuthorUrl(url) {
+    if (!url) return "";
+    var baseUrl = "https://www.69shuba.com/modules/article/author.php?author=";
+    var author = GBK.encode(url.replace(baseUrl, ""));
+    return baseUrl + author;
 }

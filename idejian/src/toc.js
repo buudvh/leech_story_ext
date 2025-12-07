@@ -1,35 +1,40 @@
+load('libs.js');
 load('config.js');
+load('stv.js');
+
+//https://www.idejian.com/catelog/13438991/1?page=1
 
 function execute(url) {
-    var data = [];
-    var chapterRegex = /<a\s+href="([^"]+)">([^<]+)<\/a>/g;
     try {
-        var response = fetch(url);
-        if (!response.ok) return Response.success([{
-            url,
-            name: url,
-            host: BASE_URL
-        }]);;
+        var response = fetch(url, {
+            method: 'GET',
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
+            }
+        });
 
-        var json = response.json();
-        var html = json.html;
-        if (html.length === 0) return null;
+        if (!response.ok) throw new Error(`Status ${response.status}`);
 
-        var m;
-        while ((m = chapterRegex.exec(html)) !== null) {
-            data.push({
-                url: m[1],
-                name: m[2].trim(),
-                host: BASE_URL
-            });
-        }
+        var data = response.json();
 
-        return Response.success(data);
-    } catch (e) {
-        return Response.success([{
-            url: url,
-            name: e.message,
-            host: BASE_URL
-        }]);
+        if (data.code != 0) throw new Error(`Code = ${data.code}`);
+
+        var doc = Html.parse(data.html);
+        var elms = doc.select('a');
+        var result = [];
+
+        elms.forEach(e => {
+            result.push({
+                name: e.text().formatTocName(),
+                url: e.attr('href'),
+                host: BASE_URL,
+            })
+        });
+
+        // data = data.reverse();
+
+        return Response.success(result);
+    } catch (error) {
+        return Response.error(`Url: ${url} \nMessage: ${error.message}`);
     }
 }

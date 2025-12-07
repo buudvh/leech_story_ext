@@ -4,25 +4,26 @@ load('config.js');
 function execute(url, page) {
     try {
         page = page || '1';
-        url = String.format(BASE_URL + "/tag" + url, page);
+        url = url.replace("https://www.69shuba.com", "");
+        url = url.substring(1, url.lastIndexOf('.'));
+        url = 'ajax_' + url + '/' + page + '.htm';
+        url = "https://www.69shuba.com/" + url;
         let response = fetch(url);
 
         if (!response.ok) throw new Error(`Status = ${response.status}`);
 
         let doc = response.html('gbk');
         var data = [];
-        var elems = doc.select("ul#article_list_content li")
+        var elems = $.QA(doc, 'li');
 
         if (!elems.length) throw new Error("Length = 0");
 
         elems.forEach(function (e) {
-            var bookid = extractBookId(e.select("h3 a").attr('href'), false);
             data.push({
-                name: e.select("h3").text().trim(),
-                link: STVHOST + "/truyen/69shu/1/" + bookid + "/",
+                name: $.Q(e, '.newnav h3 > a:not([class])').text().trim(),
+                link: $.Q(e, 'h3 > a').attr('href'),
                 cover: e.select("img").attr("data-src") || DEFAULT_COVER,
-                description: $.Q(e, '.zxzj > p').text().replace('最近章节', '')
-                    + "\n" + $.Q(e, 'ol.ellipsis_2').text(),
+                description: $.Q(e, '.zxzj > p').text().replace('最近章节', ''),
                 host: BASE_URL
             })
         })

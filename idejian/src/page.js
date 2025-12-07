@@ -1,26 +1,30 @@
 load('config.js');
+load('libs.js');
+
 function execute(url) {
     try {
-        var m2 = url.match(/(?:https?:\/\/)?(?:www\.)?idejian\.com\/book\/(\d+)/);
-        var bookId = m2[1];
-        url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
-        if (url.slice(-1) !== "/")
-            url = url + "/";
-        var response = fetch(url);
         var data = [];
-        if (response.ok) {
-            var doc = response.html();
-            var num_page = doc.select("#catelog").attr("data-size") || "50";
 
-            for (var i = 1; i <= parseInt(num_page); i++) {
-                data.push(BASE_URL + "/catelog/" + bookId + "/1?page=" + i.toString())
-            }
-            return Response.success(data);
+        var response = fetch(url);
+        if (!response.ok) throw new Error(`Status ${response.status}`);
+
+        var doc = response.html();
+
+        var chapternums = doc.select("#catelog").attr('data-size');
+
+        if (!chapternums) throw new Error("Length = 0");
+
+        var bookid = getBookId(url);
+        for (let index = 0; index < chapternums; index++) {
+            //https://www.idejian.com/catelog/13438991/1?page=1
+            data.push(`${BASE_URL}/catelog/${bookid}/1?page=${index + 1}`);
         }
 
-        return null;
+        return Response.success(data);
     } catch (error) {
         return Response.error(error.message);
+        // return Response.success([
+        //     error.message,
+        // ]);
     }
-
 }

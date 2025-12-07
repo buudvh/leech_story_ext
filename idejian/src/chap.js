@@ -1,17 +1,29 @@
-function execute(chapterUrl) {
-    // https://wechat.idejian.com/api/wechat/book/13178363/1
+load('config.js');
+load('libs.js');
 
-    const apiUrl = chapterUrl
-        .replace("https://www.idejian.com", "https://wechat.idejian.com/api/wechat")
-        .replace(".html", "");
+function execute(url) {
+    try {
+        var response = fetch(url, {
+            method: 'GET',
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
+            }
+        });
 
-    const response = fetch(apiUrl);
+        if (!response.ok) throw new Error(`Status ${response.status}`);
 
-    if (response.ok) {
-        const result = response.json();
-        console.log(result.body.content);
-        return Response.success(result.body.content);
+        var doc = response.html();
+
+        var htm = doc.select("div.read_content div:nth-child(2)");
+        htm.select("div").remove();
+        htm.select("a").remove();
+        htm.select("h1").remove();
+        htm.select("script").remove();
+
+        htm = htm.html().cleanHtml();
+
+        return Response.success(htm);
+    } catch (error) {
+        return Response.error(`Url: ${url} \nMessage: ${error.message}`);
     }
-
-    return Response.success(apiUrl + "\n" + response.status);
 }
