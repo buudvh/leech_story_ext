@@ -5,6 +5,15 @@
   },
   "data": [
     {
+      "name": "sto55",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/sto55/sto55.zip",
+      "version": 1,
+      "source": "https://www.sto55.com",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/sto55/icon.png",
+      "description": "Đọc truyện trên trang https://www.sto55.com"
+    },
+    {
       "name": "1qxs",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/1qxs/1qxs.zip",

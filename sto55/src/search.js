@@ -2,67 +2,37 @@ load('libs.js');
 load('config.js');
 
 function execute(key, page) {
-    page = page || '1';
-
-    var gbkEncode = function(s) {
-        load('gbk.js');
-        return GBK.encode(s);
-    }
-
-    var url = String.format('{0}/modules/article/search.php?searchtype=articlename&searchkey={1}&page={2}', BASE_URL, gbkEncode(key), page);
-    // log(url);
-
-    var response = fetch(url);
-    if (response.ok) {
-        var doc = response.html('gbk');
-
+    try {
+        page = page || '1';
+        url = `${BASE_URL}/search/${encodeURIComponent(key)}/${page}.html`;
         var data = [];
-
-        if ($.Q(doc, '#content h1').text()) { // detail.js
-            var bid = http.string().match(/addbookcase\.php\?bid=(\d+)/);
-            if (bid && bid[1]) {
-                return Response.success([{
-                    name: $.Q(doc, '#content h1').text(),
-                    link: String.format('{0}/bookinfo/{1}/{2}.html', BASE_URL, Math.floor(parseInt(bid[1],10)/1000), bid[1]),
-                    cover: $.Q(doc, '#content table table a > img[align][hspace][vspace]').attr('src'),
-                    description: '',
-                    host: BASE_URL
-                }]);
+        var response = fetch(url, {
+            method: 'GET',
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1',
             }
-        }
+        });
+        if (!response.ok) throw new Error(`Status ${response.status}`)
 
-        var elems = $.QA(doc, 'table tr:not([align])');
-        if (elems.length) {
-            elems.forEach(function(e) {
-                var link = $.Q(e, 'a').attr('href');
-                data.push({
-                    name: $.Q(e, 'a').text().trim(),
-                    link: $.Q(e, 'a').attr('href'),
-                    cover: genCover(link),
-                    description: $.Q(e, 'td.odd', 1).text(),
-                    host: BASE_URL
-                })
-            })
-            // log(data);
-            return Response.success(data);
-        }
+        var doc = response.html();
+        var elms = doc.select(".bookbox");
 
-        return Response.error(key);
+        if (!elms.length) throw new Error(`Length = 0`);
+
+        elms.forEach(function (e) {
+            let link = e.select("div.bookname a").first().attr("href");
+            data.push({
+                name: e.select("div.bookname a").first().text().convertT2S(),
+                link: link,
+                cover: buildCover(getBookId(link)),
+                description: e.select('div.bookinfo div:nth-child(2)').first().text().convertT2S(),
+                host: BASE_URL
+            });
+        });
+
+        var next = parseInt(page, 10) + 1;
+        return Response.success(data, next.toString());
+    } catch (error) {
+        return Response.error(`Url ${url} \nMessage: ${error.message}`);
     }
-    return null;
-
-    var http = Http.get(url);
-    var doc = http.html('gbk');
-
-}
-
-function genCover(bookUrl) {
-    var m, id;
-
-    if ((m = bookUrl.match(/(\d+)\.html$/)) && m[1] && (id = m[1])) {
-        // https://www.ptwxz.com/files/article/image/12/12450/12450s.jpg
-        return String.format('{0}/files/article/image/{1}/{2}/{3}s.jpg', BASE_URL, Math.floor(id / 1000), id, id);
-    }
-
-    return 'https://www.ptwxz.com/modules/article/images/nocover.jpg';
 }

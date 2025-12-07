@@ -2,28 +2,37 @@ load('libs.js');
 load('config.js');
 
 function execute(url, page) {
-    url = String.format(BASE_URL + url, page || '1');
+    try {
+        page = page || '1';
+        url = String.format(`${BASE_URL}/${url}`, page);
+        var data = [];
+        var response = fetch(url, {
+            method: 'GET',
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1',
+            }
+        });
+        if (!response.ok) throw new Error(`Status ${response.status}`)
 
-    let response = fetch(url);
-    if (!response.ok) return null;
+        var doc = response.html();
+        var elms = doc.select(".bookbox");
 
-    let doc = response.html();
+        if (!elms.length) throw new Error(`Length = 0`);
 
-    let data = [];
+        elms.forEach(function (e) {
+            let link = e.select("div.bookinfo h4 a").first().attr("href");
+            data.push({
+                name: e.select("div.bookinfo h4 a").first().text().convertT2S(),
+                link: link,
+                cover: buildCover(getBookId(link)),
+                description: e.select('div.bookinfo div:nth-child(2)').first().text().convertT2S(),
+                host: BASE_URL
+            });
+        });
 
-    let elems = $.QA(doc, 'div.bookinfo');;
-    if (!elems.length) return Response.error(url);
-
-    elems.forEach(function(e) {
-        data.push({
-            name: e.select('h4.bookname').first().text(),
-            url: e.select('h4.bookname a').first().attr('href'),
-            cover: DEFAULT_COVER,
-            description: $.QA(e, 'div', { m: x => x.text(), j: '<br>' }),
-        })
-    })
-
-    let next = parseInt(page, 10) + 1;
-
-    return Response.success(data, next.toString());
+        var next = parseInt(page, 10) + 1;
+        return Response.success(data, next.toString());
+    } catch (error) {
+        return Response.error(`Url ${url} \nMessage: ${error.message}`);
+    }
 }
