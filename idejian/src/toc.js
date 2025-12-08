@@ -1,11 +1,13 @@
 load('libs.js');
 load('config.js');
-load('stv.js');
 
 //https://www.idejian.com/catelog/13438991/1?page=1
 
 function execute(url) {
     try {
+        var bookid = getBookId(url);
+        url = `${WECHAT_URL}/allcatalog/${bookid}/`;
+
         var response = fetch(url, {
             method: 'GET',
             headers: {
@@ -19,19 +21,15 @@ function execute(url) {
 
         if (data.code != 0) throw new Error(`Code = ${data.code}`);
 
-        var doc = Html.parse(data.html);
-        var elms = doc.select('a');
         var result = [];
 
-        elms.forEach(e => {
+        data.body.chapterList.forEach(element => {
             result.push({
-                name: e.text().formatTocName(),
-                url: e.attr('href'),
+                name: element.name,
+                url: element.url,
                 host: BASE_URL,
             })
         });
-
-        // data = data.reverse();
 
         return Response.success(result);
     } catch (error) {

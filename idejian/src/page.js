@@ -1,30 +1,34 @@
-load('config.js');
 load('libs.js');
+load('config.js');
+
+//https://www.idejian.com/catelog/13438991/1?page=1
 
 function execute(url) {
     try {
-        var data = [];
+        var bookid = getBookId(url);
+        url = `${WECHAT_URL}/catalog/${bookid}/`;
+        var response = fetch(url, {
+            method: 'GET',
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
+            }
+        });
 
-        var response = fetch(url);
         if (!response.ok) throw new Error(`Status ${response.status}`);
 
-        var doc = response.html();
+        var data = response.json();
 
-        var chapternums = doc.select("#catelog").attr('data-size');
+        if (data.code != 0) throw new Error(`Code = ${data.code}`);
 
-        if (!chapternums) throw new Error("Length = 0");
+        var result = [];
 
-        var bookid = getBookId(url);
-        for (let index = 0; index < chapternums; index++) {
-            //https://www.idejian.com/catelog/13438991/1?page=1
-            data.push(`${BASE_URL}/catelog/${bookid}/1?page=${index + 1}`);
+        for (let index = 1; index <= data.body.pageInfo.totalPage; index++) {
+            result.push(`${WECHAT_URL}/catalog/${bookid}?page=${index}`);
         }
 
-        return Response.success(data);
+        return Response.success(result);
     } catch (error) {
-        return Response.error(error.message);
-        // return Response.success([
-        //     error.message,
-        // ]);
+        return Response.error(`Url: ${url} \nMessage: ${error.message}`);
+        // return Response.success([error.message]);
     }
 }

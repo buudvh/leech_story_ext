@@ -1,112 +1,118 @@
 function execute() {
     return Response.success([
-        { title: "不限人气", input: "/ajax_novels/monthvisit_0_0_{0}.htm", script: "gen.js" },
-        { title: "连载人气", input: "/ajax_novels/monthvisit_0_2_{0}.htm", script: "gen.js" },
-        { title: "全本人气", input: "/ajax_novels/monthvisit_0_1_{0}.htm", script: "gen.js" },
-        { title: "不限推荐", input: "/ajax_novels/allvote_0_0_{0}.htm", script: "gen.js" },
-        { title: "连载推荐", input: "/ajax_novels/allvote_0_2_{0}.htm", script: "gen.js" },
-        { title: "全本推荐", input: "/ajax_novels/allvote_0_1_{0}.htm", script: "gen.js" },
+        { title: "诸天", input: "诸天", script: "search.js" },
+        { title: "聊天群", input: "聊天群", script: "search.js" },
+        { title: "万界", input: "万界", script: "search.js" },
+        { title: "无限", input: "无限", script: "search.js" },
+        { title: "同时穿越", input: "同时穿越", script: "search.js" }, //Đồng thời xuyên qua
+        { title: "轮回", input: "轮回", script: "search.js" }, //Luân Hồi
+        { title: "御兽", input: "御兽", script: "search.js" }, //Ngự thú
 
-        {title: "诸天流 - New", input: "chư thiên&new", script: "search.js"},
-        {title: "诸天流 - Update", input: "chư thiên&update", script: "search.js"},
-        {title: "诸天流 - View", input: "chư thiên&view", script: "search.js"},
-        {title: "诸天流 - Week", input: "chư thiên&viewweek", script: "search.js"},
-        {title: "诸天流 - Day", input: "chư thiên&viewday", script: "search.js"},
-        {title: "诸天流 - Like", input: "chư thiên&like", script: "search.js"},
-        {title: "诸天流 - Follow", input: "chư thiên&following", script: "search.js"},
-        {title: "诸天流 - Bookmark", input: "chư thiên&bookmarked", script: "search.js"},
+        //Tu chân liêu thiên quần
+        { title: "修真聊天群", input: "修真聊天群", script: "search.js" },
+        { title: "霸宋", input: "霸宋", script: "search.js" },
+        { title: "宋书航", input: "宋书航", script: "search.js" },
+
+        //Ngã cật tây hồng thị
+        { title: "盘龙", input: "盘龙", script: "search.js" }, //Bàn Long
+        { title: "吞噬", input: "吞噬", script: "search.js" }, //Thôn Phệ
+        { title: "星辰变", input: "星辰变", script: "search.js" }, //Tinh thần biến
+        { title: "沧元图", input: "沧元图", script: "search.js" }, //Thương nguyên đồ
+
+        //Trạch Trư
+        { title: "牧神记", input: "牧神记", script: "search.js" }, //Mục thần ký
+        { title: "帝尊", input: "帝尊", script: "search.js" }, //Đế Tôn
+        { title: "魔狱玄胎", input: "魔狱玄胎", script: "search.js" }, //Ma ngục huyền thai
+
+        //Thần Đông
+        { title: "神墓", input: "神墓", script: "search.js" }, //Thần Mộ
+        { title: "遮天", input: "遮天", script: "search.js" }, //Già Thiên
+        { title: "完美世界", input: "完美世界", script: "search.js" }, //Hoàn Mỹ Thế Giới
+        { title: "圣墟", input: "圣墟", script: "search.js" }, //Thánh Khư
+
+        //Vong ngữ
+        { title: "凡人", input: "凡人", script: "search.js" }, //Phàm Nhân
+
+        //Nhĩ căn
+        { title: "仙逆", input: "仙逆", script: "search.js" }, //Tiên nghịch
+
+        //Lão mực
+        { title: "一世之尊", input: "一世之尊", script: "search.js" }, //Nhất thế chi tôn
+        { title: "孟奇", input: "孟奇", script: "search.js" }, //Mạnh Kỳ
+        { title: "诡秘", input: "诡秘", script: "search.js" }, //Quỷ bí
+
+        //Mộng nhập
+        { title: "永生", input: "永生", script: "search.js" }, //Vĩnh sinh
+        { title: "阳神", input: "阳神", script: "search.js" }, //Dương Thần
+
+        { title: "西游", input: "西游", script: "search.js" }, //Tây du
+        { title: "洪荒", input: "洪荒", script: "search.js" }, //Hồng hoang
+        { title: "大奉", input: "大奉", script: "search.js" }, //Đại Phụng
+        { title: "庆余年", input: "庆余年", script: "search.js" }, //Khánh dư niên
+
+        //Tam thiếu
+        { title: "斗罗", input: "斗罗", script: "search.js" }, //Đấu la
+        { title: "武魂", input: "武魂", script: "search.js" }, //Võ hồn
+        { title: "神印", input: "神印", script: "search.js" }, //Thần ấn
+
+        //Đấu phá
+        { title: "斗破", input: "斗破", script: "search.js" }, //Đấu phá
+        { title: "武动", input: "武动", script: "search.js" }, //Vũ động
+        { title: "大主宰", input: "大主宰", script: "search.js" }, //Đại chúa tể
+        { title: "元尊", input: "元尊", script: "search.js" }, //Nguyên tôn
         
-        {title: "官场 - Update", input: "quantruongcholamviec,", script: "tag.js"},
-        {title: "官场 - New", input: "quantruongcholamviec,&new", script: "tag.js"},
-        {title: "官场 - View", input: "quantruongcholamviec,&view", script: "tag.js"},
-        {title: "官场 - Week", input: "quantruongcholamviec,&viewweek", script: "tag.js"},
-        {title: "官场 - Day", input: "quantruongcholamviec,&viewday", script: "tag.js"},
-        {title: "官场 - Bookmark", input: "quantruongcholamviec,&bookmarked", script: "tag.js"},
+        { title: "妖神记", input: "妖神记", script: "search.js" }, //Yêu thần ký
+        { title: "师兄啊", input: "师兄啊", script: "search.js" }, //Sư huynh a
+        { title: "全職法師", input: "全職法師", script: "search.js" }, //Toàn Chức Pháp Sư
+        { title: "剑来", input: "剑来", script: "search.js" }, //Kiếm lai
+        { title: "雪中", input: "雪中", script: "search.js" }, //Tuyết trung
 
-        {title: "武侠 - Update", input: "vuhiep,", script: "tag.js"},
-        {title: "武侠 - New", input: "vuhiep,&new", script: "tag.js"},
-        {title: "武侠 - View", input: "vuhiep,&view", script: "tag.js"},
-        {title: "武侠 - Week", input: "vuhiep,&viewweek", script: "tag.js"},
-        {title: "武侠 - Day", input: "vuhiep,&viewday", script: "tag.js"},
-        {title: "武侠 - Bookmark", input: "vuhiep,&bookmarked", script: "tag.js"},
+        { title: "全球高武", input: "全球高武", script: "search.js" }, //Toàn Cầu Cao Võ
+        { title: "万族之劫", input: "万族之劫", script: "search.js" }, //Vạn Tộc Chi Kiếp
+        { title: "星门", input: "星门", script: "search.js" }, //Tinh Môn
 
-        {title: "时空 - Update", input: "xuyenquathoikhong,", script: "tag.js"},
-        {title: "时空 - New", input: "xuyenquathoikhong,&new", script: "tag.js"},
-        {title: "时空 - View", input: "xuyenquathoikhong,&view", script: "tag.js"},
-        {title: "时空 - Week", input: "xuyenquathoikhong,&viewweek", script: "tag.js"},
-        {title: "时空 - Day", input: "xuyenquathoikhong,&viewday", script: "tag.js"},
-        {title: "时空 - Bookmark", input: "xuyenquathoikhong,&bookmarked", script: "tag.js"},
+        { title: "剑道独尊", input: "剑道独尊", script: "search.js" }, //Kiếm đạo độc tôn
 
-        {title: "同人 - Update", input: "dongnhan,", script: "tag.js"},
-        {title: "同人 - New", input: "dongnhan,&new", script: "tag.js"},
-        {title: "同人 - View", input: "dongnhan,&view", script: "tag.js"},
-        {title: "同人 - Week", input: "dongnhan,&viewweek", script: "tag.js"},
-        {title: "同人 - Day", input: "dongnhan,&viewday", script: "tag.js"},
-        {title: "同人 - Bookmark", input: "dongnhan,&bookmarked", script: "tag.js"},
-        
-        {title: "玄幻魔法 - Update", input: "huyenhuyenmaphap,", script: "tag.js"},
-        {title: "玄幻魔法 - New", input: "huyenhuyenmaphap,&new", script: "tag.js"},
-        {title: "玄幻魔法 - View", input: "huyenhuyenmaphap,&view", script: "tag.js"},
-        {title: "玄幻魔法 - Week", input: "huyenhuyenmaphap,&viewweek", script: "tag.js"},
-        {title: "玄幻魔法 - Day", input: "huyenhuyenmaphap,&viewday", script: "tag.js"},
-        {title: "玄幻魔法 - Bookmark", input: "huyenhuyenmaphap,&bookmarked", script: "tag.js"},
-        
-        {title: "科幻空间 - Update", input: "khoahuyenkhonggian,", script: "tag.js"},
-        {title: "科幻空间 - New", input: "khoahuyenkhonggian,&new", script: "tag.js"},
-        {title: "科幻空间 - View", input: "khoahuyenkhonggian,&view", script: "tag.js"},
-        {title: "科幻空间 - Week", input: "khoahuyenkhonggian,&viewweek", script: "tag.js"},
-        {title: "科幻空间 - Day", input: "khoahuyenkhonggian,&viewday", script: "tag.js"},
-        {title: "科幻空间 - Bookmark", input: "khoahuyenkhonggian,&bookmarked", script: "tag.js"},
+        { title: "哈利波特", input: "哈利波特", script: "search.js" }, //Harry Potter
+        { title: "霍格沃兹", input: "霍格沃兹", script: "search.js" }, //Hogwart
 
-        {title: "聊天群 - New", input: "chat group&new", script: "search.js"},
-        {title: "聊天群 - Update", input: "chat group&update", script: "search.js"},
-        {title: "聊天群 - View", input: "chat group&view", script: "search.js"},
-        {title: "聊天群 - Week", input: "chat group&viewweek", script: "search.js"},
-        {title: "聊天群 - Day", input: "chat group&viewday", script: "search.js"},
-        {title: "聊天群 - Like", input: "chat group&like", script: "search.js"},
-        {title: "聊天群 - Follow", input: "chat group&following", script: "search.js"},
-        {title: "聊天群 - Bookmark", input: "chat group&bookmarked", script: "search.js"},
+        //Comic
+        { title: "美漫", input: "美漫", script: "search.js" }, //Comic
+        { title: "漫威", input: "漫威", script: "search.js" }, //Marvel
 
-        { title: "New", input: "&new", script: "search.js" },
-        { title: "Update", input: "&update", script: "search.js" },
-        { title: "View Week", input: "&viewweek", script: "search.js" },
-        { title: "View Day", input: "&viewday", script: "search.js" },
-        { title: "View", input: "&view", script: "search.js" },
-        { title: "Like", input: "&like", script: "search.js" },
-        { title: "Follow", input: "&following", script: "search.js" },
-        { title: "Bookmark", input: "&bookmarked", script: "search.js" },
-        
-        { title: "思路清奇", input: "/思路清奇/{0}/", script: "gen2.js" },
-        { title: "穿越", input: "/穿越/{0}/", script: "gen2.js" },
-        { title: "轻松", input: "/轻松/{0}/", script: "gen2.js" },
-        { title: "系统流", input: "/系统流/{0}/", script: "gen2.js" },
-        { title: "重生", input: "/重生/{0}/", script: "gen2.js" },
-        { title: "爽文", input: "/爽文/{0}/", script: "gen2.js" },
-        { title: "无敌流", input: "/无敌流/{0}/", script: "gen2.js" },
-        { title: "种田", input: "/种田/{0}/", script: "gen2.js" },
-        { title: "逆袭", input: "/逆袭/{0}/", script: "gen2.js" },
-        { title: "经营", input: "/经营/{0}/", script: "gen2.js" },
-        { title: "杀伐果断", input: "/杀伐果断/{0}/", script: "gen2.js" },
-        { title: "快节奏", input: "/快节奏/{0}/", script: "gen2.js" },
-        { title: "日常文", input: "/日常文/{0}/", script: "gen2.js" },
-        { title: "架空", input: "/架空/{0}/", script: "gen2.js" },
-        { title: "打脸", input: "/打脸/{0}/", script: "gen2.js" },
-        { title: "萌宝", input: "/萌宝/{0}/", script: "gen2.js" },
-        { title: "校园", input: "/校园/{0}/", script: "gen2.js" },
-        { title: "无限流", input: "/无限流/{0}/", script: "gen2.js" },
-        { title: "智商在线", input: "/智商在线/{0}/", script: "gen2.js" },
-        { title: "冷静", input: "/冷静/{0}/", script: "gen2.js" },
-        { title: "空间", input: "/空间/{0}/", script: "gen2.js" },
-        { title: "异能", input: "/异能/{0}/", script: "gen2.js" },
-        { title: "诸天流", input: "/诸天流/{0}/", script: "gen2.js" },
-        { title: "快穿", input: "/快穿/{0}/", script: "gen2.js" },
-        { title: "脑洞大", input: "/脑洞大/{0}/", script: "gen2.js" },
-        { title: "金手指", input: "/金手指/{0}/", script: "gen2.js" },
-        { title: "穿书", input: "/穿书/{0}/", script: "gen2.js" },
-        { title: "大佬", input: "/大佬/{0}/", script: "gen2.js" },
-        { title: "文娱", input: "/文娱/{0}/", script: "gen2.js" },
-        { title: "娱乐圈", input: "/娱乐圈/{0}/", script: "gen2.js" },
-        { title: "赚钱", input: "/赚钱/{0}/", script: "gen2.js" },
-        { title: "强者归来", input: "/强者归来/{0}/", script: "gen2.js" },
+        //Trung mạn
+        { title: "磁场转动", input: "磁场转动", script: "search.js" }, //Từ Trường Chuyển Động
+
+        //Anime
+        { title: "宝可梦", input: "宝可梦", script: "search.js" }, //Pokemon
+        { title: "综漫", input: "综漫", script: "search.js" }, //Tổng mạn
+        { title: "龙珠", input: "龙珠", script: "search.js" }, //Long châu
+        { title: "火影", input: "火影", script: "search.js" }, //Hokage
+        { title: "木叶", input: "火影", script: "search.js" }, //Konoha
+        { title: "鸣人", input: "鸣人", script: "search.js" }, //Naruto
+        { title: "犬夜叉", input: "犬夜叉", script: "search.js" }, //Inuyasha
+        { title: "海贼", input: "海贼", script: "search.js" }, //Once piece
+        { title: "妖尾", input: "妖尾", script: "search.js" }, //Fairy tail
+        { title: "奥特曼", input: "奥特曼", script: "search.js" }, //Ultraman
+        { title: "假面骑士", input: "假面骑士", script: "search.js" }, //Kamen rider
+        { title: "骑士", input: "骑士", script: "search.js" }, //Rider
+        { title: "死神", input: "死神", script: "search.js" }, //Bleach
+        { title: "全職獵人", input: "全職獵人", script: "search.js" }, //HunterxHunter
+        { title: "鬼灭之刃", input: "鬼灭之刃", script: "search.js" }, //Kimetsu no Yaiba
+        { title: "美食", input: "美食", script: "search.js" }, //Toriko
+        { title: "柯南", input: "柯南", script: "search.js" }, //Conan
+
+        { title: "奇幻", input: "/subcategory?categoryId=1114&page={0}&order=1", script: "gen.js" },
+        { title: "玄幻", input: "/subcategory?categoryId=1115&page={0}&order=1", script: "gen.js" },
+        { title: "武侠", input: "/subcategory?categoryId=1116&page={0}&order=1", script: "gen.js" },
+        { title: "仙侠", input: "/subcategory?categoryId=1117&page={0}&order=1", script: "gen.js" },
+        { title: "都市", input: "/subcategory?categoryId=1118&page={0}&order=1", script: "gen.js" },
+        { title: "校园", input: "/subcategory?categoryId=1119&page={0}&order=1", script: "gen.js" },
+        { title: "历史", input: "/subcategory?categoryId=1120&page={0}&order=1", script: "gen.js" },
+        { title: "军事", input: "/subcategory?categoryId=1121&page={0}&order=1", script: "gen.js" },
+        { title: "游戏", input: "/subcategory?categoryId=1122&page={0}&order=1", script: "gen.js" },
+        { title: "竞技", input: "/subcategory?categoryId=1123&page={0}&order=1", script: "gen.js" },
+        { title: "科幻", input: "/subcategory?categoryId=1124&page={0}&order=1", script: "gen.js" },
+        { title: "灵异", input: "/subcategory?categoryId=1125&page={0}&order=1", script: "gen.js" },
     ]);
 }

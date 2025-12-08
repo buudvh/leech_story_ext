@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "name": "idejian (+stv)",
+    "name": "idejian",
     "author": "HuongMT",
-    "version": 18,
+    "version": 19,
     "source": "https://www.idejian.com",
     "regexp": "www.idejian.(.*?)/book/\\d+/?",
     "description": "Đọc truyện trên idejian",
@@ -15,7 +15,6 @@
     "genre": "genre.js",
     "search": "search.js",
     "detail": "detail.js",
-    "page": "page.js",
     "toc": "toc.js",
     "chap": "chap.js"
   }

@@ -1,8 +1,16 @@
-load('config.js');
 load('libs.js');
+load('config.js');
 
 function execute(url) {
     try {
+        const match = url.match(/\/book\/(\d+)\/(\d+)\.html$/);
+        if (!match) throw new Error("Url invalid");
+
+        var bookId = match[1];
+        var chapterId = match[2];
+
+        url = `${WECHAT_URL}/book/${bookId}/${chapterId}`;
+
         var response = fetch(url, {
             method: 'GET',
             headers: {
@@ -10,19 +18,10 @@ function execute(url) {
             }
         });
 
-        if (!response.ok) throw new Error(`Status ${response.status}`);
+        if (!response.ok) throw new Error(`Status = ${response.status}`);
 
-        var doc = response.html();
-
-        var htm = doc.select("div.read_content div:nth-child(2)");
-        htm.select("div").remove();
-        htm.select("a").remove();
-        htm.select("h1").remove();
-        htm.select("script").remove();
-
-        htm = htm.html().cleanHtml();
-
-        return Response.success(htm);
+        var result = response.json();
+        return Response.success(result.body.content);
     } catch (error) {
         return Response.error(`Url: ${url} \nMessage: ${error.message}`);
     }
