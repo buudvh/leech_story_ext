@@ -1,3 +1,6 @@
+load('config.js');
+load('libs.js');
+
 function execute(key, next) {
     var url;
     try {
@@ -10,7 +13,7 @@ function execute(key, next) {
         ]);
 
         url = "https://novel.html5.qq.com/portal/novel-intro?bookid=" + bookid;
-        let response = fetch(url);
+        let response = crawler.get(url);
 
         if (!response.ok) throw new Error(`Status ${response.status}`);
 
@@ -40,7 +43,7 @@ function execute(key, next) {
 function getBookId(key) {
     var url = "https://so.html5.qq.com/ajax/real/search_result?tabId=360&noTab=1&q=" + key;
     try {
-        let response = fetch(url);
+        let response = crawler.get(url);
 
         if (!response.ok) throw new Error("Status = " + response.status);
 

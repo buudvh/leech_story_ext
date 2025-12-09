@@ -4388,3 +4388,40 @@ var $ = {
         return arr;
     }
 }
+
+// --------------------------------------------------
+var crawler = {
+    _PC_AGENT: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
+    _PHONE_AGENT: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1',
+
+    get: function (url, headers, isPhone) {
+        headers = headers || {};
+
+        var objHeaders = Object.assign(
+            { 'User-Agent': isPhone ? this._PHONE_AGENT : this._PC_AGENT },
+            headers
+        );
+
+        return fetch(url, {
+            method: 'GET',
+            headers: objHeaders
+        });
+    },
+
+    post: function (url, data, headers, isPhone) {
+        headers = headers || {};
+
+        var objHeaders = Object.assign(
+            { 'User-Agent': isPhone ? this._PHONE_AGENT : this._PC_AGENT },
+            headers
+        );
+
+        var bodyData = data;
+
+        return fetch(url, {
+            method: 'POST',
+            headers: objHeaders,
+            body: bodyData
+        });
+    }
+};

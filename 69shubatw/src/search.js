@@ -13,12 +13,8 @@ function execute(key, page) {
         //     t_btnsearch: ""
         // });
 
-        var response = fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            // body: params
+        var response = crawler.get(url, {
+            'Content-Type': 'application/x-www-form-urlencoded'
         });
         if (!response.ok) throw new Error(`Status ${response.status}`)
 

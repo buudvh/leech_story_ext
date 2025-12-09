@@ -6,7 +6,7 @@ function execute(url) {
         var data = [];
         var url = BASE_URL + url;
 
-        var response = fetch(url);
+        var response = crawler.get(url);
         if (!response.ok) throw new Error(`Status ${response.status}`);
 
         var doc = response.html();
