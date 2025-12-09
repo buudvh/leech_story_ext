@@ -4237,6 +4237,15 @@ String.prototype.normalizeChineseTime = function () {
     return text;
 }
 
+String.prototype.decodeEscapedHtml = function(){
+    try {
+        // JSON.parse sẽ tự decode toàn bộ \u003C, \u003E, \u0026...
+        return JSON.parse('"' + this.replace(/"/g, '\\"') + '"');
+    } catch {
+        return this;
+    }
+}
+
 String.prototype.cleanHtml = function () {
     var html = this;
     //

@@ -2,7 +2,7 @@
   "metadata": {
     "name": "idejian",
     "author": "HuongMT",
-    "version": 19,
+    "version": 20,
     "source": "https://wechat.idejian.com",
     "regexp": "www.idejian.(.*?)/book/\\d+/?",
     "description": "Đọc truyện trên idejian",

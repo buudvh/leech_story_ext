@@ -21,7 +21,13 @@ function execute(url) {
         if (!response.ok) throw new Error(`Status = ${response.status}`);
 
         var result = response.json();
-        return Response.success(result.body.content);
+
+        var doc = Html.parse(result.body.content.trim().decodeEscapedHtml().toString());
+        doc.select('table').remove();
+        doc.select('h1').remove();
+        var htm = doc.html();
+
+        return Response.success(htm);
     } catch (error) {
         return Response.error(`Url: ${url} \nMessage: ${error.message}`);
     }
