@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "shuhaige",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "https://www.shuhaige.net",
+    "regexp": "^https?:\\/\\/(?:www\\.)?shuhaige\\.net\\/(\\d+)\\/?$",
+    "description": "Đọc truyện trên trang shuhaige.net",
+    "locale": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js",
+    "genre": "genre.js",
+    "search": "search.js"
+  }
+}

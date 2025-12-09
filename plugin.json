@@ -23,6 +23,15 @@
       "description": "Đọc truyện trên trang https://www.1qxs.com"
     },
     {
+      "name": "shuhaige",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/shuhaige/shuhaige.zip",
+      "version": 1,
+      "source": "https://www.shuhaige.net",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/shuhaige/icon.png",
+      "description": "Đọc truyện trên trang https://www.shuhaige.net"
+    },
+    {
       "name": "wcshuba",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/wcshuba/wcshuba.zip",
