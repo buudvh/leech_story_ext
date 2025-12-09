@@ -15,8 +15,7 @@ function execute(key, page) {
             });
 
             response = crawler.post(url, params, {
-                // "Cookie": "Hm_lpvt_3094b20ed277f38e8f9ac2b2b29d6263=1765269774;Hm_lpvt_c3da01855456ad902664af23cc3254cb=1765269774",
-                "Cookie": "Hm_lpvt_3094b20ed277f38e8f9ac2b2b29d6263=9999999999;Hm_lpvt_c3da01855456ad902664af23cc3254cb=9999999999",
+                "Cookie": "Hm_lpvt_3094b20ed277f38e8f9ac2b2b29d6263=1765269774;Hm_lpvt_c3da01855456ad902664af23cc3254cb=1765269774",
                 "Content-Type": "application/x-www-form-urlencoded",
                 "Accept": "text/html,application/xhtml+xml",
             });
