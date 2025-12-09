@@ -4436,18 +4436,21 @@ function encodeFormData(data) {
     return pairs.join("&");
 }
 
-function getCookie(url) {
-    var MAX_RETRY = 5;
-    var rsp = null;
-    var retry = 0;
+function extractBookId(url, isSTV) {
+    var match;
+    if (isSTV) {
+        match = url.match(/\/(\d+)\/?$/);
+    } else {
+        match = url.match(/\/(\d+)\.htm/);
+    }
+    if (!match) {
+        throw new Error("Can not extarct BookId");
+    }
+    return match[1];
+}
 
-    do {
-        rsp = crawler.get(url);
-        retry++;
-    } while (!rsp.ok && retry < MAX_RETRY);
-
-    var cookies = rsp.headers["set-cookie"];
-    if (!cookies) return "";
-
-    return cookies.map(c => c.split(";")[0]).join("; ");
+function buildCover(bookid) {
+    if(!bookid) return DEFAULT_COVER;
+    var folder = bookid.length <= 3 ? "0" : bookid.slice(0, bookid.length - 3);
+    return `${COVER_BASE}/${folder}/${bookid}/${bookid}s.jpg`;
 }

@@ -19,3 +19,11 @@
     "chap": "chap.js"
   }
 }
+
+
+var data = [];
+document.querySelectorAll('#main > div.shuku > div.filter > ul > li.boy > a').forEach(e => {
+    data.push({
+        "title": e.innerHTML, "input": e.getAttribute("href"), "script": "gen2.js"
+    })
+});

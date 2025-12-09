@@ -60,7 +60,7 @@ function execute() {
         { title: "武动", input: "武动", script: "search.js" }, //Vũ động
         { title: "大主宰", input: "大主宰", script: "search.js" }, //Đại chúa tể
         { title: "元尊", input: "元尊", script: "search.js" }, //Nguyên tôn
-        
+
         { title: "妖神记", input: "妖神记", script: "search.js" }, //Yêu thần ký
         { title: "师兄啊", input: "师兄啊", script: "search.js" }, //Sư huynh a
         { title: "全職法師", input: "全職法師", script: "search.js" }, //Toàn Chức Pháp Sư
@@ -103,25 +103,17 @@ function execute() {
         { title: "柯南", input: "柯南", script: "search.js" }, //Conan
 
         //Thể loại
-        {"title":"最近更新","input":"/lastupdate/{0}.html","script":"gen.js"},
-        {"title":"新书入库","input":"/postdate/{0}.html","script":"gen.js"},
-        // {"title":"全部小说","input":"/all/{0}.html","script":"gen.js"},
-        // {"title":"玄幻","input":"/XuanHuan/{0}.html","script":"gen.js"},
-        // {"title":"奇幻","input":"/QiHuan/{0}.html","script":"gen.js"},
-        // {"title":"武侠","input":"/WuXia/{0}.html","script":"gen.js"},
-        // {"title":"都市","input":"/DuShi/{0}.html","script":"gen.js"},
-        // {"title":"历史","input":"/LiShi/{0}.html","script":"gen.js"},
-        // {"title":"军事","input":"/JunShi/{0}.html","script":"gen.js"},
-        // {"title":"悬疑","input":"/XuanYi/{0}.html","script":"gen.js"},
-        // {"title":"游戏","input":"/YouXi/{0}.html","script":"gen.js"},
-        // {"title":"科幻","input":"/KeHuan/{0}.html","script":"gen.js"},
-        // {"title":"体育","input":"/TiYu/{0}.html","script":"gen.js"},
-        // {"title":"古言","input":"/GuYan/{0}.html","script":"gen.js"},
-        // {"title":"现言","input":"/XianYan/{0}.html","script":"gen.js"},
-        // {"title":"幻言","input":"/HuanYan/{0}.html","script":"gen.js"},
-        // {"title":"仙侠","input":"/XianXia/{0}.html","script":"gen.js"},
-        // {"title":"青春","input":"/QinɡChun/{0}.html","script":"gen.js"},
-        // {"title":"穿越","input":"/ChuanYue/{0}.html","script":"gen.js"},
-        // {"title":"其他","input":"/QiTa/{0}.html","script":"gen.js"}
+        { "title": "最近更新", "input": "/lastupdate/{0}.html", "script": "gen.js" },
+        { "title": "新书入库", "input": "/postdate/{0}.html", "script": "gen.js" },
+        { "title": "全部分类", "input": "/shuku/weekvisit_0_0_{0}.html", "script": "gen2.js" },
+        { "title": "玄幻", "input": "/shuku/weekvisit_1_0_{0}.html", "script": "gen2.js" },
+        { "title": "奇幻", "input": "/shuku/weekvisit_2_0_{0}.html", "script": "gen2.js" },
+        { "title": "武侠", "input": "/shuku/weekvisit_3_0_{0}.html", "script": "gen2.js" },
+        { "title": "都市", "input": "/shuku/weekvisit_4_0_{0}.html", "script": "gen2.js" },
+        { "title": "历史", "input": "/shuku/weekvisit_5_0_{0}.html", "script": "gen2.js" },
+        { "title": "军事", "input": "/shuku/weekvisit_6_0_{0}.html", "script": "gen2.js" },
+        { "title": "悬疑", "input": "/shuku/weekvisit_7_0_{0}.html", "script": "gen2.js" },
+        { "title": "游戏", "input": "/shuku/weekvisit_8_0_{0}.html", "script": "gen2.js" },
+        { "title": "科幻", "input": "/shuku/weekvisit_9_0_{0}.html", "script": "gen2.js" }
     ]);
 }

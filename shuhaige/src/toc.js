@@ -21,6 +21,8 @@ function execute(url) {
             });
         });
 
+        if(data.length >= 12) data = data.slice(12);
+
         return Response.success(data);
     } catch (error) {
         return Response.error(`Url ${url} \nMessage: ${error.message}`);
