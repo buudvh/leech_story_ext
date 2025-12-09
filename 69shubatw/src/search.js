@@ -1,25 +1,24 @@
 load('libs.js');
 load('config.js');
-load('common.js');
 
 function execute(key, page) {
     try {
         page = page || '1';
-        url = BASE_URL + "/search/";
+        url = `${BASE_URL}/search/${page}?searchkey=${encodeURIComponent(key)}`
         var data = [];
 
-        var params = encodeFormData({
-            searchkey: key,
-            searchtype: "all",
-            t_btnsearch: ""
-        });
+        // var params = encodeFormData({
+        //     searchkey: key,
+        //     searchtype: "all",
+        //     t_btnsearch: ""
+        // });
 
         var response = fetch(url, {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: params
+            // body: params
         });
         if (!response.ok) throw new Error(`Status ${response.status}`)
 
@@ -30,7 +29,7 @@ function execute(key, page) {
 
         elms.forEach(function (e) {
             var cover = e.select("img").first().attr("src") || DEFAULT_COVER;
-            if(cover.indexOf('//') == 0) cover = "http:" + cover;
+            if (cover.indexOf('//') == 0) cover = "http:" + cover;
 
             data.push({
                 name: e.select(".article > a").first().text().convertT2S(),
@@ -42,21 +41,22 @@ function execute(key, page) {
             });
         });
 
-        return Response.success(data);
+        var next = parseInt(page, 10) + 1;
+        return Response.success(data, next.toString());
     } catch (error) {
         return Response.error(`Url ${url} \nMessage: ${error.message}`);
     }
 }
 
-function encodeFormData(data) {
-    var pairs = [];
-    for (var key in data) {
-        if (data.hasOwnProperty(key)) {
-            pairs.push(encodeURIComponent(key) + "=" + encodeURIComponent(data[key]));
-        }
-    }
-    return pairs.join("&");
-}
+// function encodeFormData(data) {
+//     var pairs = [];
+//     for (var key in data) {
+//         if (data.hasOwnProperty(key)) {
+//             pairs.push(encodeURIComponent(key) + "=" + encodeURIComponent(data[key]));
+//         }
+//     }
+//     return pairs.join("&");
+// }
 
 function getAuthorName(text) {
     //作者:七年之期 閱讀:9 字數： 萬字
