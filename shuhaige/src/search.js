@@ -14,10 +14,13 @@ function execute(key, page) {
                 searchtype: "all",
             });
 
+            var ts = Math.floor(Date.now() / 1000);
             response = crawler.post(url, params, {
-                "Cookie": "Hm_lpvt_3094b20ed277f38e8f9ac2b2b29d6263=1765269774;Hm_lpvt_c3da01855456ad902664af23cc3254cb=1765269774",
+                "Cookie": `Hm_lpvt_3094b20ed277f38e8f9ac2b2b29d6263=${ts};Hm_lpvt_c3da01855456ad902664af23cc3254cb=${ts};`,
                 "Content-Type": "application/x-www-form-urlencoded",
                 "Accept": "text/html,application/xhtml+xml",
+                "Origin": "https://www.shuhaige.net",
+                "Referer": "https://www.shuhaige.net/",
             });
         } else {
             url = BASE_URL + page;
