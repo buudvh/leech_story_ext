@@ -4240,6 +4240,8 @@ String.prototype.normalizeChineseTime = function () {
 String.prototype.cleanHtml = function () {
     var html = this;
     //
+    html = html.replace(/<p>(.*?)<\/p>/g, '$1<br>');
+    //
     html = html.replace(/\n/g, '<br>');
     // remove duplicate br tags
     html = html.replace(/(<br>\s*){2,}/gm, '<br>');
