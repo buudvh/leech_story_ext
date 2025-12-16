@@ -4290,6 +4290,8 @@ String.prototype.formatTocName = function () {
         '(',
         '（'
     ];
+    var arrRemoveConfig = (localStorage.getItem("REMOVE") || "").split('');
+    arrTextRemove = arrTextRemove.concat(arrRemoveConfig);
     var arrTextLastIndex = arrTextRemove.map(item => result.lastIndexOf(item));
     var filtered = arrTextLastIndex.filter(x => x !== -1);
     var lastTextIndex = filtered.length > 0
