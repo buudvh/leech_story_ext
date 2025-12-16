@@ -7,25 +7,12 @@ function execute(key, page) {
         page = page || '1';
         var response;
         if (page == 1) {
-            url = `${BASE_URL}/search.html`;
-
-            var params = encodeFormData({
-                searchkey: key,
-                searchtype: "all",
-            });
-
-            var ts = Math.floor(Date.now() / 1000);
-            response = crawler.post(url, params, {
-                "Cookie": `Hm_lpvt_3094b20ed277f38e8f9ac2b2b29d6263=${ts};Hm_lpvt_c3da01855456ad902664af23cc3254cb=${ts};`,
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Accept": "text/html,application/xhtml+xml",
-                "Origin": "https://www.shuhaige.net",
-                "Referer": "https://www.shuhaige.net/",
-            });
+            url = getRedirectUrl(key);
         } else {
             url = BASE_URL + page;
-            response = crawler.get(url);
         }
+
+        response = crawler.get(url);
 
         if (!response.ok) throw new Error(`Status ${response.status}`);
 
@@ -50,14 +37,59 @@ function execute(key, page) {
         var next = nextElm ? nextElm.attr('href') : null;
         return next != page ? Response.success(data, next) : Response.success(data);
     } catch (error) {
-        return Response.error(`Url ${url} \nMessage: ${error.message}`);
-        // return Response.success([
-        //     {
-        //         name: `Url ${url} \nMessage: ${error.message}`,
-        //         link: '',
-        //         cover: DEFAULT_COVER,
-        //         host: BASE_URL
-        //     }
-        // ]);
+        // return Response.error(`Url ${url} \nMessage: ${error.message}`);
+        return Response.success([
+            {
+                name: `Url ${url} \nMessage: ${error.message}`,
+                link: '',
+                cover: DEFAULT_COVER,
+                host: BASE_URL
+            }
+        ]);
     }
+}
+
+function getRedirectUrl(key) {
+    var MAX_RETRY = 5
+    var searchUrlRegex = /^https?:\/\/m\.shuhaige\.net\/search\/\d+\/\d+\.html$/;
+    var url = "";
+    var retry_cnt = 0;
+    do {
+        retry_cnt++;
+        var browser = Engine.newBrowser();
+        browser.launch(MOBILE_URL, 5000);
+
+        var inputSelector = 'input[name="searchkey"]';
+        var buttonSelector = 'button.layui-btn';
+
+        browser.callJs(
+            `
+            var inputField = document.querySelector('${inputSelector}'); 
+            var submitButton = document.querySelector('${buttonSelector}');
+
+            if (inputField && submitButton) {
+                inputField.value = '${key}';
+                
+                submitButton.click(); 
+            }
+            `,
+            3000
+        );
+
+        // 3. Chờ URL chuyển hướng thành công (Ví dụ: /search/3221/1.html)
+        browser.waitUrl('.*/search/.*', 10000);
+
+        browser.callJs(
+            `
+            document.body.innerHTML += '<div id="url">' + location.href + '</div>';
+            `,
+            3000
+        );
+
+        var doc = browser.html();
+        browser.close();
+        url = doc.select("#url").text();
+    } while (!searchUrlRegex.test(url) && retry_cnt <= MAX_RETRY);
+
+    return url.replace(MOBILE_URL, BASE_URL);
 }
