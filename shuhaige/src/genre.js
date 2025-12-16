@@ -83,6 +83,8 @@ function execute() {
         //Trung mạn
         { title: "磁场转动", input: "磁场转动", script: "search.js" }, //Từ Trường Chuyển Động
 
+        { title: "绝世武神", input: "磁场转动", script: "search.js" },
+
         //Anime
         { title: "宝可梦", input: "宝可梦", script: "search.js" }, //Pokemon
         { title: "综漫", input: "综漫", script: "search.js" }, //Tổng mạn

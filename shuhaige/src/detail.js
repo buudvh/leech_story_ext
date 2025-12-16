@@ -16,7 +16,7 @@ function execute(url) {
         return Response.success({
             name: bookName.formatTocName(),
             cover: cover,
-            description: doc.select("#intro").html().cleanHtml().replace(/([.!?…]+)/g, function (match) {
+            description: doc.select("#intro > p:nth-child(1)").html().cleanHtml().replace(/([.!?…]+)/g, function (match) {
                 return match + "\n";
             }),
             detail: detail,
