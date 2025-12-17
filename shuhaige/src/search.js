@@ -7,7 +7,7 @@ function execute(key, page) {
         page = page || '1';
         var response;
         if (page == 1) {
-            url = getRedirectUrl(key);
+            url = proxyRedirectUrl(key);
         } else {
             url = BASE_URL + page;
         }
@@ -47,6 +47,16 @@ function execute(key, page) {
             }
         ]);
     }
+}
+
+function proxyRedirectUrl(key) {
+    var response = crawler.get(`https://read-web.onrender.com/api/proxy-shuhai?key=${encodeURIComponent(key)}`);
+
+    if (!response.ok) return getRedirectUrl(key);
+
+    var data = response.json();
+
+    return data.data;
 }
 
 function getRedirectUrl(key) {
