@@ -9,7 +9,5 @@ _*/
 .DS_Store
 .DS_Store
 *.bk
-test.ipynb
-/*.ipynb
 /qidian/.vs
 /2.MEMU
