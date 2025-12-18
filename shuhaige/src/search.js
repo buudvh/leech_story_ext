@@ -37,15 +37,15 @@ function execute(key, page) {
         var next = nextElm ? nextElm.attr('href') : null;
         return next != page ? Response.success(data, next) : Response.success(data);
     } catch (error) {
-        // return Response.error(`Url ${url} \nMessage: ${error.message}`);
-        return Response.success([
-            {
-                name: `Url ${url} \nMessage: ${error.message}`,
-                link: '',
-                cover: DEFAULT_COVER,
-                host: BASE_URL
-            }
-        ]);
+        return Response.error(`Url ${url} \nMessage: ${error.message}`);
+        // return Response.success([
+        //     {
+        //         name: `Url ${url} \nMessage: ${error.message}`,
+        //         link: '',
+        //         cover: DEFAULT_COVER,
+        //         host: BASE_URL
+        //     }
+        // ]);
     }
 }
 
