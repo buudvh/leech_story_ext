@@ -105,17 +105,23 @@ function execute() {
         { title: "柯南", input: "柯南", script: "search.js" }, //Conan
 
         //Thể loại
-        { "title": "最近更新", "input": "/lastupdate/{0}.html", "script": "gen.js" },
-        { "title": "新书入库", "input": "/postdate/{0}.html", "script": "gen.js" },
-        { "title": "全部分类", "input": "/shuku/weekvisit_0_0_{0}.html", "script": "gen2.js" },
-        { "title": "玄幻", "input": "/shuku/weekvisit_1_0_{0}.html", "script": "gen2.js" },
-        { "title": "奇幻", "input": "/shuku/weekvisit_2_0_{0}.html", "script": "gen2.js" },
-        { "title": "武侠", "input": "/shuku/weekvisit_3_0_{0}.html", "script": "gen2.js" },
-        { "title": "都市", "input": "/shuku/weekvisit_4_0_{0}.html", "script": "gen2.js" },
-        { "title": "历史", "input": "/shuku/weekvisit_5_0_{0}.html", "script": "gen2.js" },
-        { "title": "军事", "input": "/shuku/weekvisit_6_0_{0}.html", "script": "gen2.js" },
-        { "title": "悬疑", "input": "/shuku/weekvisit_7_0_{0}.html", "script": "gen2.js" },
-        { "title": "游戏", "input": "/shuku/weekvisit_8_0_{0}.html", "script": "gen2.js" },
-        { "title": "科幻", "input": "/shuku/weekvisit_9_0_{0}.html", "script": "gen2.js" }
+        {"title": "玄幻", "input": "/shuku/allvote/0_1_0_{0}.html", "script": "gen.js"},
+        {"title": "奇幻", "input": "/shuku/allvote/0_2_0_{0}.html", "script": "gen.js"},
+        {"title": "仙侠", "input": "/shuku/allvote/0_14_0_{0}.html", "script": "gen.js"},
+        {"title": "武侠", "input": "/shuku/allvote/0_3_0_{0}.html", "script": "gen.js"},
+        {"title": "都市", "input": "/shuku/allvote/0_4_0_{0}.html", "script": "gen.js"},
+        {"title": "历史", "input": "/shuku/allvote/0_5_0_{0}.html", "script": "gen.js"},
+        {"title": "军事", "input": "/shuku/allvote/0_6_0_{0}.html", "script": "gen.js"},
+        {"title": "悬疑", "input": "/shuku/allvote/0_7_0_{0}.html", "script": "gen.js"},
+        {"title": "游戏", "input": "/shuku/allvote/0_8_0_{0}.html", "script": "gen.js"},
+        {"title": "科幻", "input": "/shuku/allvote/0_9_0_{0}.html", "script": "gen.js"},
+        {"title": "体育", "input": "/shuku/allvote/0_10_0_{0}.html", "script": "gen.js"},
+        {"title": "古言", "input": "/shuku/allvote/0_11_0_{0}.html", "script": "gen.js"},
+        {"title": "现言", "input": "/shuku/allvote/0_12_0_{0}.html", "script": "gen.js"},
+        {"title": "幻言", "input": "/shuku/allvote/0_13_0_{0}.html", "script": "gen.js"},
+        {"title": "青春", "input": "/shuku/allvote/0_15_0_{0}.html", "script": "gen.js"},
+        {"title": "穿越", "input": "/shuku/allvote/0_16_0_{0}.html", "script": "gen.js"},
+        {"title": "女生", "input": "/shuku/allvote/0_17_0_{0}.html", "script": "gen.js"},
+        {"title": "其他", "input": "/shuku/allvote/0_18_0_{0}.html", "script": "gen.js"}
     ]);
 }
