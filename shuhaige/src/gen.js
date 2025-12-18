@@ -4,22 +4,22 @@ load('config.js');
 function execute(url, page) {
     try {
         page = page || '1';
-        url = String.format(BASE_URL + url, page);
+        url = String.format(MOBILE_URL + url, page);
         var data = [];
-        var response = crawler.get(url);
+        var response = crawler.get(url, {}, true);
         if (!response.ok) throw new Error(`Status ${response.status}`)
 
         var doc = response.html();
-        var elms = doc.select("#main div.novelslist2 ul li span.s2 a");
-        var elmBoys = doc.select("#main div.novelslist2 ul li span.s2.boys a");
+        var elms = doc.select("#library .main ul li");
 
         if (!elms.length) throw new Error(`Length = 0`);
 
-        elmBoys.forEach(function (e) {
+        elms.forEach(function (e) {
             data.push({
-                name: e.text(),
-                link: e.attr("href"),
-                cover: DEFAULT_COVER,
+                name: e.select(".bookname a").first().text(),
+                link: e.select(".bookname a").first().attr("href"),
+                cover: e.select("a img").first().attr("src") || DEFAULT_COVER,
+                description: e.select("p:nth-child(3) a").first().text() + "\n" + e.select(".intro").first().text(),
                 host: BASE_URL
             });
         });
