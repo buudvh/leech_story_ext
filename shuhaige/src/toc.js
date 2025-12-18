@@ -3,7 +3,7 @@ load('config.js');
 
 function execute(url) {
     try {
-        var response = crawler.get(url);
+        var response = crawler.get(formatToDesktopSlashUrl(url));
         if (!response.ok) throw new Error(`Status ${response.status}`);
         
         var doc = response.html();
@@ -32,4 +32,16 @@ function execute(url) {
         //     host: BASE_URL,
         // }]);
     }
+}
+
+function formatToDesktopSlashUrl(url) {
+    const regex = /shuhaige\.net\/(?:shu_)?(\d+)/;
+    const match = url.match(regex);
+
+    if (match && match[1]) {
+        const bookId = match[1];
+        return `https://www.shuhaige.net/${bookId}/`;
+    }
+
+    return url;
 }

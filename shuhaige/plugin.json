@@ -2,9 +2,9 @@
   "metadata": {
     "name": "shuhaige",
     "author": "HuongMT",
-    "version": 13,
+    "version": 14,
     "source": "https://www.shuhaige.net",
-    "regexp": "^https?:\\/\\/(?:www\\.)?shuhaige\\.net\\/(\\d+)\\/?$",
+    "regexp": "^https?://(www\\.|m\\.)?shuhaige\\.net/(shu_)?(\\d+)\\.html$",
     "description": "Đọc truyện trên trang shuhaige.net",
     "locale": "zh_CN",
     "language": "javascript",
