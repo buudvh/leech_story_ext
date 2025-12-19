@@ -2,7 +2,7 @@
   "metadata": {
     "name": "1qxs",
     "author": "HuongMT",
-    "version": 1,
+    "version": 2,
     "source": "https://www.1qxs.com",
     "regexp": "^https?:\\/\\/(?:www\\.)?1qxs\\.com\\/xs_[a-z0-9]+\\/\\d+\\.html$",
     "description": "Đọc truyện trên trang 1qxs.com",
