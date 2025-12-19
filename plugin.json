@@ -23,6 +23,15 @@
       "description": "Đọc truyện trên trang https://www.1qxs.com"
     },
     {
+      "name": "ttks",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ttks/ttks.zip",
+      "version": 1,
+      "source": "https://ttks.tw",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ttks/icon.png",
+      "description": "Đọc truyện trên trang https://ttks.tw"
+    },
+    {
       "name": "shuhaige",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/shuhaige/shuhaige.zip",

@@ -4258,6 +4258,8 @@ String.prototype.cleanHtml = function () {
     //
     html = html.replace('(本章完)', '');
 
+    html = html.replace(/<br\s*\/?>[^<]*?(?:天天看小說|看書就來)[^<]*?(?=<br\s*\/?>)/gi, '');
+
     return html.trim().normalizeChineseTime().convertT2S();
 }
 
