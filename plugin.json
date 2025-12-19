@@ -62,7 +62,7 @@
       "name": "qidian",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian/qidian.zip",
-      "version": 14,
+      "version": 16,
       "source": "https://www.qidian.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian/icon.png",
       "description": "Đọc truyện trên trang https://www.qidian.com (chap miễn phí)"
@@ -102,15 +102,6 @@
       "source": "https://book.qq.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/bookqq/icon.png",
       "description": "Đọc truyện trên trang book.qq.com"
-    },
-    {
-      "name": "Qidian-VP",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian-vp/qidian-vp.zip",
-      "version": 22,
-      "source": "https://qidian-vp.com",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian-vp/icon.png",
-      "description": "Đọc truyện trên trang qidian-vp.com"
     },
     {
       "name": "nhieutruyen",
