@@ -13,7 +13,7 @@ function execute(key, page) {
         var doc = response.html();
         var elms = doc.select("#__layout > div > div.frame_body > div.pure-g > div.novel_cell");
 
-        if (!elms.length) throw new Error(`Length = 0`);
+        if (!elms.length) throw new Error(`Truyện không tồn tại hoặc kết quả tìm kiếm chỉ có một truyện`);
 
         var data = [];
         elms.forEach(function (e) {
