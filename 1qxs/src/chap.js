@@ -7,7 +7,20 @@ function execute(url) {
         var response = fetch(url, {
             method: 'GET',
             headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
+                "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                "accept-language": "vi,en-US;q=0.9,en;q=0.8,ja;q=0.7,zh-CN;q=0.6,zh;q=0.5",
+                "cache-control": "max-age=0",
+                "priority": "u=0, i",
+                "sec-ch-ua": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\"",
+                "sec-ch-ua-mobile": "?0",
+                "sec-ch-ua-platform": "\"Windows\"",
+                "sec-fetch-dest": "document",
+                "sec-fetch-mode": "navigate",
+                "sec-fetch-site": "same-origin",
+                "sec-fetch-user": "?1",
+                "upgrade-insecure-requests": "1",
+                "Referer": getRefererFromUrl(url),
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
             }
         });
 
@@ -39,6 +52,20 @@ function execute(url) {
     } catch (error) {
         return Response.error(`Url: ${url} \nMessage: ${error.message}`);
     }
+}
+
+function getRefererFromUrl(url) {
+    if (!url) return "";
+    
+    // Tìm vị trí của dấu gạch chéo cuối cùng
+    var lastSlashIndex = url.lastIndexOf('/');
+    
+    if (lastSlashIndex !== -1) {
+        // Cắt chuỗi từ đầu đến dấu gạch chéo cuối cùng và thêm .html
+        return url.substring(0, lastSlashIndex) + ".html";
+    }
+    
+    return url;
 }
 
 
