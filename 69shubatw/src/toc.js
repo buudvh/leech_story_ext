@@ -30,11 +30,11 @@ function execute(url) {
 
         return Response.success(data);
     } catch (error) {
-        // return Response.error(`Url ${url} \nMessage: ${error.message}`);
-        return Response.success([{
-            name: `Url ${url}  - Message: ${error.message}`,
-            url: '',
-            host: BASE_URL,
-        }]);
+        return Response.error(`Url ${url} \nMessage: ${error.message}`);
+        // return Response.success([{
+        //     name: `Url ${url}  - Message: ${error.message}`,
+        //     url: '',
+        //     host: BASE_URL,
+        // }]);
     }
 }

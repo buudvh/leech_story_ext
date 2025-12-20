@@ -26,9 +26,9 @@ function execute(url) {
 
         return Response.success(data);
     } catch (error) {
-        // return Response.error(error.message);
-        return Response.success([
-            error.message,
-        ]);
+        return Response.error(error.message);
+        // return Response.success([
+        //     error.message,
+        // ]);
     }
 }
