@@ -11,10 +11,10 @@ function execute(url) {
 
         var doc = response.html();
 
-        // var browser = Engine.newBrowser(); // Khởi tạo browser
-        // browser.launch(url, 10000); // Mở trang web với timeout
-        // var doc = browser.html();
-        // browser.close();
+        var browser = Engine.newBrowser();
+        browser.launch(url, 10000);
+        var doc = browser.html();
+        browser.close();
 
         chapterElms = doc.select("#alllist > div.lb_mulu > ul > li:not(.title)");
 
@@ -30,11 +30,11 @@ function execute(url) {
 
         return Response.success(data);
     } catch (error) {
-        return Response.error(`Url ${url} \nMessage: ${error.message}`);
-        // return Response.success([{
-        //     name: 'Url: ' + url + ', Message:' + error.message,
-        //     url: '',
-        //     host: BASE_URL,
-        // }]);
+        // return Response.error(`Url ${url} \nMessage: ${error.message}`);
+        return Response.success([{
+            name: `Url ${url}  - Message: ${error.message}`,
+            url: '',
+            host: BASE_URL,
+        }]);
     }
 }

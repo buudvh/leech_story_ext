@@ -6,15 +6,15 @@ function execute(url) {
         var data = [];
         var url = url.replace(/\/book\//, "/indexlist/");
 
-        var response = crawler.get(url);
-        if (!response.ok) throw new Error(`Status ${response.status}`);
+        // var response = crawler.get(url);
+        // if (!response.ok) throw new Error(`Status ${response.status}`);
 
-        var doc = response.html();
+        // var doc = response.html();
 
-        // var browser = Engine.newBrowser(); // Khởi tạo browser
-        // browser.launch(url, 10000); // Mở trang web với timeout
-        // var doc = browser.html();
-        // browser.close();
+        var browser = Engine.newBrowser();
+        browser.launch(url, 10000);
+        var doc = browser.html();
+        browser.close();
 
         var chapternums = doc.select("#indexselect-top option");
 
@@ -26,9 +26,9 @@ function execute(url) {
 
         return Response.success(data);
     } catch (error) {
-        return Response.error(error.message);
-        // return Response.success([
-        //     error.message,
-        // ]);
+        // return Response.error(error.message);
+        return Response.success([
+            error.message,
+        ]);
     }
 }
