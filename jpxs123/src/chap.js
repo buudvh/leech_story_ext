@@ -6,7 +6,7 @@ function execute(url) {
         var response = crawler.get(url);
         if (!response.ok) throw new Error(`Status ${response.status}`)
 
-        var doc = response.html();
+        var doc = response.html('gb2312');
         var htm = doc.select("#readContent_set > div.readDetail > div.read_chapterDetail");
         htm.select("div").remove();
         htm.select("a").remove();
