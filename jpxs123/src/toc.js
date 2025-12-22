@@ -3,27 +3,20 @@ load('config.js');
 
 function execute(url) {
     try {
-        var data = [];
-        var url = BASE_URL + url;
-
         var response = crawler.get(url);
         if (!response.ok) throw new Error(`Status ${response.status}`);
-
-        var doc = response.html();
-
-        var browser = Engine.newBrowser();
-        browser.launch(url, 10000);
-        var doc = browser.html();
-        browser.close();
-
-        chapterElms = doc.select("#alllist > div.lb_mulu > ul > li:not(.title)");
-
+        
+        var doc = response.html('gb2312');
+        
+        chapterElms = doc.select("body > div.readContent > div.book_list.clearfix > ul > li > a");
+        
         if (!chapterElms.length) throw new Error(`Length = 0`);
-
+        
+        var data = [];
         chapterElms.forEach(function (e) {
             data.push({
-                name: (e.select("a").first().text() || e.select('span').first().text()).formatTocName(),
-                url: e.select("a").first().attr('href') || e.select('span').first().attr('data-cid-url'),
+                name: e.text().formatTocName().replace(/第(\d+)节/g, '第$1章'),
+                url: e.attr('href'),
                 host: BASE_URL,
             });
         });
@@ -32,7 +25,7 @@ function execute(url) {
     } catch (error) {
         return Response.error(`Url ${url} \nMessage: ${error.message}`);
         // return Response.success([{
-        //     name: `Url ${url}  - Message: ${error.message}`,
+        //     name: `Url ${url} \nMessage: ${error.message}`,
         //     url: '',
         //     host: BASE_URL,
         // }]);

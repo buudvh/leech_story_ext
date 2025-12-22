@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "name": "69shuba.tw",
+    "name": "jpxs123",
     "author": "HuongMT",
-    "version": 47,
-    "source": "https://69shuba.tw/",
-    "regexp": "^https?:\\/\\/(?:www\\.)?69shuba\\.tw\\/book\\/(\\d+)\\/?$",
-    "description": "Đọc truyện trên trang 69shuba.tw",
+    "version": 1,
+    "source": "https://jpxs123.com",
+    "regexp": "^https?:\/\/jpxs123\\.com\/dsxs\/\\d+\\.html$",
+    "description": "Đọc truyện trên trang jpxs123.com",
     "locale": "zh_CN",
     "language": "javascript",
     "type": "chinese_novel"
@@ -13,7 +13,6 @@
   "script": {
     "home": "home.js",
     "detail": "detail.js",
-    "page": "page.js",
     "toc": "toc.js",
     "chap": "chap.js",
     "genre": "genre.js",
