@@ -103,13 +103,14 @@ function execute() {
         { title: "柯南", input: "柯南", script: "search.js" }, //Conan
 
         //Thể loại
-        { title: "同人", input: "/sort/9/", script: "gen.js" },
-        { title: "玄幻", input: "/sort/1/", script: "gen.js" },
-        { title: "仙侠", input: "/sort/2/", script: "gen.js" },
-        { title: "都市", input: "/sort/3/", script: "gen.js" },
-        { title: "歷史", input: "/sort/4/", script: "gen.js" },
-        { title: "遊戲", input: "/sort/5/", script: "gen.js" },
-        { title: "科幻", input: "/sort/6/", script: "gen.js" },
-        { title: "言情", input: "/sort/8/", script: "gen.js" },
+        { title: "All", input: "/sort/{0}.html", script: "gen.js" },
+        { title: "同人", input: "/sort/9/{0}.html", script: "gen.js" },
+        { title: "玄幻", input: "/sort/1/{0}.html", script: "gen.js" },
+        { title: "仙侠", input: "/sort/2/{0}.html", script: "gen.js" },
+        { title: "都市", input: "/sort/3/{0}.html", script: "gen.js" },
+        { title: "歷史", input: "/sort/4/{0}.html", script: "gen.js" },
+        { title: "遊戲", input: "/sort/5/{0}.html", script: "gen.js" },
+        { title: "科幻", input: "/sort/6/{0}.html", script: "gen.js" },
+        { title: "言情", input: "/sort/8/{0}.html", script: "gen.js" },
     ]);
 }

@@ -5,7 +5,7 @@ load('common.js');
 function execute(key, page) {
     try {
         page = page || '1';
-        url = BASE_URL + "/search/?searchkey=" + encodeURIComponent(key) + "/" + page;
+        url = `${BASE_URL}/search/${page}?searchkey=${encodeURIComponent(key)}`;
         var data = [];
 
         var response = fetch(url, {

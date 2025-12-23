@@ -6,7 +6,7 @@ function execute(url) {
         var data = [];
         var url = url.replace(/\/book\/(\d+)\.html$/, "/chapterlist/$1.html");
 
-        var response = fetch(url);
+        var response = crawler.get(url);
         if (!response.ok) throw new Error(`Status ${response.status}`);
 
         var doc = response.html();

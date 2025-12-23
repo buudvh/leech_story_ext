@@ -10,18 +10,18 @@ function execute(url, page) {
         if (!response.ok) throw new Error(`Status ${response.status}`)
 
         var doc = response.html();
-        var elms = doc.select(".content dl");
+        var elms = doc.select("#wrapper > main > div > div.rank.mt10.pc-only > div.left > ul > li");
 
         if (!elms.length) throw new Error(`Length = 0`);
 
         elms.forEach(function (e) {
-            let link = e.select("dt:nth-child(2) > a").first().attr("href");
+            let link = e.select("a:nth-child(2)").first().attr("href");
             data.push({
-                name: e.select("dt:nth-child(2) > a").first().text().convertT2S(),
+                name: e.select("a:nth-child(2)").first().text().convertT2S(),
                 link: link,
                 cover: buildCover(getBookId(link)),
-                description: '作者: ' + e.select('dd:nth-child(4) > a').first().text().convertT2S()
-                    + "\n" + e.select("dd:nth-child(3)").first().text().convertT2S(),
+                description: `${e.select('span:nth-child(1)').first().text().convertT2S()}|作者: ${e.select('span:nth-child(4) a').first().text().convertT2S()}`
+                    + `\n最后更新：${e.select("span:nth-child(5)").first().text().convertT2S()}`,
                 host: BASE_URL
             });
         });
