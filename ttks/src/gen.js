@@ -20,7 +20,7 @@ function execute(url, page) {
                 link: e.select("a").first().attr("href"),
                 cover: e.select("amp-img").first().attr("src") || DEFAULT_COVER,
                 description: e.select("ul > li:nth-child(2)").first().text().convertT2S()
-                    + "\n" + e.select("ul > li:nth-child(3)").first().text().convertT2S(),
+                    + "\n" + e.select("ul > li:nth-child(3)").first().text().replace('簡介：', '').convertT2S(),
                 host: BASE_URL
             });
         });
