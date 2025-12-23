@@ -8,16 +8,15 @@ function execute(key, page) {
         url = `${BASE_URL}/search/${page}?searchkey=${encodeURIComponent(key)}`;
         var data = [];
 
-        var response = fetch(url, {
-            method: 'GET',
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1',
-            }
-        });
+        // var response = crawler.get(url);
 
-        if (!response.ok) throw new Error(`Status ${response.status}`)
+        // if (!response.ok) throw new Error(`Status ${response.status}`)
+        var browser = Engine.newBrowser();
+        browser.launch(url, 5000);
+        // browser.waitUrl('.*/search/.*', 10000);
+        var doc = browser.html();
+        browser.close();
 
-        var doc = response.html();
         var elms = doc.select(".content dl");
 
         if (!elms.length) throw new Error(`Length = 0`);
