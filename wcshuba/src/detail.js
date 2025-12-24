@@ -10,7 +10,7 @@ function execute(url) {
         var authorElm = doc.select('#wrapper > main > div > div.rank.mt10.pc-only > div.left > div > div > div.booktitle > h2 > a');
         var bookName = doc.select('#wrapper > main > div > div.rank.mt10.pc-only > div.left > div > div > div.booktitle > h1 > a').text().convertT2S();
         var detail = $.QA(doc, '#wrapper > main > div > div.rank.mt10.pc-only > div.left > div > div > div.bookdes > p',
-            { m: function (x) { return x.text().indexOf("最新章节：") === 0 || x.text().indexOf("最后更新：") === 0 ? x.text() : ""; }, j: '<br>' });
+            { m: function (x) { return x.text().indexOf("最新章节：") === 0 || x.text().indexOf("最后更新：") === 0 ? x.text() : ""; }, j: '<br><br>' });
         var genreElm = doc.select("#wrapper > main > div > div.rank.mt10.pc-only > div.left > div > div > div.bookintro > p:nth-child(1) > a");
 
         var genres = [];
@@ -22,13 +22,16 @@ function execute(url) {
             });
         });
 
+        var chapterCount = doc.select("#wrapper > main > div > div.chapterlist.mt10.pc-only > div.all > h3").text().replace(/.*?(【共\d+章】).*/, '$1');
+
         return Response.success({
             name: bookName.formatTocName(),
             cover: doc.select("#wrapper > main > div > div.rank.mt10.pc-only > div.left > div > a > img").first().attr("src") || DEFAULT_COVER,
             author: authorElm.text(),
-            description: doc.select('#wrapper > main > div > div.rank.mt10.pc-only > div.left > div > div > div.bookintro > p:nth-child(2)').html().cleanHtml().replace(/([.!?…]+)/g, function (match) {
-                return match + "\n";
-            }),
+            description: chapterCount + "\n"
+                + doc.select('#wrapper > main > div > div.rank.mt10.pc-only > div.left > div > div > div.bookintro > p:nth-child(2)').html().cleanHtml().replace(/([.!?…]+)/g, function (match) {
+                    return match + "\n";
+                }),
             detail: detail.convertT2S(),
             host: BASE_URL,
             suggests: [

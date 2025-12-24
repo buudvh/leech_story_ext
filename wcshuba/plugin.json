@@ -2,7 +2,7 @@
   "metadata": {
     "name": "wcshuba",
     "author": "HuongMT",
-    "version": 3,
+    "version": 4,
     "source": "https://wcshuba.com",
     "regexp": "^https?:\\/\\/(?:www\\.)?wcshuba\\.com\\/book\\/(\\d+)\\.html$",
     "description": "Đọc truyện trên trang wcshuba.com",
