@@ -10,12 +10,10 @@ function execute(key, page) {
 
         // var response = crawler.get(url);
 
-        // if (!response.ok) throw new Error(`Status ${response.status}`)
-        var browser = Engine.newBrowser();
-        browser.launch(url, 5000);
-        // browser.waitUrl('.*/search/.*', 10000);
-        var doc = browser.html();
-        browser.close();
+        var response = crawler.get(`https://read-web.onrender.com/api/proxy-wcshuba?key=${encodeURIComponent(key)}&page=${page}`);
+        if (!response.ok) throw new Error(`Status ${response.status}`);
+        var json_result = response.json();
+        doc = Html.parse(json_result.data);
 
         var elms = doc.select(".content dl");
 
