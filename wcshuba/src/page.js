@@ -11,7 +11,8 @@ function execute(url) {
 
         var doc = response.html();
 
-        var chapternums = doc.select("#indexselect-top option");
+        var selectPage = doc.select("#indexselect-top").first();
+        var chapternums = selectPage.select("option");
 
         if(!chapternums.length) throw new Error("Length = 0");
 
