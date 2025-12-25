@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "name": "kanshuw",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "https://www.kanshuw.com",
+    "regexp": "^https?:\/\/www\\.kanshuw\\.com\/\\d+\\/\\d+\\/?$",
+    "description": "Đọc truyện trên trang kanshuw.com",
+    "locale": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "detail": "detail.js",
+    "page": "page.js",
+    "toc": "toc.js",
+    "chap": "chap.js",
+    "genre": "genre.js",
+    "search": "search.js"
+  }
+}
