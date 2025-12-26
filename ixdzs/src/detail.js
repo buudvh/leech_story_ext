@@ -20,7 +20,7 @@ function execute(url) {
             })
         });
         var genreElm = doc.select('body > main > div:nth-child(1) > div.novel > div.n-text > p:nth-child(3) > a').first();
-
+        var objGenre = DEFAULT_GENRES.find(p => p.title = genreElm.text());
 
         return Response.success({
             name: bookName.formatTocName(),
@@ -51,9 +51,9 @@ function execute(url) {
                 }
             ],
             genres: [{
-                title: genreElm.text().convertT2S(),
-                input: genreElm.attr("href"),
-                script: "gen.js"
+                title: objGenre.title || DEFAULT_GENRES[0].title,
+                input: objGenre.input || DEFAULT_GENRES[0].input,
+                script: objGenre.script || DEFAULT_GENRES[0].script
             }]
         });
     } catch (error) {
