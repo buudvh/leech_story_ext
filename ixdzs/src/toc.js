@@ -17,7 +17,6 @@ function execute(url) {
             "referrer": "https://ixdzs.tw/read/" + bookid + "/"
         });
         if (!response.ok) throw new Error(`Status ${response.status}`);
-        // throw new Error(response.text());
 
         var data = extractChapters(response.text());
 
@@ -25,12 +24,12 @@ function execute(url) {
 
         return Response.success(data);
     } catch (error) {
-        // return Response.error(`Url ${url} \nMessage: ${error.message}`);
-        return Response.success([{
-            name: `Url ${url} \nMessage: ${error.message}`,
-            url: '',
-            host: BASE_URL,
-        }]);
+        return Response.error(`Url ${url} \nMessage: ${error.message}`);
+        // return Response.success([{
+        //     name: `Url ${url} \nMessage: ${error.message}`,
+        //     url: '',
+        //     host: BASE_URL,
+        // }]);
     }
 }
 
@@ -41,8 +40,9 @@ function extractChapters(html) {
 
     while ((match = regex.exec(html)) !== null) {
         chapters.push({
-            href: match[1], // Nhóm 1: Nội dung trong href
-            name: match[2].trim() // Nhóm 2: Tên chương nằm giữa <a> và </a>
+            name: match[2].trim().formatTocName(),
+            url: match[1],
+            host: BASE_URL,
         });
     }
     return chapters;
