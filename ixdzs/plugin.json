@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "ixdzs",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "https://ixdzs.tw",
+    "regexp": "^https?:\/\/ixdzs\\.tw\/read\/\\d+\\/?$",
+    "description": "Đọc truyện trên trang ixdzs.tw",
+    "locale": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js",
+    "genre": "genre.js",
+    "search": "search.js"
+  }
+}
