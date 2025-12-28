@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "novels.com.tw",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "https://www.novels.com.tw",
+    "regexp": "^https?:\/\/www\\.novels\\.com\\.tw\/novels\/[a-zA-Z0-9_-]+\\/?(?:\\?aid=\\d+)?$",
+    "description": "Đọc truyện trên trang novels.com.tw",
+    "locale": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js",
+    "genre": "genre.js",
+    "search": "search.js"
+  }
+}
