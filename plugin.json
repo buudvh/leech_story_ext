@@ -5,13 +5,13 @@
   },
   "data": [
     {
-      "name": "novels.com.tw",
+      "name": "bqquge",
       "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/novels.com.tw/novels.com.tw.zip",
-      "version": 2,
-      "source": "https://www.novels.com.tw",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/novels.com.tw/icon.png",
-      "description": "Đọc truyện trên trang https://www.novels.com.tw"
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/bqquge/bqquge.zip",
+      "version": 1,
+      "source": "https://www.bqquge.com/",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/bqquge/icon.png",
+      "description": "Đọc truyện trên trang bqquge.com"
     },
     {
       "name": "sto55",
