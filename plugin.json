@@ -5,6 +5,15 @@
   },
   "data": [
     {
+      "name": "101kks",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/101kks/101kks.zip",
+      "version": 1,
+      "source": "https://www.101kks.com/",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/101kks/icon.png",
+      "description": "Đọc truyện trên trang 101kks.com"
+    },
+    {
       "name": "bqquge",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/bqquge/bqquge.zip",
