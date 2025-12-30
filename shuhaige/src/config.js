@@ -24,9 +24,7 @@ var DEFAULT_GENRES = [
 ];
 
 try {
-    if (typeof CONFIG_URL !== 'undefined' && CONFIG_URL) {
-        BASE_URL = CONFIG_URL;
-    }
-} catch (error) {
-    // Bỏ qua nếu lỗi
+    // Ưu tiên localStorage > Biến toàn cục > Giá trị mặc định hiện tại
+    BASE_URL = localStorage.getItem("CONFIG_URL") || (typeof CONFIG_URL !== 'undefined' ? CONFIG_URL : BASE_URL);
+} catch (e) {
 }

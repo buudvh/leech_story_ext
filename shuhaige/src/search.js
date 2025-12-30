@@ -7,12 +7,20 @@ function execute(key, page) {
         page = page || '1';
         var response;
         if (page == 1) {
-            url = proxyRedirectUrl(key);
+            response = fetch(`${BASE_URL}/search.html`, {
+                "headers": {
+                    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                    "accept-language": "vi,en-US;q=0.9,en;q=0.8,ja;q=0.7,zh-CN;q=0.6,zh;q=0.5",
+                    "content-type": "application/x-www-form-urlencoded",
+                },
+                "referrer": BASE_URL,
+                "body": `searchtype=all&searchkey=${key}`,
+                "method": "POST",
+            });
         } else {
             url = BASE_URL + page;
+            response = crawler.get(url);
         }
-
-        response = crawler.get(url);
 
         if (!response.ok) throw new Error(`Status ${response.status}`);
 
@@ -49,57 +57,57 @@ function execute(key, page) {
     }
 }
 
-function proxyRedirectUrl(key) {
-    var response = crawler.get(`https://read-web.onrender.com/api/proxy-shuhai?key=${encodeURIComponent(key)}`);
+// function proxyRedirectUrl(key) {
+//     var response = crawler.get(`https://read-web.onrender.com/api/proxy-shuhai?key=${encodeURIComponent(key)}`);
 
-    if (!response.ok) return getRedirectUrl(key);
+//     if (!response.ok) return getRedirectUrl(key);
 
-    var data = response.json();
+//     var data = response.json();
 
-    return data.data;
-}
+//     return data.data;
+// }
 
-function getRedirectUrl(key) {
-    var MAX_RETRY = 5
-    var searchUrlRegex = /^https?:\/\/m\.shuhaige\.net\/search\/\d+\/\d+\.html$/;
-    var url = "";
-    var retry_cnt = 0;
-    do {
-        retry_cnt++;
-        var browser = Engine.newBrowser();
-        browser.launch(MOBILE_URL, 5000);
+// function getRedirectUrl(key) {
+//     var MAX_RETRY = 5
+//     var searchUrlRegex = /^https?:\/\/m\.shuhaige\.net\/search\/\d+\/\d+\.html$/;
+//     var url = "";
+//     var retry_cnt = 0;
+//     do {
+//         retry_cnt++;
+//         var browser = Engine.newBrowser();
+//         browser.launch(MOBILE_URL, 5000);
 
-        var inputSelector = 'input[name="searchkey"]';
-        var buttonSelector = 'button.layui-btn';
+//         var inputSelector = 'input[name="searchkey"]';
+//         var buttonSelector = 'button.layui-btn';
 
-        browser.callJs(
-            `
-            var inputField = document.querySelector('${inputSelector}'); 
-            var submitButton = document.querySelector('${buttonSelector}');
+//         browser.callJs(
+//             `
+//             var inputField = document.querySelector('${inputSelector}'); 
+//             var submitButton = document.querySelector('${buttonSelector}');
 
-            if (inputField && submitButton) {
-                inputField.value = '${key}';
+//             if (inputField && submitButton) {
+//                 inputField.value = '${key}';
                 
-                submitButton.click(); 
-            }
-            `,
-            3000
-        );
+//                 submitButton.click(); 
+//             }
+//             `,
+//             3000
+//         );
 
-        // 3. Chờ URL chuyển hướng thành công (Ví dụ: /search/3221/1.html)
-        browser.waitUrl('.*/search/.*', 10000);
+//         // 3. Chờ URL chuyển hướng thành công (Ví dụ: /search/3221/1.html)
+//         browser.waitUrl('.*/search/.*', 10000);
 
-        browser.callJs(
-            `
-            document.body.innerHTML += '<div id="url">' + location.href + '</div>';
-            `,
-            3000
-        );
+//         browser.callJs(
+//             `
+//             document.body.innerHTML += '<div id="url">' + location.href + '</div>';
+//             `,
+//             3000
+//         );
 
-        var doc = browser.html();
-        browser.close();
-        url = doc.select("#url").text();
-    } while (!searchUrlRegex.test(url) && retry_cnt <= MAX_RETRY);
+//         var doc = browser.html();
+//         browser.close();
+//         url = doc.select("#url").text();
+//     } while (!searchUrlRegex.test(url) && retry_cnt <= MAX_RETRY);
 
-    return url.replace(MOBILE_URL, BASE_URL);
-}
+//     return url.replace(MOBILE_URL, BASE_URL);
+// }
