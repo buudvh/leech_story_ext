@@ -14,8 +14,8 @@ function execute(url) {
 
         while ((match = regex.exec(html)) !== null) {
             data.push({
+                name: match[2].trim().convertT2S(),
                 url: match[1],
-                name: match[2].trim(),
                 host: BASE_URL,
             });
         }

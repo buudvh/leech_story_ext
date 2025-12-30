@@ -10,12 +10,22 @@ function execute(key, page) {
 
         if (!response.ok) throw new Error(`Status ${response.status}`);
 
-        // if (response.status == 302) return searchOnlyOneResult(url, key);
-
         var doc = response.html();
         var elms = doc.select("#article_list_content > li");
 
-        if (!elms.length) return searchOnlyOneResult(url, key);
+        // if (doc.html() != "") return searchOnlyOneResult(url, key);
+
+        if (!elms.length) {
+            if (doc.select("head > meta[property=og:novel:book_name]")) {
+                return Response.success([{
+                    name: doc.select("head > meta[property=og:novel:book_name]").attr("content").convertT2S(),
+                    link: doc.select("head > meta[property=og:url]").attr("content"),
+                    cover: doc.select("head > meta[property=og:image]").attr("content"),
+                    description: doc.select("head > meta[property=og:description]").attr("content").convertT2S(),
+                    host: BASE_URL
+                }]);
+            } else throw new Error("Length = 0");
+        }
 
         var data = [];
         elms.forEach(function (e) {
@@ -42,35 +52,4 @@ function execute(key, page) {
         //     }
         // ]);
     }
-}
-
-function searchOnlyOneResult(url, key) {
-    var MAX_RETRY = 5
-    var retry_cnt = 0;
-    var bookRegex = /\/book\/(\d+)\.html/;
-    var redirectUrl = '';
-    do {
-        retry_cnt++;
-        var browser = Engine.newBrowser();
-        browser.launch(url, 5000);
-        browser.waitUrl('.*/book/.*', 5000);
-
-        browser.callJs(
-            `
-            document.body.innerHTML += '<div id="url">' + location.href + '</div>';
-            `,
-            500
-        );
-
-        var doc = browser.html();
-        browser.close();
-        redirectUrl = doc.select("#url").text();
-    } while (!bookRegex.test(redirectUrl) && retry_cnt <= MAX_RETRY);
-
-    return Response.success([{
-        name: key,
-        link: redirectUrl,
-        cover: buildCover(getBookId(redirectUrl)),
-        host: BASE_URL
-    }]);;
 }

@@ -2,7 +2,7 @@
   "metadata": {
     "name": "ttks",
     "author": "HuongMT",
-    "version": 3,
+    "version": 4,
     "source": "https://ttks.tw",
     "regexp": "^https?:\/\/ttks\\.tw\/novel\/chapters\/[a-zA-Z0-9_-]+\/index\\.html$",
     "description": "Đọc truyện trên trang ttks.tw",

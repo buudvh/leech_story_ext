@@ -57,9 +57,9 @@ function execute(url) {
             name: bookName.formatTocName(),
             author: authorElm.text().convertT2S(),
             cover: cover,
-            description: doc.select("#tab_info > div").html(),
-            detail: doc.select("body > div.container > ul > li.col-8 > div:nth-child(1) > div > div.booknav2 > p:nth-child(5)").text()
-                + "\n最新章节: " + doc.select("#tab_chapters > ul > li:nth-child(1) > a > span").text(),
+            description: doc.select("#tab_info > div").html().convertT2S(),
+            detail: doc.select("body > div.container > ul > li.col-8 > div:nth-child(1) > div > div.booknav2 > p:nth-child(5)").text().convertT2S()
+                + "\n最新章节: " + doc.select("#tab_chapters > ul > li:nth-child(1) > a > span").text().convertT2S(),
             host: BASE_URL,
             ongoing: doc.select("body > div.container > ul > li.col-8 > div:nth-child(1) > div > div.booknav2 > p:nth-child(4)").text().convertT2S().indexOf("連載") != -1,
             suggests: [
@@ -81,16 +81,4 @@ function execute(url) {
     } catch (error) {
         return Response.error(`Url: ${url} \nMessage: ${error.message}`);
     }
-}
-
-function getBookInfoObject(doc) {
-    var scriptContent = doc.select('head > script').text();
-
-    var match = scriptContent.match(/var\s+bookinfo\s*=\s*(\{[\s\S]*?\});/);
-
-    if (match) {
-        return new Function("return " + match[1])();
-    }
-
-    return null;
 }
