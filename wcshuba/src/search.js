@@ -5,15 +5,22 @@ load('common.js');
 function execute(key, page) {
     try {
         page = page || '1';
-        url = `${BASE_URL}/search/${page}?searchkey=${encodeURIComponent(key)}`;
+        url = page == '1' ?
+            `${BASE_URL}/search/?searchkey=${encodeURIComponent(key)}`
+            : `${BASE_URL}/search/${page}?searchkey=${encodeURIComponent(key)}`;
         var data = [];
-
-        // var response = crawler.get(url);
-
-        var response = crawler.get(`https://read-web.onrender.com/api/proxy-wcshuba?key=${encodeURIComponent(key)}&page=${page}`);
+        // var response = crawler.get(`https://read-web.onrender.com/api/proxy-wcshuba?key=${encodeURIComponent(key)}&page=${page}`);
+        // var json_result = response.json();
+        // doc = Html.parse(json_result.data);
+        var response = fetch(url, {
+            "headers": {
+                "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                "accept-language": "vi,en-US;q=0.9,en;q=0.8,ja;q=0.7,zh-CN;q=0.6,zh;q=0.5",
+            },
+            "method": "GET",
+        });
         if (!response.ok) throw new Error(`Status ${response.status}`);
-        var json_result = response.json();
-        doc = Html.parse(json_result.data);
+        var doc = response.html();
 
         var elms = doc.select(".content dl");
 
