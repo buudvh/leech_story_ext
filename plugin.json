@@ -5,6 +5,15 @@
   },
   "data": [
     {
+      "name": "69shux.co",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/69shux.co/69shux.co.zip",
+      "version": 3,
+      "source": "https://www.69shux.co",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/69shux.co/icon.png",
+      "description": "Đọc truyện trên trang 69shux.co"
+    },
+    {
       "name": "101kks",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/101kks/101kks.zip",
