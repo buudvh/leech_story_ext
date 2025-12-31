@@ -5,10 +5,19 @@
   },
   "data": [
     {
+      "name": "60ksw",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/60ksw/60ksw.zip",
+      "version": 1,
+      "source": "https://www.60ksw.com",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/60ksw/icon.png",
+      "description": "Đọc truyện trên trang www.60ksw.com"
+    },
+    {
       "name": "69shux.co",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/69shux.co/69shux.co.zip",
-      "version": 3,
+      "version": 1,
       "source": "https://www.69shux.co",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/69shux.co/icon.png",
       "description": "Đọc truyện trên trang 69shux.co"
