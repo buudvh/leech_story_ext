@@ -9,11 +9,25 @@ function execute(url) {
         var doc = response.html();
         var authorElm = doc.select('div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(2) > a');
         var genreElm = doc.select("div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(3) > a");
-        var bookName = doc.select('div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p:nth-child(1) > strong').text().convertT2S();
+        var bookName = doc.select('body > main > div.bookinfo > table:nth-child(1) > tbody > tr > td.info > h1').text().convertT2S();
         var detail = $.QA(doc, 'div.bookinfo > table:nth-child(1) > tbody > tr > td.info > p',
             { m: function (x) { return x.text().indexOf("更新：") === 0 || x.text().indexOf("最新：") === 0 ? x.text() : ""; }, j: '<br>' });
         var cover = doc.select(".bookinfo img").first().attr("src") || DEFAULT_COVER;
-        if(cover.indexOf('//') == 0) cover = "http:" + cover;
+        if (cover.indexOf('//') == 0) cover = "http:" + cover;
+        var genres = [
+            {
+                title: genreElm.text(),
+                input: genreElm.attr("href"),
+                script: "gen2.js"
+            }
+        ];
+        (doc.select("body > main > div.book-tags > a") || []).forEach(e => {
+            genres.push({
+                title: e.text(),
+                input: e.attr("href"),
+                script: "gen.js"
+            })
+        });
 
         return Response.success({
             name: bookName.formatTocName(),
@@ -31,13 +45,7 @@ function execute(url) {
                     script: "author.js"
                 }
             ],
-            genres: [
-                {
-                    title: genreElm.text(),
-                    input: genreElm.attr("href"),
-                    script: "gen2.js"
-                }
-            ],
+            genres: genres,
             comments: [
                 {
                     title: "QQ Comments",
