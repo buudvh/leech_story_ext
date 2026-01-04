@@ -2,7 +2,7 @@
   "metadata": {
     "name": "bqquge",
     "author": "HuongMT",
-    "version": 1,
+    "version": 2,
     "source": "https://www.bqquge.com",
     "regexp": "^https?:\/\/www\\.bqquge\\.com\/\\d+\\/?$",
     "description": "Đọc truyện trên trang bqquge.com",

@@ -28,7 +28,7 @@ function execute(url) {
 
         return Response.success({
             name: bookName.formatTocName(),
-            author: authorElm.text().convertT2S(),
+            author: authorElm.text().replace('作者：', '').convertT2S(),
             cover: cover,
             description: doc.select("body > div:nth-child(3) > div.des").html(),
             detail: doc.select("body > div:nth-child(3) > div.bookdetail > div > p:nth-child(6)").text()
