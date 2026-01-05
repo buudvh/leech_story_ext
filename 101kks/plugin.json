@@ -2,7 +2,7 @@
   "metadata": {
     "name": "101kks",
     "author": "HuongMT",
-    "version": 3,
+    "version": 4,
     "source": "https://101kks.com",
     "regexp": "^https?:\/\/101kks\\.com\/book\/\\d+\\.html$",
     "description": "Đọc truyện trên trang 101kks.com",

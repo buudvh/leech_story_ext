@@ -14,6 +14,7 @@ function execute(url) {
 
         htm = htm.html();
         htm = htm.cleanHtml();
+        htm = htm.replace(/<br\s*\/?>[^<]*?(?:101看书网|看書就來)[^<]*?(?=<br\s*\/?>)/gi, '');
 
         return Response.success(htm);
     } catch (error) {
