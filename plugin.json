@@ -5,6 +5,15 @@
   },
   "data": [
     {
+      "name": "Cà Chua",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/cachua/cachua.zip",
+      "version": 1,
+      "source": "https://fanqienovel.com",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/cachua/icon.png",
+      "description": "Đọc truyện trên trang Cà Chua"
+    },
+    {
       "name": "60ksw",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/60ksw/60ksw.zip",

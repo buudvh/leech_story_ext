@@ -1,17 +1,18 @@
 {
   "metadata": {
-    "name": "Fanqie by Nahona",
-    "author": "HuongMT",
-    "version": 3,
+    "name": "Cà Chua",
+    "author": "mizhm",
+    "version": 1,
     "source": "https://fanqienovel.com",
-    "regexp": "https://fanqienovel.com/page/\\d+",
-    "description": "Fanqienovel - Khuyến Khích Không Tải Có Thể Ban IP",
+    "regexp": "https://fanqienovel.com/(.*?)$",
+    "description": "Cà Chua",
     "locale": "zh_CN",
-    "language": "javascript",
+    "tag": "",
     "type": "chinese_novel"
   },
   "script": {
     "home": "home.js",
+    "genre": "genre.js",
     "detail": "detail.js",
     "search": "search.js",
     "toc": "toc.js",
