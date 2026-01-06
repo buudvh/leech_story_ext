@@ -46,3 +46,12 @@ function GetDecode(res) {
     }
     return content;
 }
+
+function toCapitalize(sentence) {
+    var words = sentence.split(" ");
+    for (var i = 0; i < words.length; i++) {
+        var word = words[i];
+        words[i] = word.charAt(0).toUpperCase() + word.substring(1);
+    }
+    return words.join(" ");
+}

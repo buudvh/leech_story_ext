@@ -2,6 +2,499 @@ load("config.js");
 
 function execute() {
 	return Response.success([
+		{ title: "诸天", input: "诸天", script: "search.js" },
+        { title: "聊天群", input: "聊天群", script: "search.js" },
+        { title: "万界", input: "万界", script: "search.js" },
+        { title: "无限", input: "无限", script: "search.js" },
+        { title: "同时穿越", input: "同时穿越", script: "search.js" }, //Đồng thời xuyên qua
+        { title: "轮回", input: "轮回", script: "search.js" }, //Luân Hồi
+        { title: "御兽", input: "御兽", script: "search.js" }, //Ngự thú
+
+        //Tu chân liêu thiên quần
+        { title: "修真聊天群", input: "修真聊天群", script: "search.js" },
+        { title: "霸宋", input: "霸宋", script: "search.js" },
+        { title: "宋书航", input: "宋书航", script: "search.js" },
+
+        //Ngã cật tây hồng thị
+        { title: "盘龙", input: "盘龙", script: "search.js" }, //Bàn Long
+        { title: "吞噬", input: "吞噬", script: "search.js" }, //Thôn Phệ
+        { title: "星辰变", input: "星辰变", script: "search.js" }, //Tinh thần biến
+        { title: "沧元图", input: "沧元图", script: "search.js" }, //Thương nguyên đồ
+
+        //Trạch Trư
+        { title: "牧神记", input: "牧神记", script: "search.js" }, //Mục thần ký
+        { title: "帝尊", input: "帝尊", script: "search.js" }, //Đế Tôn
+        { title: "魔狱玄胎", input: "魔狱玄胎", script: "search.js" }, //Ma ngục huyền thai
+
+        //Thần Đông
+        { title: "神墓", input: "神墓", script: "search.js" }, //Thần Mộ
+        { title: "遮天", input: "遮天", script: "search.js" }, //Già Thiên
+        { title: "完美世界", input: "完美世界", script: "search.js" }, //Hoàn Mỹ Thế Giới
+        { title: "圣墟", input: "圣墟", script: "search.js" }, //Thánh Khư
+
+        //Vong ngữ
+        { title: "凡人", input: "凡人", script: "search.js" }, //Phàm Nhân
+
+        //Nhĩ căn
+        { title: "仙逆", input: "仙逆", script: "search.js" }, //Tiên nghịch
+
+        //Lão mực
+        { title: "一世之尊", input: "一世之尊", script: "search.js" }, //Nhất thế chi tôn
+        { title: "孟奇", input: "孟奇", script: "search.js" }, //Mạnh Kỳ
+        { title: "诡秘", input: "诡秘", script: "search.js" }, //Quỷ bí
+
+        //Mộng nhập
+        { title: "永生", input: "永生", script: "search.js" }, //Vĩnh sinh
+        { title: "阳神", input: "阳神", script: "search.js" }, //Dương Thần
+
+        { title: "西游", input: "西游", script: "search.js" }, //Tây du
+        { title: "洪荒", input: "洪荒", script: "search.js" }, //Hồng hoang
+        { title: "大奉", input: "大奉", script: "search.js" }, //Đại Phụng
+        { title: "庆余年", input: "庆余年", script: "search.js" }, //Khánh dư niên
+
+        //Tam thiếu
+        { title: "斗罗", input: "斗罗", script: "search.js" }, //Đấu la
+        { title: "武魂", input: "武魂", script: "search.js" }, //Võ hồn
+        { title: "神印", input: "神印", script: "search.js" }, //Thần ấn
+
+        //Đấu phá
+        { title: "斗破", input: "斗破", script: "search.js" }, //Đấu phá
+        { title: "武动", input: "武动", script: "search.js" }, //Vũ động
+        { title: "大主宰", input: "大主宰", script: "search.js" }, //Đại chúa tể
+        { title: "元尊", input: "元尊", script: "search.js" }, //Nguyên tôn
+
+        { title: "妖神记", input: "妖神记", script: "search.js" }, //Yêu thần ký
+        { title: "师兄啊", input: "师兄啊", script: "search.js" }, //Sư huynh a
+        { title: "全職法師", input: "全職法師", script: "search.js" }, //Toàn Chức Pháp Sư
+        { title: "剑来", input: "剑来", script: "search.js" }, //Kiếm lai
+        { title: "雪中", input: "雪中", script: "search.js" }, //Tuyết trung
+
+        { title: "全球高武", input: "全球高武", script: "search.js" }, //Toàn Cầu Cao Võ
+        { title: "万族之劫", input: "万族之劫", script: "search.js" }, //Vạn Tộc Chi Kiếp
+        { title: "星门", input: "星门", script: "search.js" }, //Tinh Môn
+
+        { title: "剑道独尊", input: "剑道独尊", script: "search.js" }, //Kiếm đạo độc tôn
+
+        { title: "哈利波特", input: "哈利波特", script: "search.js" }, //Harry Potter
+        { title: "霍格沃兹", input: "霍格沃兹", script: "search.js" }, //Hogwart
+
+        //Comic
+        { title: "美漫", input: "美漫", script: "search.js" }, //Comic
+        { title: "漫威", input: "漫威", script: "search.js" }, //Marvel
+
+        //Trung mạn
+        { title: "磁场转动", input: "磁场转动", script: "search.js" }, //Từ Trường Chuyển Động
+
+        { title: "绝世武神", input: "磁场转动", script: "search.js" },
+
+        //Anime
+        { title: "宝可梦", input: "宝可梦", script: "search.js" }, //Pokemon
+        { title: "综漫", input: "综漫", script: "search.js" }, //Tổng mạn
+        { title: "龙珠", input: "龙珠", script: "search.js" }, //Long châu
+        { title: "火影", input: "火影", script: "search.js" }, //Hokage
+        { title: "木叶", input: "火影", script: "search.js" }, //Konoha
+        { title: "鸣人", input: "鸣人", script: "search.js" }, //Naruto
+        { title: "犬夜叉", input: "犬夜叉", script: "search.js" }, //Inuyasha
+        { title: "海贼", input: "海贼", script: "search.js" }, //Once piece
+        { title: "妖尾", input: "妖尾", script: "search.js" }, //Fairy tail
+        { title: "奥特曼", input: "奥特曼", script: "search.js" }, //Ultraman
+        { title: "假面骑士", input: "假面骑士", script: "search.js" }, //Kamen rider
+        { title: "骑士", input: "骑士", script: "search.js" }, //Rider
+        { title: "死神", input: "死神", script: "search.js" }, //Bleach
+        { title: "全職獵人", input: "全職獵人", script: "search.js" }, //HunterxHunter
+        { title: "鬼灭之刃", input: "鬼灭之刃", script: "search.js" }, //Kimetsu no Yaiba
+        { title: "美食", input: "美食", script: "search.js" }, //Toriko
+        { title: "柯南", input: "柯南", script: "search.js" }, //Conan
+
+		{title: "TOP bảng xếp hạng", input: `${BASE_URL}/api/author/misc/top_book_list/v1/`, script: "homecontent.js"},
+		{title: "最新", input: "/api/author/library/book_list/v/?gender=1&category_id=704&creation_status=-1&word_count=-1&sort=1", script: "genrecontent.js"},
+		{title: "最热", input: "/api/author/library/book_list/v/?gender=1&category_id=704&creation_status=-1&word_count=-1&sort=0", script: "genrecontent.js"},
+		{title: "最热-已完结", input: "/api/author/library/book_list/v/?gender=1&category_id=704&creation_status=0&word_count=-1&sort=0", script: "genrecontent.js"},
+		{title: "最热-连载中", input: "/api/author/library/book_list/v/?gender=1&category_id=704&creation_status=1&word_count=-1&sort=0", script: "genrecontent.js"},
+		{title: "最新-已完结", input: "/api/author/library/book_list/v/?gender=1&category_id=704&creation_status=0&word_count=-1&sort=1", script: "genrecontent.js"},
+		{title: "最新-连载中", input: "/api/author/library/book_list/v/?gender=1&category_id=704&creation_status=1&word_count=-1&sort=1", script: "genrecontent.js"},
+		{title: "字数-已完结", input: "/api/author/library/book_list/v/?gender=1&category_id=704&creation_status=0&word_count=-1&sort=2", script: "genrecontent.js"},
+		{"title": "Xuyên Qua", "input": "&tag=xuyenqua", "script": "tag.js"},
+		{"title": "Hệ Thống", "input": "&tag=hethong", "script": "tag.js"},
+		{"title": "Đô Thị", "input": "&tag=dothi", "script": "tag.js"},
+		{"title": "Hiện Đại Ngôn Tình", "input": "&tag=hiendaingontinh", "script": "tag.js"},
+		{"title": "Huyền Huyễn", "input": "&tag=huyenhuyen", "script": "tag.js"},
+		{"title": "Cổ Đại Ngôn Tình", "input": "&tag=codaingontinh", "script": "tag.js"},
+		{"title": "Trùng Sinh", "input": "&tag=trungsinh", "script": "tag.js"},
+		{"title": "Đô Thị Não Động", "input": "&tag=dothinaodong", "script": "tag.js"},
+		{"title": "Huyền Huyễn Não Động", "input": "&tag=huyenhuyennaodong", "script": "tag.js"},
+		{"title": "Huyễn Tưởng Ngôn Tình", "input": "&tag=huyentuongngontinh", "script": "tag.js"},
+		{"title": "Khoa Huyễn Tận Thế", "input": "&tag=khoahuyentanthe", "script": "tag.js"},
+		{"title": "Kỳ Huyễn Tiên Hiệp", "input": "&tag=kyhuyentienhiep", "script": "tag.js"},
+		{"title": "Sân Trường", "input": "&tag=santruong", "script": "tag.js"},
+		{"title": "Lịch Sử", "input": "&tag=lichsu", "script": "tag.js"},
+		{"title": "Nhị Thứ Nguyên", "input": "&tag=nhithunguyen", "script": "tag.js"},
+		{"title": "Làm Ruộng", "input": "&tag=lamruong", "script": "tag.js"},
+		{"title": "Không Gian", "input": "&tag=khonggian", "script": "tag.js"},
+		{"title": "Song Nam Chính", "input": "&tag=songnamchinh", "script": "tag.js"},
+		{"title": "Truyền Thống Huyền Huyễn", "input": "&tag=truyenthonghuyenhuyen", "script": "tag.js"},
+		{"title": "Bá Tổng", "input": "&tag=batong", "script": "tag.js"},
+		{"title": "Anime Diễn Sinh", "input": "&tag=animediensinh", "script": "tag.js"},
+		{"title": "Nhanh Xuyên", "input": "&tag=nhanhxuyen", "script": "tag.js"},
+		{"title": "Khoa Huyễn", "input": "&tag=khoahuyen", "script": "tag.js"},
+		{"title": "Giả Heo Ăn Thịt Hổ", "input": "&tag=giaheoanthitho", "script": "tag.js"},
+		{"title": "Trò Chơi Anime", "input": "&tag=trochoianime", "script": "tag.js"},
+		{"title": "Ngành Giải Trí", "input": "&tag=nganhgiaitri", "script": "tag.js"},
+		{"title": "Sủng Thê", "input": "&tag=sungthe", "script": "tag.js"},
+		{"title": "Vô Địch", "input": "&tag=vodich", "script": "tag.js"},
+		{"title": "Tận Thế", "input": "&tag=tanthe", "script": "tag.js"},
+		{"title": "Linh Dị", "input": "&tag=linhdi", "script": "tag.js"},
+		{"title": "Xấu Bụng", "input": "&tag=xaubung", "script": "tag.js"},
+		{"title": "Huyền Nghi Não Động", "input": "&tag=huyennghinaodong", "script": "tag.js"},
+		{"title": "Hào Môn Tổng Giám Đốc", "input": "&tag=haomontonggiamdoc", "script": "tag.js"},
+		{"title": "Đô Thị Thường Ngày", "input": "&tag=dothithuongngay", "script": "tag.js"},
+		{"title": "Huyền Huyễn Ngôn Tình", "input": "&tag=huyenhuyenngontinh", "script": "tag.js"},
+		{"title": "Võ Hiệp", "input": "&tag=vohiep", "script": "tag.js"},
+		{"title": "Thiên Tài", "input": "&tag=thientai", "script": "tag.js"},
+		{"title": "Ngọt Sủng", "input": "&tag=ngotsung", "script": "tag.js"},
+		{"title": "Đồng Nhân", "input": "&tag=dongnhan", "script": "tag.js"},
+		{"title": "Huyền Nghi Linh Dị", "input": "&tag=huyennghilinhdi", "script": "tag.js"},
+		{"title": "Hiện Lời Não Động", "input": "&tag=hienloinaodong", "script": "tag.js"},
+		{"title": "Thanh Xuân Ngọt Sủng", "input": "&tag=thanhxuanngotsung", "script": "tag.js"},
+		{"title": "Đơn Nữ Chính", "input": "&tag=donnuchinh", "script": "tag.js"},
+		{"title": "Cùng Người", "input": "&tag=cungnguoi", "script": "tag.js"},
+		{"title": "Cung Đấu Trạch Đấu", "input": "&tag=cungdautrachdau", "script": "tag.js"},
+		{"title": "Niên Đại", "input": "&tag=niendai", "script": "tag.js"},
+		{"title": "Xuyên Thư", "input": "&tag=xuyenthu", "script": "tag.js"},
+		{"title": "Chư Thiên Vạn Giới", "input": "&tag=chuthienvangioi", "script": "tag.js"},
+		{"title": "Đô Thị Tu Chân", "input": "&tag=dothituchan", "script": "tag.js"},
+		{"title": "Nhân Vật Phản Diện", "input": "&tag=nhanvatphandien", "script": "tag.js"},
+		{"title": "Mỹ Nữ", "input": "&tag=mynu", "script": "tag.js"},
+		{"title": "Không Nữ Chính", "input": "&tag=khongnuchinh", "script": "tag.js"},
+		{"title": "Trực Tiếp", "input": "&tag=tructiep", "script": "tag.js"},
+		{"title": "Diễn Sinh Cùng Người", "input": "&tag=diensinhcungnguoi", "script": "tag.js"},
+		{"title": "Lịch Sử Cổ Đại", "input": "&tag=lichsucodai", "script": "tag.js"},
+		{"title": "Cầu Sinh", "input": "&tag=causinh", "script": "tag.js"},
+		{"title": "Nữ Cường", "input": "&tag=nucuong", "script": "tag.js"},
+		{"title": "Nam Tần Diễn Sinh", "input": "&tag=namtandiensinh", "script": "tag.js"},
+		{"title": "Thần Hào", "input": "&tag=thanhao", "script": "tag.js"},
+		{"title": "Đô Thị Cao Võ", "input": "&tag=dothicaovo", "script": "tag.js"},
+		{"title": "Huyền Nghi", "input": "&tag=huyennghi", "script": "tag.js"},
+		{"title": "Nữ Tần Diễn Sinh", "input": "&tag=nutandiensinh", "script": "tag.js"},
+		{"title": "Diễn Sinh Đồng Nhân", "input": "&tag=diensinhdongnhan", "script": "tag.js"},
+		{"title": "Lịch Sử Não Động", "input": "&tag=lichsunaodong", "script": "tag.js"},
+		{"title": "Đô Thị Làm Ruộng", "input": "&tag=dothilamruong", "script": "tag.js"},
+		{"title": "Không Cp", "input": "&tag=khongcp", "script": "tag.js"},
+		{"title": "Đoàn Sủng", "input": "&tag=doansung", "script": "tag.js"},
+		{"title": "Cổ Ngôn Não Động", "input": "&tag=congonnaodong", "script": "tag.js"},
+		{"title": "Thần Y", "input": "&tag=thany", "script": "tag.js"},
+		{"title": "Suy Luận", "input": "&tag=suyluan", "script": "tag.js"},
+		{"title": "Trò Chơi Thể Dục", "input": "&tag=trochoitheduc", "script": "tag.js"},
+		{"title": "Võng Du", "input": "&tag=vongdu", "script": "tag.js"},
+		{"title": "Song Khiết", "input": "&tag=songkhiet", "script": "tag.js"},
+		{"title": "Trò Chơi", "input": "&tag=trochoi", "script": "tag.js"},
+		{"title": "Nông Thôn", "input": "&tag=nongthon", "script": "tag.js"},
+		{"title": "Giáo Hoa", "input": "&tag=giaohoa", "script": "tag.js"},
+		{"title": "Hai Nữ Chính", "input": "&tag=hainuchinh", "script": "tag.js"},
+		{"title": "Manh Bảo", "input": "&tag=manhbao", "script": "tag.js"},
+		{"title": "Hào Môn Sảng Văn", "input": "&tag=haomonsangvan", "script": "tag.js"},
+		{"title": "Học Bá", "input": "&tag=hocba", "script": "tag.js"},
+		{"title": "Tinh Tế", "input": "&tag=tinhte", "script": "tag.js"},
+		{"title": "Tổng Giám Đốc", "input": "&tag=tonggiamdoc", "script": "tag.js"},
+		{"title": "Kiếm Đạo", "input": "&tag=kiemdao", "script": "tag.js"},
+		{"title": "Chiến Thần", "input": "&tag=chienthan", "script": "tag.js"},
+		{"title": "Chỗ Làm Việc Tình Yêu Và Hôn Nhân", "input": "&tag=cholamviectinhyeuvahonnhan", "script": "tag.js"},
+		{"title": "Huyền Nghi Yêu Nhau", "input": "&tag=huyennghiyeunhau", "script": "tag.js"},
+		{"title": "Sủng Vật", "input": "&tag=sungvat", "script": "tag.js"},
+		{"title": "Vô Hạn Lưu", "input": "&tag=vohanluu", "script": "tag.js"},
+		{"title": "Hiện Lời Ngọt Sủng", "input": "&tag=hienloingotsung", "script": "tag.js"},
+		{"title": "Hồng Hoang", "input": "&tag=honghoang", "script": "tag.js"},
+		{"title": "Nữ Đế", "input": "&tag=nude", "script": "tag.js"},
+		{"title": "Đông Phương Huyền Huyễn", "input": "&tag=dongphuonghuyenhuyen", "script": "tag.js"},
+		{"title": "Ngược Văn", "input": "&tag=nguocvan", "script": "tag.js"},
+		{"title": "Người Ở Rể", "input": "&tag=nguoiore", "script": "tag.js"},
+		{"title": "Vương Phi", "input": "&tag=vuongphi", "script": "tag.js"},
+		{"title": "Vú Em", "input": "&tag=vuem", "script": "tag.js"},
+		{"title": "Trộm Mộ", "input": "&tag=trommo", "script": "tag.js"},
+		{"title": "Đô Thị Dị Năng", "input": "&tag=dothidinang", "script": "tag.js"},
+		{"title": "Dị Thế Đại Lục", "input": "&tag=dithedailuc", "script": "tag.js"},
+		{"title": "Khôi Hài Nhẹ Nhõm", "input": "&tag=khoihainhenhom", "script": "tag.js"},
+		{"title": "Công Chúa", "input": "&tag=congchua", "script": "tag.js"},
+		{"title": "Tam Quốc", "input": "&tag=tamquoc", "script": "tag.js"},
+		{"title": "Thể Dục", "input": "&tag=theduc", "script": "tag.js"},
+		{"title": "Thanh Mai Trúc Mã", "input": "&tag=thanhmaitrucma", "script": "tag.js"},
+		{"title": "Hải Tặc", "input": "&tag=haitac", "script": "tag.js"},
+		{"title": "Đích Nữ", "input": "&tag=dichnu", "script": "tag.js"},
+		{"title": "Diễn Sinh", "input": "&tag=diensinh", "script": "tag.js"},
+		{"title": "Mỹ Thực", "input": "&tag=mythuc", "script": "tag.js"},
+		{"title": "Tổng Truyền Hình Điện Ảnh", "input": "&tag=tongtruyenhinhdienanh", "script": "tag.js"},
+		{"title": "Áo Lót", "input": "&tag=aolot", "script": "tag.js"},
+		{"title": "Tình Yêu Và Hôn Nhân", "input": "&tag=tinhyeuvahonnhan", "script": "tag.js"},
+		{"title": "Gia Đình", "input": "&tag=giadinh", "script": "tag.js"},
+		{"title": "Chỗ Làm Việc", "input": "&tag=cholamviec", "script": "tag.js"},
+		{"title": "Phá Án", "input": "&tag=phaan", "script": "tag.js"},
+		{"title": "Lính Đặc Chủng", "input": "&tag=linhdacchung", "script": "tag.js"},
+		{"title": "Minh Triều", "input": "&tag=minhtrieu", "script": "tag.js"},
+		{"title": "Đại Đường", "input": "&tag=daiduong", "script": "tag.js"},
+		{"title": "Y Thuật", "input": "&tag=ythuat", "script": "tag.js"},
+		{"title": "Thuần Ái", "input": "&tag=thuanai", "script": "tag.js"},
+		{"title": "Giám Giám", "input": "&tag=giamgiam", "script": "tag.js"},
+		{"title": "Môn Môn", "input": "&tag=monmon", "script": "tag.js"},
+		{"title": "Giám Bảo", "input": "&tag=giambao", "script": "tag.js"},
+		{"title": "Thống Thống", "input": "&tag=thongthong", "script": "tag.js"},
+		{"title": "Chiến Thần Người Ở Rể", "input": "&tag=chienthannguoiore", "script": "tag.js"},
+		{"title": "Qua Qua", "input": "&tag=quaqua", "script": "tag.js"},
+		{"title": "Bệnh Kiều", "input": "&tag=benhkieu", "script": "tag.js"},
+		{"title": "Lâu Ngày Sinh Tình", "input": "&tag=laungaysinhtinh", "script": "tag.js"},
+		{"title": "Dị Thế Xuyên Qua", "input": "&tag=dithexuyenqua", "script": "tag.js"},
+		{"title": "Tây Du", "input": "&tag=taydu", "script": "tag.js"},
+		{"title": "Nữ Giả Nam Trang", "input": "&tag=nugianamtrang", "script": "tag.js"},
+		{"title": "Động Động", "input": "&tag=dongdong", "script": "tag.js"},
+		{"title": "Giá Không", "input": "&tag=giakhong", "script": "tag.js"},
+		{"title": "Hải Đảo", "input": "&tag=haidao", "script": "tag.js"},
+		{"title": "Huyễn Huyễn", "input": "&tag=huyenhuyen", "script": "tag.js"},
+		{"title": "Tinh Linh", "input": "&tag=tinhlinh", "script": "tag.js"},
+		{"title": "Cuộc Sống Đô Thị", "input": "&tag=cuocsongdothi", "script": "tag.js"},
+		{"title": "Hậu Cung", "input": "&tag=haucung", "script": "tag.js"},
+		{"title": "Linh Khí Khôi Phục", "input": "&tag=linhkhikhoiphuc", "script": "tag.js"},
+		{"title": "Kháng Chiến Chiến Tranh Tình Báo", "input": "&tag=khangchienchientranhtinhbao", "script": "tag.js"},
+		{"title": "Auth Đồng Nhân", "input": "&tag=authdongnhan", "script": "tag.js"},
+		{"title": "Chiến Chiến", "input": "&tag=chienchien", "script": "tag.js"},
+		{"title": "Tranh Tranh", "input": "&tag=tranhtranh", "script": "tag.js"},
+		{"title": "Báo Báo", "input": "&tag=baobao", "script": "tag.js"},
+		{"title": "Cao Võ Thế Giới", "input": "&tag=caovothegioi", "script": "tag.js"},
+		{"title": "Đại Tần", "input": "&tag=daitan", "script": "tag.js"},
+		{"title": "Tinh Quang Thôi Xán", "input": "&tag=tinhquangthoixan", "script": "tag.js"},
+		{"title": "Tình Tình", "input": "&tag=tinhtinh", "script": "tag.js"},
+		{"title": "Hiện Lời Thường Ngày", "input": "&tag=hienloithuongngay", "script": "tag.js"},
+		{"title": "Trước Tiên Cưới Sau Thích", "input": "&tag=truoctiencuoisauthich", "script": "tag.js"},
+		{"title": "Hoàng Hậu", "input": "&tag=hoanghau", "script": "tag.js"},
+		{"title": "Auth Cùng Người", "input": "&tag=authcungnguoi", "script": "tag.js"},
+		{"title": "Chat Group", "input": "&tag=chatgroup", "script": "tag.js"},
+		{"title": "Thị Thị", "input": "&tag=thithi", "script": "tag.js"},
+		{"title": "Nhân Nhân", "input": "&tag=nhannhan", "script": "tag.js"},
+		{"title": "Làm Làm", "input": "&tag=lamlam", "script": "tag.js"},
+		{"title": "Dân Quốc Ngôn Tình", "input": "&tag=danquocngontinh", "script": "tag.js"},
+		{"title": "Và Và", "input": "&tag=vava", "script": "tag.js"},
+		{"title": "Cửu Thúc", "input": "&tag=cuuthuc", "script": "tag.js"},
+		{"title": "Truyền Hình Điện Ảnh", "input": "&tag=truyenhinhdienanh", "script": "tag.js"},
+		{"title": "Thú Thế", "input": "&tag=thuthe", "script": "tag.js"},
+		{"title": "Độc Sủng", "input": "&tag=docsung", "script": "tag.js"},
+		{"title": "Chuyển Phát Nhanh", "input": "&tag=chuyenphatnhanh", "script": "tag.js"},
+		{"title": "Chơi Chơi", "input": "&tag=choichoi", "script": "tag.js"},
+		{"title": "Chạy Nạn", "input": "&tag=chaynan", "script": "tag.js"},
+		{"title": "Quân Hôn", "input": "&tag=quanhon", "script": "tag.js"},
+		{"title": "Tổng Mạn", "input": "&tag=tongman", "script": "tag.js"},
+		{"title": "Văn Học Mạng - Quan Trường", "input": "&tag=vanhocmangquantruong", "script": "tag.js"},
+		{"title": "Dân Quốc", "input": "&tag=danquoc", "script": "tag.js"},
+		{"title": "Thanh Xuyên", "input": "&tag=thanhxuyen", "script": "tag.js"},
+		{"title": "Long Châu", "input": "&tag=longchau", "script": "tag.js"},
+		{"title": "Tiên Tiên", "input": "&tag=tientien", "script": "tag.js"},
+		{"title": "Sau Sau", "input": "&tag=sausau", "script": "tag.js"},
+		{"title": "Phong Hiểm Đồng Nhân", "input": "&tag=phonghiemdongnhan", "script": "tag.js"},
+		{"title": "Xuyên Xuyên", "input": "&tag=xuyenxuyen", "script": "tag.js"},
+		{"title": "Hiện Đại", "input": "&tag=hiendai", "script": "tag.js"},
+		{"title": "Hào Môn Thế Gia", "input": "&tag=haomonthegia", "script": "tag.js"},
+		{"title": "Tận Thế Cầu Sinh", "input": "&tag=tanthecausinh", "script": "tag.js"},
+		{"title": "Đại Lão", "input": "&tag=dailao", "script": "tag.js"},
+		{"title": "Đại Đại", "input": "&tag=daidai", "script": "tag.js"},
+		{"title": "Thần Thần", "input": "&tag=thanthan", "script": "tag.js"},
+		{"title": "Sinh Sinh", "input": "&tag=sinhsinh", "script": "tag.js"},
+		{"title": "Hệ Hệ", "input": "&tag=hehe", "script": "tag.js"},
+		{"title": "Nhị Nhị", "input": "&tag=nhinhi", "script": "tag.js"},
+		{"title": "Nguyên Nguyên", "input": "&tag=nguyennguyen", "script": "tag.js"},
+		{"title": "Bắt Đầu", "input": "&tag=batdau", "script": "tag.js"},
+		{"title": "Ở Ở", "input": "&tag=oo", "script": "tag.js"},
+		{"title": "Nhiều Nữ Chính", "input": "&tag=nhieunuchinh", "script": "tag.js"},
+		{"title": "Thiên Tai", "input": "&tag=thientai", "script": "tag.js"},
+		{"title": "Võ Hồn", "input": "&tag=vohon", "script": "tag.js"},
+		{"title": "Cổ Đại", "input": "&tag=codai", "script": "tag.js"},
+		{"title": "Trảm Thần Diễn Sinh", "input": "&tag=tramthandiensinh", "script": "tag.js"},
+		{"title": "Văn Học", "input": "&tag=vanhoc", "script": "tag.js"},
+		{"title": "Nhân Văn Xã Khoa", "input": "&tag=nhanvanxakhoa", "script": "tag.js"},
+		{"title": "Triết Học Tông Giáo", "input": "&tag=triethoctonggiao", "script": "tag.js"},
+		{"title": "Ruộng Ruộng", "input": "&tag=ruongruong", "script": "tag.js"},
+		{"title": "Thiên Thiên", "input": "&tag=thienthien", "script": "tag.js"},
+		{"title": "Tỷ Tỷ Lưu", "input": "&tag=tytyluu", "script": "tag.js"},
+		{"title": "Hiệp Hiệp", "input": "&tag=hiephiep", "script": "tag.js"},
+		{"title": "Giới Giới", "input": "&tag=gioigioi", "script": "tag.js"},
+		{"title": "Trước Tiên Cưới Sau Yêu", "input": "&tag=truoctiencuoisauyeu", "script": "tag.js"},
+		{"title": "Khác - Cùng Người", "input": "&tag=khaccungnguoi", "script": "tag.js"},
+		{"title": "Tây Du Diễn Sinh", "input": "&tag=taydudiensinh", "script": "tag.js"},
+		{"title": "Hoàng Thúc", "input": "&tag=hoangthuc", "script": "tag.js"},
+		{"title": "Chỗ Làm Việc Thương Chiến", "input": "&tag=cholamviecthuongchien", "script": "tag.js"},
+		{"title": "Cường Cường", "input": "&tag=cuongcuong", "script": "tag.js"},
+		{"title": "Sử Sử", "input": "&tag=susu", "script": "tag.js"},
+		{"title": "Sinh Hoạt", "input": "&tag=sinhhoat", "script": "tag.js"},
+		{"title": "Hoang Hoang", "input": "&tag=hoanghoang", "script": "tag.js"},
+		{"title": "Ông Trời Tác Hợp Cho", "input": "&tag=ongtroitachopcho", "script": "tag.js"},
+		{"title": "Đại Tiểu Thư", "input": "&tag=daitieuthu", "script": "tag.js"},
+		{"title": "Quỷ Phu", "input": "&tag=quyphu", "script": "tag.js"},
+		{"title": "Thầm Mến", "input": "&tag=thammen", "script": "tag.js"},
+		{"title": "Vật Vật", "input": "&tag=vatvat", "script": "tag.js"},
+		{"title": "Heo Heo", "input": "&tag=heoheo", "script": "tag.js"},
+		{"title": "Kinh Dị Trò Chơi", "input": "&tag=kinhditrochoi", "script": "tag.js"},
+		{"title": "Thịt Thịt", "input": "&tag=thitthit", "script": "tag.js"},
+		{"title": "Âm Vợ", "input": "&tag=amvo", "script": "tag.js"},
+		{"title": "Cổ Ngôn Ngọt Sủng", "input": "&tag=congonngotsung", "script": "tag.js"},
+		{"title": "Nam Tần - Song Nam Chính", "input": "&tag=namtansongnamchinh", "script": "tag.js"},
+		{"title": "Thành Công Dốc Lòng", "input": "&tag=thanhcongdoclong", "script": "tag.js"},
+		{"title": "Quốc Vận", "input": "&tag=quocvan", "script": "tag.js"},
+		{"title": "Phong Hiểm Cùng Người", "input": "&tag=phonghiemcungnguoi", "script": "tag.js"},
+		{"title": "Văn Học Kinh Điển", "input": "&tag=vanhockinhdien", "script": "tag.js"},
+		{"title": "Chiến Tranh Tình Báo", "input": "&tag=chientranhtinhbao", "script": "tag.js"},
+		{"title": "Hào Hào", "input": "&tag=haohao", "script": "tag.js"},
+		{"title": "Võ Tướng", "input": "&tag=votuong", "script": "tag.js"},
+		{"title": "Cổ Đại Văn Học", "input": "&tag=codaivanhoc", "script": "tag.js"},
+		{"title": "Song Hướng Lao Tới", "input": "&tag=songhuonglaotoi", "script": "tag.js"},
+		{"title": "Tài Tài", "input": "&tag=taitai", "script": "tag.js"},
+		{"title": "Kiếp Trước Và Kiếp Này", "input": "&tag=kieptruocvakiepnay", "script": "tag.js"},
+		{"title": "Địch Địch", "input": "&tag=dichdich", "script": "tag.js"},
+		{"title": "Tiếp Tiếp", "input": "&tag=tieptiep", "script": "tag.js"},
+		{"title": "Kinh Tế Quản Lý", "input": "&tag=kinhtequanly", "script": "tag.js"},
+		{"title": "Văn Học Mạng - Xuất Bản", "input": "&tag=vanhocmangxuatban", "script": "tag.js"},
+		{"title": "Giáo Dục", "input": "&tag=giaoduc", "script": "tag.js"},
+		{"title": "Gian Gian", "input": "&tag=giangian", "script": "tag.js"},
+		{"title": "Diện Diện", "input": "&tag=diendien", "script": "tag.js"},
+		{"title": "Lịch Lịch", "input": "&tag=lichlich", "script": "tag.js"},
+		{"title": "Bụng Bụng", "input": "&tag=bungbung", "script": "tag.js"},
+		{"title": "Hắc Đạo", "input": "&tag=hacdao", "script": "tag.js"},
+		{"title": "Đế Đế", "input": "&tag=dede", "script": "tag.js"},
+		{"title": "Cổ Linh Tinh Quái", "input": "&tag=colinhtinhquai", "script": "tag.js"},
+		{"title": "Ngoại Quốc Văn Học", "input": "&tag=ngoaiquocvanhoc", "script": "tag.js"},
+		{"title": "Cá Nhân Trưởng Thành", "input": "&tag=canhantruongthanh", "script": "tag.js"},
+		{"title": "Đô Thị Thanh Xuân", "input": "&tag=dothithanhxuan", "script": "tag.js"},
+		{"title": "Nữ Nữ", "input": "&tag=nunu", "script": "tag.js"},
+		{"title": "Công Bản Diễn Sinh", "input": "&tag=congbandiensinh", "script": "tag.js"},
+		{"title": "Thơ Ca Văn Xuôi", "input": "&tag=thocavanxuoi", "script": "tag.js"},
+		{"title": "Văn Hóa Lịch Sử", "input": "&tag=vanhoalichsu", "script": "tag.js"},
+		{"title": "Lời Lời", "input": "&tag=loiloi", "script": "tag.js"},
+		{"title": "Chiến Tranh", "input": "&tag=chientranh", "script": "tag.js"},
+		{"title": "Chân Chân", "input": "&tag=chanchan", "script": "tag.js"},
+		{"title": "Tinh Phẩm", "input": "&tag=tinhpham", "script": "tag.js"},
+		{"title": "Sủng Sủng", "input": "&tag=sungsung", "script": "tag.js"},
+		{"title": "Kinh Điển Quốc Học", "input": "&tag=kinhdienquochoc", "script": "tag.js"},
+		{"title": "Trùng Trùng", "input": "&tag=trungtrung", "script": "tag.js"},
+		{"title": "Đạo Đạo", "input": "&tag=daodao", "script": "tag.js"},
+		{"title": "Tứ Hợp Viện", "input": "&tag=tuhopvien", "script": "tag.js"},
+		{"title": "Đứt Gãy", "input": "&tag=dutgay", "script": "tag.js"},
+		{"title": "Quốc Quốc", "input": "&tag=quocquoc", "script": "tag.js"},
+		{"title": "Song Diện", "input": "&tag=songdien", "script": "tag.js"},
+		{"title": "Chân Huyên Diễn Sinh", "input": "&tag=chanhuyendiensinh", "script": "tag.js"},
+		{"title": "Đánh Mặt", "input": "&tag=danhmat", "script": "tag.js"},
+		{"title": "Hồng Lâu Diễn Sinh", "input": "&tag=honglaudiensinh", "script": "tag.js"},
+		{"title": "Như Ý Diễn Sinh", "input": "&tag=nhuydiensinh", "script": "tag.js"},
+		{"title": "Thứ Thứ", "input": "&tag=thuthu", "script": "tag.js"},
+		{"title": "Thần Thám", "input": "&tag=thantham", "script": "tag.js"},
+		{"title": "Thế Thế", "input": "&tag=thethe", "script": "tag.js"},
+		{"title": "Vừa Thấy Đã Yêu", "input": "&tag=vuathaydayeu", "script": "tag.js"},
+		{"title": "Tống Triều", "input": "&tag=tongtrieu", "script": "tag.js"},
+		{"title": "Có Thể Muối Có Thể Ngọt", "input": "&tag=cothemuoicothengot", "script": "tag.js"},
+		{"title": "Minh Tinh", "input": "&tag=minhtinh", "script": "tag.js"},
+		{"title": "Ngôn Ngôn", "input": "&tag=ngonngon", "script": "tag.js"},
+		{"title": "Y Y", "input": "&tag=yy", "script": "tag.js"},
+		{"title": "Nghi Nghi", "input": "&tag=nghinghi", "script": "tag.js"},
+		{"title": "Khác - Đồng Nhân", "input": "&tag=khacdongnhan", "script": "tag.js"},
+		{"title": "Dễ Giận", "input": "&tag=degian", "script": "tag.js"},
+		{"title": "Mười Ngày Diễn Sinh", "input": "&tag=muoingaydiensinh", "script": "tag.js"},
+		{"title": "Bác Sĩ", "input": "&tag=bacsi", "script": "tag.js"},
+		{"title": "Võng Võng", "input": "&tag=vongvong", "script": "tag.js"},
+		{"title": "Thanh Triều", "input": "&tag=thanhtrieu", "script": "tag.js"},
+		{"title": "Hoa Hoa", "input": "&tag=hoahoa", "script": "tag.js"},
+		{"title": "Dị Dị", "input": "&tag=didi", "script": "tag.js"},
+		{"title": "Đấu Đấu", "input": "&tag=daudau", "script": "tag.js"},
+		{"title": "Cổ Tịch", "input": "&tag=cotich", "script": "tag.js"},
+		{"title": "Giải Giải", "input": "&tag=giaigiai", "script": "tag.js"},
+		{"title": "Hoàng Đế", "input": "&tag=hoangde", "script": "tag.js"},
+		{"title": "Tông Giáo", "input": "&tag=tonggiao", "script": "tag.js"},
+		{"title": "Tặc Tặc", "input": "&tag=tactac", "script": "tag.js"},
+		{"title": "Tương Ái Tương Sát", "input": "&tag=tuongaituongsat", "script": "tag.js"},
+		{"title": "Nay Xuyên Cổ", "input": "&tag=nayxuyenco", "script": "tag.js"},
+		{"title": "Tưởng Tưởng", "input": "&tag=tuongtuong", "script": "tag.js"},
+		{"title": "Phong Thần", "input": "&tag=phongthan", "script": "tag.js"},
+		{"title": "Cuộc Sống Thực Tế", "input": "&tag=cuocsongthucte", "script": "tag.js"},
+		{"title": "Gương Vỡ Lại Lành", "input": "&tag=guongvolailanh", "script": "tag.js"},
+		{"title": "Nhân Vật Truyền Kỳ", "input": "&tag=nhanvattruyenky", "script": "tag.js"},
+		{"title": "Em Em", "input": "&tag=emem", "script": "tag.js"},
+		{"title": "Tình Cảm", "input": "&tag=tinhcam", "script": "tag.js"},
+		{"title": "Băng Sơn", "input": "&tag=bangson", "script": "tag.js"},
+		{"title": "Đồng Đồng", "input": "&tag=dongdong", "script": "tag.js"},
+		{"title": "Lịch Sử Truyện Ký", "input": "&tag=lichsutruyenky", "script": "tag.js"},
+		{"title": "Khoa Học Kỹ Thuật", "input": "&tag=khoahockythuat", "script": "tag.js"},
+		{"title": "Huyền Nghi Suy Luận", "input": "&tag=huyennghisuyluan", "script": "tag.js"},
+		{"title": "Chư Chư", "input": "&tag=chuchu", "script": "tag.js"},
+		{"title": "Vạn Vạn", "input": "&tag=vanvan", "script": "tag.js"},
+		{"title": "Văn Hóa Nghệ Thuật", "input": "&tag=vanhoanghethuat", "script": "tag.js"},
+		{"title": "Song Trọng Sinh", "input": "&tag=songtrongsinh", "script": "tag.js"},
+		{"title": "Tướng Quân", "input": "&tag=tuongquan", "script": "tag.js"},
+		{"title": "Du Du", "input": "&tag=dudu", "script": "tag.js"},
+		{"title": "Trung Quốc Tác Phẩm Nổi Tiếng", "input": "&tag=trungquoctacphamnoitieng", "script": "tag.js"},
+		{"title": "Trung Quốc Văn Học", "input": "&tag=trungquocvanhoc", "script": "tag.js"},
+		{"title": "Quân Sự", "input": "&tag=quansu", "script": "tag.js"},
+		{"title": "Trò Chơi Chủ Bá", "input": "&tag=trochoichuba", "script": "tag.js"},
+		{"title": "Cổ Ngôn Manh Bảo", "input": "&tag=congonmanhbao", "script": "tag.js"},
+		{"title": "Vô Vô", "input": "&tag=vovo", "script": "tag.js"},
+		{"title": "Auth Auth", "input": "&tag=authauth", "script": "tag.js"},
+		{"title": "Hokage Hokage", "input": "&tag=hokagehokage", "script": "tag.js"},
+		{"title": "Sinh Hoạt Bách Khoa", "input": "&tag=sinhhoatbachkhoa", "script": "tag.js"},
+		{"title": "Đặc Công", "input": "&tag=daccong", "script": "tag.js"},
+		{"title": "Đường Đường", "input": "&tag=duongduong", "script": "tag.js"},
+		{"title": "Điện Cạnh", "input": "&tag=diencanh", "script": "tag.js"},
+		{"title": "Bảo Bảo", "input": "&tag=baobao", "script": "tag.js"},
+		{"title": "Giả Giả", "input": "&tag=giagia", "script": "tag.js"},
+		{"title": "Ăn Ăn", "input": "&tag=anan", "script": "tag.js"},
+		{"title": "Ngược Cặn Bã", "input": "&tag=nguoccanba", "script": "tag.js"},
+		{"title": "Sống Sống", "input": "&tag=songsong", "script": "tag.js"},
+		{"title": "Hổ Hổ", "input": "&tag=hoho", "script": "tag.js"},
+		{"title": "Mộ Mộ", "input": "&tag=momo", "script": "tag.js"},
+		{"title": "Thân Tử Gia Giáo", "input": "&tag=thantugiagiao", "script": "tag.js"},
+		{"title": "Thê Thê", "input": "&tag=thethe", "script": "tag.js"},
+		{"title": "Giáo Dục Dành Cho Người Lớn", "input": "&tag=giaoducdanhchonguoilon", "script": "tag.js"},
+		{"title": "Tình Hữu Độc Chung", "input": "&tag=tinhhuudocchung", "script": "tag.js"},
+		{"title": "Hải Hải", "input": "&tag=haihai", "script": "tag.js"},
+		{"title": "Hiện Hiện", "input": "&tag=hienhien", "script": "tag.js"},
+		{"title": "Tế Tế", "input": "&tag=tete", "script": "tag.js"},
+		{"title": "Trường Trường", "input": "&tag=truongtruong", "script": "tag.js"},
+		{"title": "Châu Châu", "input": "&tag=chauchau", "script": "tag.js"},
+		{"title": "Thư Thư", "input": "&tag=thuthu", "script": "tag.js"},
+		{"title": "Chúa Chúa", "input": "&tag=chuachua", "script": "tag.js"},
+		{"title": "Kinh Khủng Chạy Trốn", "input": "&tag=kinhkhungchaytron", "script": "tag.js"},
+		{"title": "Độc Y", "input": "&tag=docy", "script": "tag.js"},
+		{"title": "Bảo Vệ Sức Khoẻ Dưỡng Sinh", "input": "&tag=baovesuckhoeduongsinh", "script": "tag.js"},
+		{"title": "Thực Thực", "input": "&tag=thucthuc", "script": "tag.js"},
+		{"title": "Tinh Tiến Đề Thăng", "input": "&tag=tinhtiendethang", "script": "tag.js"},
+		{"title": "Tần Tần", "input": "&tag=tantan", "script": "tag.js"},
+		{"title": "Thế Thân", "input": "&tag=thethan", "script": "tag.js"},
+		{"title": "Dốc Lòng Đề Thăng", "input": "&tag=doclongdethang", "script": "tag.js"},
+		{"title": "Chính Trị Quân Sự", "input": "&tag=chinhtriquansu", "script": "tag.js"},
+		{"title": "Tận Tận", "input": "&tag=tantan", "script": "tag.js"},
+		{"title": "Hiện Kéo Dài", "input": "&tag=hienkeodai", "script": "tag.js"},
+		{"title": "Khoa Học Xã Hội", "input": "&tag=khoahocxahoi", "script": "tag.js"},
+		{"title": "Cung Đình Hầu Tước", "input": "&tag=cungdinhhautuoc", "script": "tag.js"},
+		{"title": "Huyền Huyễn Sảng Văn", "input": "&tag=huyenhuyensangvan", "script": "tag.js"},
+		{"title": "Tổng Tổng", "input": "&tag=tongtong", "script": "tag.js"},
+		{"title": "Đốc Đốc", "input": "&tag=docdoc", "script": "tag.js"},
+		{"title": "Phong Thuỷ Xem Bói", "input": "&tag=phongthuyxemboi", "script": "tag.js"},
+		{"title": "Chính Chính", "input": "&tag=chinhchinh", "script": "tag.js"},
+		{"title": "Xuân Xuân", "input": "&tag=xuanxuan", "script": "tag.js"},
+		{"title": "Nguyên Thần", "input": "&tag=nguyenthan", "script": "tag.js"},
+		{"title": "Đẩy Sách", "input": "&tag=daysach", "script": "tag.js"},
+		{"title": "Ngày Ngày", "input": "&tag=ngayngay", "script": "tag.js"},
+		{"title": "Đô Đô", "input": "&tag=dodo", "script": "tag.js"},
+		{"title": "Bá Bá", "input": "&tag=baba", "script": "tag.js"},
+		{"title": "Xấu Xấu", "input": "&tag=xauxau", "script": "tag.js"},
+		{"title": "Triều Triều", "input": "&tag=trieutrieu", "script": "tag.js"},
+		{"title": "Vận Động Kiện Thân", "input": "&tag=vandongkienthan", "script": "tag.js"},
+		{"title": "Phẩm Phẩm", "input": "&tag=phampham", "script": "tag.js"},
+		{"title": "Tiếng Tiếng", "input": "&tag=tiengtieng", "script": "tag.js"},
+		{"title": "Bao Che Khuyết Điểm", "input": "&tag=baochekhuyetdiem", "script": "tag.js"},
+		{"title": "Phi Phi", "input": "&tag=phiphi", "script": "tag.js"},
+		{"title": "Huyền Huyễn Xuyên Qua", "input": "&tag=huyenhuyenxuyenqua", "script": "tag.js"},
+		{"title": "Tâm Lý Học", "input": "&tag=tamlyhoc", "script": "tag.js"},
+		{"title": "Trung Quốc Lịch Sử", "input": "&tag=trungquoclichsu", "script": "tag.js"},
+		{"title": "Quốc Nội Truyền Hình Điện Ảnh", "input": "&tag=quocnoitruyenhinhdienanh", "script": "tag.js"},
+		{"title": "Hạn Hạn", "input": "&tag=hanhan", "script": "tag.js"},
+		{"title": "Cầu Cầu", "input": "&tag=caucau", "script": "tag.js"},
+		{"title": "Thế Giới Tác Phẩm Nổi Tiếng", "input": "&tag=thegioitacphamnoitieng", "script": "tag.js"},
+		{"title": "Huyền Huyễn Hệ Thống", "input": "&tag=huyenhuyenhethong", "script": "tag.js"},
+		{"title": "Vệ Vệ", "input": "&tag=veve", "script": "tag.js"},
+		{"title": "Khoẻ Khoẻ", "input": "&tag=khoekhoe", "script": "tag.js"},
+		{title: "字数-连载中", input: "/api/author/library/book_list/v/?gender=1&category_id=704&creation_status=1&word_count=-1&sort=2", script: "genrecontent.js"},
 		{ "title": "女频悬疑", "input": "/api/author/library/book_list/v0/?category_id=747", "script": "genrecontent.js" },
 		{ "title": "西方奇幻", "input": "/api/author/library/book_list/v0/?category_id=1141", "script": "genrecontent.js" },
 		{ "title": "东方仙侠", "input": "/api/author/library/book_list/v0/?category_id=1140", "script": "genrecontent.js" },

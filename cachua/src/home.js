@@ -2,18 +2,20 @@ load("config.js");
 
 function execute() {
 	return Response.success([
-		{
-			title: "TOP bảng xếp hạng",
-			input: `${BASE_URL}/api/author/misc/top_book_list/v1/`,
-			script: "homecontent.js",
-		},
-		{title: "最新", input: "/api/author/library/book_list/v/?gender=1&category_id=704&creation_status=-1&word_count=-1&sort=1", script: "genrecontent.js"},
-		{title: "最热", input: "/api/author/library/book_list/v/?gender=1&category_id=704&creation_status=-1&word_count=-1&sort=0", script: "genrecontent.js"},
-		{title: "最热-已完结", input: "/api/author/library/book_list/v/?gender=1&category_id=704&creation_status=0&word_count=-1&sort=0", script: "genrecontent.js"},
-		{title: "最热-连载中", input: "/api/author/library/book_list/v/?gender=1&category_id=704&creation_status=1&word_count=-1&sort=0", script: "genrecontent.js"},
-		{title: "最新-已完结", input: "/api/author/library/book_list/v/?gender=1&category_id=704&creation_status=0&word_count=-1&sort=1", script: "genrecontent.js"},
-		{title: "最新-连载中", input: "/api/author/library/book_list/v/?gender=1&category_id=704&creation_status=1&word_count=-1&sort=1", script: "genrecontent.js"},
-		{title: "字数-已完结", input: "/api/author/library/book_list/v/?gender=1&category_id=704&creation_status=0&word_count=-1&sort=2", script: "genrecontent.js"},
-		{title: "字数-连载中", input: "/api/author/library/book_list/v/?gender=1&category_id=704&creation_status=1&word_count=-1&sort=2", script: "genrecontent.js"},
+		{ title: "Update", input: "&sort=update", script: "gen.js" },
+        {"title": "Đồng Nhân", "input": "&tag=dongnhan", "script": "tag.js"},
+		{ title: "Chư thiên", input: "chư thiên", script: "search.js" },
+        {"title": "Chư Thiên Vạn Giới", "input": "&tag=chuthienvangioi", "script": "tag.js"},
+        {"title": "Chat Group", "input": "&tag=chatgroup", "script": "tag.js"},
+        {"title": "Vô Hạn Lưu", "input": "&tag=vohanluu", "script": "tag.js"},
+        {"title": "Diễn Sinh Đồng Nhân", "input": "&tag=diensinhdongnhan", "script": "tag.js"},
+        { title: "View Week", input: "&sort=viewweek", script: "gen.js" },
+        { title: "View Day", input: "&sort=viewday", script: "gen.js" },
+        { title: "View", input: "&sort=view", script: "gen.js" },
+		{ title: "New", input: "&sort=new", script: "gen.js" },
+        { title: "Like", input: "&sort=like", script: "gen.js" },
+        { title: "Follow", input: "&sort=following", script: "gen.js" },
+        { title: "Bookmark", input: "&sort=bookmarked", script: "gen.js" },
+
 	]);
 }
