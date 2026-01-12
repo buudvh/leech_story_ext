@@ -37,3 +37,43 @@ function execute(url, page) {
         link: 'https://101kks.com/book/9266.html',
     }]);
 }
+
+fetch("https://cn.ttkan.co/api/nq/amp_novel_list?language=cn&limit=18&type=lianzai&filter=*&page=2&__amp_source_origin=https%3A%2F%2Fcn.ttkan.co", {
+  "headers": {
+    "accept": "application/json",
+    "accept-language": "vi,en-US;q=0.9,en;q=0.8,ja;q=0.7,zh-CN;q=0.6,zh;q=0.5",
+    "amp-same-origin": "true",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin"
+  },
+  "referrer": "https://cn.ttkan.co/novel/class/lianzai",
+  "body": null,
+  "method": "GET",
+  "mode": "cors",
+  "credentials": "include"
+});
+
+fetch("https://cn.ttkan.co/api/nq/amp_last_serial_novel_updates?page=6&limit=50&language=cn&__amp_source_origin=https%3A%2F%2Fcn.ttkan.co", {
+  "headers": {
+    "accept": "application/json",
+    "accept-language": "vi,en-US;q=0.9,en;q=0.8,ja;q=0.7,zh-CN;q=0.6,zh;q=0.5",
+    "amp-same-origin": "true",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin"
+  },
+  "referrer": "https://cn.ttkan.co/",
+  "body": null,
+  "method": "GET",
+  "mode": "cors",
+  "credentials": "include"
+});
