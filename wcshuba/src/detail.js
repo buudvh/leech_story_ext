@@ -9,8 +9,6 @@ function execute(url) {
         var doc = response.html();
         var authorElm = doc.select('#wrapper > main > div > div.rank.mt10.pc-only > div.left > div > div > div.booktitle > h2 > a');
         var bookName = doc.select('#wrapper > main > div > div.rank.mt10.pc-only > div.left > div > div > div.booktitle > h1 > a').text().convertT2S();
-        var detail = $.QA(doc, '#wrapper > main > div > div.rank.mt10.pc-only > div.left > div > div > div.bookdes > p',
-            { m: function (x) { return x.text().indexOf("最新章节：") === 0 || x.text().indexOf("最后更新：") === 0 ? x.text() : ""; }, j: '<br><br>' });
         var genreElm = doc.select("#wrapper > main > div > div.rank.mt10.pc-only > div.left > div > div > div.bookintro > p:nth-child(1) > a");
 
         var genres = [];
@@ -32,7 +30,8 @@ function execute(url) {
                 + doc.select('#wrapper > main > div > div.rank.mt10.pc-only > div.left > div > div > div.bookintro > p:nth-child(2)').html().cleanHtml().replace(/([.!?…]+)/g, function (match) {
                     return match + "\n";
                 }),
-            detail: detail.convertT2S(),
+            detail: doc.select("#wrapper > main > div > div.rank.mt10.pc-only > div.left > div > div > div.bookdes > p:nth-child(4)").text().convertT2S()
+                + `\n${doc.select("#wrapper > main > div > div.rank.mt10.pc-only > div.left > div > div > div.bookdes > p:nth-child(3)").text().convertT2S()}`,
             host: BASE_URL,
             suggests: [
                 {

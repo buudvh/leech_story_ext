@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "name": "wcshuba",
+    "name": "xsw",
     "author": "HuongMT",
-    "version": 9,
-    "source": "https://wcshuba.com",
-    "regexp": "^https?:\\/\\/(?:www\\.)?wcshuba\\.com\\/book\\/(\\d+)\\.html$",
-    "description": "Đọc truyện trên trang wcshuba.com",
+    "version": 1,
+    "source": "https://xsw.tw",
+    "regexp": "https?://(m\\.)?xsw\\.tw/(book/)?(\\d+)(\\.html|/)?",
+    "description": "Đọc truyện trên trang xsw.tw",
     "locale": "zh_CN",
     "language": "javascript",
     "type": "chinese_novel"
@@ -13,7 +13,6 @@
   "script": {
     "home": "home.js",
     "detail": "detail.js",
-    "page": "page.js",
     "toc": "toc.js",
     "chap": "chap.js",
     "genre": "genre.js",
