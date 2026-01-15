@@ -19,6 +19,14 @@ function execute(url) {
                 host: BASE_URL,
             })
         });
+        (doc.select("body > main > div:nth-child(7) > ul > li") || []).forEach(e => {
+            recommendBooks.push({
+                name: e.select("h3").first().text().convertT2S(),
+                link: e.select("a:nth-child(1)").first().attr("href"),
+                cover: e.select("img").first().attr("src"),
+                host: BASE_URL,
+            })
+        });
         var genreElm = doc.select('body > main > div:nth-child(1) > div.novel > div.n-text > p:nth-child(3) > a').first();
         var objGenre = DEFAULT_GENRES.find(p => p.title = genreElm.text());
         var tags = [{
@@ -45,9 +53,14 @@ function execute(url) {
             ongoing: doc.select("body > main > div:nth-child(1) > div.novel > div.n-text > p:nth-child(3) > span").text() == "連載中",
             suggests: [
                 {
-                    title: "同作者",
+                    title: "Recommend",
                     input: JSON.stringify(recommendBooks),
                     script: "recommend.js"
+                },
+                {
+                    title: "同作者",
+                    input: doc.select("body > main > div:nth-child(1) > div.novel > div.n-text > p:nth-child(2) > a").first().attr("href"),
+                    script: "author.js"
                 },
             ],
             comments: [
