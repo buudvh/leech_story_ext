@@ -46,7 +46,7 @@ function execute(url) {
             name: bookName.formatTocName(),
             author: authorElm.text().convertT2S(),
             cover: cover,
-            description: doc.select("#intro").text().convertT2S(),
+            description: doc.select("#intro").html().cleanHtml(),
             detail: doc.select("body > main > div:nth-child(1) > div.novel > div.n-text > p:nth-child(6)").text()
                 + "\n" + doc.select("body > main > div:nth-child(1) > div.novel > div.n-text > p:nth-child(5)").text(),
             host: BASE_URL,
