@@ -2,7 +2,7 @@
   "metadata": {
     "name": "69shux.co",
     "author": "HuongMT",
-    "version": 1,
+    "version": 2,
     "source": "https://69shux.co",
     "regexp": "^https?:\/\/69shux\\.co\/book\/\\d+\\.html$",
     "description": "Đọc truyện trên trang 69shux.co",

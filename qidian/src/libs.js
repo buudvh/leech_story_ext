@@ -101,6 +101,12 @@ function cleanHtml(html) {
     html = html.replace(/&nbsp;/g, '');
     // trim br tags
     html = html.replace(/(^(\s*<br>\s*)+|(<br>\s*)+$)/gm, '');
+    //
+    html = html.trim();
+    //
+    html = html.replace(/^第[\d\u4e00-\u9fa5]+章.*?<br\s*\/?>/i, '');
+    //
+    html = html.replace('(本章完)', '');
 
     return replaceAllDateTime(html.trim());
 }

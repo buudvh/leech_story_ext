@@ -4252,7 +4252,7 @@ String.prototype.cleanHtml = function () {
     //
     html = html.trim();
     //
-    html = html.replace(/^第\d+章.*?<br>/, '');
+    html = html.replace(/^第[\d\u4e00-\u9fa5]+章.*?<br\s*\/?>/i, '');
     //
     html = html.replace('(本章完)', '');
 
