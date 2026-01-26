@@ -2,8 +2,8 @@
   "metadata": {
     "name": "69shuba",
     "author": "HuongMT",
-    "version": 43,
-    "source": "https://www.69shuba.com",
+    "version": 44,
+    "source": "http://sangtacviet.app/search/?find=&host=69shu&minc=0&sort=update&tag=",
     "regexp": "(((https://|http://)((sangtacviet.*?)|14.225.254.182)/truyen/69shu/1/\\d+.*?))|((www|m)?\\.?(69shu|69shuba|69xinshu)\\.(.*?)/(txt|book)/.*?\\.htm)",
     "description": "Đọc truyện trên trang 69shuba.com",
     "locale": "zh_CN",
