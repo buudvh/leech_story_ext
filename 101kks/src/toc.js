@@ -14,7 +14,6 @@ function execute(url) {
             var elms = doc.select("a");
             if (!elms.length) throw new Error("Length = 0");
             elms.forEach(e => {
-                if(e.text().trim().toLowerCase() == "cloudflare") return;
                 data.push({
                     name: e.text().formatTocName(),
                     url: e.attr("href"),
@@ -29,7 +28,6 @@ function execute(url) {
         var match;
 
         while ((match = regex.exec(html)) !== null) {
-            if(match[2].trim().toLowerCase()) return;
             data.push({
                 name: match[2].trim().formatTocName(),
                 url: match[1],
