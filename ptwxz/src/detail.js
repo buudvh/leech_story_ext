@@ -53,7 +53,7 @@ function execute(url) {
             comments: [
                 {
                     title: "STV Comments",
-                    input: bookid,
+                    input: getBookid(url),
                     script: "stv_comment.js"
                 },
                 {

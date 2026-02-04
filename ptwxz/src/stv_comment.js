@@ -28,7 +28,7 @@ function execute(bookid, next) {
         listCmtElm.forEach(function (elm) {
             comments.push({
                 name: elm.select('div.sec-bot a').text(),
-                content: elm.select('div.sec-top').html().cleanHtml(),
+                content: cleanHtml(elm.select('div.sec-top').html()),
             });
         });
 

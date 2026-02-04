@@ -77,6 +77,8 @@ function log(o, msg) {
 }
 
 function cleanHtml(html) {
+    html = html.replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, '$1<br>');
+    //
     html = html.replace(/\n/g, '<br>');
     // remove duplicate br tags
     html = html.replace(/(<br>\s*){2,}/gm, '<br>');
@@ -86,6 +88,12 @@ function cleanHtml(html) {
     html = html.replace(/&nbsp;/g, '');
     // trim br tags
     html = html.replace(/(^(\s*<br>\s*)+|(<br>\s*)+$)/gm, '');
+    //
+    html = html.trim();
+    //
+    html = html.replace(/^第[\d\u4e00-\u9fa5]+章.*?<br\s*\/?>/i, '');
+    //
+    html = html.replace('(本章完)', '');
 
     return replaceAllDateTime(html.trim());
 }
@@ -260,4 +268,9 @@ function convertT2S(text) {
     return text.split('').map(function (ch) {
         return _fallbackT2S[ch] ? _fallbackT2S[ch] : ch;
     }).join('');
+}
+
+function getBookid(url) {
+    const match = url.match(/\/(\d+)\.html/);
+    return match ? match[1] : null;
 }
