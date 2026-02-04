@@ -52,6 +52,11 @@ function execute(url) {
             ],
             comments: [
                 {
+                    title: "STV Comments",
+                    input: bookid,
+                    script: "stv_comment.js"
+                },
+                {
                     title: "QQ Comments",
                     input: bookName,
                     script: "qqcomment.js"
