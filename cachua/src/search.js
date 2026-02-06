@@ -36,12 +36,14 @@ load("libs.js");
 // }
 
 function execute(key, page) {
-	var url = "";
-	try {
+    var url = "";
+    try {
         page = page || '1';
         var ignoresConfig = localStorage.getItem("IGNORES") || "";
 
-        url = `${STV_HOST}/io/searchtp/searchBooks?findinname=${encodeURIComponent(key)}&host=fanqie&minc=0&tag=&sort=update&p=${page}`;
+        url = key.indexOf("find=") == -1 ?
+            `${STV_HOST}/io/searchtp/searchBooks?findinname=${encodeURIComponent(key)}&host=fanqie&minc=0&tag=&sort=update&p=${page}`
+            : `${STV_HOST}/io/searchtp/searchBooks?find=${encodeURIComponent(key.replace("find=", ""))}&host=fanqie&minc=0&tag=&sort=update&p=${page}`;
         var response = fetch(url, {
             "body": `ignores=${encodeURIComponent(IGNORES + ignoresConfig)}`,
             "method": "POST",
