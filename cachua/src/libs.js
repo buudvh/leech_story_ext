@@ -55,3 +55,26 @@ function toCapitalize(sentence) {
     }
     return words.join(" ");
 }
+
+function cleanHtml(html) {
+    //
+    html = html.replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, '$1<br>');
+    //
+    html = html.replace(/\n/g, '<br>');
+    // remove duplicate br tags
+    html = html.replace(/(<br>\s*){2,}/gm, '<br>');
+    // strip html comments
+    html = html.replace(/<!--[^>]*-->/gm, '');
+    // html decode
+    html = html.replace(/&nbsp;/g, '');
+    // trim br tags
+    html = html.replace(/(^(\s*<br>\s*)+|(<br>\s*)+$)/gm, '');
+    //
+    html = html.trim();
+    //
+    html = html.replace(/^第[\d\u4e00-\u9fa5]+章.*?<br\s*\/?>/i, '');
+    //
+    html = html.replace('(本章完)', '');
+
+    return html.trim();
+}

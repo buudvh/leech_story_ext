@@ -36,6 +36,18 @@ function execute(url) {
 				},
 			],
 			genres: genres,
+			comments: [
+                {
+                    title: "STV Comments",
+                    input: data.page.bookId,
+                    script: "stv_comment.js"
+                },
+                {
+                    title: "QQ Comments",
+                    input: data.page.bookName,
+                    script: "qq_comment.js"
+                },
+            ]
 		});
 	} catch (error) {
 		return Response.error(`Url: ${url} \nMessage: ${error.message}`);

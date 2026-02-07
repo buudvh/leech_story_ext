@@ -2,8 +2,8 @@
   "metadata": {
     "name": "Cà Chua",
     "author": "HuongMT",
-    "version": 3,
-    "source": "https://fanqienovel.com",
+    "version": 4,
+    "source": "https://sangtacviet.app/search/?find=&host=fanqie&minc=0&sort=update&tag=",
     "regexp": "https://fanqienovel.com/(.*?)$",
     "description": "Cà Chua",
     "locale": "zh_CN",
