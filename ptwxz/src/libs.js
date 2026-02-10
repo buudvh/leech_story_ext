@@ -274,3 +274,22 @@ function getBookid(url) {
     const match = url.match(/\/(\d+)\.html/);
     return match ? match[1] : null;
 }
+
+function buildCover(bookid) {
+    if(!bookid) return DEFAULT_COVER;
+    var folder = bookid.length <= 3 ? "0" : bookid.slice(0, bookid.length - 3);
+    return `${COVER_BASE}/${folder}/${bookid}/${bookid}s.jpg`;
+}
+
+function convertStvToPiaotia(url) {
+    if (url.includes(STVHOST)) {
+        const match = url.match(/\/truyen\/(?:ptwxz|piaotian|piaotia)\/(\d+)\/(\d+)/);
+        if (match) {
+            const bookid = match[2];
+            var folder = bookid.length <= 3 ? "0" : bookid.slice(0, bookid.length - 3);
+            return `${BASE_URL}/bookinfo/${folder}/${bookid}.html`;
+        }
+    }
+    
+    return url;
+}

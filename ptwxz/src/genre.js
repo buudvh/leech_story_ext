@@ -1,5 +1,6 @@
 function execute() {
     return Response.success([
+        { title: "Update", input: "https://www.piaotia.com/booktoplastupdate/0/{0}.html", script: "gen2.js" },
         { title: '玄幻魔法', input: '/booksort1/0/{0}.html', script: 'gen.js' },
         { title: '武侠修真', input: '/booksort2/0/{0}.html', script: 'gen.js' },
         { title: '都市言情', input: '/booksort3/0/{0}.html', script: 'gen.js' },

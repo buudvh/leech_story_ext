@@ -2,9 +2,9 @@
   "metadata": {
     "name": "piaotia",
     "author": "HuongMT",
-    "version": 26,
-    "source": "https://www.piaotia.com",
-    "regexp": "www\\.(ptwxz|piaotian|piaotia)\\.com/bookinfo/\\d+/\\d+\\.html$",
+    "version": 27,
+    "source": "https://sangtacviet.app/search/?find=&host=ptwxz&minc=0&sort=update&tag=",
+    "regexp": "https?://(?:www\\.(?:ptwxz|piaotian|piaotia)\\.com/bookinfo|sangtacviet\\.app/truyen/(?:ptwxz|piaotian|piaotia))/\\d+/\\d+(?:\\.html|/)?$",
     "description": "Đọc truyện trên trang ptwxz",
     "locale": "zh_CN",
     "language": "javascript",

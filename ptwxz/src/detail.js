@@ -4,6 +4,7 @@ load('config.js');
 
 function execute(url) {
     try {
+        url = convertStvToPiaotia(url);
         let response = fetch(url);
 
         if (!response.ok) throw new Error("Status" + response.status);
