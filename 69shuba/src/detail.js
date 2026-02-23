@@ -6,7 +6,7 @@ load('stv.js');
 function execute(url) {
     try {
         var firstUrl = url;
-        var isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
+        var isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1 || url.indexOf("103.82.20.93") !== -1;
         var source = isSTV ? "STV" : "69shu"
         var bookid = extractBookId(url, isSTV);
         url = buildFinalUrl(bookid);

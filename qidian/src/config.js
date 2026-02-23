@@ -1,5 +1,5 @@
 var BASE_URL = 'https://www.69shuba.com';
-var STVHOST = 'https://sangtacviet.app';
+var STVHOST = 'http://103.82.20.93';
 var DEFAULT_COVER = 'https://raw.githubusercontent.com/buudvh/leech_story_ext/main/asset/cover2.jpg';
 
 try {

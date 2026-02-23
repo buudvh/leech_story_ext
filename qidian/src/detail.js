@@ -4,7 +4,7 @@ load('config.js');
 //Get infor from stv
 function execute(url) {
     try {
-        if (!url.includes("sangtac") && !url.includes("14.225.254.182")) {
+        if (!url.includes("sangtac") && !url.includes("14.225.254.182") && !url.includes("103.82.20.93")) {
             url = STVHOST + "/truyen/qidian/1/" + url.match(/\/book\/(\d+)(?:\/|$)/)[1] + "/";
         }
         var idBook = getBookId(url);
