@@ -1,6 +1,6 @@
 function getDetailSTV(url) {
     try {
-        var isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
+        var isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1 || url.indexOf("103.82.20.93") !== -1;
         var bookid = extractBookId(url, isSTV);
         url = STVHOST + '/truyen/69shu/1/' + bookid + '/';
         var response = fetch(url);
@@ -61,7 +61,7 @@ function getAuhtorNameSTV(doc) {
 function getTocSTV(url) {
     try {
         var result = [];
-        var isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
+        var isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1 || url.indexOf("103.82.20.93") !== -1;
         var book_id = extractBookId(url, isSTV);
 
         tryUrl = STVHOST + '/index.php?ngmar=chapterlist&h=69shu&bookid=' + book_id + '&sajax=getchapterlist';
