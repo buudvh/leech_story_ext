@@ -5,7 +5,6 @@ load('stv.js');
 
 function execute(url) {
     try {
-        var firstUrl = url;
         var isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1 || url.indexOf("103.82.20.93") !== -1;
         var source = isSTV ? "STV" : "69shu"
         var bookid = extractBookId(url, isSTV);
@@ -25,7 +24,7 @@ function execute(url) {
         var doc = browser.html();
         browser.close();
 
-        if ($.Q(doc, 'div.booknav2 > h1 > a').text() === '') return getDetailSTV(firstUrl);
+        if ($.Q(doc, 'div.booknav2 > h1 > a').text() === '') return getDetailSTV(`${STVHOST}/truyen/69shu/1/${bookid}/`);
 
         var genres = buildGenres(doc) || [];
 

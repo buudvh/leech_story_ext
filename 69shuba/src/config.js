@@ -7,6 +7,8 @@ try {
     if (typeof CONFIG_URL !== 'undefined' && CONFIG_URL) {
         BASE_URL = CONFIG_URL;
     }
+    if(localStorage.getItem("BASE_URL")) BASE_URL = localStorage.getItem("BASE_URL");
+    if(localStorage.getItem("STVHOST")) STVHOST = localStorage.getItem("STVHOST");
 } catch (error) {
     // Bỏ qua nếu lỗi
 }

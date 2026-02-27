@@ -6,27 +6,33 @@ function execute(url) {
         var response = crawler.get(url);
         if (!response.ok) throw new Error(`Status ${response.status}`)
 
-        var doc = response.html();
+        var currentHtml = response.text();
+        var doc = null;
+        let maxRetries = 5; // Giới hạn số lần thử lại (ví dụ 5 lần)
+        let retryCount = 0;
 
         // --- Check if we got challenge page ---
-        if (html.includes('正在進行安全驗證') || html.includes('challenge')) {
-        const tokenMatch = html.match(/let token\s*=\s*"([^"]+)"/);
-        if (tokenMatch) {
-            const challengeUrl =
-            chapterUrl + '?challenge=' + encodeURIComponent(tokenMatch[1]);
+        while ((currentHtml.includes('正在進行安全驗證') || currentHtml.includes('challenge')) && retryCount < maxRetries) {
+            retryCount++;
+            const tokenMatch = currentHtml.match(/let token\s*=\s*"([^"]+)"/);
+            if (tokenMatch) {
+                const challengeUrl = url + '?challenge=' + encodeURIComponent(tokenMatch[1]);
 
-            result = await fetchApi(challengeUrl);
-            if (!result.ok)
-            throw new Error(`Failed after challenge redirect: ${challengeUrl}`);
-            html = await result.text();
-        }
+                var result = crawler.get(challengeUrl);
+
+                if (result.ok) {
+                    currentHtml = result.text();
+                    doc = result.html();
+                    throw new Error(currentHtml);
+                } else {
+                    throw new Error(`Failed after challenge redirect: ${challengeUrl}`);
+                }
+            } else {
+                throw new Error(currentHtml);
+            }
         }
 
-        // --- Parse content ---
-        const $ = parseHTML(html);
-        const $content = $('article section');
-        
-        var htm = doc.select(".page-content");
+        var htm = doc.select("article section");
         htm.select("div").remove();
         htm.select("a").remove();
         htm.select("h3").remove();
