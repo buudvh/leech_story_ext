@@ -1,4 +1,3 @@
-load('config.js');
 load('libs.js');
 function execute(bookid, next) {
     if (!next) next = "0"

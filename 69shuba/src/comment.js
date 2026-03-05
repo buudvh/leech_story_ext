@@ -1,5 +1,5 @@
-load('config.js');
 load('libs.js');
+
 function execute(bookid, next) {
     try {
         next = next || "0";

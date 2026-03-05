@@ -1,5 +1,4 @@
 load('libs.js');
-load('config.js');
 load('common.js');
 
 function execute(tag, page) {

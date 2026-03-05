@@ -2,8 +2,8 @@
   "metadata": {
     "name": "Wiki dịch Truyện Nam",
     "author": "HuongMT",
-    "version": 7,
-    "source": "https://truyenwikidich.net",
+    "version": 8,
+    "source": "https://wikicv.net",
     "regexp": "(www.)?(.*?)wiki(.*?)/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang Wiki Dịch, review ở thông tin truyện",
     "locale": "vi_VN",
@@ -20,6 +20,12 @@
   },
   "config": {
     "thread_num": 1,
-    "delay": 3000
+    "delay": 3000,
+    "BASE_URL": {
+      "title": "BASE URL",
+      "mode": "input",
+      "format": "text",
+      "default": "https://wikicv.net"
+    }
   }
 }

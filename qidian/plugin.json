@@ -2,8 +2,8 @@
   "metadata": {
     "name": "qidian",
     "author": "HuongMT",
-    "version": 20,
-    "source": "http://103.82.20.93/search/?find=&host=qidian&minc=0&sort=update&tag=",
+    "version": 21,
+    "source": "http://14.225.254.182/search/?find=&host=qidian&minc=0&sort=update&tag=",
     "regexp": "((https?://(sangtacviet.*?|14\\.225\\.254\\.182|103\\.82\\.20\\.93)/truyen/qidian/\\d+/\\d+.*?)|(https?://(www|m|book)\\.qidian\\.com/(info|book)/\\d+.*?))",
     "description": "Đọc các chương miễn phí qidian, lấy các thông tin trên stv",
     "locale": "zh_CN",
@@ -17,5 +17,31 @@
     "home": "home.js",
     "search": "search.js",
     "genre": "genre.js"
+  },
+  "config": {
+    "BASE_URL": {
+      "title": "Config url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://m.qidian.com"
+    },
+    "STVHOST": {
+      "title": "Sangtacviet host",
+      "mode": "input",
+      "format": "text",
+      "default": "http://14.225.254.182"
+    },
+    "DEFAULT_COVER": {
+      "title": "Default cover url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/asset/cover2.jpg"
+    },
+    "COVER_BASE": {
+      "title": "Cover base url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://static.69shuba.com/files/article/image"
+    }
   }
 }

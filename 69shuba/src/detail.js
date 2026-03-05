@@ -1,5 +1,4 @@
 load('libs.js');
-load('config.js');
 load('gbk.js');
 load('stv.js');
 

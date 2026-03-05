@@ -1,5 +1,4 @@
 load('libs.js');
-load('config.js');
 
 //Get infor from stv
 function execute(url) {

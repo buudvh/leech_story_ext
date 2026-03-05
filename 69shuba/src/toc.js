@@ -1,5 +1,4 @@
 load('libs.js');
-load('config.js');
 load('stv.js');
 
 function execute(url) {

@@ -1,5 +1,4 @@
 load('libs.js');
-load('config.js');
 
 function execute(url) {
     try {
@@ -17,7 +16,7 @@ function execute(url) {
 
 function getTocQidian(url) {
     var idBook = getBookId(url);
-    var response = fetch("https://m.qidian.com/book/" + idBook + "/catalog/", {
+    var response = fetch(`${BASE_URL}/book/${idBook}/catalog/`, {
         headers: {
             'user-agent': UserAgent.android(),
         }
@@ -31,7 +30,7 @@ function getTocQidian(url) {
         q.cs.forEach((e) => {
             data.push({
                 name: formatName(e.cN) + (e.sS == 1 ? "" : "(¥)"),
-                url: "https://m.qidian.com/chapter/" + idBook + "/" + e.id + "/", //
+                url: `${BASE_URL}/chapter/${idBook}/${e.id}/`, //
                 pay: e.sS == 1 ? false : true,
             })
         });

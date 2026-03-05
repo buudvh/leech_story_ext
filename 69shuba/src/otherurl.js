@@ -1,5 +1,4 @@
 load('libs.js');
-load('config.js');
 
 function execute(data) {
     var bookinfo = JSON.parse(data);

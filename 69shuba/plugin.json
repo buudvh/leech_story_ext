@@ -2,8 +2,8 @@
   "metadata": {
     "name": "69shuba",
     "author": "HuongMT",
-    "version": 47,
-    "source": "http://103.82.20.93/search/?find=&host=69shu&minc=0&sort=update&tag=",
+    "version": 48,
+    "source": "http://14.225.254.182/search/?find=&host=69shu&minc=0&sort=update&tag=",
     "regexp": "((https?://(sangtacviet.*?|14\\.225\\.254\\.182|103\\.82\\.20\\.93)/truyen/69shu/1/\\d+.*)|((www|m)?\\.?(69shu|69shuba|69xinshu)\\.(.*?)/(txt|book)/.*?\\.htm))",
     "description": "Đọc truyện trên trang 69shuba.com",
     "locale": "zh_CN",
@@ -17,5 +17,31 @@
     "chap": "chap.js",
     "genre": "genre.js",
     "search": "search.js"
+  },
+  "config": {
+    "BASE_URL": {
+      "title": "Config url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://www.69shuba.com"
+    },
+    "STVHOST": {
+      "title": "Sangtacviet host",
+      "mode": "input",
+      "format": "text",
+      "default": "http://14.225.254.182"
+    },
+    "DEFAULT_COVER": {
+      "title": "Default cover url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/asset/cover2.jpg"
+    },
+    "COVER_BASE": {
+      "title": "Cover base url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://static.69shuba.com/files/article/image"
+    }
   }
 }
