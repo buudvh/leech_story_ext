@@ -17,10 +17,11 @@ function execute(key, page) {
 
         if (!elms.length) {
             if (doc.select("head > meta[property=og:novel:book_name]")) {
+                let cover = doc.select("head > meta[property=og:image]").attr("content");
                 return Response.success([{
                     name: doc.select("head > meta[property=og:novel:book_name]").attr("content").convertT2S(),
                     link: doc.select("head > meta[property=og:url]").attr("content"),
-                    cover: doc.select("head > meta[property=og:image]").attr("content"),
+                    cover: cover.indexOf("nocover") != -1 || cover.length == 0 ? DEFAULT_COVER : cover,
                     description: doc.select("head > meta[property=og:description]").attr("content").convertT2S(),
                     host: BASE_URL
                 }]);
@@ -29,10 +30,11 @@ function execute(key, page) {
 
         var data = [];
         elms.forEach(function (e) {
+            let cover = e.select("a > img").first().attr("data-src");
             data.push({
                 name: e.select("div.newnav > h3 > a:nth-child(2)").first().text().convertT2S(),
                 link: e.select("div.newnav > h3 > a:nth-child(2)").first().attr("href"),
-                cover: e.select("a > img").first().attr("data-src") || DEFAULT_COVER,
+                cover: cover.indexOf("nocover") != -1 || cover.length == 0 ? DEFAULT_COVER : cover,
                 description: e.select("div.newnav > div.labelbox > label:nth-child(1)").first().text().convertT2S()
                     + "\n" + e.select("div.newnav > ol").first().text().convertT2S(),
                 host: BASE_URL

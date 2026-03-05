@@ -22,6 +22,7 @@ function execute(url) {
         var authorElm = doc.select('body > div.container > ul > li.col-8 > div:nth-child(1) > div > div.booknav2 > p:nth-child(2) > a').first();
         var bookName = doc.select('body > div.container > ul > li.col-8 > div:nth-child(1) > div > div.booknav2 > h1 > a').text();
         var cover = doc.select("body > div.container > ul > li.col-8 > div:nth-child(1) > div > div.bookimg2 > img").first().attr("src");
+        cover = cover.indexOf("nocover") != -1 || cover.length == 0 ? DEFAULT_COVER : cover;
         var recommendBooks = [];
         (doc.select("body > div.container > ul > li.col-4 > div > div > div:nth-child(1) > ul > li > a") || []).forEach(e => {
             e.select('.rank_right').remove();

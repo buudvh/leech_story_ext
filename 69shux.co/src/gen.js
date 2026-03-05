@@ -16,10 +16,11 @@ function execute(url, page) {
 
         var data = [];
         elms.forEach(function (e) {
+            let cover = e.select("a > img").first().attr("data-src") || "";
             data.push({
                 name: e.select("div.newnav > h3 > a").first().text().convertT2S(),
                 link: e.select("div.newnav > h3 > a").first().attr("href"),
-                cover: e.select("a > img").first().attr("data-src") || DEFAULT_COVER,
+                cover: cover.indexOf("nocover") != -1 || cover.length == 0 ? DEFAULT_COVER : cover,
                 description: e.select("div.newnav > div.labelbox > label:nth-child(1) > a").first().text().convertT2S()
                     + "\n" + e.select("div.newnav > ol").first().text().convertT2S(),
                 host: BASE_URL
