@@ -2,7 +2,7 @@
   "metadata": {
     "name": "69shuba",
     "author": "HuongMT",
-    "version": 48,
+    "version": 49,
     "source": "http://14.225.254.182/search/?find=&host=69shu&minc=0&sort=update&tag=",
     "regexp": "((https?://(sangtacviet.*?|14\\.225\\.254\\.182|103\\.82\\.20\\.93)/truyen/69shu/1/\\d+.*)|((www|m)?\\.?(69shu|69shuba|69xinshu)\\.(.*?)/(txt|book)/.*?\\.htm))",
     "description": "Đọc truyện trên trang 69shuba.com",
@@ -42,6 +42,12 @@
       "mode": "input",
       "format": "text",
       "default": "https://static.69shuba.com/files/article/image"
+    },
+    "REMOVE_TEXT": {
+      "title": "Ký tự cần remove trên tên chương ngăn cách bằng dấu __",
+      "mode": "input",
+      "format": "text",
+      "default": "求月票__求個月票__求首訂__求关注__求追读__求订阅__月票加更__〔__{__(__（"
     }
   }
 }

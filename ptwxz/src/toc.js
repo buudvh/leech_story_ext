@@ -6,7 +6,7 @@ function execute(url) {
     // --> https://www.ptwxz.com/html/12/12450/
 
     url = convertStvToPiaotia(url);
-    url = url.replace(/\/bookinfo\/(\d+)\/(\d+)\.html/, "/html/$1/$2/index.html");
+    url = url.replace(/\/bookinfo\/(\d+)\/(\d+)\.html/, "/html/$1/$2/");
     // log(url);
 
     let response = fetch(url);

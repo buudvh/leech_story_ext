@@ -2,9 +2,9 @@
   "metadata": {
     "name": "piaotia",
     "author": "HuongMT",
-    "version": 27,
-    "source": "https://sangtacviet.app/search/?find=&host=ptwxz&minc=0&sort=update&tag=",
-    "regexp": "https?://(?:www\\.(?:ptwxz|piaotian|piaotia)\\.com/bookinfo|sangtacviet\\.app/truyen/(?:ptwxz|piaotian|piaotia))/\\d+/\\d+(?:\\.html|/)?$",
+    "version": 29,
+    "source": "http://14.225.254.182/search/?find=&host=ptwxz&minc=0&sort=update&tag=",
+    "regexp": "https?://(?:www\\.(?:ptwxz|piaotian|piaotia)\\.com/bookinfo|(?:sangtacviet\\.app|14\\.225\\.254\\.182|103\\.82\\.20\\.93)/truyen/(?:ptwxz|piaotian|piaotia))/\\d+/\\d+(?:\\.html|/)?$",
     "description": "Đọc truyện trên trang ptwxz",
     "locale": "zh_CN",
     "language": "javascript",
@@ -17,5 +17,37 @@
     "chap": "chap.js",
     "genre": "genre.js",
     "search": "search.js"
+  },
+  "config": {
+    "BASE_URL": {
+      "title": "Config url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://www.piaotia.com"
+    },
+    "STVHOST": {
+      "title": "Sangtacviet host",
+      "mode": "input",
+      "format": "text",
+      "default": "http://14.225.254.182"
+    },
+    "DEFAULT_COVER": {
+      "title": "Default cover url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/asset/cover2.jpg"
+    },
+    "COVER_BASE": {
+      "title": "Cover base url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://www.piaotia.com/files/article/image"
+    },
+    "REMOVE_TEXT": {
+      "title": "Ký tự cần remove trên tên chương ngăn cách bằng dấu __",
+      "mode": "input",
+      "format": "text",
+      "default": "求月票__求個月票__求首訂__求关注__求追读__求订阅__月票加更__〔__{__(__（"
+    }
   }
 }

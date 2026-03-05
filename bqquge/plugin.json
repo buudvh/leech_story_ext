@@ -2,7 +2,7 @@
   "metadata": {
     "name": "bqquge",
     "author": "HuongMT",
-    "version": 2,
+    "version": 3,
     "source": "https://www.bqquge.com",
     "regexp": "^https?:\/\/www\\.bqquge\\.com\/\\d+\\/?$",
     "description": "Đọc truyện trên trang bqquge.com",
@@ -17,5 +17,25 @@
     "chap": "chap.js",
     "genre": "genre.js",
     "search": "search.js"
+  },
+  "config": {
+    "BASE_URL": {
+      "title": "Config url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://www.bqquge.com"
+    },
+    "DEFAULT_COVER": {
+      "title": "Default cover url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/asset/cover2.jpg"
+    },
+    "REMOVE_TEXT": {
+      "title": "Ký tự cần remove trên tên chương ngăn cách bằng dấu __",
+      "mode": "input",
+      "format": "text",
+      "default": "求月票__求個月票__求首訂__求关注__求追读__求订阅__月票加更__〔__{__(__（"
+    }
   }
 }

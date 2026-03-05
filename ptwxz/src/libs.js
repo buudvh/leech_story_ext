@@ -227,14 +227,7 @@ function formatName(name) {
         result = result.replace(/【.*$/, '');
 
         // Bước 6: Loại bỏ các phần có trong mảng
-        var arrTextRemove = [
-            '求月票',
-            '求個月票',
-            '求首訂',
-            '求关注',
-            '〔',
-            '{',
-        ];
+        var arrTextRemove = (REMOVE_TEXT || "").split('__');
         var arrTextLastIndex = arrTextRemove.map(item => result.lastIndexOf(item));
         var filtered = arrTextLastIndex.filter(x => x !== -1);
         var lastTextIndex = filtered.length > 0
