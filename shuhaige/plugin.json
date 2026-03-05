@@ -2,7 +2,7 @@
   "metadata": {
     "name": "shuhaige",
     "author": "HuongMT",
-    "version": 17,
+    "version": 18,
     "source": "https://www.shuhaige.net",
     "regexp": "^https?://(www\\.|m\\.)?shuhaige\\.net/(shu_)?(\\d+)\\.html$",
     "description": "Đọc truyện trên trang shuhaige.net",
@@ -17,5 +17,31 @@
     "chap": "chap.js",
     "genre": "genre.js",
     "search": "search.js"
+  },
+  "config": {
+    "BASE_URL": {
+      "title": "Config url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://www.shuhaige.net"
+    },
+    "MOBILE_URL": {
+      "title": "Mobile url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://m.shuhaige.net"
+    },
+    "DEFAULT_COVER": {
+      "title": "Default cover url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/asset/cover2.jpg"
+    },
+    "REMOVE_TEXT": {
+      "title": "Ký tự cần remove trên tên chương ngăn cách bằng dấu __",
+      "mode": "input",
+      "format": "text",
+      "default": "求月票__求個月票__求首訂__求关注__求追读__求订阅__月票加更__〔__{__(__（"
+    }
   }
 }

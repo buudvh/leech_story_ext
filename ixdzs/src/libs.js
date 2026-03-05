@@ -4277,21 +4277,7 @@ String.prototype.formatTocName = function () {
     }
 
     // Bước 3: Loại bỏ các phần có trong mảng
-    var arrTextRemove = [
-        '求月票',
-        '求個月票',
-        '求首訂',
-        '求关注',
-        '求追读',
-        '求订阅',
-        '月票加更',
-        '〔',
-        '{',
-        '(',
-        '（'
-    ];
-    var arrRemoveConfig = (localStorage.getItem("REMOVE") || "").split('');
-    arrTextRemove = arrTextRemove.concat(arrRemoveConfig);
+    var arrTextRemove = (REMOVE_TEXT || "").split('__');
     var arrTextLastIndex = arrTextRemove.map(item => result.lastIndexOf(item));
     var filtered = arrTextLastIndex.filter(x => x !== -1);
     var lastTextIndex = filtered.length > 0

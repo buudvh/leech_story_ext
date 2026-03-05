@@ -1,5 +1,3 @@
-var BASE_URL = 'https://ixdzs.tw';
-var DEFAULT_COVER = 'https://raw.githubusercontent.com/buudvh/leech_story_ext/main/asset/cover2.jpg';
 var DEFAULT_GENRES = [
     {"title": "其他小說", "input": "/sort/0/index-0-0-0-{0}.html", "script": "gen2.js"},
     {"title": "玄幻奇幻", "input": "/sort/1/index-0-0-0-{0}.html", "script": "gen2.js"},
@@ -13,11 +11,3 @@ var DEFAULT_GENRES = [
     {"title": "耽美同人", "input": "/sort/8/index-0-0-0-{0}.html", "script": "gen2.js"},
     {"title": "台言古言", "input": "/sort/9/index-0-0-0-{0}.html", "script": "gen2.js"},
 ];
-
-try {
-    if (typeof CONFIG_URL !== 'undefined' && CONFIG_URL) {
-        BASE_URL = CONFIG_URL;
-    }
-} catch (error) {
-    // Bỏ qua nếu lỗi
-}

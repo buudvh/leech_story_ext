@@ -1,6 +1,3 @@
-var BASE_URL = 'https://www.shuhaige.net';
-var MOBILE_URL = 'https://m.shuhaige.net';
-var DEFAULT_COVER = 'https://raw.githubusercontent.com/buudvh/leech_story_ext/main/asset/cover2.jpg';
 var DEFAULT_GENRES = [
     {"title": "全部分类", "input": "/shuku/allvisit_0_0_{0}.html", "script": "gen.js"},
     {"title": "玄幻", "input": "/shuku/allvisit_1_0_{0}.html", "script": "gen.js"},
@@ -22,9 +19,3 @@ var DEFAULT_GENRES = [
     {"title": "女生", "input": "/shuku/allvisit_17_0_{0}.html", "script": "gen.js"},
     {"title": "其他", "input": "/shuku/allvisit_18_0_{0}.html", "script": "gen.js"}
 ];
-
-try {
-    // Ưu tiên localStorage > Biến toàn cục > Giá trị mặc định hiện tại
-    BASE_URL = localStorage.getItem("CONFIG_URL") || (typeof CONFIG_URL !== 'undefined' ? CONFIG_URL : BASE_URL);
-} catch (e) {
-}
