@@ -71,7 +71,7 @@
       "name": "ttks",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ttks/ttks.zip",
-      "version": 4,
+      "version": 5,
       "source": "https://ttks.tw",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ttks/icon.png",
       "description": "Đọc truyện trên trang https://ttks.tw"
@@ -233,7 +233,7 @@
     {
       "name": "Google Cloud TTS",
       "author": "HuongMT",
-      "version": 1,
+      "version": 2,
       "source": "https://cloud.google.com",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/g.cloud.tts/g.cloud.tts.zip",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/g.cloud.tts/icon.png",

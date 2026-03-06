@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Google Cloud TTS",
     "author": "HuongMT",
-    "version": 1,
+    "version": 2,
     "source": "https://cloud.google.com",
     "description": "Nghe truyện bằng Google Cloud TTS",
     "type": "tts"
@@ -15,6 +15,12 @@
     "preload_size": 3,
     "max_length": 200,
     "required_api_key": false,
-    "support_url": ""
+    "support_url": "",
+    "API_KEY": {
+      "title": "Nhập api cloud tts để dùng",
+      "mode": "input",
+      "format": "text",
+      "default": ""
+    }
   }
 }

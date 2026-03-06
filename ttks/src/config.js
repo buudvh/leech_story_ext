@@ -1,5 +1,3 @@
-var BASE_URL = 'https://ttks.tw';
-var DEFAULT_COVER = 'https://raw.githubusercontent.com/buudvh/leech_story_ext/main/asset/cover2.jpg';
 var DEFAULT_GENRES = [
     {"title": "全部分类", "input": "/novel/class/lianzai/{0}.html", "script": "gen.js"},
     {"title": "玄幻奇幻", "input": "/novel/class/xuanhuan/{0}.html", "script": "gen.js"},
@@ -14,11 +12,3 @@ var DEFAULT_GENRES = [
     {"title": "動漫同人", "input": "/novel/class/tongren/{0}.html", "script": "gen.js"},
     {"title": "其他類型", "input": "/novel/class/qita/{0}.html", "script": "gen.js"}
 ];
-
-try {
-    if (typeof CONFIG_URL !== 'undefined' && CONFIG_URL) {
-        BASE_URL = CONFIG_URL;
-    }
-} catch (error) {
-    // Bỏ qua nếu lỗi
-}

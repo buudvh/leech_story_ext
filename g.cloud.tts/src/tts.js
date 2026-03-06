@@ -2,15 +2,13 @@ load("voice_list.js");
 
 function execute(text, voice) {
     try {
-        let apiKey = localStorage.getItem("KEY");
-
-        if (!apiKey) throw new Error("Vui lòng bỏ KEY vào bộ nhớ cục bộ và chạy lại!");
+        if (!API_KEY) throw new Error("Vui lòng bỏ KEY vào bộ nhớ cục bộ và chạy lại!");
 
         let response = fetch("https://readaloud.googleapis.com/v1:generateAudioDocStream", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "x-goog-api-key": apiKey,
+                "x-goog-api-key": API_KEY,
             },
             body: JSON.stringify({
                 "text": {
