@@ -1,18 +1,17 @@
-load('config.js');
 load('libs.js');
 
 function execute(url) {
     try {
-        var data;
-        var content = '';
-        nextUrl = url;
-        do {
-            data = getChapterContent(nextUrl);
-            nextUrl = data.nextUrl;
-            content += data.htm + '\n';
-        } while (data.nextUrl != null);
+        let content = '';
+        let currentUrl = url;
 
-        return Response.success(convertT2S(content));
+        do {
+            const data = getChapterContent(currentUrl);
+            content += data.htm + '\n';
+            currentUrl = data.nextUrl;
+        } while (currentUrl);
+
+        return Response.success(content.convertT2S());
     } catch (error) {
         return Response.error(`Url: ${url} \nMessage: ${error.message}`);
     }
@@ -31,7 +30,7 @@ function getChapterContent(url) {
         htm.select("h1").remove();
 
         htm = htm.html();
-        htm = cleanHtml(htm)
+        htm = htm.cleanHtml()
             .replace(/^第\d+章.*?<br>/, '') // Ex: '  第11745章 大结局，终<br>'
             .replace('(本章完)', '');
 
@@ -45,27 +44,21 @@ function getChapterContent(url) {
 }
 
 function getMoreContentUrl(doc) {
-    var nextButton = null;
-
-    doc.select('a').forEach(element => {
-        if (element.text() == '下一页') {
-            nextButton = element;
-        }
-    });
+    var nextButton = doc.select('a').toArray().find(el => el.text() === '下一页');
 
     if (!nextButton) return null;
 
-    if (getBookId(nextButton.attr('href')).indexOf('_') != -1) return BASE_URL + nextButton.attr('href');
+    const href = nextButton.attr('href');
+    const bookId = getBookId(href);
+
+    if (bookId && bookId.includes('_')) {
+        return BASE_URL + href;
+    }
 
     return null;
 }
 
 function getBookId(url) {
-    var regex = /\/(\d+(?:_\d+)?)\.html$/;
-    var match = url.match(regex);
-    if (match && match.length > 1) {
-        return match[1];
-    }
-
-    return null;
+    const match = url.match(/\/(\d+(?:_\d+)?)\.html$/);
+    return match ? match[1] : null;
 }

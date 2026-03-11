@@ -14,13 +14,13 @@
       "description": "Đọc truyện trên trang Cà Chua"
     },
     {
-      "name": "60ksw",
+      "name": "23.224.242.59",
       "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/60ksw/60ksw.zip",
-      "version": 2,
-      "source": "https://www.60ksw.com",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/60ksw/icon.png",
-      "description": "Đọc truyện trên trang www.60ksw.com"
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/23.224.242.59/23.224.242.59.zip",
+      "version": 1,
+      "source": "http://23.224.242.59/",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/23.224.242.59/icon.png",
+      "description": "Đọc truyện trên trang 23.224.242.59"
     },
     {
       "name": "69shux.co",

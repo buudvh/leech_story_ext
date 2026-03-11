@@ -1,5 +1,4 @@
 load('libs.js');
-load('config.js');
 
 function execute(url) {
     try {
@@ -15,10 +14,10 @@ function execute(url) {
 
         elms.forEach(function (e) {
             data.push({
-                name: convertT2S(e.select("img").first().attr("alt")),
+                name: e.select("img").first().attr("alt").convertT2S(),
                 link: BASE_URL + e.attr("href"),
                 cover: e.select("img").first().attr("src") || DEFAULT_COVER,
-                description: convertT2S(e.text()),
+                description: e.text().convertT2S(),
                 host: BASE_URL
             });
         });

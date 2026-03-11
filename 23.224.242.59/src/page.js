@@ -1,5 +1,3 @@
-load('config.js');
-
 function execute(url) {
     try {
         var data = [];

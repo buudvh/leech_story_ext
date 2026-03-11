@@ -1,5 +1,4 @@
 load('libs.js');
-load('config.js');
 
 function execute(url) {
     try {
@@ -8,17 +7,17 @@ function execute(url) {
         if (!response.ok) throw new Error(`Status = ${response.status}`)
 
         var doc = response.html();
-        var elms = doc.select("div.container div:nth-child(4) div.layout.layout2.layout-col1.fr ul li");
+        var elms = doc.select("body > div.container > div:nth-child(4) > div.layout.layout2.layout-col1.fr > ul > li");
 
         if (!elms.length) throw new Error(`Length = 0`);
 
         elms.forEach(function (e) {
-            var link = e.select(".s2 a").first().attr("href")
+            var link = e.select("span.s2 > a").first().attr("href")
             data.push({
-                name: convertT2S(e.select(".s2 a").first().text()),
+                name: e.select("span.s2 > a").first().text().convertT2S(),
                 link: link,
                 cover: buildCover(getBookId(link)),
-                description: "Author: " + e.select(".s5").first().text(),
+                description: "作者：" + e.select("span.s5").first().text().convertT2S(),
                 host: BASE_URL
             });
         });

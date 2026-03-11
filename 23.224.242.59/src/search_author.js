@@ -19,10 +19,13 @@ function execute(key, page) {
                 name: e.select(".s2 a").first().text().convertT2S(),
                 link: link,
                 cover: buildCover(getBookId(link)),
-                description: "更新：" + e.select(".s5").first().text().convertT2S(),
-                host: BASE_URL
+                description: e.select(".s4").first().text().convertT2S(),
+                host: BASE_URL,
+                author: e.select(".s4").first().text()
             });
         });
+
+        data = data.filter(p => p.author == key);
 
         return Response.success(data);
     } catch (e) {
