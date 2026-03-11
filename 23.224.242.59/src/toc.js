@@ -15,7 +15,7 @@ function execute(url) {
 
         chapterElms.forEach(function (e) {
             data.push({
-                name: e.text(),
+                name: e.text().formatTocName(),
                 url: e.attr('href'),
                 host: BASE_URL,
             });

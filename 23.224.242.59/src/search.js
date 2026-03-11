@@ -19,7 +19,8 @@ function execute(key, page) {
                 name: e.select(".s2 a").first().text().convertT2S(),
                 link: link,
                 cover: buildCover(getBookId(link)),
-                description: "更新：" + e.select(".s5").first().text().convertT2S(),
+                description: e.select(".s4").first().text().convertT2S()
+                    + "\n更新：" + e.select(".s5").first().text().convertT2S(),
                 host: BASE_URL
             });
         });

@@ -2,7 +2,7 @@
   "metadata": {
     "name": "23.224.242.59",
     "author": "HuongMT",
-    "version": 2,
+    "version": 3,
     "source": "http://23.224.242.59/",
     "regexp": "^https?:\\/\\/(?:www\\.)?23\\.224\\.242\\.59\\/book\\/(\\d+)\\/?$",
     "description": "Đọc truyện trên trang http://23.224.242.59/",
