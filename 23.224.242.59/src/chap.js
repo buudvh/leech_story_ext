@@ -2,14 +2,14 @@ load('libs.js');
 
 function execute(url) {
     try {
-        let content = '';
-        let currentUrl = url;
-
+        var data;
+        var content = '';
+        nextUrl = url;
         do {
-            const data = getChapterContent(currentUrl);
+            data = getChapterContent(nextUrl);
+            nextUrl = data.nextUrl;
             content += data.htm + '\n';
-            currentUrl = data.nextUrl;
-        } while (currentUrl);
+        } while (data.nextUrl != null);
 
         return Response.success(content.convertT2S());
     } catch (error) {
@@ -44,21 +44,27 @@ function getChapterContent(url) {
 }
 
 function getMoreContentUrl(doc) {
-    var nextButton = doc.select('a').toArray().find(el => el.text() === '下一页');
+    var nextButton = null;
+
+    doc.select('a').forEach(element => {
+        if (element.text() == '下一页') {
+            nextButton = element;
+        }
+    });
 
     if (!nextButton) return null;
 
-    const href = nextButton.attr('href');
-    const bookId = getBookId(href);
-
-    if (bookId && bookId.includes('_')) {
-        return BASE_URL + href;
-    }
+    if (getBookId(nextButton.attr('href')).indexOf('_') != -1) return BASE_URL + nextButton.attr('href');
 
     return null;
 }
 
 function getBookId(url) {
-    const match = url.match(/\/(\d+(?:_\d+)?)\.html$/);
-    return match ? match[1] : null;
+    var regex = /\/(\d+(?:_\d+)?)\.html$/;
+    var match = url.match(regex);
+    if (match && match.length > 1) {
+        return match[1];
+    }
+
+    return null;
 }
