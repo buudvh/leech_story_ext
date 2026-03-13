@@ -1,0 +1,52 @@
+{
+  "metadata": {
+    "name": "txt520",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "http://www.txt520.com",
+    "regexp": "(www.|m.)?txt520.com/(.*?)/\\d+.html",
+    "description": "Đọc truyện trên trang http://www.txt520.com",
+    "locale": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "detail": "detail.js",
+    "genre": "genre.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  },
+  "config": {
+    "BASE_URL": {
+      "title": "Config url",
+      "mode": "input",
+      "format": "text",
+      "default": "http://www.txt520.com"
+    },
+    "ORIGINAL_HOST": {
+      "title": "Original host",
+      "mode": "input",
+      "format": "text",
+      "default": "m.txt520.com"
+    },
+    "REPLACE_HOST": {
+      "title": "Replace host",
+      "mode": "input",
+      "format": "text",
+      "default": "www.txt520.com"
+    },
+    "DEFAULT_COVER": {
+      "title": "Default cover url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/asset/cover.jpg"
+    },
+    "REMOVE_TEXT": {
+      "title": "Ký tự cần remove trên tên chương ngăn cách bằng dấu __",
+      "mode": "input",
+      "format": "text",
+      "default": "求月票__求個月票__求首訂__求关注__求追读__求订阅__月票加更__〔__{__(__（"
+    }
+  }
+}
