@@ -5,26 +5,16 @@ function execute(key, page) {
     var url;
     try {
         page = page || '1';
-        url = `${BASE_URL}/novel/search?searchkey=${encodeURIComponent(key)}&searchtype=all&page=${page}`
+        url = `${BASE_URL}/novel/search?q=${encodeURIComponent(key)}`
         var response = crawler.get(url);
 
         if (!response.ok) throw new Error(`Status ${response.status}`)
 
         var doc = response.html();
-        var elms = doc.select("#__layout > div > div.frame_body > div.pure-g > div.novel_cell");
+        var elms = doc.select("#__layout > div > div.frame_body > div.pure-g > div");
 
-        if (!elms.length) {
-            if (doc.select("head > meta[data-hid=og:novel:book_name]")) {
-                return Response.success([{
-                    name: doc.select("head > meta[data-hid=og:novel:book_name]").attr("content").convertT2S(),
-                    link: doc.select("head > meta[data-hid=og:url]").attr("content"),
-                    cover: doc.select("head > meta[data-hid=og:image]").attr("content"),
-                    description: doc.select("head > meta[data-hid=og:novel:latest_chapter_name]").attr("content").convertT2S(),
-                    host: BASE_URL
-                }]);
-            } else throw new Error("Length = 0");
-
-        }
+        if(!elms.length) throw new Error("Length = 0");
+        
 
         var data = [];
         elms.forEach(function (e) {
@@ -38,8 +28,7 @@ function execute(key, page) {
             });
         });
 
-        var next = parseInt(page, 10) + 1;
-        return Response.success(data, next.toString());
+        return Response.success(data);
     } catch (error) {
         return Response.error(`Url ${url} \nMessage: ${error.message}`);
         // return Response.success([

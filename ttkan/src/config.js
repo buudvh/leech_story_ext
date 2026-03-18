@@ -1,4 +1,4 @@
-var BASE_URL = 'https://cn.ttkan.co';
+var BASE_URL = 'https://www.ttkan.co';
 var DEFAULT_COVER = 'https://raw.githubusercontent.com/buudvh/leech_story_ext/main/asset/cover2.jpg';
 var DEFAULT_GENRES = [
     {"title": "全部分类", "input": "/novel/class/lianzai/{0}.html", "script": "gen.js"},

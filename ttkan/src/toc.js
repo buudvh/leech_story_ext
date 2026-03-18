@@ -3,25 +3,24 @@ load('config.js');
 
 function execute(url) {
     try {
+        //https://www.ttkan.co/api/nq/amp_novel_chapters?language=tw&novel_id=qiweishang-lvyeqianhe&__amp_source_origin=https%3A%2F%2Fwww.ttkan.co
+        var bookid = getBookId(url);
+        url = `${BASE_URL}/api/nq/amp_novel_chapters?language=tw&novel_id=${bookid}&__amp_source_origin=${decodeURIComponent(BASE_URL)}`
         var response = crawler.get(url);
         if (!response.ok) throw new Error(`Status ${response.status}`);
         
-        var doc = response.html();
+        var json = response.json();
         
-        chapterElms = doc.select("#__layout > div > div:nth-child(2) > div > div:nth-child(9) > div a");
-        
-        if (!chapterElms.length) throw new Error(`Length = 0`);
+        if (!json || !json.items.length) throw new Error(`Length = 0`);
         
         var data = [];
-        chapterElms.forEach(function (e) {
+        json.items.forEach(function (e) {
             data.push({
-                name: e.text().formatTocName(),
-                url: e.attr('href'),
+                name: e.chapter_name.formatTocName(),
+                url: `https://www.wa01.com/novel/pagea/${bookid}_${e.chapter_id}.html`,
                 host: BASE_URL,
             });
         });
-
-        // if(data.length >= 12) data = data.slice(12);
 
         return Response.success(data);
     } catch (error) {
@@ -32,16 +31,4 @@ function execute(url) {
             host: BASE_URL,
         }]);
     }
-}
-
-function formatToDesktopSlashUrl(url) {
-    const regex = /shuhaige\.net\/(?:shu_)?(\d+)/;
-    const match = url.match(regex);
-
-    if (match && match[1]) {
-        const bookId = match[1];
-        return `https://www.shuhaige.net/${bookId}/`;
-    }
-
-    return url;
 }

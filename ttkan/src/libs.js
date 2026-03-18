@@ -1,4 +1,4 @@
-var _IS_TRADITIONAL = false;
+var _IS_TRADITIONAL = true;
 
 var _T2S = {
     "０": "0",
@@ -4442,17 +4442,17 @@ function encodeFormData(data) {
     return pairs.join("&");
 }
 
-function extractBookId(url, isSTV) {
-    var match;
-    if (isSTV) {
-        match = url.match(/\/(\d+)\/?$/);
-    } else {
-        match = url.match(/\/(\d+)\.htm/);
-    }
-    if (!match) {
+function getBookId(url) {
+    try {
+        const cleanUrl = url.split(/[?#]/)[0];
+
+        const regex = /\/novel\/chapters\/([^/]+)/;
+        const match = cleanUrl.match(regex);
+
+        return match ? match[1] : null;
+    } catch (error) {
         throw new Error("Can not extarct BookId");
     }
-    return match[1];
 }
 
 function buildCover(bookid) {
