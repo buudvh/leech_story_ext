@@ -23,6 +23,15 @@
       "description": "Đọc truyện trên trang shu.tw"
     },
     {
+      "name": "ttkan.co",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ttkan/ttkan.zip",
+      "version": 1,
+      "source": "https://cn.ttkan.co",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ttkan/icon.png",
+      "description": "Đọc truyện trên trang cn.ttkan.co"
+    },
+    {
       "name": "txt520",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/txt520/txt520.zip",
