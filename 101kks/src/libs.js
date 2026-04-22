@@ -4299,21 +4299,7 @@ String.prototype.formatTocName = function () {
     }
 
     // Bước 3: Loại bỏ các phần có trong mảng
-    var arrTextRemove = [
-        '求月票',
-        '求個月票',
-        '求首訂',
-        '求关注',
-        '求追读',
-        '求订阅',
-        '月票加更',
-        '〔',
-        '{',
-        '(',
-        '（'
-    ];
-    var arrRemoveConfig = (localStorage.getItem("REMOVE") || "").split('');
-    arrTextRemove = arrTextRemove.concat(arrRemoveConfig);
+    var arrTextRemove = (REMOVE_TEXT || "").split('__');
     var arrTextLastIndex = arrTextRemove.map(item => result.lastIndexOf(item));
     var filtered = arrTextLastIndex.filter(x => x !== -1);
     var lastTextIndex = filtered.length > 0
@@ -4471,4 +4457,8 @@ function buildCover(bookid) {
     if (!bookid) return DEFAULT_COVER;
     var folder = bookid.length <= 3 ? "0" : bookid.slice(0, bookid.length - 3);
     return `${COVER_BASE}/${folder}/${bookid}/${bookid}s.jpg`;
+}
+
+function convertChapterUrlToDetailUrl(url){
+    return url.replace(/\/ajax_novels\/chapterlist\/(\d+)\.html/, "/book/$1.html");
 }

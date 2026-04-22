@@ -18,7 +18,7 @@ function execute(url, page) {
         elms.forEach(function (e) {
             data.push({
                 name: e.select("div.newnav > h3 > a").first().text().convertT2S(),
-                link: e.select("div.newnav > h3 > a").first().attr("href"),
+                link: convertDetailUrlToChapterUrl(e.select("div.newnav > h3 > a").first().attr("href")),
                 cover: e.select("a > img").first().attr("data-src") || DEFAULT_COVER,
                 description: e.select("div.newnav > div.labelbox > label:nth-child(1) > a").first().text().convertT2S()
                     + "\n" + e.select("div.newnav > ol").first().text().convertT2S(),
@@ -31,4 +31,8 @@ function execute(url, page) {
     } catch (error) {
         return Response.error(`Url ${url} \nMessage: ${error.message}`);
     }
+}
+
+function convertDetailUrlToChapterUrl(url){
+    return url.replace(/\/book\/(\d+)\.html/, "/ajax_novels/chapterlist/$1.html");
 }

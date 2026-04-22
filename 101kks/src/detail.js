@@ -3,6 +3,7 @@ load('config.js');
 
 function execute(url) {
     try {
+        url = convertChapterUrlToDetailUrl(url);
         var browser = Engine.newBrowser(); // Khởi tạo browser
         browser.launch(url, 5000); // Mở trang web với timeout
 
