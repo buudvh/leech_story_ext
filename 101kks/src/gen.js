@@ -32,7 +32,3 @@ function execute(url, page) {
         return Response.error(`Url ${url} \nMessage: ${error.message}`);
     }
 }
-
-function convertDetailUrlToChapterUrl(url){
-    return url.replace(/\/book\/(\d+)\.html/, "/ajax_novels/chapterlist/$1.html");
-}

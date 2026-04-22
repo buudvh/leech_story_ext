@@ -19,7 +19,7 @@ function execute(key, page) {
             if (doc.select("head > meta[property=og:novel:book_name]")) {
                 return Response.success([{
                     name: doc.select("head > meta[property=og:novel:book_name]").attr("content").convertT2S(),
-                    link: doc.select("head > meta[property=og:url]").attr("content"),
+                    link: convertDetailUrlToChapterUrl(doc.select("head > meta[property=og:url]").attr("content")),
                     cover: doc.select("head > meta[property=og:image]").attr("content"),
                     description: doc.select("head > meta[property=og:description]").attr("content").convertT2S(),
                     host: BASE_URL

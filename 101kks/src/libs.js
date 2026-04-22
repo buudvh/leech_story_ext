@@ -4462,3 +4462,7 @@ function buildCover(bookid) {
 function convertChapterUrlToDetailUrl(url){
     return url.replace(/\/ajax_novels\/chapterlist\/(\d+)\.html/, "/book/$1.html");
 }
+
+function convertDetailUrlToChapterUrl(url){
+    return url.replace(/\/book\/(\d+)\.html/, "/ajax_novels/chapterlist/$1.html");
+}

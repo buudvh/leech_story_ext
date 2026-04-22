@@ -18,7 +18,7 @@ function execute(url, page) {
         elms.forEach(function (e) {
             data.push({
                 name: e.select("div.newnav > h3 > a:nth-child(2)").first().text().convertT2S(),
-                link: e.select("div.newnav > h3 > a:nth-child(2)").first().attr("href"),
+                link: convertDetailUrlToChapterUrl(e.select("div.newnav > h3 > a:nth-child(2)").first().attr("href")),
                 cover: e.select("a > img").first().attr("data-src") || DEFAULT_COVER,
                 description: e.select("div.newnav > div.labelbox > label:nth-child(1)").first().text().convertT2S()
                     + "\n" + e.select("div.newnav > ol").first().text().convertT2S(),

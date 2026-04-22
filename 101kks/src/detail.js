@@ -23,19 +23,14 @@ function execute(url) {
         var authorElm = doc.select('body > div.container > ul > li.col-8 > div:nth-child(1) > div > div.booknav2 > p:nth-child(2) > a').first();
         var bookName = doc.select('body > div.container > ul > li.col-8 > div:nth-child(1) > div > div.booknav2 > h1 > a').text();
         var cover = doc.select("body > div.container > ul > li.col-8 > div:nth-child(1) > div > div.bookimg2 > img").first().attr("src");
-        var recommendBooks = [{
-            name: bookName.formatTocName(),
-            link: url.replace(/\/book\/(\d+)\.html/, "/ajax_novels/chapterlist/$1.html"),
-            cover: cover,
-            host: BASE_URL,
-        }];
+        var recommendBooks = [];
         (doc.select("body > div.container > ul > li.col-4 > div > div > div:nth-child(1) > ul > li > a") || []).forEach(e => {
             e.select('.rank_right').remove();
             e.select('h4').remove();
             e.select('p').remove();
             recommendBooks.push({
                 name: e.text().convertT2S(),
-                link: e.attr("href"),
+                link: convertDetailUrlToChapterUrl(e.attr("href")),
                 cover: buildCover(getBookId(e.attr("href"))),
                 host: BASE_URL,
             })
