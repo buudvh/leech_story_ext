@@ -14,6 +14,15 @@
       "description": "Đọc truyện trên trang Cà Chua"
     },
     {
+      "name": "shu.tw",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/shutw/shutw.zip",
+      "version": 1,
+      "source": "https://shu.tw",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/shutw/icon.png",
+      "description": "Đọc truyện trên trang shu.tw"
+    },
+    {
       "name": "txt520",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/txt520/txt520.zip",
