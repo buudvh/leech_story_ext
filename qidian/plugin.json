@@ -2,7 +2,7 @@
   "metadata": {
     "name": "qidian",
     "author": "HuongMT",
-    "version": 21,
+    "version": 22,
     "source": "http://14.225.254.182/search/?find=&host=qidian&minc=0&sort=update&tag=",
     "regexp": "((https?://(sangtacviet.*?|14\\.225\\.254\\.182|103\\.82\\.20\\.93)/truyen/qidian/\\d+/\\d+.*?)|(https?://(www|m|book)\\.qidian\\.com/(info|book)/\\d+.*?))",
     "description": "Đọc các chương miễn phí qidian, lấy các thông tin trên stv",
