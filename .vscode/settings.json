@@ -1,0 +1,4 @@
+{
+    "vbookTester.defaultServerUrl": "http://192.168.1.230:8080",
+    "vbookTester.showTerminalOnRun": true
+}
