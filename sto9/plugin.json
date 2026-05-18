@@ -1,0 +1,47 @@
+{
+  "metadata": {
+    "name": "sto9.com",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "https://sto9.com",
+    "regexp": "^https?:\/\/sto9\\.com\/book\/\\d+\\.html$",
+    "description": "Đọc truyện trên trang sto9.com",
+    "locale": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js",
+    "genre": "genre.js",
+    "search": "search.js"
+  },
+  "config": {
+    "BASE_URL": {
+      "title": "Config url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://sto9.com"
+    },
+    "DEFAULT_COVER": {
+      "title": "Default cover url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/asset/cover2.jpg"
+    },
+    "COVER_BASE": {
+      "title": "Cover base url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://sto9.com/files/article/image"
+    },
+    "REMOVE_TEXT": {
+      "title": "Ký tự cần remove trên tên chương ngăn cách bằng dấu __",
+      "mode": "input",
+      "format": "text",
+      "default": "求月票__求個月票__求首訂__求关注__求追读__求订阅__月票加更__〔__{__(__（"
+    }
+  }
+}
