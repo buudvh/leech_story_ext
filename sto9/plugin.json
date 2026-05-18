@@ -2,7 +2,7 @@
   "metadata": {
     "name": "sto9.com",
     "author": "HuongMT",
-    "version": 1,
+    "version": 2,
     "source": "https://sto9.com",
     "regexp": "^https?:\/\/sto9\\.com\/book\/\\d+\\.html$",
     "description": "Đọc truyện trên trang sto9.com",
