@@ -1,9 +1,9 @@
 function execute() {
     return Response.success([
         {"title":"Update","input":"/novels/class/0_{0}.html","script":"gen.js"},
-        {"title":"人氣","input":"/novels/weekvisit_0_0_{0}.html","script":"gen.js"},
-        {"title":"推薦","input":"/novels/allvote_0_0_{0}.html","script":"gen.js"},
-        {"title":"新書","input":"/novels/newhot_0_0_{0}.html","script":"gen.js"},
+        {"title":"人气","input":"/novels/weekvisit_0_0_{0}.html","script":"gen.js"},
+        {"title":"推荐","input":"/novels/allvote_0_0_{0}.html","script":"gen.js"},
+        {"title":"新书","input":"/novels/newhot_0_0_{0}.html","script":"gen.js"},
 
         {"title":"諸天流","input":"/newtag/諸天流/{0}","script":"tag.js"},
         {"title":"无限流","input":"/newtag/无限流/{0}","script":"tag.js"},
