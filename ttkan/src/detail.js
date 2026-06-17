@@ -12,28 +12,44 @@ function execute(url) {
         var cover = doc.select("#__layout > div > div:nth-child(2) > div > div.pure-g.novel_info > div.pure-u-xl-1-6.pure-u-lg-1-6.pure-u-md-1-3.pure-u-1-2 > a > amp-img").first().attr("src") || DEFAULT_COVER;
         var genreName = doc.select('#__layout > div > div:nth-child(2) > div > div.pure-g.novel_info > div.pure-u-xl-5-6.pure-u-lg-5-6.pure-u-md-2-3.pure-u-1-2 > ul > li:nth-child(3)').text().trim().replace('類別：', '');
         var genres = DEFAULT_GENRES.find(p => p.title == genreName);
+        var recommandBooks = [];
+        (doc.select('div.related_frame.novel_related_frame > div') || []).forEach(e => {
+            recommandBooks.push({
+                name: e.select('ul > li:nth-child(2) > a').text().formatTocName(),
+                cover: e.select('ul > li:nth-child(1) > a > amp-img').attr('src'),
+                link: e.select('ul > li:nth-child(2) > a').attr('href'),
+                // cover: `https://static.ttkan.co/cover/${e.topic_img}`,
+                host: BASE_URL
+            })
+        });
 
         return Response.success({
             name: bookName.formatTocName(),
             author: authorElm.text().convertT2S(),
             cover: cover,
             description: doc.select("#__layout > div > div:nth-child(2) > div > div.description > div > p").text().convertT2S(),
-            detail: "Last chapter: " + doc.select("head > meta[name=og:novel:latest_chapter_name]").attr("content"),
+            detail: "最新章节：" + doc.select("head > meta[name=og:novel:latest_chapter_name]").attr("content")
+                + "\n最后更新：" + doc.select('#__layout > div > div:nth-child(2) > div.frame_body > div.near_chapter > time').text().replace('更新', ''),
             host: BASE_URL,
             ongoing: doc.select("head > meta[name=og:novel:status]").attr("content") == "連載",
-            suggests: [
+            genres: [
                 {
-                    title: "Cùng tác giả",
+                    title: "CLICK VÀO ĐỂ TÌM TRUYỆN CÙNG TÁC GIẢ",
                     input: `@${authorElm.text()}`,
                     script: "search.js"
-                }
-            ],
-            genres: [
+                },
                 {
                     title: genreName || "全部分类",
                     input: genres != undefined ? genres.input : DEFAULT_GENRES[0].input,
                     script: "gen.js"
                 },
+            ],
+            suggests: [
+                {
+                    title: "Gợi ý",
+                    input: JSON.stringify(recommandBooks),
+                    script: "recommend.js"
+                }
             ],
             comments: [
                 {

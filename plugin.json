@@ -5,15 +5,6 @@
   },
   "data": [
     {
-      "name": "Cà Chua",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/cachua/cachua.zip",
-      "version": 5,
-      "source": "https://sangtacviet.app/search/?find=&host=fanqie&minc=0&sort=update&tag=",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/cachua/icon.png",
-      "description": "Đọc truyện trên trang Cà Chua"
-    },
-    {
       "name": "sto9.com",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/sto9/sto9.zip",
@@ -35,7 +26,7 @@
       "name": "ttkan.co",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ttkan/ttkan.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://cn.ttkan.co",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ttkan/icon.png",
       "description": "Đọc truyện trên trang cn.ttkan.co"
