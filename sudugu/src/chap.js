@@ -16,6 +16,11 @@ function execute(url) {
             htm.select("a").remove();
             htm.select("h1").remove();
 
+            var firstP = htm.select("p").first();
+            if (firstP && /^第[\d\u4e00-\u9fa5]+[章节]/.test(firstP.text().trim())) {
+                firstP.remove();
+            }
+
             var text = htm.html().cleanHtml();
             // remove (本章完)
             text = text.replace(/\(本章完\)/g, "");
