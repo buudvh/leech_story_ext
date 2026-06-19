@@ -2,7 +2,7 @@
   "metadata": {
     "name": "sudugu",
     "author": "HuongMT",
-    "version": 1,
+    "version": 2,
     "source": "https://www.sudugu.org",
     "regexp": "^https?:\\/\\/(?:www\\.)?sudugu\\.org\\/(\\d+)\\/$",
     "description": "Đọc truyện trên trang sudugu.org",

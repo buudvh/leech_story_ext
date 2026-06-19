@@ -31,6 +31,13 @@ function execute(url) {
                 });
             }
         });
+        if (author) {
+            genres.push({
+                title: author,
+                input: author,
+                script: "search.js"
+            });
+        }
 
         return Response.success({
             name: name,
