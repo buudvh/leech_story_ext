@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "PreToolUse": [
+    {
+      "matcher": "git commit.*",
+      "command": "echo 'Enforcing Vbook rules check...'"
+    }
+  ]
+}

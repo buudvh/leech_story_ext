@@ -285,6 +285,15 @@
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/b.tts/icon.png",
       "description": "Nghe truyện bằng Bing TTS",
       "type": "tts"
+    },
+    {
+      "name": "sudugu",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/sudugu/sudugu.zip",
+      "version": 1,
+      "source": "https://www.sudugu.org",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/sudugu/icon.png",
+      "description": "Đọc truyện trên trang sudugu.org"
     }
   ]
 }
