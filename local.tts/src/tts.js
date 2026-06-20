@@ -8,7 +8,7 @@ function execute(text, voice) {
             body: JSON.stringify({
                 text: text,
                 voice: voice,
-                speed: 1.0
+                speed: 1.5
             })
         });
 

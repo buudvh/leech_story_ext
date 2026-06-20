@@ -289,7 +289,7 @@
     {
       "name": "Local TTS",
       "author": "HuongMT",
-      "version": 1,
+      "version": 2,
       "source": "http://127.0.0.1:17771",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/local.tts/local.tts.zip",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/local.tts/icon.png",

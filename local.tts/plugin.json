@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Local TTS",
     "author": "HuongMT",
-    "version": 1,
+    "version": 2,
     "source": "http://127.0.0.1:17771",
     "description": "Nghe truyện bằng Local TTS (iPhone/máy chủ nội bộ)",
     "type": "tts"
