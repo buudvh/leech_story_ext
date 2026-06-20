@@ -287,6 +287,16 @@
       "type": "tts"
     },
     {
+      "name": "Local TTS",
+      "author": "HuongMT",
+      "version": 1,
+      "source": "http://127.0.0.1:17771",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/local.tts/local.tts.zip",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/local.tts/icon.png",
+      "description": "Nghe truyện bằng Local TTS (iPhone/máy chủ nội bộ)",
+      "type": "tts"
+    },
+    {
       "name": "sudugu",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/sudugu/sudugu.zip",
