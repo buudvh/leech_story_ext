@@ -297,6 +297,16 @@
       "type": "tts"
     },
     {
+      "name": "VieNeu-TTS",
+      "author": "HuongMT",
+      "version": 1,
+      "source": "http://127.0.0.1:23333",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/vieneu.tts/vieneu.tts.zip",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/vieneu.tts/icon.png",
+      "description": "Nghe truyện bằng VieNeu-TTS (máy chủ cục bộ/từ xa)",
+      "type": "tts"
+    },
+    {
       "name": "sudugu",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/sudugu/sudugu.zip",

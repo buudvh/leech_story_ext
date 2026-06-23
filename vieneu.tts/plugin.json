@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "name": "VieNeu-TTS",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "http://127.0.0.1:23333",
+    "description": "Nghe truyện bằng VieNeu-TTS (máy chủ cục bộ/từ xa)",
+    "type": "tts"
+  },
+  "script": {
+    "voice": "voice.js",
+    "tts": "tts.js"
+  },
+  "config": {
+    "preload_size": 3,
+    "max_length": 2000,
+    "required_api_key": false,
+    "support_url": "",
+    "BASE_URL": {
+      "title": "Địa chỉ VieNeu-TTS (mặc định: http://127.0.0.1:23333)",
+      "mode": "input",
+      "format": "text",
+      "default": "http://127.0.0.1:23333"
+    }
+  }
+}
