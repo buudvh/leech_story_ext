@@ -2,7 +2,7 @@ load("voice_list.js");
 
 function execute() {
     try {
-        let response = fetch("http://127.0.0.1:17771/v1/voices");
+        let response = fetch(`${BASE_URL}/v1/voices`);
         if (response.ok) {
             let data = response.json();
             if (data && data.voices && data.voices.length > 0) {

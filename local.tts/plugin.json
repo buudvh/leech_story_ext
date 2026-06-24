@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Local TTS",
     "author": "HuongMT",
-    "version": 2,
+    "version": 3,
     "source": "http://127.0.0.1:17771",
     "description": "Nghe truyện bằng Local TTS (iPhone/máy chủ nội bộ)",
     "type": "tts"
@@ -15,6 +15,18 @@
     "preload_size": 3,
     "max_length": 2000,
     "required_api_key": false,
-    "support_url": ""
+    "support_url": "",
+    "BASE_URL": {
+      "title": "Địa chỉ LocalTTS (mặc định: http://127.0.0.1:17771)",
+      "mode": "input",
+      "format": "text",
+      "default": "http://127.0.0.1:17771"
+    },
+    "SPEED": {
+      "title": "Tốc độ đọc",
+      "mode": "input",
+      "format": "text",
+      "default": "2"
+    }
   }
 }

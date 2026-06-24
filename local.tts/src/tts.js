@@ -1,6 +1,7 @@
 function execute(text, voice) {
     try {
-        let response = fetch("http://127.0.0.1:17771/v1/tts", {
+        const speed = parseFloat(SPEED) || 0;
+        let response = fetch(`${BASE_URL}/v1/tts`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -8,7 +9,7 @@ function execute(text, voice) {
             body: JSON.stringify({
                 text: text,
                 voice: voice,
-                speed: 1.5
+                speed: speed
             })
         });
 
