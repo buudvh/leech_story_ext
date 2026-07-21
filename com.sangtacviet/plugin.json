@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "name": "SangTacViet",
+    "author": "Antigravity",
+    "version": 2,
+    "source": "http://14.225.254.182",
+    "regexp": "^https?://(?:14\\.225\\.254\\.182|sangtacviet\\.(?:vip|me|com|app))/.*$",
+    "description": "Tiện ích cho trang SangTacViet",
+    "locale": "vi_VN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "search": "search.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  },
+  "config": {
+    "BASE_URL": {
+      "title": "URL trang chủ",
+      "mode": "input",
+      "format": "text",
+      "default": "http://14.225.254.182"
+    }
+  }
+}

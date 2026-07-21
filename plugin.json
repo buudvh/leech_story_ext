@@ -314,6 +314,15 @@
       "source": "https://www.sudugu.org",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/sudugu/icon.png",
       "description": "Đọc truyện trên trang sudugu.org"
+    },
+    {
+      "name": "SangTacViet",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/com.sangtacviet/plugin.zip",
+      "version": 1,
+      "source": "http://14.225.254.182",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/com.sangtacviet/icon.png",
+      "description": "Đọc truyện trên SangTacViet, hỗ trợ Home, thể loại và chương tải động bằng WebView"
     }
   ]
 }
