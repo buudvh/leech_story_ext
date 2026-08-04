@@ -42,7 +42,7 @@ function execute(url) {
     if (!description) description = response.select("meta[name='description']").attr("content").trim();
 
     var suggests = []
-    (response.select("#chapterlist > div:nth-child(2) > div > div > a") || []).forEach(e => {
+    response.select("#chapterlist > div:nth-child(2) > div > div > a").forEach(e => {
         suggests.push({
             name: `(${e.text()})${name}`,
             cover: DEFAULT_COVER,
