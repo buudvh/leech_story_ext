@@ -23,7 +23,7 @@ function execute(url) {
     if (!name) name = response.select("title").text().trim();
     
     // Author fallbacks
-    var author = doc.select("i.cap").attr("onclick").replace(/location=\'\/\?find\=&findinname\=(.*?)\'/g, "$1");
+    var author = response.select("i.cap").attr("onclick").replace(/location=\'\/\?find\=&findinname\=(.*?)\'/g, "$1");
     
     // Cover fallbacks & absolute conversion
     var cover = response.select("#thumb-prop").attr("src").trim();
@@ -42,7 +42,7 @@ function execute(url) {
     if (!description) description = response.select("meta[name='description']").attr("content").trim();
 
     var suggests = []
-    (doc.select("#chapterlist > div:nth-child(2) > div > div > a") || []).forEach(e => {
+    (response.select("#chapterlist > div:nth-child(2) > div > div > a") || []).forEach(e => {
         suggests.push({
             name: `(${e.text()})${name}`,
             cover: DEFAULT_COVER,
