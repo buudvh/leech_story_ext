@@ -13,7 +13,7 @@ function execute(query, page) {
         var next = (parseInt(page, 10) + 1).toString();
         var el = doc.select("a.booksearch");
 
-        if (!el.length) return null;
+        if (!el.length) throw new Error(`Length = 0`);
 
         var data = [];
         el.forEach(function (e) {
