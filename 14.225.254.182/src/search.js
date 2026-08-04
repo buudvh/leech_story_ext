@@ -4,7 +4,7 @@ function execute(query, page) {
         var pageInt = parseInt(page) || 1;
         var baseUrl = (typeof BASE_URL !== 'undefined') ? BASE_URL : "http://14.225.254.182";
 
-        var url = baseUrl + '/search/?find=&findinname=' + encodeURIComponent(query) + '&minc=0&sort=update&tag=&p=' + page;
+        url = baseUrl + '/search/?find=&findinname=' + encodeURIComponent(query) + '&minc=0&sort=update&tag=&p=' + page;
         var response = fetch(url);
 
         if (!response.ok) throw new Error(`Status = ${response.status}`);
