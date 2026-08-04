@@ -127,7 +127,7 @@ function execute(url) {
         "    }\n" +
         "})()";
 
-    var browser = Engine.newBrowser();
+    var browser = Engine.newVisibleBrowser("Tai chuong");
     var finalResult = "";
     try {
         browser.launch(url, 30000);
