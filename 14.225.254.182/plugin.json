@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "name": "SangTacViet",
-    "author": "Antigravity",
+    "name": "14.225.254.182",
+    "author": "HuongMT",
     "version": 2,
     "source": "http://14.225.254.182",
     "regexp": "^https?://(?:14\\.225\\.254\\.182|sangtacviet\\.(?:vip|me|com|app))/.*$",
@@ -24,6 +24,12 @@
       "mode": "input",
       "format": "text",
       "default": "http://14.225.254.182"
+    },
+    "DEFAULT_COVER": {
+      "title": "Default cover url",
+      "mode": "input",
+      "format": "text",
+      "default": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/asset/cover2.jpg"
     }
   }
 }

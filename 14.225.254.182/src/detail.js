@@ -23,10 +23,7 @@ function execute(url) {
     if (!name) name = response.select("title").text().trim();
     
     // Author fallbacks
-    var author = response.select("i[onclick*=find]").select("h2").text().trim();
-    if (!author) author = response.select("meta[property='og:novel:author']").attr("content").trim();
-    if (!author) author = response.select("#oriname").text().trim();
-    if (!author) author = "Không rõ";
+    var author = doc.select("i.cap").attr("onclick").replace(/location=\'\/\?find\=&findinname\=(.*?)\'/g, "$1");
     
     // Cover fallbacks & absolute conversion
     var cover = response.select("#thumb-prop").attr("src").trim();
@@ -43,22 +40,16 @@ function execute(url) {
     var description = response.select("#book-sumary").text().trim();
     if (!description) description = response.select("meta[property='og:description']").attr("content").trim();
     if (!description) description = response.select("meta[name='description']").attr("content").trim();
-    
-    var genres = [];
-    var infoRows = response.select("div.blk div.blk-body");
-    for (var i = 0; i < infoRows.size(); i++) {
-        var text = infoRows.get(i).text();
-        if (text.indexOf("Thể loại:") >= 0) {
-            var gText = text.replace("Thể loại:", "").trim();
-            var gParts = gText.split(" ").filter(Boolean);
-            for (var j = 0; j < gParts.length; j++) {
-                genres.push({
-                    title: gParts[j],
-                    input: gParts[j]
-                });
-            }
-        }
-    }
+
+    var suggests = []
+    (doc.select("#chapterlist > div:nth-child(2) > div > div > a") || []).forEach(e => {
+        suggests.push({
+            name: `(${e.text()})${name}`,
+            cover: DEFAULT_COVER,
+            link: e.attr("href"),
+            host: baseUrl
+        })
+    });
     
     return Response.success({
         name: name,
@@ -68,8 +59,11 @@ function execute(url) {
         detail: description,
         host: baseUrl,
         link: absoluteLink,
-        genres: genres,
-        suggests: [],
+        suggests: [{
+            title: "Nguồn khác",
+            input: JSON.stringify(suggests),
+            script: "parseJSON.js"
+        }],
         comments: []
     });
 }

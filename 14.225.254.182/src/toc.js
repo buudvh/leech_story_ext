@@ -22,12 +22,12 @@ function execute(url) {
         
     var json = JSON.parse(response);
     // Allow both string '1' and integer 1
-    if (json.code != 1 || !json.data) {
+    if (json.code != 1 || !json.oridata) {
         return Response.error("Tải danh sách mục lục thất bại");
     }
     
     var chapters = [];
-    var rawChapters = json.data.split("-//-");
+    var rawChapters = json.oridata.split("-//-");
     
     for (var i = 0; i < rawChapters.length; i++) {
         var part = rawChapters[i].split("-/-");
