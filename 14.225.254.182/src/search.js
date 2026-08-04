@@ -2,53 +2,31 @@ function execute(query, page) {
     var pageInt = parseInt(page) || 1;
     var baseUrl = (typeof BASE_URL !== 'undefined') ? BASE_URL : "http://14.225.254.182";
     
-    var url = baseUrl + "/index.php?ngmar=search&searchkey=" + encodeURIComponent(query) + "&page=" + pageInt;
-    var response = Http.get(url).html();
-    
-    var results = [];
-    var links = response.select("a.cap");
-    var seen = {};
-    
-    for (var i = 0; i < links.size(); i++) {
-        var a = links.get(i);
-        var href = a.attr("href");
-        if (!href || href.indexOf("/truyen/") === -1) continue;
-        
-        // Format of SangTacViet: /truyen/<sourceHost>/1/<bookId>/
-        var regex = /\/truyen\/([^\/]+)\/1\/([^\/]+)/;
-        var match = href.match(regex);
-        if (!match) continue;
-        var sourceHost = match[1];
-        var bookId = match[2];
-        
-        var absoluteLink = baseUrl + "/truyen/" + sourceHost + "/1/" + bookId + "/";
-        if (seen[absoluteLink]) continue;
-        seen[absoluteLink] = true;
-        
-        var name = a.select("b").text().trim();
-        if (!name) name = a.text().trim();
-        
-        var cover = a.select("img").attr("src");
-        if (cover && cover.indexOf("nothumb") >= 0) {
-            cover = "";
-        }
-        if (cover) {
-            if (cover.indexOf("//") === 0) {
-                cover = "http:" + cover;
-            } else if (cover.indexOf("/") === 0) {
-                cover = baseUrl + cover;
-            }
-        }
-        
-        results.push({
-            name: name,
-            author: "Không rõ",
-            description: "",
-            cover: cover || "",
-            link: absoluteLink,
-            host: baseUrl
+    var url = baseUrl + '/io/searchtp/searchBooks/?findinname=' + encodeURIComponent(query) +
+        '&sort=update&minc=0&tag=&p=' + page;
+    var response = fetch(url);
+
+    if (!response.ok) return Response.error('fetch ' + url + ' failed: status ' + response.status);
+
+    var doc = response.html();
+    var next = (parseInt(page, 10) + 1).toString();
+    var el = doc.select("a.booksearch");
+
+    if (!el.length) return null;
+
+    var data = [];
+    el.forEach(function (e) {
+        var stv_story_link = e.select("a").first().attr("href");
+        var bookid = stv_story_link.split("/")[4];
+        data.push({
+            name: toCapitalize(e.select(".searchbooktitle").first().text()),
+            link: STVHOST + "/truyen/qidian/1/" + bookid + "/",
+            cover: e.select("img").attr("src") || DEFAULT_COVER,
+            description: e.select("div > span.searchtag").first().text() + "|" + e.select("div > span.searchbookauthor").first().text()
+                + "\n" + e.select("div > span.lhr").last().text(),
+            source: e.select("div > span.searchtag").first().text().trim(),
         });
-    }
-    
-    return Response.success(results);
+    });
+
+    return Response.success(data, next);
 }
