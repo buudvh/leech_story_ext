@@ -9,13 +9,38 @@ function execute() {
             script: script
         },
         {
-            title: "Hot tuần",
+            title: "Lượt đọc tuần",
             input: baseUrl + "/io/searchtp/searchBooks?find=&minc=0&sort=viewweek&tag=&p={0}",
             script: script
         },
         {
-            title: "Hot ngày",
+            title: "Lượt đọc ngày",
             input: baseUrl + "/io/searchtp/searchBooks?find=&minc=0&sort=viewday&tag=&p={0}",
+            script: script
+        },
+        {
+            title: "Diễn Sinh 1",
+            input: baseUrl + "/io/searchtp/searchBooks?find=&minc=0&sort=update&tag=diensinh,&p={0}",
+            script: script
+        },
+        {
+            title: "Diễn Sinh 2",
+            input: baseUrl + "/io/searchtp/searchBooks?find=&minc=0&sort=update&tag=diensinhcungnguoi,&p={0}",
+            script: script
+        },
+        {
+            title: "Chư Thiên Vạn Giới",
+            input: baseUrl + "/io/searchtp/searchBooks?find=&minc=0&sort=update&tag=chuthienvangioi,&p={0}",
+            script: script
+        },
+        {
+            title: "Chư Thiên Vô Hạn",
+            input: baseUrl + "/io/searchtp/searchBooks?find=&minc=0&sort=update&tag=chuthienvohan,&p={0}",
+            script: script
+        },
+        {
+            title: "Lượt đọc tổng",
+            input: baseUrl + "/io/searchtp/searchBooks?find=&minc=0&sort=view&tag=&p={0}",
             script: script
         },
         {
@@ -24,8 +49,18 @@ function execute() {
             script: script
         },
         {
-            title: "Nhiều lượt thích",
+            title: "Lượt thích",
             input: baseUrl + "/io/searchtp/searchBooks?find=&minc=0&sort=like&tag=&p={0}",
+            script: script
+        },
+        {
+            title: "Lượt theo dõi",
+            input: baseUrl + "/io/searchtp/searchBooks?find=&minc=0&sort=following&tag=&p={0}",
+            script: script
+        },
+        {
+            title: "Lượt đánh dấu",
+            input: baseUrl + "/io/searchtp/searchBooks?find=&minc=0&sort=bookmarked&tag=&p={0}",
             script: script
         }
     ]);

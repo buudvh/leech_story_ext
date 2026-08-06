@@ -27,7 +27,15 @@ function execute(url) {
     }
     
     var chapters = [];
-    var rawChapters = json.oridata.split("-//-");
+    var rawChapters = [];
+
+    if(json.data){
+        rawChapters = json.data.split("-//-");
+    }
+
+    if(json.oridata){
+        rawChapters = json.oridata.split("-//-");
+    }
     
     for (var i = 0; i < rawChapters.length; i++) {
         var part = rawChapters[i].split("-/-");
