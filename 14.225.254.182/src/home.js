@@ -1,3 +1,5 @@
+load('common.js');
+
 function execute() {
     var baseUrl = (typeof BASE_URL !== 'undefined') ? BASE_URL : "http://14.225.254.182";
     var script = "homecontent.js";
