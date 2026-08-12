@@ -23,10 +23,6 @@ function execute(url) {
             .string();
 
         var json = JSON.parse(response);
-        // Allow both string '1' and integer 1
-        if (json.code != 1 || !json.oridata) {
-            throw new Error("Tải danh sách mục lục thất bại");
-        }
 
         var chapters = [];
         var rawChapters = [];
@@ -49,8 +45,12 @@ function execute(url) {
 
             var chapUrl = baseUrl + "/truyen/" + sourceHost + "/" + volId + "/" + bookId + "/" + chapId + "/";
 
+            if(rawChapters[i].endsWith('-/-vip')){
+                
+            }
+
             chapters.push({
-                name: title,
+                name: title + (rawChapters[i].endsWith('-/-vip') ? " 🔒︎" : ""),
                 url: chapUrl,
                 host: baseUrl
             });
