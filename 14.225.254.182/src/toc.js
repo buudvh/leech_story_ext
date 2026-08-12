@@ -51,7 +51,7 @@ function execute(url) {
             }
 
             if(rawChapters[i].endsWith('-/-unvip')){
-                icon = " 🔓︎";
+                icon = " 🔑︎"
             }
 
             chapters.push({
