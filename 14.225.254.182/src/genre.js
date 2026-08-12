@@ -10,7 +10,18 @@ function execute() {
         return { title: title, input: input, script: script };
     }
 
+    function tag(title, host, sort, tag) {
+        var input = `${baseUrl}/io/searchtp/searchBooks?find=&host=${host}&minc=0&${sort}=following&tag=${tag}&p={0}`;
+        return { title: title, input: input, script: script };
+    }
+
     return Response.success([
+        tag("Đồng nhân update(qidian)", "qidian", "update", "diensinhcungnguoi,"),
+        tag("Chư thiên vô hạn update(qidian)", "qidian", "qidian", "chuthienvohan,"),
+        tag("Chư thiên update(qidian)", "qidian", "qidian", "chuthien,"),
+        tag("Đồng nhân viewweek(qidian)", "qidian", "viewweek", "diensinhcungnguoi,"),
+        tag("Chư thiên vô hạn viewweek(qidian)", "qidian", "viewweek", "chuthienvohan,"),
+        tag("Chư thiên viewweek(qidian)", "qidian", "viewweek", "chuthien,"),
         category("Tất cả", ""),
         category("Huyền huyễn", "hh"),
         category("Đô thị", "dt"),

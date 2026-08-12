@@ -17,7 +17,8 @@ function execute(url) {
     var absoluteLink = baseUrl + "/truyen/" + sourceHost + "/1/" + bookId + "/";
     
     // Name fallbacks
-    var name = response.select("#book_name2").text().trim();
+    var name = response.select("#oriname").text().trim();
+    if (!name) name = response.select("#book_name2']").text().trim();
     if (!name) name = response.select("meta[property='og:novel:book_name']").attr("content").trim();
     if (!name) name = response.select("meta[property='og:title']").attr("content").trim();
     if (!name) name = response.select("title").text().trim();
