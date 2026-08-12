@@ -2,7 +2,14 @@ function execute() {
     var baseUrl = (typeof BASE_URL !== 'undefined') ? BASE_URL : "http://14.225.254.182";
     var script = "homecontent.js";
     var host = ["69shu", "qidian", "fanqie"];
-    var hometag = [];
+    var hometag = [
+        tag("Đồng nhân update(qidian)", "qidian", "update", "diensinhcungnguoi,"),
+        tag("Chư thiên vô hạn update(qidian)", "qidian", "update", "chuthienvohan,"),
+        tag("Chư thiên update(qidian)", "qidian", "update", "chuthien,"),
+        tag("Đồng nhân viewweek(qidian)", "qidian", "viewweek", "diensinhcungnguoi,"),
+        tag("Chư thiên vô hạn viewweek(qidian)", "qidian", "viewweek", "chuthienvohan,"),
+        tag("Chư thiên viewweek(qidian)", "qidian", "viewweek", "chuthien,"),
+    ];
     host.forEach(e => {
         hometag.push({
             title: `(${e})Update`,

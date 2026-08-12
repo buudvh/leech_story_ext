@@ -1,14 +1,9 @@
+load('common.js');
+
 function execute() {
     var baseUrl = (typeof BASE_URL !== 'undefined') ? BASE_URL : "http://14.225.254.182";
     var prefix = baseUrl + "/io/searchtp/searchBooks?find=&minc=0&sort=update&tag=&p={0}";
     var script = "homecontent.js";
-
-    function category(title, code) {
-        var input = code
-            ? baseUrl + "/io/searchtp/searchBooks?find=&minc=0&category=" + code + "&sort=update&tag=&p={0}"
-            : prefix;
-        return { title: title, input: input, script: script };
-    }
 
     function tag(title, host, sort, tag) {
         var input = `${baseUrl}/io/searchtp/searchBooks?find=&host=${host}&minc=0&sort=${sort}&tag=${tag}&p={0}`;
@@ -16,12 +11,6 @@ function execute() {
     }
 
     return Response.success([
-        tag("Đồng nhân update(qidian)", "qidian", "update", "diensinhcungnguoi,"),
-        tag("Chư thiên vô hạn update(qidian)", "qidian", "update", "chuthienvohan,"),
-        tag("Chư thiên update(qidian)", "qidian", "update", "chuthien,"),
-        tag("Đồng nhân viewweek(qidian)", "qidian", "viewweek", "diensinhcungnguoi,"),
-        tag("Chư thiên vô hạn viewweek(qidian)", "qidian", "viewweek", "chuthienvohan,"),
-        tag("Chư thiên viewweek(qidian)", "qidian", "viewweek", "chuthien,"),
         category("Tất cả", ""),
         category("Huyền huyễn", "hh"),
         category("Đô thị", "dt"),
