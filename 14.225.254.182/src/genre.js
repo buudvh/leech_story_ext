@@ -11,14 +11,14 @@ function execute() {
     }
 
     function tag(title, host, sort, tag) {
-        var input = `${baseUrl}/io/searchtp/searchBooks?find=&host=${host}&minc=0&${sort}=following&tag=${tag}&p={0}`;
+        var input = `${baseUrl}/io/searchtp/searchBooks?find=&host=${host}&minc=0&sort=${sort}&tag=${tag}&p={0}`;
         return { title: title, input: input, script: script };
     }
 
     return Response.success([
         tag("Đồng nhân update(qidian)", "qidian", "update", "diensinhcungnguoi,"),
-        tag("Chư thiên vô hạn update(qidian)", "qidian", "qidian", "chuthienvohan,"),
-        tag("Chư thiên update(qidian)", "qidian", "qidian", "chuthien,"),
+        tag("Chư thiên vô hạn update(qidian)", "qidian", "update", "chuthienvohan,"),
+        tag("Chư thiên update(qidian)", "qidian", "update", "chuthien,"),
         tag("Đồng nhân viewweek(qidian)", "qidian", "viewweek", "diensinhcungnguoi,"),
         tag("Chư thiên vô hạn viewweek(qidian)", "qidian", "viewweek", "chuthienvohan,"),
         tag("Chư thiên viewweek(qidian)", "qidian", "viewweek", "chuthien,"),
