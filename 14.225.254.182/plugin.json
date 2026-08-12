@@ -2,7 +2,7 @@
   "metadata": {
     "name": "14.225.254.182",
     "author": "HuongMT",
-    "version": 14,
+    "version": 15,
     "source": "http://14.225.254.182",
     "regexp": "^https?://(?:14\\.225\\.254\\.182|sangtacviet\\.(?:vip|me|com|app))/.*$",
     "description": "Tiện ích cho trang SangTacViet",

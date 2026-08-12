@@ -45,12 +45,17 @@ function execute(url) {
 
             var chapUrl = baseUrl + "/truyen/" + sourceHost + "/" + volId + "/" + bookId + "/" + chapId + "/";
 
+            var icon = "";
             if(rawChapters[i].endsWith('-/-vip')){
-                
+                icon = " 🔒︎";
+            }
+
+            if(rawChapters[i].endsWith('-/-unvip')){
+                icon = " 🔓︎";
             }
 
             chapters.push({
-                name: title + (rawChapters[i].endsWith('-/-vip') ? " 🔒︎" : ""),
+                name: title + icon,
                 url: chapUrl,
                 host: baseUrl
             });
