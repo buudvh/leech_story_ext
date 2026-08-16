@@ -29,10 +29,10 @@ function execute(url) {
         "    var clone = node.cloneNode(true);\n" +
         "    clone.querySelectorAll('script, style, noscript, button, iframe, .spinner-border').forEach(function(el) { el.remove(); });\n" +
         "    var textLength = clone.textContent.trim().length;\n" +
-        "    var isReady = (encoded > 0) || (textLength >= 20);\n" +
-        "    if (!isReady) {\n" +
-        "        return JSON.stringify({ ready: false, failed: false, reason: 'Content too short' });\n" +
-        "    }\n" +
+        // "    var isReady = (encoded > 0) || (textLength >= 20);\n" +
+        // "    if (!isReady) {\n" +
+        // "        return JSON.stringify({ ready: false, failed: false, reason: 'Content too short' });\n" +
+        // "    }\n" +
         "    return JSON.stringify({\n" +
         "        ready: true,\n" +
         "        failed: false,\n" +
