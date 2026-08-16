@@ -127,7 +127,7 @@ function execute(url) {
         "    }\n" +
         "})()";
 
-    var browser = Engine.newVisibleBrowser("Tai chuong");
+    var browser = Engine.newVisibleBrowser("Tải chương");
     var finalResult = "";
     try {
         browser.launch(url, 30000);
@@ -153,9 +153,9 @@ function execute(url) {
         browser.close();
     }
     
-    if (!finalResult || finalResult.length < 20) {
-        return Response.error("Nội dung chương sau trích xuất quá ngắn hoặc rỗng (" + (finalResult ? finalResult.length : 0) + " ký tự)");
-    }
+    // if (!finalResult || finalResult.length < 20) {
+    //     return Response.error("Nội dung chương sau trích xuất quá ngắn hoặc rỗng (" + (finalResult ? finalResult.length : 0) + " ký tự)");
+    // }
     if (finalResult.indexOf("Đang tải nội dung chương") >= 0 || finalResult.indexOf("Tải quá thời gian") >= 0 || finalResult.indexOf("Tải chương thất bại") >= 0 || finalResult.indexOf("Đang tải...") >= 0) {
         return Response.error("Nội dung trích xuất chứa văn bản tạm thời/lỗi.");
     }
