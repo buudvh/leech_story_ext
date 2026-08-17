@@ -67,6 +67,12 @@ function execute(url) {
             input: JSON.stringify(suggests),
             script: "parseJSON.js"
         }],
-        comments: []
+        comments: [
+            {
+                title: "评论",
+                input: { bookid: bookId, host: sourceHost },
+                script: "comment.js"
+            }
+        ],
     });
 }
