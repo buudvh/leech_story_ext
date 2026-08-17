@@ -1,6 +1,7 @@
-function execute(objData, next) {
+function execute(input, next) {
     if (!next) next = "0"
     try {
+        let objData = JSON.parse(input);
         var params = encodeFormData({
             start: next,
             objectid: objData.bookid,

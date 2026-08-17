@@ -70,7 +70,7 @@ function execute(url) {
         comments: [
             {
                 title: "评论",
-                input: { bookid: bookId, host: sourceHost },
+                input: JSON.stringify({ bookid: bookId, host: sourceHost }),
                 script: "comment.js"
             }
         ],
