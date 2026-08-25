@@ -2,7 +2,7 @@
   "metadata": {
     "name": "idejian",
     "author": "HuongMT",
-    "version": 20,
+    "version": 21,
     "source": "https://wechat.idejian.com",
     "regexp": "www.idejian.(.*?)/book/\\d+/?",
     "description": "Đọc truyện trên idejian",
@@ -17,5 +17,19 @@
     "detail": "detail.js",
     "toc": "toc.js",
     "chap": "chap.js"
+  },
+  "config": {
+    "_IS_TRADITIONAL": {
+      "title": "Chuyển phồn thể sang giản thể",
+      "mode": "input",
+      "format": "text",
+      "default": "false"
+    },
+    "_IS_NORMALIZE_TIME": {
+      "title": "Chuẩn hóa thời gian tiếng Trung",
+      "mode": "input",
+      "format": "text",
+      "default": "false"
+    }
   }
 }

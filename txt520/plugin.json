@@ -2,7 +2,7 @@
   "metadata": {
     "name": "txt520",
     "author": "HuongMT",
-    "version": 1,
+    "version": 2,
     "source": "http://www.txt520.com",
     "regexp": "(www.|m.)?txt520.com/(.*?)/\\d+.html",
     "description": "Đọc truyện trên trang http://www.txt520.com",
@@ -47,6 +47,18 @@
       "mode": "input",
       "format": "text",
       "default": "求月票__求個月票__求首訂__求关注__求追读__求订阅__月票加更__〔__{__(__（"
+    },
+    "_IS_TRADITIONAL": {
+      "title": "Chuyển phồn thể sang giản thể",
+      "mode": "input",
+      "format": "text",
+      "default": "false"
+    },
+    "_IS_NORMALIZE_TIME": {
+      "title": "Chuẩn hóa thời gian tiếng Trung",
+      "mode": "input",
+      "format": "text",
+      "default": "false"
     }
   }
 }

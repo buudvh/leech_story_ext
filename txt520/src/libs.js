@@ -1,5 +1,3 @@
-var _IS_TRADITIONAL = false;
-
 var _T2S = {
     "０": "0",
     "１": "1",
@@ -4126,7 +4124,7 @@ var _T2S = {
     "𫜦": "𫜫"
 };
 String.prototype.convertT2S = function () {
-    if (!_IS_TRADITIONAL) return this;
+    if (!_IS_TRADITIONAL || _IS_TRADITIONAL == 'false') return this.toString();
 
     return this.split('').map(function (ch) {
         return _T2S[ch] ? _T2S[ch] : ch;
@@ -4195,7 +4193,8 @@ String.prototype.mayBeFillHost = function (host) {
 }
 
 String.prototype.normalizeChineseTime = function () {
-    var text = this;
+    if (!_IS_NORMALIZE_TIME || _IS_NORMALIZE_TIME == 'false') return this.toString();
+    var text = this.toString();
     if (!text) return text;
 
     // 1️⃣ Chuẩn hoá ký tự full-width -> half-width

@@ -2,7 +2,7 @@
   "metadata": {
     "name": "1qxs",
     "author": "HuongMT",
-    "version": 2,
+    "version": 3,
     "source": "https://www.1qxs.com",
     "regexp": "^https?:\\/\\/(?:www\\.)?1qxs\\.com\\/xs_[a-z0-9]+\\/\\d+\\.html$",
     "description": "Đọc truyện trên trang 1qxs.com",
@@ -17,5 +17,19 @@
     "chap": "chap.js",
     "genre": "genre.js",
     "search": "search.js"
+  },
+  "config": {
+    "_IS_TRADITIONAL": {
+      "title": "Chuyển phồn thể sang giản thể",
+      "mode": "input",
+      "format": "text",
+      "default": "false"
+    },
+    "_IS_NORMALIZE_TIME": {
+      "title": "Chuẩn hóa thời gian tiếng Trung",
+      "mode": "input",
+      "format": "text",
+      "default": "false"
+    }
   }
 }

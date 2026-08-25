@@ -2,7 +2,7 @@
   "metadata": {
     "name": "shuhaige",
     "author": "HuongMT",
-    "version": 18,
+    "version": 19,
     "source": "https://www.shuhaige.net",
     "regexp": "^https?://(www\\.|m\\.)?shuhaige\\.net/(shu_)?(\\d+)\\.html$",
     "description": "Đọc truyện trên trang shuhaige.net",
@@ -42,6 +42,18 @@
       "mode": "input",
       "format": "text",
       "default": "求月票__求個月票__求首訂__求关注__求追读__求订阅__月票加更__〔__{__(__（"
+    },
+    "_IS_TRADITIONAL": {
+      "title": "Chuyển phồn thể sang giản thể",
+      "mode": "input",
+      "format": "text",
+      "default": "false"
+    },
+    "_IS_NORMALIZE_TIME": {
+      "title": "Chuẩn hóa thời gian tiếng Trung",
+      "mode": "input",
+      "format": "text",
+      "default": "false"
     }
   }
 }

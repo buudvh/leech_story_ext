@@ -2,9 +2,9 @@
   "metadata": {
     "name": "ttks",
     "author": "HuongMT",
-    "version": 6,
+    "version": 7,
     "source": "https://ttks.tw",
-    "regexp": "^https?:\/\/ttks\\.tw\/novel\/chapters\/[a-zA-Z0-9_-]+\/index\\.html$",
+    "regexp": "^https?://ttks\\.tw/novel/chapters/[a-zA-Z0-9_-]+/index\\.html$",
     "description": "Đọc truyện trên trang ttks.tw",
     "locale": "zh_CN",
     "language": "javascript",
@@ -36,6 +36,18 @@
       "mode": "input",
       "format": "text",
       "default": "求月票__求個月票__求首訂__求关注__求追读__求订阅__月票加更__〔__{__(__（"
+    },
+    "_IS_TRADITIONAL": {
+      "title": "Chuyển phồn thể sang giản thể",
+      "mode": "input",
+      "format": "text",
+      "default": "true"
+    },
+    "_IS_NORMALIZE_TIME": {
+      "title": "Chuẩn hóa thời gian tiếng Trung",
+      "mode": "input",
+      "format": "text",
+      "default": "false"
     }
   }
 }
