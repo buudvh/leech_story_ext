@@ -323,6 +323,16 @@
       "source": "http://14.225.254.182",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/14.225.254.182/icon.png",
       "description": "Đọc truyện trên SangTacViet, hỗ trợ Home, thể loại và chương tải động bằng WebView"
+    },
+    {
+      "name": "YouTube",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/youtube/youtube.zip",
+      "version": 2,
+      "source": "https://www.youtube.com",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/youtube/icon.png",
+      "description": "Xem video, danh sách phát, kênh và phát trực tiếp trên YouTube",
+      "type": "video"
     }
   ]
 }
