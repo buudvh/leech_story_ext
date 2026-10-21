@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "name": "YouTube",
+    "author": "HuongMT",
+    "version": 2,
+    "source": "https://www.youtube.com",
+    "regexp": "^(https?://)?((www|m|music)\\.)?(youtube\\.com/(watch\\?(.*&)?v=[\\w-]{11}.*|(shorts|live|embed)/[\\w-]{11}.*|playlist\\?(.*&)?list=[\\w-]+.*|channel/UC[\\w-]{22}.*|@[^/?#]+.*)|youtu\\.be/[\\w-]{11}.*)$",
+    "description": "Xem video, danh sách phát, kênh và phát trực tiếp trên YouTube",
+    "locale": "vi_VN",
+    "language": "javascript",
+    "type": "video"
+  },
+  "script": {
+    "explore": "explore.js",
+    "genre": "genre.js",
+    "search": "search.js",
+    "detail": "detail.js",
+    "page": "page.js",
+    "toc": "toc.js",
+    "chap": "chap.js",
+    "track": "track.js"
+  }
+}
