@@ -2,7 +2,7 @@
   "metadata": {
     "name": "piaotia",
     "author": "HuongMT",
-    "version": 29,
+    "version": 30,
     "source": "http://14.225.254.182/search/?find=&host=ptwxz&minc=0&sort=update&tag=",
     "regexp": "https?://(?:www\\.(?:ptwxz|piaotian|piaotia)\\.com/bookinfo|(?:sangtacviet\\.app|14\\.225\\.254\\.182|103\\.82\\.20\\.93)/truyen/(?:ptwxz|piaotian|piaotia))/\\d+/\\d+(?:\\.html|/)?$",
     "description": "Đọc truyện trên trang ptwxz",

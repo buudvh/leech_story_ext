@@ -152,7 +152,7 @@
       "name": "qidian",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian/qidian.zip",
-      "version": 23,
+      "version": 24,
       "source": "https://sangtacviet.app/search/?find=&host=qidian&minc=0&sort=update&tag=",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian/icon.png",
       "description": "Đọc truyện trên trang https://www.qidian.com (chap miễn phí)"
@@ -161,7 +161,7 @@
       "name": "Gấu trúc (dxmwx)",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/dxmwx/dxmwx.zip",
-      "version": 21,
+      "version": 22,
       "source": "https://www.dxmwx.org/",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/dxmwx/icon.png",
       "description": "Đọc truyện trên trang https://www.dxmwx.org/"
@@ -179,7 +179,7 @@
       "name": "twkan",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/twkan/twkan.zip",
-      "version": 17,
+      "version": 18,
       "source": "https://twkan.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/twkan/icon.png",
       "description": "Đọc truyện trên trang https://twkan.com"
@@ -206,7 +206,7 @@
       "name": "qsbread.com",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qsbread/qsbread.zip",
-      "version": 3,
+      "version": 4,
       "source": "https://qsbread.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qsbread/icon.png",
       "description": "Đọc truyện trên trang qsbread.com"
@@ -215,7 +215,7 @@
       "name": "uukanshu",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/uukanshu/uukanshu.zip",
-      "version": 42,
+      "version": 43,
       "source": "https://uukanshu.cc",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/uukanshu/icon.png",
       "description": "Đọc truyện trên trang uukanshu.cc"
@@ -224,7 +224,7 @@
       "name": "piaotia",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ptwxz/ptwxz.zip",
-      "version": 29,
+      "version": 30,
       "source": "https://www.piaotia.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ptwxz/icon.png",
       "description": "Đọc truyện trên trang piaotia.com"
@@ -242,7 +242,7 @@
       "name": "html5.qq.com",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/html5qq/html5qq.zip",
-      "version": 10,
+      "version": 11,
       "source": "https://bookshelf.html5.qq.com/qbread/categorylist?traceid=0809004&sceneid=FeedsTab&strageid=&ch=001995&tabfrom=top&feeds_version=8516&reader_version=0&groupid=1502&tag_type_id=1%27",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/html5qq/icon.png",
       "description": "Đọc truyện trên trang https://bookshelf.html5.qq.com"

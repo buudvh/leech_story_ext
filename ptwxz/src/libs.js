@@ -95,49 +95,7 @@ function cleanHtml(html) {
     //
     html = html.replace('(本章完)', '');
 
-    return replaceAllDateTime(html.trim());
-}
-
-function replaceAllDateTime(text) {
-    if (!text) return text;
-
-    // 1️⃣ Chuẩn hoá số full-width -> half-width
-    text = text.replace(/[\uFF01-\uFF5E]/g, function(ch) {
-        // Full-width '！' (U+FF01) → Half-width '!' (U+0021)
-        return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
-    });
-
-    // 2️⃣ yyyy年M月d日
-    text = text.replace(/(\d{4})年(\d{1,2})月(\d{1,2})[日号]?/g, function(_, y, m, d) {
-        return "ngày " + parseInt(d, 10) + " tháng " + parseInt(m, 10) + " năm " + y;
-    });
-
-    // 3️⃣ yyyy-M-d hoặc yyyy/M/d
-    text = text.replace(/(\d{4})[\/\-\.](\d{1,2})[\/\-\.](\d{1,2})/g, function(_, y, m, d) {
-        return "ngày " + parseInt(d, 10) + " tháng " + parseInt(m, 10) + " năm " + y;
-    });
-
-    // 4️⃣ M月初d
-    text = text.replace(/(\d{1,2})月初(\d{1,2})/g, function(_, m, d) {
-        return "ngày " + parseInt(d, 10) + " tháng " + parseInt(m, 10);
-    });
-
-    // 5️⃣ M月d日 hoặc M月d号
-    text = text.replace(/(\d{1,2})月(\d{1,2})[日号]?/g, function(_, m, d) {
-        return "ngày " + parseInt(d, 10) + " tháng " + parseInt(m, 10);
-    });
-
-    // 6️⃣ hh:mm:ss
-    text = text.replace(/(\d{1,2}):(\d{1,2}):(\d{1,2})/g, function(_, h, m, s) {
-        return parseInt(h, 10) + " giờ " + parseInt(m, 10) + " phút " + parseInt(s, 10) + " giây";
-    });
-
-    // 7️⃣ hh:mm
-    text = text.replace(/(\d{1,2}):(\d{1,2})(?!:)/g, function(_, h, m) {
-        return parseInt(h, 10) + " giờ " + parseInt(m, 10) + " phút";
-    });
-
-    return text;
+    return html.trim();
 }
 // --------------------------------------------------
 
