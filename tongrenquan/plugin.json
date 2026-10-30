@@ -2,7 +2,7 @@
   "metadata": {
     "name": "tongrenquan",
     "author": "HuongMT",
-    "version": 3,
+    "version": 4,
     "source": "http://tongrenquan.org",
     "regexp": "(www\\.)?tongrenquan\\.org/tongren/\\d+\\.html",
     "description": "Đọc truyện trên trang http://tongrenquan.org",

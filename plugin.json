@@ -35,19 +35,10 @@
       "name": "txt520",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/txt520/txt520.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://www.txt520.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/txt520/icon.png",
       "description": "Đọc truyện trên trang txt520"
-    },
-    {
-      "name": "tongrenquan",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/tongrenquan/tongrenquan.zip",
-      "version": 3,
-      "source": "http://tongrenquan.org",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/tongrenquan/icon.png",
-      "description": "Đọc truyện trên trang tongrenquan"
     },
     {
       "name": "23.224.242.59",
@@ -57,15 +48,6 @@
       "source": "http://23.224.242.59/",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/23.224.242.59/icon.png",
       "description": "Đọc truyện trên trang 23.224.242.59"
-    },
-    {
-      "name": "69shux.co",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/69shux.co/69shux.co.zip",
-      "version": 4,
-      "source": "https://www.69shux.co",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/69shux.co/icon.png",
-      "description": "Đọc truyện trên trang 69shux.co"
     },
     {
       "name": "101kks",
@@ -194,15 +176,6 @@
       "description": "Đọc truyện trên trang book.qq.com"
     },
     {
-      "name": "nhieutruyen",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/nhieutruyen/nhieutruyen.zip",
-      "version": 4,
-      "source": "https://nhieutruyen.com",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/nhieutruyen/icon.png",
-      "description": "Đọc truyện trên trang nhieutruyen.com"
-    },
-    {
       "name": "qsbread.com",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qsbread/qsbread.zip",
@@ -215,7 +188,7 @@
       "name": "uukanshu",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/uukanshu/uukanshu.zip",
-      "version": 43,
+      "version": 44,
       "source": "https://uukanshu.cc",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/uukanshu/icon.png",
       "description": "Đọc truyện trên trang uukanshu.cc"
@@ -310,10 +283,10 @@
       "name": "sudugu",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/sudugu/sudugu.zip",
-      "version": 3,
-      "source": "https://www.sudugu.org",
+      "version": 4,
+      "source": "https://www.suduguu.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/sudugu/icon.png",
-      "description": "Đọc truyện trên trang sudugu.org"
+      "description": "Đọc truyện trên trang suduguu.com"
     },
     {
       "name": "14.225.254.182",

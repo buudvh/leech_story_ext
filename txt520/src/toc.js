@@ -5,15 +5,11 @@ function execute(url) {
 
         if (!response.ok) throw new Error(`Status = ${response.status}`);
 
+        // Mục lục nằm ngay trên trang truyện (div.list), không còn ở trang đọc chương.
         let doc = response.html();
-        let chapter_link = BASE_URL + doc.select(".readnow").attr("href");
-        let response_chapter = fetch(chapter_link);
-
-        if (!response_chapter.ok) throw new Error(`Status = ${response.status}`);
-
-        let doc_ch = response_chapter.html();
-        let el1 = doc_ch.select(".list").last();
-        let el = el1.select("li a")
+        let el = doc.select(".main_content .list li a");
+        if (!el.size()) el = doc.select(".list li a");
+        if (!el.size()) throw new Error("Length = 0");
         const data = [];
         for (let i = 0; i < el.size(); i++) {
             var e = el.get(i);

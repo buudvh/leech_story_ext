@@ -16,7 +16,7 @@ function execute(url, page) {
         let response = fetch(url);
         if (!response.ok) throw new Error(`Status = ${response.status}`);
 
-        let doc = response.html('gbk');
+        let doc = response.html();
         const data = [];
         let next = "";
         doc.select("ul.page a").last().remove();

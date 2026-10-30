@@ -12,7 +12,7 @@ function execute(url) {
 
         var data = [];
         var elems = $.QA(doc, 'div.book_list.clearfix > ul > li');
-        if (!elems.length) return Response.eror(url);
+        if (!elems.length) return Response.error(url);
 
         elems.forEach(function (e) {
             data.push({

@@ -3,7 +3,7 @@ function execute(url) {
         url = url.replace(ORIGINAL_HOST, REPLACE_HOST);
         let response = fetch(url);
         if (!response.ok) throw new Error(`Status = ${response.status}`);
-        let doc = response.html('gbk');
+        let doc = response.html();
         return Response.success({
             name: doc.select(".nav_name h1").text(),
             author: doc.select(".nav_autor").first().text().replace(/作\s*者：/g, ""),
