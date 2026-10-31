@@ -1,0 +1,30 @@
+// classify_id lấy từ trang 分类 (/l/f/11.html 男频, /l/f/21.html 女频, /l/f/41.html 短篇).
+function execute() {
+    return Response.success([
+        { title: "都市人生", input: "1100", script: "gen.js" },
+        { title: "玄幻奇幻", input: "1101", script: "gen.js" },
+        { title: "武侠仙侠", input: "1102", script: "gen.js" },
+        { title: "军事历史", input: "1103", script: "gen.js" },
+        { title: "科幻末世", input: "1104", script: "gen.js" },
+        { title: "游戏体育", input: "1105", script: "gen.js" },
+        { title: "悬疑灵异", input: "1107", script: "gen.js" },
+        { title: "脑洞大开", input: "1108", script: "gen.js" },
+        { title: "现代言情", input: "2100", script: "gen.js" },
+        { title: "古代言情", input: "2101", script: "gen.js" },
+        { title: "幻想言情", input: "2102", script: "gen.js" },
+        { title: "穿越时空", input: "2104", script: "gen.js" },
+        { title: "宫闱争斗", input: "2105", script: "gen.js" },
+        { title: "豪门总裁", input: "2106", script: "gen.js" },
+        { title: "婚恋爱情", input: "2107", script: "gen.js" },
+        { title: "经商种田", input: "2108", script: "gen.js" },
+        { title: "出版读物", input: "3101", script: "gen.js" },
+        { title: "短篇·现实情感", input: "4100", script: "gen.js" },
+        { title: "短篇·世俗百态", input: "4101", script: "gen.js" },
+        { title: "短篇·家庭婚姻", input: "4102", script: "gen.js" },
+        { title: "短篇·热血青春", input: "4103", script: "gen.js" },
+        { title: "短篇·治愈成长", input: "4104", script: "gen.js" },
+        { title: "短篇·奇闻怪谈", input: "4105", script: "gen.js" },
+        { title: "短篇·悬疑脑洞", input: "4106", script: "gen.js" },
+        { title: "短篇·古风言情", input: "4107", script: "gen.js" },
+    ]);
+}

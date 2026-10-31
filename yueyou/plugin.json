@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "yueyouxs.com",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "https://sma.yueyouxs.com",
+    "regexp": "^(https?://)?(sma\\.|m\\.|www\\.)?(yueyouxs|suixkan)\\.com/b/\\d+\\.html/?$",
+    "description": "Đọc truyện trên trang yueyouxs.com (阅友小说, miễn phí nhờ quảng cáo), chỉ chương miễn phí; tự lọc truyện thu phí/đã gỡ",
+    "locale": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

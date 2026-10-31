@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "fengduxiaoshuo.com",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "https://www.fengduxiaoshuo.com",
+    "regexp": "^(https?://)?(www\\.)?fengduxiaoshuo\\.com/book/\\d+/?$",
+    "description": "Đọc truyện trên 疯读小说 (fengduxiaoshuo.com, nền tảng miễn phí có quảng cáo của 触宝), chỉ chương miễn phí: mọi chương đều đọc được, không có chương VIP",
+    "locale": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

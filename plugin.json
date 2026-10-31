@@ -342,6 +342,33 @@
       "source": "https://www.bkneng.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/bkneng/icon.png",
       "description": "Đọc truyện trên trang bkneng.com (不可能的世界), chỉ chương miễn phí; trang đã tắt tìm kiếm nên chỉ tìm trong các danh sách đề cử hoặc theo id/link truyện"
+    },
+    {
+      "name": "yueyouxs.com",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/yueyou/yueyou.zip",
+      "version": 1,
+      "source": "https://sma.yueyouxs.com",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/yueyou/icon.png",
+      "description": "Đọc truyện trên trang yueyouxs.com (阅友小说, miễn phí nhờ quảng cáo), chỉ chương miễn phí; tự lọc truyện thu phí/đã gỡ"
+    },
+    {
+      "name": "midukanshu.com",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/midu/midu.zip",
+      "version": 1,
+      "source": "https://www.midureader.com",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/midu/icon.png",
+      "description": "Đọc truyện trên 米读小说 (midukanshu.com), nền tảng miễn phí sống nhờ quảng cáo, chỉ chương miễn phí (đã lọc chương quảng cáo và dọn rác trong chương)"
+    },
+    {
+      "name": "fengduxiaoshuo.com",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/fengdu/fengdu.zip",
+      "version": 1,
+      "source": "https://www.fengduxiaoshuo.com",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/fengdu/icon.png",
+      "description": "Đọc truyện trên 疯读小说 (fengduxiaoshuo.com, nền tảng miễn phí có quảng cáo của 触宝), chỉ chương miễn phí: mọi chương đều đọc được, không có chương VIP"
     }
   ]
 }

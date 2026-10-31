@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "midukanshu.com",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "https://www.midureader.com",
+    "regexp": "^(https?://)?(www\\.|m\\.)?(midureader|midukanshu)\\.com/book/[0-9a-f]{32}/?$",
+    "description": "Đọc truyện trên 米读小说 (midukanshu.com), nền tảng miễn phí sống nhờ quảng cáo, chỉ chương miễn phí (đã lọc chương quảng cáo và dọn rác trong chương)",
+    "locale": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
