@@ -3,7 +3,7 @@ function execute(url) {
     
     var probeScript = "(function() {\n" +
         // XHR đọc chương của trang (biến toàn cục chapterfetcher): mã khác 0 là lỗi của STV, không phải đang tải.
-        // 7 = thiếu cookie (trang tự tải lại), 21 = captcha của STV (chờ người dùng giải trong trình duyệt).
+        // 7 = thiếu cookie (trang tự tải lại), 15 = trang tự chuyển hướng, 21 = captcha của STV (chờ người dùng giải).
         "    var xhr = window.chapterfetcher;\n" +
         "    if (xhr && xhr.readyState === 4 && xhr.responseText) {\n" +
         "        var raw = xhr.responseText, x = null;\n" +
@@ -14,7 +14,7 @@ function execute(url) {
         "        if (code === '21') {\n" +
         "            return JSON.stringify({ ready: false, failed: false, reason: 'captcha' });\n" +
         "        }\n" +
-        "        if (code !== '0' && code !== '7') {\n" +
+        "        if (code !== '0' && code !== '7' && code !== '15') {\n" +
         "            return JSON.stringify({ ready: false, failed: true, reason: 'code ' + code + ': ' + (x.err || x.info || '') });\n" +
         "        }\n" +
         "    }\n" +
@@ -150,13 +150,11 @@ function execute(url) {
         browser.launch(url, 30000);
         var state = browser.waitForReady(probeScript, 20000, 250, 2);
 
-        // Hết giờ vì captcha: giữ trình duyệt mở cho người dùng giải (tối đa 2 lượt 60 s), không gọi gotox()
+        // Hết giờ vì captcha: giữ trình duyệt mở thêm 60 s cho người dùng giải, không gọi gotox()
         var isCaptcha = !state.ready && state.timedOut === true && probeReason(browser, probeScript) === "captcha";
         if (isCaptcha) {
             console.log("⚠️ STV yêu cầu captcha, chờ người dùng giải trong trình duyệt...");
-            for (var i = 0; i < 2 && !state.ready && state.timedOut === true; i++) {
-                state = browser.waitForReady(probeScript, 60000, 500, 2);
-            }
+            state = browser.waitForReady(probeScript, 60000, 500, 2);
         }
 
         if (!state.ready && !isCaptcha) {

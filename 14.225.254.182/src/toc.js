@@ -33,14 +33,11 @@ function execute(url) {
         }
 
         var json = JSON.parse(text);
-        if (json.code != 1) {
-            throw new Error("Mục lục lỗi (code " + json.code + ")");
-        }
 
         // oridata = tên chương tiếng Trung (app tự dịch), data = bản dịch của STV
         var raw = json.oridata || json.data || "";
         if (!raw) {
-            throw new Error("Mục lục rỗng hoặc nguồn đã hỏng");
+            throw new Error("Mục lục rỗng hoặc nguồn đã hỏng (code " + json.code + ")");
         }
         var unlocked = json.unlocked || {};
 
