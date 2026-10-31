@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "name": "tadu.com",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "https://m.tadu.com",
+    "regexp": "^(https?://)?(www\\.|m\\.)?tadu\\.com/book/\\d+/?$",
+    "description": "Đọc truyện trên trang tadu.com (塔读), chỉ chương miễn phí (bản web chưa đăng nhập chỉ mở 30 chương đầu)",
+    "locale": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "page": "page.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

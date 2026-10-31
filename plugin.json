@@ -306,6 +306,42 @@
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/youtube/icon.png",
       "description": "Xem video, danh sách phát, kênh và phát trực tiếp trên YouTube",
       "type": "video"
+    },
+    {
+      "name": "heiyan.com",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/heiyan/heiyan.zip",
+      "version": 1,
+      "source": "https://www.heiyan.com",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/heiyan/icon.png",
+      "description": "Đọc truyện trên trang heiyan.com (黑岩), chỉ chương miễn phí"
+    },
+    {
+      "name": "tadu.com",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/tadu/tadu.zip",
+      "version": 1,
+      "source": "https://m.tadu.com",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/tadu/icon.png",
+      "description": "Đọc truyện trên trang tadu.com (塔读), chỉ chương miễn phí (bản web chưa đăng nhập chỉ mở 30 chương đầu)"
+    },
+    {
+      "name": "ciyuanji.com",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ciyuanji/ciyuanji.zip",
+      "version": 1,
+      "source": "https://www.ciyuanji.com",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ciyuanji/icon.png",
+      "description": "Đọc truyện trên trang ciyuanji.com (次元姬), chỉ chương miễn phí"
+    },
+    {
+      "name": "bkneng.com",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/bkneng/bkneng.zip",
+      "version": 1,
+      "source": "https://www.bkneng.com",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/bkneng/icon.png",
+      "description": "Đọc truyện trên trang bkneng.com (不可能的世界), chỉ chương miễn phí; trang đã tắt tìm kiếm nên chỉ tìm trong các danh sách đề cử hoặc theo id/link truyện"
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "heiyan.com",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "https://www.heiyan.com",
+    "regexp": "^(https?://)?(www\\.|w\\.|w2\\.)?heiyan\\.com/book/\\d+/?$",
+    "description": "Đọc truyện trên trang heiyan.com (黑岩), chỉ chương miễn phí",
+    "locale": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

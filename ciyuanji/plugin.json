@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "ciyuanji.com",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "https://www.ciyuanji.com",
+    "regexp": "^(https?://)?(www\\.|m\\.)?ciyuanji\\.com/b_d_\\d+(\\.html)?/?$",
+    "description": "Đọc truyện trên trang ciyuanji.com (次元姬), chỉ chương miễn phí",
+    "locale": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

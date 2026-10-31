@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "bkneng.com",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "https://www.bkneng.com",
+    "regexp": "^(https?://)?(www\\.|wenxue\\.)?bkneng\\.com/(www|wap)/book/info/\\d+\\.html/?$",
+    "description": "Đọc truyện trên trang bkneng.com (不可能的世界), chỉ chương miễn phí; trang đã tắt tìm kiếm nên chỉ tìm trong các danh sách đề cử hoặc theo id/link truyện",
+    "locale": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
