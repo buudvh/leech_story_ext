@@ -369,6 +369,15 @@
       "source": "https://www.fengduxiaoshuo.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/fengdu/icon.png",
       "description": "Đọc truyện trên 疯读小说 (fengduxiaoshuo.com, nền tảng miễn phí có quảng cáo của 触宝), chỉ chương miễn phí: mọi chương đều đọc được, không có chương VIP"
+    },
+    {
+      "name": "mowan.lol",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/mowan/mowan.zip",
+      "version": 1,
+      "source": "https://www.mowan.lol",
+      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/mowan/icon.png",
+      "description": "Đọc truyện chữ trên 魔丸小说 (mowan.lol, trang gom nhiều nguồn), chỉ chương miễn phí. Trang bắt buộc đăng nhập: lần đầu tiện ích tự mở cửa sổ trình duyệt để bạn tự đăng nhập (dùng chung phiên với trình duyệt trong app). Gói miễn phí: 1 thiết bị, 200 chương/ngày mỗi nguồn"
     }
   ]
 }
