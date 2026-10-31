@@ -2,6 +2,22 @@ function execute(url) {
     var baseUrl = (typeof BASE_URL !== 'undefined') ? BASE_URL : "http://14.225.254.182";
     
     var probeScript = "(function() {\n" +
+        // XHR đọc chương của trang (biến toàn cục chapterfetcher): mã khác 0 là lỗi của STV, không phải đang tải.
+        // 7 = thiếu cookie (trang tự tải lại), 21 = captcha của STV (chờ người dùng giải trong trình duyệt).
+        "    var xhr = window.chapterfetcher;\n" +
+        "    if (xhr && xhr.readyState === 4 && xhr.responseText) {\n" +
+        "        var raw = xhr.responseText, x = null;\n" +
+        "        try { x = JSON.parse(raw); } catch (e) {\n" +
+        "            try { x = JSON.parse(raw.substring(raw.indexOf('{\"'))); } catch (e2) {}\n" +
+        "        }\n" +
+        "        var code = (x && x.code !== undefined && x.code !== null) ? String(x.code) : '0';\n" +
+        "        if (code === '21') {\n" +
+        "            return JSON.stringify({ ready: false, failed: false, reason: 'captcha' });\n" +
+        "        }\n" +
+        "        if (code !== '0' && code !== '7') {\n" +
+        "            return JSON.stringify({ ready: false, failed: true, reason: 'code ' + code + ': ' + (x.err || x.info || '') });\n" +
+        "        }\n" +
+        "    }\n" +
         "    var node = document.querySelector('#maincontent') || document.querySelector('#content-container .contentbox') || document.querySelector('.contentbox');\n" +
         "    if (!node) {\n" +
         "        return JSON.stringify({ ready: false, failed: false, reason: 'Content node not found' });\n" +
@@ -88,7 +104,8 @@ function execute(url) {
         "            }\n" +
         "            if (current.nodeType === 1) {\n" +
         "                var tagName = current.tagName;\n" +
-        "                if (tagName === 'SCRIPT' || tagName === 'STYLE' || tagName === 'NOSCRIPT' || tagName === 'IFRAME') {\n" +
+        // BUTTON: nút "Nội dung không đầy đủ?, nhấp để hệ thống tải lại." trang chèn vào chương ngắn
+        "                if (tagName === 'SCRIPT' || tagName === 'STYLE' || tagName === 'NOSCRIPT' || tagName === 'IFRAME' || tagName === 'BUTTON') {\n" +
         "                    return;\n" +
         "                }\n" +
         "                if (current.hidden || current.getAttribute('aria-hidden') === 'true') {\n" +
@@ -132,22 +149,33 @@ function execute(url) {
     try {
         browser.launch(url, 30000);
         var state = browser.waitForReady(probeScript, 20000, 250, 2);
-        
-        if (!state.ready) {
+
+        // Hết giờ vì captcha: giữ trình duyệt mở cho người dùng giải (tối đa 2 lượt 60 s), không gọi gotox()
+        var isCaptcha = !state.ready && state.timedOut === true && probeReason(browser, probeScript) === "captcha";
+        if (isCaptcha) {
+            console.log("⚠️ STV yêu cầu captcha, chờ người dùng giải trong trình duyệt...");
+            for (var i = 0; i < 2 && !state.ready && state.timedOut === true; i++) {
+                state = browser.waitForReady(probeScript, 60000, 500, 2);
+            }
+        }
+
+        if (!state.ready && !isCaptcha) {
             var reason = state.reason || "";
             var isRetriable = state.timedOut === true || reason.indexOf("Loading timeout or failed error") >= 0;
-            
+
             if (isRetriable) {
                 console.log("⚠️ Chapter not ready, calling gotox() to retry...");
                 browser.callJs("if (typeof gotox === 'function') { gotox(); }", 0);
                 state = browser.waitForReady(probeScript, 20000, 250, 2);
             }
         }
-        
+
         if (state.ready) {
             finalResult = browser.callJs(extractionScript, 0);
+        } else if (isCaptcha && state.timedOut === true) {
+            return Response.error("STV yêu cầu xác minh captcha. Hãy giải captcha trong trình duyệt \"Tải chương\" rồi tải lại chương.");
         } else {
-            return Response.error("Không thể tải nội dung chương truyện. Lý do: " + (state.reason || "Hết thời gian chờ"));
+            return Response.error("Không thể tải nội dung chương truyện. Lý do: " + readableReason(state.reason));
         }
     } finally {
         browser.close();
@@ -160,4 +188,20 @@ function execute(url) {
         return Response.error("Nội dung trích xuất chứa văn bản tạm thời/lỗi.");
     }
     return Response.success(finalResult);
+}
+
+// waitForReady hết giờ chỉ trả lý do chung ⇒ chạy probe thêm một lần để biết trang đang chờ gì
+function probeReason(browser, probeScript) {
+    try {
+        return JSON.parse(browser.callJs(probeScript, 0) || "{}").reason || "";
+    } catch (e) {
+        return "";
+    }
+}
+
+function readableReason(reason) {
+    var match = /^code (\d+): ?([\s\S]*)$/.exec(reason || "");
+    if (!match) return reason || "Hết thời gian chờ";
+    var hint = (match[1] === "12" || match[1] === "13") ? " (cần đăng nhập/mua chương trên STV)" : "";
+    return "STV báo lỗi mã " + match[1] + hint + (match[2] ? ": " + match[2] : "");
 }

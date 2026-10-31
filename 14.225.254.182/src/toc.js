@@ -1,13 +1,14 @@
+load('common.js');
+
 function execute(url) {
     var ajaxUrl = '';
     try {
-        var baseUrl = (typeof BASE_URL !== 'undefined') ? BASE_URL : "http://14.225.254.182";
+        var baseUrl = stvBase();
 
         // Parse sourceHost and bookId from URL
-        var regex = /\/truyen\/([^\/]+)\/1\/([^\/]+)/;
-        var match = url.match(regex);
+        var match = url.match(/\/truyen\/([^\/]+)\/1\/([^\/?#]+)/);
         if (!match) {
-            match = url.match(/\/truyen\/([^\/]+)\/[^\/]+\/([^\/]+)/);
+            match = url.match(/\/truyen\/([^\/]+)\/[^\/]+\/([^\/?#]+)/);
         }
         if (!match) {
             throw new Error("URL truyện không hợp lệ hoặc sai định dạng");
@@ -17,47 +18,56 @@ function execute(url) {
 
         ajaxUrl = baseUrl + "/index.php?ngmar=chapterlist&h=" + sourceHost + "&bookid=" + bookId + "&sajax=getchapterlist";
 
-        var response = Http.get(ajaxUrl)
-            .header("Referer", url)
-            .header("User-Agent", "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1")
-            .string();
+        var response = fetch(ajaxUrl, {
+            headers: {
+                "Referer": url,
+                "User-Agent": STV_UA
+            }
+        });
+        if (!response.ok) {
+            throw new Error("Status = " + response.status);
+        }
+        var text = response.text();
+        if (!text) {
+            throw new Error("Trang không trả mục lục");
+        }
 
-        var json = JSON.parse(response);
+        var json = JSON.parse(text);
+        if (json.code != 1) {
+            throw new Error("Mục lục lỗi (code " + json.code + ")");
+        }
+
+        // oridata = tên chương tiếng Trung (app tự dịch), data = bản dịch của STV
+        var raw = json.oridata || json.data || "";
+        if (!raw) {
+            throw new Error("Mục lục rỗng hoặc nguồn đã hỏng");
+        }
+        var unlocked = json.unlocked || {};
 
         var chapters = [];
-        var rawChapters = [];
-
-        if (json.data) {
-            rawChapters = json.data.split("-//-");
-        }
-
-        if (json.oridata) {
-            rawChapters = json.oridata.split("-//-");
-        }
-
+        var rawChapters = raw.split("-//-");
         for (var i = 0; i < rawChapters.length; i++) {
             var part = rawChapters[i].split("-/-");
             if (part.length < 3) continue;
 
-            var volId = part[0];
-            var chapId = part[1];
-            var title = part[2];
+            var volId = part[0].trim();
+            var chapId = part[1].trim();
+            var title = part[2].replace(/[\t\r\n]+|<br>|&nbsp;/g, "").trim();
+            var flag = (part[3] || "").trim();
 
             var chapUrl = baseUrl + "/truyen/" + sourceHost + "/" + volId + "/" + bookId + "/" + chapId + "/";
 
-            var icon = "";
-            if(rawChapters[i].endsWith('-/-vip')){
-                icon = " 🔒︎";
-            }
-
-            if(rawChapters[i].endsWith('-/-unvip')){
-                icon = " 🔑︎"
-            }
+            // vip = chương trả phí chưa mở; unvip hoặc có trong unlocked = đã mở khoá
+            var isPaid = flag === "vip" || flag === "unvip";
+            var isLocked = flag === "vip" && !unlocked.hasOwnProperty(chapId);
+            var icon = isLocked ? " 🔒︎" : (isPaid ? " 🔑︎" : "");
 
             chapters.push({
                 name: title + icon,
                 url: chapUrl,
-                host: baseUrl
+                host: baseUrl,
+                lock: isLocked,
+                pay: isPaid
             });
         }
 
