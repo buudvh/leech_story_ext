@@ -2,7 +2,7 @@
   "metadata": {
     "name": "mowan.lol",
     "author": "HuongMT",
-    "version": 1,
+    "version": 2,
     "source": "https://www.mowan.lol",
     "regexp": "^(https?://)?(www\\.)?mowan\\.lol/user/book\\?source=[^&#]+&book_id=[^&#]+(&[^#]*)?/?$",
     "description": "Đọc truyện chữ trên 魔丸小说 (mowan.lol, trang gom nhiều nguồn), chỉ chương miễn phí. Trang bắt buộc đăng nhập: lần đầu tiện ích tự mở cửa sổ trình duyệt để bạn tự đăng nhập (dùng chung phiên với trình duyệt trong app). Gói miễn phí: 1 thiết bị, 200 chương/ngày mỗi nguồn",

@@ -6,7 +6,7 @@ function execute(url) {
         var ref = mowanChapterRef(url);
         if (!ref) throw new Error('Không đọc được nguồn/id chương từ link');
 
-        var content = mowanApi('/chapter/content', { source: ref.source, chapter_id: ref.chapterId, book_name: ref.bookName }) || {};
+        var content = mowanApi('/chapter/content', { source: ref.source, chapter_id: ref.chapterId, book_name: ref.bookName }, SLOW_TIMEOUT_MS) || {};
 
         // Nguồn không trả nội dung. SPA coi là lỗi tạm (nút 重新加载, không lưu offline) ⇒ báo lỗi để app cho thử lại và
         // không lưu câu báo thành nội dung chương; riêng chương trả phí thì trả câu báo như chương VIP.

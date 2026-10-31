@@ -13,6 +13,13 @@ try {
 }
 
 var API_URL = BASE_URL + '/api';
+var API_USER_AGENT = 'yuedu_app';
+// fetch của app mặc định chờ 15s rồi trả 408; máy chủ gom nội dung từ nguồn gốc nên có lúc rất chậm.
+var API_TIMEOUT_MS = 60000;
+// Mức chờ tối đa app cho phép (120s): chuyên mục Khám phá và nội dung chương.
+var SLOW_TIMEOUT_MS = 120000;
+var TABS_CACHE_KEY = 'mowan_discover_tabs';
+var TABS_LOCK_KEY = 'mowan_discover_tabs_lock';
 var LOGIN_URL = BASE_URL + '/user/login';
 // Trang tĩnh cùng origin (không chạy SPA): đọc/ghi localStorage của trang mà không kích hoạt refresh/logout của SPA.
 var STORAGE_PAGES = [BASE_URL + '/robots.txt', BASE_URL + '/user/favicon.png'];
@@ -346,8 +353,15 @@ function mowanPromptLogin(badAccess) {
 
 // ---------------- Gọi API ----------------
 
+// Cùng bộ header với nguồn đọc truyện chính chủ của trang (User-Agent "yuedu_app" + Referer).
 function mowanHeaders(s) {
-    var headers = { 'Accept': 'application/json, text/plain, */*', 'X-Device-ID': s.device };
+    var headers = {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+        'User-Agent': API_USER_AGENT,
+        'Referer': BASE_URL,
+        'X-Device-ID': s.device
+    };
     if (s.access) headers['Authorization'] = 'Bearer ' + s.access;
     if (s.app) headers['X-App'] = s.app;
     return headers;
@@ -388,6 +402,11 @@ function mowanFetchJson(url, options) {
     if (status == 401) return { code: 40100, message: '登录已过期', httpStatus: status };
     if (status == 403) return { code: CODE_NO_PERMISSION, message: '没有权限', httpStatus: status };
     if (status == 429) return { code: 42900, message: '操作过于频繁', httpStatus: status };
+    // 408 = app tự huỷ vì quá thời gian chờ (máy chủ chưa trả lời), không phải mã của máy chủ.
+    if (status == 408) {
+        throw new Error('魔丸小说 trả lời quá chậm (quá ' + Math.round((options.timeout || 15000) / 1000)
+            + ' giây). Máy chủ đang bận, thử lại sau ít phút.');
+    }
     if (status == 0 || status >= 500) throw new Error('Không kết nối được ' + BASE_URL + ' (HTTP ' + status + '). Kiểm tra mạng rồi thử lại.');
     throw new Error('Phản hồi lạ từ API (HTTP ' + status + ')');
 }
@@ -396,8 +415,44 @@ function mowanRequest(path, params, s, timeout) {
     return mowanFetchJson(API_URL + path + mowanQueryString(params || {}), {
         method: 'GET',
         headers: mowanHeaders(s),
-        timeout: timeout || 30000
+        timeout: timeout || API_TIMEOUT_MS
     });
+}
+
+// Danh sách chuyên mục Khám phá: chậm (máy chủ gom từ nhiều nguồn) nên nhớ theo ngày; home và genre chạy cùng lúc
+// thì chỉ một bên gọi API, bên kia chờ kết quả trong bộ nhớ chung của tiện ích.
+function mowanDiscoverTabs() {
+    var day = new Date().toISOString().slice(0, 10);
+    var cached = mowanCachedTabs(day);
+    if (cached) return cached;
+
+    var lock = Number(localStorage.getItem(TABS_LOCK_KEY) || 0);
+    if (lock && Date.now() - lock < SLOW_TIMEOUT_MS + 10000) {
+        while (Date.now() - lock < SLOW_TIMEOUT_MS + 10000) {
+            sleep(1000);
+            cached = mowanCachedTabs(day);
+            if (cached) return cached;
+            if (!localStorage.getItem(TABS_LOCK_KEY)) break;
+        }
+    }
+
+    localStorage.setItem(TABS_LOCK_KEY, String(Date.now()));
+    try {
+        var data = mowanApi('/discover/tabs', {}, SLOW_TIMEOUT_MS) || {};
+        localStorage.setItem(TABS_CACHE_KEY, JSON.stringify({ day: day, data: data }));
+        return data;
+    } finally {
+        localStorage.removeItem(TABS_LOCK_KEY);
+    }
+}
+
+function mowanCachedTabs(day) {
+    try {
+        var c = JSON.parse(localStorage.getItem(TABS_CACHE_KEY) || 'null');
+        return c && c.day == day && c.data ? c.data : null;
+    } catch (error) {
+        return null;
+    }
 }
 
 function mowanErrorMessage(json) {

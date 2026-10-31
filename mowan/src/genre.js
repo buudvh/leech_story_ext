@@ -5,7 +5,7 @@ load('config.js');
 function execute() {
     var url = API_URL + '/discover/tabs';
     try {
-        var data = mowanApi('/discover/tabs', {}) || {};
+        var data = mowanDiscoverTabs() || {};
         var list = [];
         (data.sources || []).forEach(function (s) {
             if (s && s.source) list = list.concat(mowanTabEntries(s.source, s.name || s.source, s.tabs));

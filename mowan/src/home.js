@@ -5,7 +5,7 @@ load('config.js');
 function execute() {
     var url = API_URL + '/discover/tabs';
     try {
-        var data = mowanApi('/discover/tabs', {}) || {};
+        var data = mowanDiscoverTabs() || {};
         var list = mowanTabEntries('platform', '', data.platform_tabs);
         if (!list.length && data.sources && data.sources.length) {
             var first = data.sources[0];
