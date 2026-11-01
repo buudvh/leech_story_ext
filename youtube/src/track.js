@@ -4,16 +4,25 @@ function execute(data) {
     var req = parseRequest(data);
     if (!req.id) return Response.error("Không nhận ra video YouTube");
     if (req.mode === "embed") return embedTrack(req.id);
+    // "Gốc": HLS nhiều mức chất lượng (client VISIONOS) trước; "sd" (server 360p) đi thẳng client ANDROID.
+    if (req.mode !== "sd") {
+        var hd = ytVisionHls(req.id);
+        if (hd) return hlsTrack(hd.data, captionTracks(hd.json));
+    }
+    return androidTrack(req.id);
+}
 
-    var json = ytAndroidPlayer(req.id);
-    if (!json) return embedTrack(req.id);
+// Client ANDROID: video trực tiếp → HLS; video thường → MP4 muxed 360p (itag 18); không được thì trình phát nhúng.
+function androidTrack(id) {
+    var json = ytAndroidPlayer(id);
+    if (!json) return embedTrack(id);
     var ps = json.playabilityStatus || {};
     if (ps.status && ps.status !== "OK") {
         var reason = ytText(ps.reason) || ytText(ps.messages && ps.messages[0]);
         if (ps.status === "LIVE_STREAM_OFFLINE") return Response.error(reason || "Buổi phát trực tiếp chưa bắt đầu");
         if (ps.status === "ERROR") return Response.error(reason || "Video không tồn tại hoặc đã bị xoá");
         // LOGIN_REQUIRED / UNPLAYABLE…: thử trình phát nhúng.
-        return embedTrack(req.id);
+        return embedTrack(id);
     }
 
     var sd = json.streamingData || {};
@@ -36,7 +45,7 @@ function execute(data) {
     }
     if (best) return nativeTrack(best.url, "video/mp4", subtitles);
     if (hls) return nativeTrack(hls, "application/x-mpegURL", subtitles);
-    return embedTrack(req.id);
+    return embedTrack(id);
 }
 
 function parseRequest(data) {
@@ -57,6 +66,18 @@ function nativeTrack(url, mimeType, subtitles) {
         host: YT,
         mimeType: mimeType,
         headers: { "User-Agent": YT_ANDROID_UA },
+        subtitles: subtitles
+    });
+}
+
+// Master HLS của client VISIONOS (text đã lọc, hoặc URL master gốc).
+function hlsTrack(data, subtitles) {
+    return Response.success({
+        type: "native",
+        data: data,
+        host: YT,
+        mimeType: "application/x-mpegURL",
+        headers: { "User-Agent": YT_VISION_UA },
         subtitles: subtitles
     });
 }

@@ -10,6 +10,12 @@ var YT_MOBILE_UA = "Mozilla/5.0 (iPhone; CPU iPhone OS 18_3_2 like Mac OS X) App
 var YT_ANDROID_VERSION = "20.10.38";
 var YT_ANDROID_UA = "com.google.android.youtube/" + YT_ANDROID_VERSION + " (Linux; U; Android 11) gzip";
 
+// Client VISIONOS: video thường có hlsManifestUrl nhiều mức (tới 1080p H.264), segment tải được tới cuối mà không cần
+// po_token, không phải giải mã chữ ký/n. Bắt buộc có visitorData (thiếu thì LOGIN_REQUIRED "not a bot"); video dành
+// cho trẻ em trả UNPLAYABLE ⇒ dùng lại client ANDROID.
+var YT_VISION_VERSION = "1.02";
+var YT_VISION_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 15_7_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Safari/605.1.15";
+
 // Trang nhúng trả lỗi 153 khi thiếu Referer và "video không có sẵn" khi Referer là youtube.com.
 var YT_EMBED_REFERER = "https://com.raikiri1498.freebook/";
 
@@ -95,6 +101,119 @@ function ytAndroidPlayer(videoId) {
         })
     });
     return ytParseJson(res);
+}
+
+// Gọi player bằng client VISIONOS. Trả JSON hoặc null.
+function ytVisionPlayer(videoId, visitor) {
+    var client = {
+        clientName: "VISIONOS", clientVersion: YT_VISION_VERSION, deviceMake: "Apple", deviceModel: "RealityDevice17,1",
+        osName: "visionOS", osVersion: "26.5.23O471", hl: "vi", gl: "VN"
+    };
+    var headers = {
+        "Content-Type": "application/json",
+        "User-Agent": YT_VISION_UA,
+        "X-YouTube-Client-Name": "101",
+        "X-YouTube-Client-Version": YT_VISION_VERSION
+    };
+    if (visitor) {
+        client.visitorData = visitor;
+        headers["X-Goog-Visitor-Id"] = visitor;
+    }
+    var res = fetch(YT + "/youtubei/v1/player?prettyPrint=false", {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify({ context: { client: client }, videoId: videoId, contentCheckOk: true, racyCheckOk: true })
+    });
+    return ytParseJson(res);
+}
+
+function ytStatusOf(json) {
+    return json && json.playabilityStatus ? String(json.playabilityStatus.status || "") : "";
+}
+
+// HLS nhiều mức của video thường qua client VISIONOS. Trả { json, data } — data là master đã lọc (text) hoặc URL
+// master gốc khi lọc không còn đủ 2 mức; null khi không dùng được (để track.js lùi về client ANDROID).
+// visitorData dùng chung cho mọi video, nhớ trong localStorage; bị LOGIN_REQUIRED thì lấy visitorData mới trong
+// chính phản hồi đó và gọi lại đúng một lần.
+function ytVisionHls(videoId) {
+    var visitor = "";
+    try { visitor = localStorage.getItem("yt_visitor_data") || ""; } catch (e) {}
+    var json = ytVisionPlayer(videoId, visitor);
+    var fresh = json && json.responseContext ? String(json.responseContext.visitorData || "") : "";
+    if (fresh && fresh !== visitor && (!visitor || ytStatusOf(json) === "LOGIN_REQUIRED")) {
+        try { localStorage.setItem("yt_visitor_data", fresh); } catch (e) {}
+        if (ytStatusOf(json) === "LOGIN_REQUIRED") json = ytVisionPlayer(videoId, fresh);
+    }
+    if (ytStatusOf(json) !== "OK") return null;
+    if (json.videoDetails && json.videoDetails.isLive) return null;
+    var hls = json.streamingData && json.streamingData.hlsManifestUrl;
+    if (!hls) return null;
+    var res = fetch(hls, { headers: { "User-Agent": YT_VISION_UA } });
+    if (!res || !res.ok) return null;
+    var text = "";
+    try { text = res.text() || ""; } catch (e) {}
+    return { json: json, data: ytFilterMaster(text) || hls };
+}
+
+// Lọc master HLS cho trình phát của app:
+// - chỉ giữ biến thể H.264 (avc1); VP9/AV1 (1440p, 4K) có thể không phát được và làm menu Chất lượng hiện mức ảo;
+// - bỏ phụ đề HLS (EXT-X-MEDIA TYPE=SUBTITLES và thuộc tính SUBTITLES=) — app đã tự hiện phụ đề VTT;
+// - nhóm tiếng có bản gốc (acont=original) thì chỉ giữ bản gốc, đặt DEFAULT=YES: app không có menu chọn tiếng HLS,
+//   để nguyên thì AVPlayer tự chọn bản lồng tiếng theo ngôn ngữ máy.
+// Không còn đủ 2 độ phân giải ⇒ "".
+function ytFilterMaster(text) {
+    var lines = String(text || "").replace(/^﻿/, "").replace(/\r/g, "").replace(/^\s+/, "").split("\n");
+    if (lines[0] !== "#EXTM3U") return "";
+    var head = [], media = [], variants = [];
+    for (var i = 1; i < lines.length; i++) {
+        var ln = lines[i];
+        if (!ln) continue;
+        if (ln.indexOf("#EXT-X-STREAM-INF:") === 0) {
+            var uri = lines[i + 1] || "";
+            i++;
+            var codecs = (ln.match(/CODECS="([^"]*)"/) || [])[1] || "";
+            if (codecs.indexOf("avc1") < 0 || !uri || uri.charAt(0) === "#") continue;
+            variants.push({
+                inf: ln.replace(/,SUBTITLES="[^"]*"/, ""),
+                uri: uri,
+                audio: (ln.match(/AUDIO="([^"]*)"/) || [])[1] || "",
+                height: +((ln.match(/RESOLUTION=\d+x(\d+)/) || [])[1] || 0)
+            });
+        } else if (ln.indexOf("#EXT-X-MEDIA:") === 0) {
+            if (ln.indexOf("TYPE=AUDIO") < 0) continue;
+            media.push({ line: ln, group: (ln.match(/GROUP-ID="([^"]*)"/) || [])[1] || "" });
+        } else if (ln.indexOf("#EXT-X-I-FRAME-STREAM-INF") === 0) {
+            continue;
+        } else if (ln.charAt(0) === "#") {
+            head.push(ln);
+        }
+    }
+    var heights = {}, groups = {}, count = 0;
+    for (var v = 0; v < variants.length; v++) {
+        if (!heights[variants[v].height]) {
+            heights[variants[v].height] = true;
+            count++;
+        }
+        if (variants[v].audio) groups[variants[v].audio] = true;
+    }
+    if (count < 2) return "";
+    var original = {};
+    for (var a = 0; a < media.length; a++) {
+        if (/acont%3Doriginal/.test(media[a].line)) original[media[a].group] = true;
+    }
+    var out = ["#EXTM3U"].concat(head);
+    for (var m = 0; m < media.length; m++) {
+        var md = media[m];
+        if (!groups[md.group]) continue;
+        if (original[md.group]) {
+            if (!/acont%3Doriginal/.test(md.line)) continue;
+            out.push(md.line.replace("DEFAULT=NO", "DEFAULT=YES"));
+        } else {
+            out.push(md.line);
+        }
+    }
+    for (var k = 0; k < variants.length; k++) out.push(variants[k].inf, variants[k].uri);
+    return out.join("\n") + "\n";
 }
 
 // Dự phòng khi API đổi: đọc biến JSON (ytInitialData / ytInitialPlayerResponse) nhúng trong HTML.
