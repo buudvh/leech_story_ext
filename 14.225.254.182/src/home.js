@@ -1,72 +1,20 @@
-load('common.js');
-
+// Tab theo thể loại của STV; nguồn/sắp xếp/số chương/loại/trạng thái lấy từ cấu hình.
 function execute() {
-    var baseUrl = (typeof BASE_URL !== 'undefined') ? BASE_URL : "http://14.225.254.182";
-    var script = "homecontent.js";
-    var host = ["69shu", "qidian", "fanqie"];
-    var hometag = [
-        tag("Đồng nhân update(qidian)", "qidian", "update", "diensinhcungnguoi,"),
-        tag("Chư thiên vô hạn update(qidian)", "qidian", "update", "chuthienvohan,"),
-        tag("Chư thiên update(qidian)", "qidian", "update", "chuthien,"),
-        tag("Đồng nhân viewweek(qidian)", "qidian", "viewweek", "diensinhcungnguoi,"),
-        tag("Chư thiên vô hạn viewweek(qidian)", "qidian", "viewweek", "chuthienvohan,"),
-        tag("Chư thiên viewweek(qidian)", "qidian", "viewweek", "chuthien,"),
-    ];
-    host.forEach(e => {
-        hometag.push({
-            title: `(${e})Update`,
-            input: `${baseUrl}/io/searchtp/searchBooks?find=&host=${e}&minc=0&sort=update&tag=&p={0}`,
-            script: script
-        })
-    });
-
-    host.forEach(e => {
-        hometag.push({
-            title: `(${e})Viewday`,
-            input: `${baseUrl}/io/searchtp/searchBooks?find=&host=${e}&minc=0&sort=viewday&tag=&p={0}`,
-            script: script
-        })
-    });
-
-    host.forEach(e => {
-        hometag.push({
-            title: `(${e})ViewWeek`,
-            input: `${baseUrl}/io/searchtp/searchBooks?find=&host=${e}&minc=0&sort=viewweek&tag=&p={0}`,
-            script: script
-        })
-    });
-
-    host.forEach(e => {
-        hometag.push({
-            title: `(${e})AllView`,
-            input: `${baseUrl}/io/searchtp/searchBooks?find=&host=${e}&minc=0&sort=view&tag=&p={0}`,
-            script: script
-        })
-    });
-
-    host.forEach(e => {
-        hometag.push({
-            title: `(${e})Like`,
-            input: `${baseUrl}/io/searchtp/searchBooks?find=&host=${e}&minc=0&sort=like&tag=&p={0}`,
-            script: script
-        })
-    });
-
-    host.forEach(e => {
-        hometag.push({
-            title: `(${e})Following`,
-            input: `${baseUrl}/io/searchtp/searchBooks?find=&host=${e}&minc=0&sort=following&tag=&p={0}`,
-            script: script
-        })
-    });
-
-    host.forEach(e => {
-        hometag.push({
-            title: `(${e})Bookmarked`,
-            input: `${baseUrl}/io/searchtp/searchBooks?find=&host=${e}&minc=0&sort=bookmarked&tag=&p={0}`,
-            script: script
-        })
-    });
-
-    return Response.success(hometag);
+    return Response.success([
+        { title: "Tất cả", input: "cat:", script: "tag.js" },
+        { title: "Đồng nhân", input: "cat:dn", script: "tag.js" },
+        { title: "Chư Thiên Vô Hạn", input: "tag:chuthienvohan", script: "tag.js" },
+        { title: "Vô Hạn Lưu", input: "tag:vohanluu", script: "tag.js" },
+        { title: "Chư Thiên", input: "tag:chuthien", script: "tag.js" },
+        { title: "Chư Thiên Lưu", input: "tag:chuthienluu", script: "tag.js" },
+        { title: "Huyền huyễn", input: "cat:hh", script: "tag.js" },
+        { title: "Đô thị", input: "cat:dt", script: "tag.js" },
+        { title: "Ngôn tình", input: "cat:nt", script: "tag.js" },
+        { title: "Võng du", input: "cat:vd", script: "tag.js" },
+        { title: "Khoa học viễn tưởng", input: "cat:kh", script: "tag.js" },
+        { title: "Lịch sử", input: "cat:ls", script: "tag.js" },
+        { title: "Dị năng", input: "cat:dna", script: "tag.js" },
+        { title: "Linh dị", input: "cat:ld", script: "tag.js" },
+        { title: "Light Novel", input: "cat:ln", script: "tag.js" }
+    ]);
 }

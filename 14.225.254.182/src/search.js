@@ -2,7 +2,8 @@ load('common.js');
 
 function execute(query, page) {
     page = parseInt(page, 10) || 1;
-    var url = stvBase() + "/io/searchtp/searchBooks/?find=&findinname=" + encodeURIComponent(query || "") + "&minc=0&sort=update&tag=&p=" + page;
+    // Nguồn/sắp xếp/số chương/loại/trạng thái lấy từ cấu hình
+    var url = stvBase() + "/io/searchtp/searchBooks/?find=&findinname=" + encodeURIComponent(query || "") + buildFilterQuery() + "&tag=&p=" + page;
 
     var response = fetch(url);
     if (!response.ok) {

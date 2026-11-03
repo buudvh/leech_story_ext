@@ -2,7 +2,7 @@
   "metadata": {
     "name": "14.225.254.182",
     "author": "HuongMT",
-    "version": 22,
+    "version": 23,
     "source": "http://14.225.254.182",
     "regexp": "^https?://(?:14\\.225\\.254\\.182|sangtacviet\\.(?:vip|me|com|app))/.*$",
     "description": "Đọc truyện trên SangTacViet, hỗ trợ Home, thể loại và chương tải động bằng WebView",
@@ -19,6 +19,80 @@
     "chap": "chap.js"
   },
   "config": {
+    "FILTER_HOST": {
+      "title": "Nguồn",
+      "mode": "select",
+      "values": [
+        "Tất cả nguồn",
+        "[Free] 69shu",
+        "[Vip] faloo (Phi Lư): Sảng văn",
+        "[Vip] qidian (Khởi Điểm): Tổng hợp",
+        "[Vip] fanqie (Cà Chua): Sảng văn, Tổng hợp",
+        "[Vip] ciweimao: Đồng nhân, Tổng hợp",
+        "[Vip] jjwxc (Tấn Giang): Ngôn đam",
+        "[Vip] sfacg: Biến thân",
+        "[Free] tadu: Ngôn sảng",
+        "[Free] qimao (7 Mèo): Ngôn sảng",
+        "[Free] idejian (Chưởng Duyệt)",
+        "[Vip] zongheng (Tung Hoành)",
+        "[LN] linovel",
+        "[LN] wenku8",
+        "[Free] 69shuorg",
+        "[Free] ddxs",
+        "[Free] ptwxz",
+        "[Free] shu05",
+        "[Free] qinqinxsw",
+        "[Free] wanbentxt",
+        "[Free] 8zwdu",
+        "[Free] duanqingsi",
+        "[Free] qiuxiaoshuo",
+        "[Free] trxs",
+        "[Free] paoshu8",
+        "[Free] shumilou",
+        "[Free] hetushu",
+        "[Free] nofff",
+        "[Free] uuxs",
+        "[Free] ranwenla",
+        "[Free] shumiloutw",
+        "[Free] 66wx",
+        "[Free] biqugexs",
+        "[Free] zwdu",
+        "[Free] xingeweb",
+        "[Free] qiushubang",
+        "[Free] xinshuhaige",
+        "[Free] oldtimescc",
+        "[Free] wuwuxs",
+        "[Free] hs313",
+        "[Free] shubao45",
+        "[Free] biquge",
+        "[Free] uukanshu (UU)"
+      ],
+      "default": "Tất cả nguồn"
+    },
+    "FILTER_SORT": {
+      "title": "Sắp xếp",
+      "mode": "select",
+      "values": ["Không sắp xếp", "Mới nhập kho", "Mới cập nhật", "Lượt đọc tổng", "Lượt đọc tuần", "Lượt đọc ngày", "Lượt thích", "Lượt theo dõi", "Lượt đánh dấu", "Đề cử"],
+      "default": "Mới cập nhật"
+    },
+    "FILTER_MIN_CHAPTER": {
+      "title": "Số chương",
+      "mode": "select",
+      "values": ["> 50", "> 100", "> 200", "> 500", "> 1000", "> 1500", "> 2000", "Tất cả"],
+      "default": "Tất cả"
+    },
+    "FILTER_TYPE": {
+      "title": "Loại truyện",
+      "mode": "select",
+      "values": ["Tất cả", "Truyện sáng tác", "Truyện dịch", "Truyện tranh", "Txt dịch tự động", "Truyện scan ảnh"],
+      "default": "Tất cả"
+    },
+    "FILTER_STATUS": {
+      "title": "Trạng thái",
+      "mode": "select",
+      "values": ["Tất cả", "Hoàn thành", "Còn tiếp", "Tạm ngưng", "Không tạm ngưng"],
+      "default": "Tất cả"
+    },
     "BASE_URL": {
       "title": "URL trang chủ",
       "mode": "input",
