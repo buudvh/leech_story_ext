@@ -1,0 +1,62 @@
+{
+  "metadata": {
+    "name": "qimao.com",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "https://www.qimao.com",
+    "regexp": "^(https?://)?(www\\.|m\\.)?qimao\\.com/shuku/\\d+/?$",
+    "description": "Đọc truyện trên 七猫小说 (qimao.com, miễn phí). Tab đầu là bảng xếp hạng theo kênh (bảng theo năm tự chọn năm hiện tại), các tab sau là phân loại tác phẩm. Bộ lọc kênh, số chữ, thời gian cập nhật, tình trạng, sắp xếp ở mục Cấu hình",
+    "locale": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "explore": "explore.js",
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  },
+  "config": {
+    "FILTER_CHANNEL": {
+      "title": "Kênh (频道)",
+      "subtitle": "Áp cho tab phân loại, thể loại và bảng xếp hạng; tìm kiếm không lọc được theo kênh",
+      "mode": "select",
+      "format": "single",
+      "values": ["Tất cả", "Nam (男生原创)", "Nữ (女生原创)", "Sách xuất bản (出版图书)"],
+      "default": "Tất cả"
+    },
+    "FILTER_WORDS": {
+      "title": "Số chữ (作品字数)",
+      "mode": "select",
+      "format": "single",
+      "values": ["Tất cả", "Dưới 300.000 chữ", "300.000–500.000 chữ", "500.000–1 triệu chữ", "1–2 triệu chữ", "Trên 2 triệu chữ"],
+      "default": "Tất cả"
+    },
+    "FILTER_UPDATE": {
+      "title": "Thời gian cập nhật (更新时间)",
+      "subtitle": "Tìm kiếm không lọc được theo thời gian cập nhật",
+      "mode": "select",
+      "format": "single",
+      "values": ["Tất cả", "Trong 3 ngày", "Trong 7 ngày", "Trong 30 ngày"],
+      "default": "Tất cả"
+    },
+    "FILTER_STATUS": {
+      "title": "Tình trạng (是否完结)",
+      "mode": "select",
+      "format": "single",
+      "values": ["Tất cả", "Hoàn thành", "Đang ra"],
+      "default": "Tất cả"
+    },
+    "FILTER_SORT": {
+      "title": "Sắp xếp",
+      "subtitle": "Tìm kiếm chỉ áp được Tổng số chữ, các kiểu khác giữ thứ tự liên quan",
+      "mode": "select",
+      "format": "single",
+      "values": ["Lượt nhấp (按点击量)", "Tổng số chữ (按总字数)", "Mới cập nhật (最近更新)", "Lượt lưu (按收藏数)"],
+      "default": "Lượt nhấp (按点击量)"
+    }
+  }
+}
