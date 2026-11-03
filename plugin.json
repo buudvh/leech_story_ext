@@ -224,8 +224,8 @@
       "name": "Wiki dịch Truyện Nam",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/wikidich/wikidich.zip",
-      "version": 8,
-      "source": "https://truyenwikidich.net/",
+      "version": 9,
+      "source": "https://wikicv.org",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/wikidich/icon.png",
       "description": "Đọc truyện trên trang https://truyenwikidich.net/"
     },

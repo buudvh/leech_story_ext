@@ -1,25 +1,10 @@
 load('config.js');
+
+// Tìm kiếm áp cả bộ lọc của Cấu hình (Giới tính "Tất cả" để tìm mọi loại truyện). Cần đăng nhập.
 function execute(key, page) {
     if (!page) page = '0';
-    let response = fetch(BASE_URL + "/tim-kiem?q=" + key + "&qs=1" + "&start=" + page + "&vo=1");
-
-    if (response.ok) {
-        let doc = response.html();
-        let next = doc.select(".pagination").select("li.active + li").select("a").attr("href").match(/start=(\d+)/)
-        if (next) next = next[1]
-        let data = [];
-        doc.select(".book-list > .book-item").forEach(e => {
-            data.push({
-                name: e.select(".book-title").text(),
-                link: e.select(".info-col > a").first().attr("href"),
-                cover: e.select(".cover-col img").attr("src"),
-                description: e.select(".book-author").text(),
-                host: BASE_URL
-            });
-        });
-
-        return Response.success(data, next);
-    }
-
-    return null;
+    var url = applyFilters(BASE_URL + '/tim-kiem?qs=1&vo=1');
+    var result = fetchPage(url, { method: 'GET', queries: { q: key || '', start: page } }, '.book-list');
+    if (result.error) return Response.error(result.error);
+    return Response.success(parseBookList(result.doc), nextStart(result.doc));
 }

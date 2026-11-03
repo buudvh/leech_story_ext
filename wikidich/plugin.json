@@ -2,10 +2,10 @@
   "metadata": {
     "name": "Wiki dịch Truyện Nam",
     "author": "HuongMT",
-    "version": 8,
-    "source": "https://wikicv.net",
+    "version": 9,
+    "source": "https://wikicv.org",
     "regexp": "(www.)?(.*?)wiki(.*?)/truyen/[^/]+/?$",
-    "description": "Đọc truyện trên trang Wiki Dịch, review ở thông tin truyện",
+    "description": "Đọc truyện trên trang Wiki Dịch, review ở thông tin truyện. Bộ lọc (sắp xếp, tình trạng, giới tính, nguồn gốc, độ dài, thời đại, kết thúc) ở mục Cấu hình; danh sách và tìm kiếm cần đăng nhập Wiki Dịch",
     "locale": "vi_VN",
     "type": "novel",
     "language": "javascript"
@@ -25,7 +25,65 @@
       "title": "BASE URL",
       "mode": "input",
       "format": "text",
-      "default": "https://wikicv.net"
+      "default": "https://wikicv.org"
+    },
+    "FILTER_SORT": {
+      "title": "Sắp xếp",
+      "mode": "select",
+      "format": "single",
+      "values": ["Đọc nhiều nhất", "Rating cao nhất", "Mới nhất"],
+      "default": "Đọc nhiều nhất"
+    },
+    "FILTER_STATUS": {
+      "title": "Tình trạng",
+      "mode": "select",
+      "format": "single",
+      "values": ["Tất cả", "Hoàn thành", "Còn tiếp", "Tạm ngưng", "Chưa xác minh"],
+      "default": "Tất cả"
+    },
+    "FILTER_GENDER": {
+      "title": "Giới tính",
+      "subtitle": "Áp cho cả tab Review",
+      "mode": "select",
+      "format": "single",
+      "values": ["Tất cả", "Ngôn tình", "Nam sinh", "Đam mỹ", "Bách hợp", "Nữ tôn", "Không CP", "Đa nguyên"],
+      "default": "Nam sinh"
+    },
+    "FILTER_OFFICIAL": {
+      "title": "Nguồn gốc",
+      "mode": "select",
+      "format": "single",
+      "values": ["Tất cả", "Nguyên sang", "Diễn sinh"],
+      "default": "Tất cả"
+    },
+    "FILTER_LENGTH": {
+      "title": "Độ dài",
+      "mode": "select",
+      "format": "single",
+      "values": ["Tất cả", "1 - 20 chương", "21 - 50 chương", "51 - 100 chương", "101 - 200 chương", "201 - 300 chương", "301 - 500 chương", "501 - 1000 chương", "Trên 1000 chương"],
+      "default": "Tất cả"
+    },
+    "FILTER_AGE": {
+      "title": "Thời đại",
+      "mode": "select",
+      "format": "single",
+      "values": ["Tất cả", "Cổ đại", "Cận đại", "Hiện đại", "Tương lai", "Giả tưởng lịch sử"],
+      "default": "Tất cả"
+    },
+    "FILTER_ENDING": {
+      "title": "Kết thúc",
+      "mode": "select",
+      "format": "single",
+      "values": ["Tất cả", "HE", "SE", "OE"],
+      "default": "Tất cả"
+    },
+    "FILTER_REVIEW_SORT": {
+      "title": "Xếp review",
+      "subtitle": "Chỉ áp cho tab Review",
+      "mode": "select",
+      "format": "single",
+      "values": ["Mới nhất", "Cũ nhất"],
+      "default": "Mới nhất"
     }
   }
 }
