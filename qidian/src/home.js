@@ -1,19 +1,15 @@
+// Tab theo thể loại của STV; sắp xếp/số chương/loại/trạng thái lấy từ cấu hình.
 function execute() {
     return Response.success([
-        { title: "Update", input: "&update", script: "search.js" },
-        { title: "Đồng nhân", input: "diensinhcungnguoi,&update", script: "tag.js" },
-        { title: "Chư Thiên Vô Hạn", input: "chuthienvohan,&update", script: "tag.js" },
-        { title: "Vô Hạn", input: "vohan,&update", script: "tag.js" },
-        { title: "Chư Thiên", input: "chuthien,&update", script: "tag.js" },
-        { title: "Chư Thiên Lưu", input: "chuthienluu,&update", script: "tag.js" },
-        { title: "Vô Hạn Lưu", input: "vohanluu,&update", script: "tag.js" },
-        { title: "Luân Hồi Giả", input: "luanhoigia,&update", script: "tag.js" },
-        { title: "New", input: "&new", script: "search.js" },
-        { title: "View Week", input: "&viewweek", script: "search.js" },
-        { title: "View Day", input: "&viewday", script: "search.js" },
-        { title: "View", input: "&view", script: "search.js" },
-        { title: "Like", input: "&like", script: "search.js" },
-        { title: "Follow", input: "&following", script: "search.js" },
-        { title: "Bookmark", input: "&bookmarked", script: "search.js" },
+        { title: "Tất cả", input: "cat:", script: "tag.js" },
+        { title: "Huyền huyễn", input: "cat:hh", script: "tag.js" },
+        { title: "Đô thị", input: "cat:dt", script: "tag.js" },
+        { title: "Ngôn tình", input: "cat:nt", script: "tag.js" },
+        { title: "Võng du", input: "cat:vd", script: "tag.js" },
+        { title: "Khoa học viễn tưởng", input: "cat:kh", script: "tag.js" },
+        { title: "Lịch sử", input: "cat:ls", script: "tag.js" },
+        { title: "Đồng nhân", input: "cat:dn", script: "tag.js" },
+        { title: "Dị năng", input: "cat:dna", script: "tag.js" },
+        { title: "Linh dị", input: "cat:ld", script: "tag.js" }
     ]);
 }

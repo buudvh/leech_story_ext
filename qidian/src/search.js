@@ -2,19 +2,16 @@ load('libs.js');
 load('common.js');
 
 function execute(key, page) {
-    var arrKey = key.split("&");
+    // Sắp xếp/số chương/loại/trạng thái lấy từ cấu hình; bỏ phần sau "&" của từ khoá.
+    var keyword = String(key || '').split("&")[0];
     if (!page) page = '1';
-    var sort = '';
-    if (arrKey.length == 2) {
-        sort = arrKey[1];
-    }
 
-    var url = STVHOST + '/io/searchtp/searchBooks/?findinname=' + encodeURIComponent(arrKey[0]) +
-        '&sort=' + sort + '&host=qidian&minc=0&tag=&p=' + page;
+    var url = STVHOST + '/io/searchtp/searchBooks/?findinname=' + encodeURIComponent(keyword) +
+        '&host=qidian' + buildFilterQuery() + '&tag=&p=' + page;
 
-    if (key.indexOf("find=") === 0) {
-        url = STVHOST + '/io/searchtp/searchBooks/?find=' + encodeURIComponent(arrKey[0].replace("find=", "")) +
-            '&sort=' + sort + '&host=qidian&minc=0&tag=&p=' + page;
+    if (keyword.indexOf("find=") === 0) {
+        url = STVHOST + '/io/searchtp/searchBooks/?find=' + encodeURIComponent(keyword.replace("find=", "")) +
+            '&host=qidian' + buildFilterQuery() + '&tag=&p=' + page;
     }
     var response = fetch(url);
 

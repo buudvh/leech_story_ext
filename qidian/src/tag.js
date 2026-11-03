@@ -1,22 +1,33 @@
 load('libs.js');
 load('common.js');
 
+// input: "cat:<mã thể loại>" | "tag:<slug>" | kiểu cũ "slug,&update".
 function execute(tag, page) {
+    var url = '';
     try {
-        let arrTag = tag.split("&");
         if (!page) page = '1';
-        let sort = 'update';
-        if (arrTag.length == 2) {
-            sort = arrTag[1];
+        var input = String(tag || '');
+        var category = '';
+        var slug = '';
+        if (input.indexOf('cat:') === 0) {
+            category = input.substring(4).trim();
+        } else if (input.indexOf('tag:') === 0) {
+            slug = input.substring(4).trim();
+        } else {
+            // Kiểu cũ: phần sau "&" là sắp xếp, nay lấy từ cấu hình.
+            slug = input.split('&')[0].trim().replace(/,+$/, '');
         }
-        // let url = `${STVHOST}/io/searchtp/searchBooks/?find=&tag=${arrTag[0]}&sort=${sort}&host=qidian&minc=0&p=${page}`;
-        var url = STVHOST + '/io/searchtp/searchBooks/?find=&tag=' + arrTag[0] + '&sort=' + sort + '&host=qidian&minc=0&p=' + page;
+        var tagPart = slug ? slug + ',' : '';
+
+        url = STVHOST + '/io/searchtp/searchBooks/?find=&host=qidian' + (category ? '&category=' + category : '') +
+            buildFilterQuery() + '&tag=' + tagPart + '&p=' + page;
         let response = fetch(url);
 
         if (response.ok) {
             let doc = response.html()
             let next = parseInt(page, 10) + 1;
             let el = doc.select("a.booksearch")
+            if (!el.length) return Response.success([], null);
             let data = [];
             el.forEach(e => {
                 let stv_story_link = e.select("a").first().attr("href");
