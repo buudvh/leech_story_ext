@@ -1,5 +1,9 @@
-function execute() {
-    return Response.success([
+load('libs.js');
+load('config.js');
+
+// Thể loại = từ khoá tìm soạn sẵn (search.js) rồi nhãn của trang (/newtags, 500 nhãn phổ biến — trang chỉ có bấy
+// nhiêu) cộng nhãn của danh sách cũ mà trang không có. Không tải được /newtags ⇒ dùng danh sách nhãn cũ.
+var SEARCH_GENRES = [
         { title: "诸天", input: "诸天", script: "search.js" },
         { title: "聊天群", input: "聊天群", script: "search.js" },
         { title: "万界", input: "万界", script: "search.js" },
@@ -83,7 +87,7 @@ function execute() {
         //Trung mạn
         { title: "磁场转动", input: "磁场转动", script: "search.js" }, //Từ Trường Chuyển Động
 
-        { title: "绝世武神", input: "磁场转动", script: "search.js" },
+        { title: "绝世武神", input: "绝世武神", script: "search.js" },
 
         //Anime
         { title: "宝可梦", input: "宝可梦", script: "search.js" }, //Pokemon
@@ -103,7 +107,9 @@ function execute() {
         { title: "鬼灭之刃", input: "鬼灭之刃", script: "search.js" }, //Kimetsu no Yaiba
         { title: "美食", input: "美食", script: "search.js" }, //Toriko
         { title: "柯南", input: "柯南", script: "search.js" }, //Conan
+];
 
+var FALLBACK_TAGS = [
         {"title": "系统", "input": "/newtag/系統/{0}", "script": "tag.js"},
         {"title": "穿越", "input": "/newtag/穿越/{0}", "script": "tag.js"},
         {"title": "重生", "input": "/newtag/重生/{0}", "script": "tag.js"},
@@ -216,5 +222,36 @@ function execute() {
         {"title": "皇朝", "input": "/newtag/皇朝/{0}", "script": "tag.js"},
         {"title": "王爷", "input": "/newtag/王爺/{0}", "script": "tag.js"},
         {"title": "英雄", "input": "/newtag/英雄/{0}", "script": "tag.js"}
-    ]);
+];
+
+function execute() {
+    var data = SEARCH_GENRES.slice();
+    var seen = {};
+    newTags().forEach(function (tag) {
+        if (seen[tag.input]) return;
+        seen[tag.input] = true;
+        data.push(tag);
+    });
+    FALLBACK_TAGS.forEach(function (tag) {
+        if (seen[tag.input]) return;
+        seen[tag.input] = true;
+        data.push(tag);
+    });
+    return Response.success(data);
+}
+
+function newTags() {
+    try {
+        var response = crawler.get(BASE_URL + '/newtags');
+        if (!response.ok) return [];
+        var tags = [];
+        response.html().select('div.tag a[href*=/newtag/]').forEach(function (a) {
+            var name = a.text().trim();
+            if (!name) return;
+            tags.push({ title: name.convertT2S(), input: '/newtag/' + name + '/{0}', script: 'tag.js' });
+        });
+        return tags;
+    } catch (error) {
+        return [];
+    }
 }

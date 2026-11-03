@@ -1,10 +1,12 @@
 load('libs.js');
 load('config.js');
 
-function execute(url, page) {
+// Danh sách truyện: tab 最近更新 ("update"), tab phân loại ("class:<mã>", theo bộ lọc) và URL kiểu cũ.
+function execute(input, page) {
+    var url;
     try {
         page = page || '1';
-        url = String.format(BASE_URL + url, page);
+        url = listUrl(String(input || ''), page);
         var response = crawler.get(url);
 
         if (!response.ok) throw new Error(`Status ${response.status}`)
@@ -12,10 +14,10 @@ function execute(url, page) {
         var doc = response.html();
         var elms = doc.select("#article_list_content > li");
 
-        if (!elms.length) throw new Error("Length = 0");
-
         var data = [];
         elms.forEach(function (e) {
+            // Quá trang cuối trang vẫn trả một <li> trống ⇒ chỉ tính mục có link.
+            if (!e.select("div.newnav > h3 > a").first().attr("href")) return;
             data.push({
                 name: e.select("div.newnav > h3 > a").first().text().convertT2S() || e.select("div.newnav > h3 > a:nth-child(2)").first().text().convertT2S(),
                 link: e.select("div.newnav > h3 > a").first().attr("href"),
@@ -26,8 +28,8 @@ function execute(url, page) {
             });
         });
 
-        var next = parseInt(page, 10) + 1;
-        return Response.success(data, next.toString());
+        // Hết trang ⇒ danh sách rỗng, không báo lỗi (app hiện "Đã hết").
+        return Response.success(data, nextPageOf(doc, page, data.length));
     } catch (error) {
         return Response.error(`Url ${url} \nMessage: ${error.message}`);
     }

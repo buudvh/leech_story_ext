@@ -2,10 +2,10 @@
   "metadata": {
     "name": "sto9.com",
     "author": "HuongMT",
-    "version": 4,
+    "version": 5,
     "source": "https://sto9.com",
     "regexp": "^https?://sto9\\.com/book/\\d+\\.html$",
-    "description": "Đọc truyện trên trang sto9.com",
+    "description": "Đọc truyện trên trang sto9.com. Home: 最近更新 + 11 phân loại; bộ lọc (phân loại 最近更新, sắp xếp, trạng thái) ở mục Cấu hình",
     "locale": "zh_CN",
     "language": "javascript",
     "type": "chinese_novel"
@@ -19,6 +19,30 @@
     "search": "search.js"
   },
   "config": {
+    "FILTER_UPDATE_CLASS": {
+      "title": "Phân loại 最近更新",
+      "subtitle": "Chỉ áp cho tab 最近更新",
+      "mode": "select",
+      "format": "single",
+      "values": ["全部分類", "玄幻奇幻", "武俠仙俠", "現代都市", "歷史軍事", "科幻小說", "遊戲競技", "恐怖靈異", "言情小說", "動漫同人", "其他類型"],
+      "default": "全部分類"
+    },
+    "FILTER_SORT": {
+      "title": "Sắp xếp",
+      "subtitle": "Áp cho các tab phân loại (trừ 最近更新). Tên theo tiêu đề trang của sto9",
+      "mode": "select",
+      "format": "single",
+      "values": ["人氣 (周點擊榜)", "推薦 (總推薦榜)", "新書 (新書榜)", "日點擊榜", "月點擊榜", "總點擊榜", "收藏榜", "最新入庫", "最近更新"],
+      "default": "人氣 (周點擊榜)"
+    },
+    "FILTER_STATUS": {
+      "title": "Trạng thái",
+      "subtitle": "新書 + 全本 trang không có dữ liệu nên dùng 最新入庫 + 全本",
+      "mode": "select",
+      "format": "single",
+      "values": ["不限", "全本"],
+      "default": "不限"
+    },
     "BASE_URL": {
       "title": "Config url",
       "mode": "input",
