@@ -6,7 +6,7 @@ function execute() {
         {"title":"Chư Thiên Vô Hạn","input":"tag:chuthienvohan","script":"tag.js"},
         {"title":"Vô Hạn Lưu","input":"tag:vohanluu","script":"tag.js"},
         {"title":"Chư Thiên","input":"tag:chuthien","script":"tag.js"},
-        {"title":"Chư Thiên Lưu","input":"tag:chuthienluu","script":"tag.js"}
+        {"title":"Chư Thiên Lưu","input":"tag:chuthienluu","script":"tag.js"},
         { title: "Huyền huyễn", input: "cat:hh", script: "tag.js" },
         { title: "Đô thị", input: "cat:dt", script: "tag.js" },
         { title: "Ngôn tình", input: "cat:nt", script: "tag.js" },
