@@ -134,7 +134,7 @@
       "name": "qidian",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian/qidian.zip",
-      "version": 25,
+      "version": 26,
       "source": "https://sangtacviet.app/search/?find=&host=qidian&minc=0&sort=update&tag=",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian/icon.png",
       "description": "Đọc truyện trên trang https://www.qidian.com (chap miễn phí)"
@@ -260,26 +260,6 @@
       "type": "tts"
     },
     {
-      "name": "Local TTS",
-      "author": "HuongMT",
-      "version": 3,
-      "source": "http://127.0.0.1:17771",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/local.tts/local.tts.zip",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/local.tts/icon.png",
-      "description": "Nghe truyện bằng Local TTS (iPhone/máy chủ nội bộ)",
-      "type": "tts"
-    },
-    {
-      "name": "VieNeu-TTS",
-      "author": "HuongMT",
-      "version": 1,
-      "source": "http://127.0.0.1:23333",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/vieneu.tts/vieneu.tts.zip",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/vieneu.tts/icon.png",
-      "description": "Nghe truyện bằng VieNeu-TTS (máy chủ cục bộ/từ xa)",
-      "type": "tts"
-    },
-    {
       "name": "sudugu",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/sudugu/sudugu.zip",
@@ -306,78 +286,6 @@
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/youtube/icon.png",
       "description": "Xem video, danh sách phát, kênh và phát trực tiếp trên YouTube",
       "type": "video"
-    },
-    {
-      "name": "heiyan.com",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/heiyan/heiyan.zip",
-      "version": 1,
-      "source": "https://www.heiyan.com",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/heiyan/icon.png",
-      "description": "Đọc truyện trên trang heiyan.com (黑岩), chỉ chương miễn phí"
-    },
-    {
-      "name": "tadu.com",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/tadu/tadu.zip",
-      "version": 1,
-      "source": "https://m.tadu.com",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/tadu/icon.png",
-      "description": "Đọc truyện trên trang tadu.com (塔读), chỉ chương miễn phí (bản web chưa đăng nhập chỉ mở 30 chương đầu)"
-    },
-    {
-      "name": "ciyuanji.com",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ciyuanji/ciyuanji.zip",
-      "version": 1,
-      "source": "https://www.ciyuanji.com",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/ciyuanji/icon.png",
-      "description": "Đọc truyện trên trang ciyuanji.com (次元姬), chỉ chương miễn phí"
-    },
-    {
-      "name": "bkneng.com",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/bkneng/bkneng.zip",
-      "version": 1,
-      "source": "https://www.bkneng.com",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/bkneng/icon.png",
-      "description": "Đọc truyện trên trang bkneng.com (不可能的世界), chỉ chương miễn phí; trang đã tắt tìm kiếm nên chỉ tìm trong các danh sách đề cử hoặc theo id/link truyện"
-    },
-    {
-      "name": "yueyouxs.com",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/yueyou/yueyou.zip",
-      "version": 1,
-      "source": "https://sma.yueyouxs.com",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/yueyou/icon.png",
-      "description": "Đọc truyện trên trang yueyouxs.com (阅友小说, miễn phí nhờ quảng cáo), chỉ chương miễn phí; tự lọc truyện thu phí/đã gỡ"
-    },
-    {
-      "name": "midukanshu.com",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/midu/midu.zip",
-      "version": 1,
-      "source": "https://www.midureader.com",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/midu/icon.png",
-      "description": "Đọc truyện trên 米读小说 (midukanshu.com), nền tảng miễn phí sống nhờ quảng cáo, chỉ chương miễn phí (đã lọc chương quảng cáo và dọn rác trong chương)"
-    },
-    {
-      "name": "fengduxiaoshuo.com",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/fengdu/fengdu.zip",
-      "version": 1,
-      "source": "https://www.fengduxiaoshuo.com",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/fengdu/icon.png",
-      "description": "Đọc truyện trên 疯读小说 (fengduxiaoshuo.com, nền tảng miễn phí có quảng cáo của 触宝), chỉ chương miễn phí: mọi chương đều đọc được, không có chương VIP"
-    },
-    {
-      "name": "mowan.lol",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/mowan/mowan.zip",
-      "version": 2,
-      "source": "https://www.mowan.lol",
-      "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/mowan/icon.png",
-      "description": "Đọc truyện chữ trên 魔丸小说 (mowan.lol, trang gom nhiều nguồn), chỉ chương miễn phí. Trang bắt buộc đăng nhập: lần đầu tiện ích tự mở cửa sổ trình duyệt để bạn tự đăng nhập (dùng chung phiên với trình duyệt trong app). Gói miễn phí: 1 thiết bị, 200 chương/ngày mỗi nguồn"
     }
   ]
 }
