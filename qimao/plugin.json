@@ -2,7 +2,7 @@
   "metadata": {
     "name": "qimao.com",
     "author": "HuongMT",
-    "version": 3,
+    "version": 4,
     "source": "https://www.qimao.com",
     "regexp": "^(https?://)?(www\\.|m\\.)?qimao\\.com/shuku/\\d+/?$",
     "description": "Đọc truyện trên 七猫小说 (qimao.com, miễn phí). Tab đầu là bảng xếp hạng theo kênh (bảng theo năm tự chọn năm hiện tại), các tab sau là phân loại tác phẩm. Bộ lọc kênh, số chữ, thời gian cập nhật, tình trạng, sắp xếp ở mục Cấu hình",

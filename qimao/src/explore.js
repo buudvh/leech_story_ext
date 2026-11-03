@@ -2,17 +2,21 @@ load('crypto.js');
 load('config.js');
 load('boards.js');
 
-// Tab BXH: mỗi bảng xếp hạng một section `ranking` (5 truyện, "Xem thêm" mở đủ bảng qua rank.js).
-// Theo kênh đang lọc: một kênh ⇒ đủ bảng của kênh đó; Tất cả ⇒ bảng chính của từng kênh + 原创风云榜.
-var TOP_ITEMS = 5;
-
+// Tab BXH: mỗi bảng xếp hạng một hàng ngang `horizontal_list` (cả trang đầu của bảng, "Xem thêm" mở đủ bảng qua
+// rank.js). Theo kênh đang lọc: một kênh ⇒ đủ bảng của kênh đó; Tất cả ⇒ bảng chính của từng kênh + 原创风云榜.
 function rankingSection(id, title, items, input) {
+    // App không lọc giúp mục của explore: bỏ mục không tên và trùng link.
+    var seen = {};
     return {
         id: id,
         title: title,
         subtitle: '',
-        type: 'ranking',
-        items: items.slice(0, TOP_ITEMS),
+        type: 'horizontal_list',
+        items: items.filter(function (item) {
+            if (!item || !item.name || seen[item.link]) return false;
+            seen[item.link] = true;
+            return true;
+        }),
         more: { type: 'list', name: title, script: 'rank.js', input: input }
     };
 }

@@ -2,7 +2,7 @@
   "metadata": {
     "name": "sto9.com",
     "author": "HuongMT",
-    "version": 5,
+    "version": 6,
     "source": "https://sto9.com",
     "regexp": "^https?://sto9\\.com/book/\\d+\\.html$",
     "description": "Đọc truyện trên trang sto9.com. Home: 最近更新 + 11 phân loại; bộ lọc (phân loại 最近更新, sắp xếp, trạng thái) ở mục Cấu hình",
@@ -11,6 +11,7 @@
     "type": "chinese_novel"
   },
   "script": {
+    "explore": "explore.js",
     "home": "home.js",
     "detail": "detail.js",
     "toc": "toc.js",

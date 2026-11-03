@@ -58,7 +58,37 @@ function listUrl(input, page) {
         if (sort === 'newhot' && full === '1') sort = 'postdate';
         return BASE_URL + '/novels/' + sort + '_' + match[1] + '_' + full + '_' + page + '.html';
     }
+    // "rank:<kiểu>": một bảng xếp hạng của Trang chủ (explore) — 全部分類, kiểu cố định, Trạng thái theo cấu hình.
+    match = /^rank:([a-z]+)$/.exec(input);
+    if (match) {
+        return BASE_URL + '/novels/' + match[1] + '_0_' + (configText('FILTER_STATUS') === '全本' ? '1' : '0') + '_' + page + '.html';
+    }
     return String.format(BASE_URL + input, page);
+}
+
+// Bảng xếp hạng của Trang chủ (explore.js): tên theo tiêu đề trang của sto9 + kiểu URL. Bỏ 新書 (nút 連載 của trang trỏ
+// tới đây), 最新入庫, 最近更新 (không phải bảng xếp hạng lượt đọc).
+var RANKINGS = [
+    ['人氣 (周點擊榜)', 'weekvisit'], ['推薦 (總推薦榜)', 'allvote'], ['日點擊榜', 'dayvisit'], ['月點擊榜', 'monthvisit'],
+    ['總點擊榜', 'allvisit'], ['收藏榜', 'goodnum']
+];
+
+// Danh sách truyện của trang danh mục / xếp hạng (#article_list_content). Dùng chung cho gen.js và explore.js.
+function parseNovelList(doc) {
+    var data = [];
+    doc.select("#article_list_content > li").forEach(function (e) {
+        // Quá trang cuối trang vẫn trả một <li> trống ⇒ chỉ tính mục có link.
+        if (!e.select("div.newnav > h3 > a").first().attr("href")) return;
+        data.push({
+            name: e.select("div.newnav > h3 > a").first().text().convertT2S() || e.select("div.newnav > h3 > a:nth-child(2)").first().text().convertT2S(),
+            link: e.select("div.newnav > h3 > a").first().attr("href"),
+            cover: e.select("a > img").first().attr("data-src") || DEFAULT_COVER,
+            description: e.select("div.newnav > div.labelbox > label:nth-child(1) > a").first().text().convertT2S()
+                + "\n" + e.select("div.newnav > ol").first().text().convertT2S(),
+            host: BASE_URL
+        });
+    });
+    return data;
 }
 
 // Trang kế: hết truyện ⇒ không còn. Nút ">>" trỏ tới trang hiện tại + 10 (tối đa là trang cuối) ⇒ trang hiện tại

@@ -2,7 +2,7 @@
   "metadata": {
     "name": "14.225.254.182",
     "author": "HuongMT",
-    "version": 24,
+    "version": 25,
     "source": "http://14.225.254.182",
     "regexp": "^https?://(?:14\\.225\\.254\\.182|sangtacviet\\.(?:vip|me|com|app))/.*$",
     "description": "Đọc truyện trên SangTacViet, hỗ trợ Home, thể loại và chương tải động bằng WebView",
@@ -11,6 +11,7 @@
     "type": "chinese_novel"
   },
   "script": {
+    "explore": "explore.js",
     "home": "home.js",
     "genre": "genre.js",
     "search": "search.js",
