@@ -2,49 +2,9 @@ load('crypto.js');
 load('config.js');
 
 // Bình luận (API app, cùng chữ ký, không cần đăng nhập). input: '{"bookId":"…","sort":"0|1"}' (0 nổi bật, 1 mới nhất).
-// App chỉ hiện tên · mô tả · nội dung nên phản hồi được gộp vào cuối nội dung, theo cấu hình COMMENT_MODE.
+// Trả lời không tải ở đây — mỗi bình luận một lượt gọi làm trang đầu mất ~30 s. Bình luận có trả lời khai `reply_count`
+// + `reply_source` ⇒ app gọi reply.js khi người dùng bấm "N trả lời".
 var RATING_NAMES = { '1': '好看', '2': '一般', '3': '不好看' };
-var REPLY_PAGE_SIZE = 20;
-// "Tất cả phản hồi": chặn an toàn số lượt gọi cho một bình luận (500 phản hồi).
-var REPLY_MAX_ROUNDS = 25;
-
-function commentText(item) {
-    var text = String(item.content || '').trim();
-    if (!text && item.comment_pic) text = '[Ảnh]';
-    return escapeHtml(text).replace(/\r\n|\r|\n/g, '<br>');
-}
-
-function loadReplies(bookId, comment, mode) {
-    var total = parseInt(comment.reply_count, 10) || 0;
-    if (mode === 'off' || !total || !comment.comment_id) return [];
-    var lines = [];
-    var cursor = '';
-    var seen = {};
-    for (var round = 0; round < (mode === 'all' ? REPLY_MAX_ROUNDS : 1); round++) {
-        var data;
-        try {
-            data = fetchApp(APP_CMNT, '/api/v1/comment/detail', {
-                book_id: String(bookId), comment_id: String(comment.comment_id), next_id: cursor, size: String(REPLY_PAGE_SIZE)
-            });
-        } catch (error) {
-            break;
-        }
-        var rows = data.reply_list || [];
-        rows.forEach(function (r) {
-            if (!r || seen[r.comment_id]) return;
-            seen[r.comment_id] = true;
-            var user = r.user_info || {};
-            var target = (r.reference || {}).nickname;
-            lines.push('↳ ' + escapeHtml(cleanText(user.nickname || r.nickname || '读者')) +
-                (target ? ' ▸ ' + escapeHtml(cleanText(target)) : '') + ': ' + commentText(r));
-        });
-        var next = String(data.next_id || '');
-        if (!rows.length || !next || next === cursor) break;
-        cursor = next;
-    }
-    if (lines.length && total > lines.length) lines.push('… còn ' + (total - lines.length) + ' trả lời');
-    return lines;
-}
 
 function execute(input, page) {
     var options;
@@ -55,8 +15,7 @@ function execute(input, page) {
     }
     var bookId = parseBookId(String(options.bookId || ''));
     if (!bookId) return Response.error('Thiếu id truyện cho bình luận');
-    var mode = commentMode();
-    if (mode === 'off') return Response.success([], '');
+    if (commentMode() === 'off') return Response.success([], '');
     var cursor = String(page || '');
     try {
         var params = { book_id: bookId, circle_id: bookId, need_common: '0', sort: options.sort === '1' ? '1' : '0', tag_id: '1' };
@@ -68,18 +27,26 @@ function execute(input, page) {
             if (!item) return;
             var content = commentText(item);
             if (!content) return;
-            var replies = loadReplies(bookId, item, mode);
             var user = item.user_info || {};
-            comments.push({
+            var comment = {
                 name: cleanText(user.nickname || item.nickname || '读者'),
+                avatar: String(user.avatar || item.avatar || ''),
                 description: joinInfo([
                     RATING_NAMES[String(item.eval_rating)],
                     parseInt(item.like_count, 10) ? '👍 ' + item.like_count : '',
-                    parseInt(item.reply_count, 10) ? '💬 ' + item.reply_count : '',
                     item.comment_time
                 ]),
-                content: content + (replies.length ? '<br>——<br>' + replies.join('<br>') : '')
-            });
+                content: content
+            };
+            var replyCount = parseInt(item.reply_count, 10) || 0;
+            if (replyCount > 0 && item.comment_id) {
+                comment.reply_count = replyCount;
+                comment.reply_source = {
+                    input: JSON.stringify({ bookId: bookId, commentId: String(item.comment_id) }),
+                    script: 'reply.js'
+                };
+            }
+            comments.push(comment);
         });
         var next = String(data.next_id || '');
         if (!rows.length || next === cursor) next = '';

@@ -2,7 +2,7 @@
   "metadata": {
     "name": "qimao.com",
     "author": "HuongMT",
-    "version": 2,
+    "version": 3,
     "source": "https://www.qimao.com",
     "regexp": "^(https?://)?(www\\.|m\\.)?qimao\\.com/shuku/\\d+/?$",
     "description": "Đọc truyện trên 七猫小说 (qimao.com, miễn phí). Tab đầu là bảng xếp hạng theo kênh (bảng theo năm tự chọn năm hiện tại), các tab sau là phân loại tác phẩm. Bộ lọc kênh, số chữ, thời gian cập nhật, tình trạng, sắp xếp ở mục Cấu hình",
@@ -60,11 +60,11 @@
     },
     "COMMENT_MODE": {
       "title": "Hiển thị bình luận",
-      "subtitle": "Tải tất cả phản hồi có thể chậm; tải lại trang chi tiết sau khi đổi",
+      "subtitle": "Trả lời tải khi bấm \"N trả lời\"; tải lại trang chi tiết sau khi đổi",
       "mode": "select",
       "format": "single",
-      "values": ["Tắt bình luận", "Tối đa 20 phản hồi mỗi bình luận", "Tất cả phản hồi"],
-      "default": "Tối đa 20 phản hồi mỗi bình luận"
+      "values": ["Bật bình luận", "Tắt bình luận"],
+      "default": "Bật bình luận"
     }
   }
 }

@@ -48,12 +48,18 @@ function readFilters() {
     };
 }
 
-// Cấu hình bình luận (COMMENT_MODE) -> 'off' | '20' (tối đa 20 phản hồi mỗi bình luận) | 'all'.
-var COMMENT_MODES = { 'Tắt bình luận': 'off', 'Tối đa 20 phản hồi mỗi bình luận': '20', 'Tất cả phản hồi': 'all' };
-
+// Cấu hình bình luận (COMMENT_MODE) -> 'off' | 'on'. Giá trị của v2 ("Tối đa 20 phản hồi…", "Tất cả phản hồi") = bật:
+// từ v3 trả lời tải khi bấm (reply.js), không còn giới hạn số phản hồi.
 function commentMode() {
     var key = (typeof COMMENT_MODE !== 'undefined' && COMMENT_MODE != null ? String(COMMENT_MODE) : '').trim();
-    return Object.prototype.hasOwnProperty.call(COMMENT_MODES, key) ? COMMENT_MODES[key] : '20';
+    return key === 'Tắt bình luận' ? 'off' : 'on';
+}
+
+// Nội dung một bình luận / trả lời của API app: thoát HTML, xuống dòng -> <br>, ảnh không chữ -> "[Ảnh]".
+function commentText(item) {
+    var text = String(item.content || '').trim();
+    if (!text && (item.comment_pic || item.pic_info)) text = '[Ảnh]';
+    return escapeHtml(text).replace(/\r\n|\r|\n/g, '<br>');
 }
 
 // ---- Gọi API ----
