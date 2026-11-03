@@ -1,7 +1,9 @@
 load('config.js');
 
-// Tab Review: truyện có bài review, một truyện mỗi bài, bỏ trùng trong trang (mỗi bài có hai bản HTML: điện thoại và
-// máy tính). Trang chỉ lọc theo giới tính (`cat`, chung ô Giới tính) và xếp Mới nhất / Cũ nhất (ô Xếp review).
+// Tab Review: truyện có bài review, một mục mỗi bài (mỗi bài có hai bản HTML: điện thoại và máy tính ⇒ lấy bản đầu).
+// Không tự bỏ truyện trùng: app tự lọc trùng khi hiện, còn đếm số mục thô của trang (< 10 ⇒ coi như hết trang) nên
+// bỏ trùng ở đây làm trang 10 bài còn 9 mục là dừng. Trang chỉ lọc theo giới tính (`cat`, chung ô Giới tính) và xếp
+// Mới nhất / Cũ nhất (ô Xếp review).
 function execute(url, page) {
     if (!page) page = '0';
     url = String(url || '/review');
@@ -18,14 +20,12 @@ function execute(url, page) {
     var doc = result.doc;
 
     var data = [];
-    var seen = {};
     doc.select('#commentList > .review-group').forEach(function (group) {
         var items = group.select('.book-item');
         if (items.size() === 0) return;
         var e = items.get(0);
         var link = e.select('a.book-cover').attr('href') || e.select('a.book-title').attr('href');
-        if (!link || seen[link]) return;
-        seen[link] = true;
+        if (!link) return;
         data.push({
             name: e.select('.book-title').text(),
             link: link,
