@@ -4,6 +4,7 @@ var BASE_URL = 'https://www.qimao.com';
 var WEB_API = BASE_URL + '/qimaoapi/api';
 var APP_BC = 'https://api-bc.wtzw.com';
 var APP_KS = 'https://api-ks.wtzw.com';
+var APP_CMNT = 'https://api-cmnt.wtzw.com';
 var SIGN_KEY = 'd3dGiJc651gSQ8w1';
 var CHAPTER_KEY = '242ccb8230d709e1';
 var IMEI_IP = '2937357107';
@@ -45,6 +46,14 @@ function readFilters() {
         status: filterCode('status', typeof FILTER_STATUS !== 'undefined' ? FILTER_STATUS : ''),
         sort: filterCode('sort', typeof FILTER_SORT !== 'undefined' ? FILTER_SORT : '')
     };
+}
+
+// Cấu hình bình luận (COMMENT_MODE) -> 'off' | '20' (tối đa 20 phản hồi mỗi bình luận) | 'all'.
+var COMMENT_MODES = { 'Tắt bình luận': 'off', 'Tối đa 20 phản hồi mỗi bình luận': '20', 'Tất cả phản hồi': 'all' };
+
+function commentMode() {
+    var key = (typeof COMMENT_MODE !== 'undefined' && COMMENT_MODE != null ? String(COMMENT_MODE) : '').trim();
+    return Object.prototype.hasOwnProperty.call(COMMENT_MODES, key) ? COMMENT_MODES[key] : '20';
 }
 
 // ---- Gọi API ----

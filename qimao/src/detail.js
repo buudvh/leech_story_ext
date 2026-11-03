@@ -83,8 +83,10 @@ function execute(url) {
             book.alias_title ? '别名: ' + cleanText(book.alias_title) : ''
         ].filter(function (x) { return x; }).map(escapeHtml).join('<br>');
         var description = String(book.intro || '').split(/\r?\n/).map(cleanText).filter(function (x) { return x; }).map(escapeHtml).join('<br>');
-
-        return Response.success({
+        var commentSource = function (title, sort) {
+            return { title: title, input: JSON.stringify({ bookId: bookId, sort: sort }), script: 'comment.js' };
+        };
+        var result = {
             name: cleanText(book.title),
             cover: coverOf(book.image_link || book.thumb_image_link),
             author: author || '佚名',
@@ -95,7 +97,13 @@ function execute(url) {
             host: BASE_URL,
             genres: buildGenres(book),
             suggests: buildSuggests(data, author)
-        });
+        };
+        // Tắt bình luận ⇒ không khai nguồn nào (màn chi tiết không gọi comment.js).
+        if (commentMode() !== 'off') {
+            result.comment = commentSource('Bình luận nổi bật', '0');
+            result.comments = [commentSource('Bình luận mới nhất', '1')];
+        }
+        return Response.success(result);
     } catch (error) {
         return Response.error('Qimao: ' + error.message + '\nUrl: ' + url);
     }
