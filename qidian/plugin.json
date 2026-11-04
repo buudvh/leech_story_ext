@@ -2,7 +2,7 @@
   "metadata": {
     "name": "qidian",
     "author": "HuongMT",
-    "version": 28,
+    "version": 29,
     "source": "http://14.225.254.182/search/?find=&host=qidian&minc=0&sort=update&tag=",
     "regexp": "((https?://(sangtacviet.*?|14\\.225\\.254\\.182|103\\.82\\.20\\.93)/truyen/qidian/\\d+/\\d+.*?)|(https?://(www|m|book)\\.qidian\\.com/(info|book)/\\d+.*?))",
     "description": "Đọc các chương miễn phí qidian, lấy các thông tin trên stv",
@@ -20,6 +20,22 @@
     "genre": "genre.js"
   },
   "config": {
+    "EXPLORE_RANK": {
+      "title": "Bảng xếp hạng Trang chủ",
+      "subtitle": "Bảng hiện ở tab Trang chủ; các bảng còn lại thành chip",
+      "mode": "select",
+      "format": "single",
+      "values": ["Lượt đọc tổng", "Lượt đọc tuần", "Lượt đọc ngày", "Lượt thích", "Lượt theo dõi", "Lượt đánh dấu", "Đề cử"],
+      "default": "Lượt đọc tuần"
+    },
+    "EXPLORE_LAYOUT": {
+      "title": "Kiểu hiển thị bảng",
+      "subtitle": "Chỉ áp cho tab Trang chủ",
+      "mode": "select",
+      "format": "single",
+      "values": ["Xếp hạng (đánh số)", "Danh sách", "Lưới", "Hàng ngang"],
+      "default": "Xếp hạng (đánh số)"
+    },
     "FILTER_SORT": {
       "title": "Sắp xếp",
       "mode": "select",

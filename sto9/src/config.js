@@ -18,11 +18,13 @@ var CLASSES = [
     ['遊戲競技', '6'], ['恐怖靈異', '7'], ['言情小說', '8'], ['動漫同人', '9'], ['其他類型', '10']
 ];
 
-// Kiểu sắp xếp của bảng xếp hạng: /novels/<kiểu>_<phân loại>_<0|1 全本>_<trang>.html. Tên lấy theo tiêu đề trang của sto9;
-// chỉ 人氣 / 推薦 / 新書 có nút trên trang, các kiểu khác là trang ẩn cùng mẫu URL.
+// Kiểu sắp xếp của bảng xếp hạng: /novels/<kiểu>_<phân loại>_<0|1 全本>_<trang>.html. Tên theo trang sto9 (nút 人氣 /
+// 推薦 / 新書, các kiểu khác là trang ẩn cùng mẫu URL, tên lấy theo tiêu đề trang).
 var SORTS = {
-    '人氣 (周點擊榜)': 'weekvisit', '推薦 (總推薦榜)': 'allvote', '新書 (新書榜)': 'newhot', '日點擊榜': 'dayvisit',
-    '月點擊榜': 'monthvisit', '總點擊榜': 'allvisit', '收藏榜': 'goodnum', '最新入庫': 'postdate', '最近更新': 'lastupdate'
+    '人氣': 'weekvisit', '推薦': 'allvote', '新書': 'newhot', '日點擊榜': 'dayvisit', '月點擊榜': 'monthvisit',
+    '總點擊榜': 'allvisit', '收藏榜': 'goodnum', '最新入庫': 'postdate', '最近更新': 'lastupdate',
+    // Tên của v5–v6 (có ngoặc) — cấu hình đã lưu vẫn hiểu đúng.
+    '人氣 (周點擊榜)': 'weekvisit', '推薦 (總推薦榜)': 'allvote', '新書 (新書榜)': 'newhot'
 };
 
 function configText(name) {
@@ -31,6 +33,8 @@ function configText(name) {
         if (name === 'FILTER_UPDATE_CLASS' && typeof FILTER_UPDATE_CLASS !== 'undefined') value = FILTER_UPDATE_CLASS;
         else if (name === 'FILTER_SORT' && typeof FILTER_SORT !== 'undefined') value = FILTER_SORT;
         else if (name === 'FILTER_STATUS' && typeof FILTER_STATUS !== 'undefined') value = FILTER_STATUS;
+        else if (name === 'EXPLORE_RANK' && typeof EXPLORE_RANK !== 'undefined') value = EXPLORE_RANK;
+        else if (name === 'EXPLORE_LAYOUT' && typeof EXPLORE_LAYOUT !== 'undefined') value = EXPLORE_LAYOUT;
     } catch (e) {}
     return value == null ? '' : String(value).trim();
 }
@@ -66,12 +70,15 @@ function listUrl(input, page) {
     return String.format(BASE_URL + input, page);
 }
 
-// Bảng xếp hạng của Trang chủ (explore.js): tên theo tiêu đề trang của sto9 + kiểu URL. Bỏ 新書 (nút 連載 của trang trỏ
-// tới đây), 最新入庫, 最近更新 (không phải bảng xếp hạng lượt đọc).
+// Bảng xếp hạng của Trang chủ (explore.js, ô EXPLORE_RANK): tên như trang sto9 + kiểu URL. Bỏ 新書 (nút 連載 của trang
+// trỏ tới đây), 最新入庫, 最近更新 (không phải bảng xếp hạng lượt đọc).
 var RANKINGS = [
-    ['人氣 (周點擊榜)', 'weekvisit'], ['推薦 (總推薦榜)', 'allvote'], ['日點擊榜', 'dayvisit'], ['月點擊榜', 'monthvisit'],
+    ['人氣', 'weekvisit'], ['推薦', 'allvote'], ['日點擊榜', 'dayvisit'], ['月點擊榜', 'monthvisit'],
     ['總點擊榜', 'allvisit'], ['收藏榜', 'goodnum']
 ];
+
+// Kiểu hiển thị bảng của Trang chủ (ô EXPLORE_LAYOUT) -> `type` của section.
+var EXPLORE_LAYOUTS = { 'Xếp hạng (đánh số)': 'ranking', 'Danh sách': 'list', 'Lưới': 'grid', 'Hàng ngang': 'horizontal_list' };
 
 // Danh sách truyện của trang danh mục / xếp hạng (#article_list_content). Dùng chung cho gen.js và explore.js.
 function parseNovelList(doc) {

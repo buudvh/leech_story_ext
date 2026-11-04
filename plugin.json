@@ -8,7 +8,7 @@
       "name": "sto9.com",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/sto9/sto9.zip",
-      "version": 6,
+      "version": 7,
       "source": "https://sto9.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/sto9/icon.png",
       "description": "Đọc truyện trên trang sto9.com"
@@ -134,7 +134,7 @@
       "name": "qidian",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian/qidian.zip",
-      "version": 28,
+      "version": 29,
       "source": "https://sangtacviet.app/search/?find=&host=qidian&minc=0&sort=update&tag=",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qidian/icon.png",
       "description": "Đọc truyện trên trang https://www.qidian.com (chap miễn phí)"
@@ -272,7 +272,7 @@
       "name": "14.225.254.182",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/14.225.254.182/14.225.254.182.zip",
-      "version": 25,
+      "version": 26,
       "source": "http://14.225.254.182",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/14.225.254.182/icon.png",
       "description": "Đọc truyện trên SangTacViet, hỗ trợ Home, thể loại và chương tải động bằng WebView"
@@ -291,7 +291,7 @@
       "name": "qimao.com",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qimao/qimao.zip",
-      "version": 4,
+      "version": 5,
       "source": "https://www.qimao.com",
       "icon": "https://raw.githubusercontent.com/buudvh/leech_story_ext/main/qimao/icon.png",
       "description": "Đọc truyện trên 七猫小说 (qimao.com, miễn phí): bảng xếp hạng theo kênh, phân loại tác phẩm, bộ lọc kênh/số chữ/cập nhật/tình trạng/sắp xếp"

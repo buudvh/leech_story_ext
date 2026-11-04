@@ -2,7 +2,7 @@
   "metadata": {
     "name": "qimao.com",
     "author": "HuongMT",
-    "version": 4,
+    "version": 5,
     "source": "https://www.qimao.com",
     "regexp": "^(https?://)?(www\\.|m\\.)?qimao\\.com/shuku/\\d+/?$",
     "description": "Đọc truyện trên 七猫小说 (qimao.com, miễn phí). Tab đầu là bảng xếp hạng theo kênh (bảng theo năm tự chọn năm hiện tại), các tab sau là phân loại tác phẩm. Bộ lọc kênh, số chữ, thời gian cập nhật, tình trạng, sắp xếp ở mục Cấu hình",
@@ -20,6 +20,22 @@
     "chap": "chap.js"
   },
   "config": {
+    "EXPLORE_BOARD": {
+      "title": "Bảng xếp hạng Trang chủ",
+      "subtitle": "Bảng hiện ở tab Trang chủ; các bảng còn lại thành chip. Không theo ô Kênh",
+      "mode": "select",
+      "format": "single",
+      "values": ["男频 · 必读榜", "男频 · 推荐榜", "男频 · 大热榜 · 日榜", "男频 · 大热榜 · 月榜", "男频 · 匠心榜", "男频 · 新书榜 · 日榜", "男频 · 新书榜 · 月榜", "男频 · 完结榜 · 新完结", "男频 · 完结榜 · 全部", "男频 · 飙升榜", "男频 · 好评榜", "男频 · 热搜榜 · 日榜", "男频 · 热搜榜 · 月榜", "男频 · 礼物榜", "男频 · 投票榜 · 日榜", "男频 · 投票榜 · 月榜", "女频 · 必读榜", "女频 · 推荐榜", "女频 · 大热榜 · 日榜", "女频 · 大热榜 · 月榜", "女频 · 匠心榜", "女频 · 新书榜 · 日榜", "女频 · 新书榜 · 月榜", "女频 · 完结榜 · 新完结", "女频 · 完结榜 · 全部", "女频 · 飙升榜", "女频 · 好评榜", "女频 · 热搜榜 · 日榜", "女频 · 热搜榜 · 月榜", "女频 · 礼物榜", "女频 · 投票榜 · 日榜", "女频 · 投票榜 · 月榜", "出版 · 推荐榜", "出版 · 大热榜 · 日榜", "出版 · 大热榜 · 月榜", "出版 · 影视榜", "出版 · 好评榜", "出版 · 热搜榜 · 日榜", "出版 · 热搜榜 · 月榜", "出版 · 投票榜 · 日榜", "出版 · 投票榜 · 月榜"],
+      "default": "男频 · 大热榜 · 日榜"
+    },
+    "EXPLORE_LAYOUT": {
+      "title": "Kiểu hiển thị bảng",
+      "subtitle": "Chỉ áp cho tab Trang chủ",
+      "mode": "select",
+      "format": "single",
+      "values": ["Xếp hạng (đánh số)", "Danh sách", "Lưới", "Hàng ngang"],
+      "default": "Xếp hạng (đánh số)"
+    },
     "FILTER_CHANNEL": {
       "title": "Kênh (频道)",
       "subtitle": "Áp cho tab phân loại, thể loại và bảng xếp hạng; tìm kiếm không lọc được theo kênh",

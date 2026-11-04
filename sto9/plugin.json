@@ -2,7 +2,7 @@
   "metadata": {
     "name": "sto9.com",
     "author": "HuongMT",
-    "version": 6,
+    "version": 7,
     "source": "https://sto9.com",
     "regexp": "^https?://sto9\\.com/book/\\d+\\.html$",
     "description": "Đọc truyện trên trang sto9.com. Home: 最近更新 + 11 phân loại; bộ lọc (phân loại 最近更新, sắp xếp, trạng thái) ở mục Cấu hình",
@@ -20,6 +20,22 @@
     "search": "search.js"
   },
   "config": {
+    "EXPLORE_RANK": {
+      "title": "Bảng xếp hạng Trang chủ",
+      "subtitle": "Bảng hiện ở tab Trang chủ; các bảng còn lại thành chip",
+      "mode": "select",
+      "format": "single",
+      "values": ["人氣", "推薦", "日點擊榜", "月點擊榜", "總點擊榜", "收藏榜"],
+      "default": "人氣"
+    },
+    "EXPLORE_LAYOUT": {
+      "title": "Kiểu hiển thị bảng",
+      "subtitle": "Chỉ áp cho tab Trang chủ",
+      "mode": "select",
+      "format": "single",
+      "values": ["Xếp hạng (đánh số)", "Danh sách", "Lưới", "Hàng ngang"],
+      "default": "Xếp hạng (đánh số)"
+    },
     "FILTER_UPDATE_CLASS": {
       "title": "Phân loại 最近更新",
       "subtitle": "Chỉ áp cho tab 最近更新",
@@ -33,8 +49,8 @@
       "subtitle": "Áp cho các tab phân loại (trừ 最近更新). Tên theo tiêu đề trang của sto9",
       "mode": "select",
       "format": "single",
-      "values": ["人氣 (周點擊榜)", "推薦 (總推薦榜)", "新書 (新書榜)", "日點擊榜", "月點擊榜", "總點擊榜", "收藏榜", "最新入庫", "最近更新"],
-      "default": "人氣 (周點擊榜)"
+      "values": ["人氣", "推薦", "新書", "日點擊榜", "月點擊榜", "總點擊榜", "收藏榜", "最新入庫", "最近更新"],
+      "default": "人氣"
     },
     "FILTER_STATUS": {
       "title": "Trạng thái",
