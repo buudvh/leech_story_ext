@@ -2,7 +2,7 @@
   "metadata": {
     "name": "YouTube",
     "author": "HuongMT",
-    "version": 3,
+    "version": 4,
     "source": "https://www.youtube.com",
     "regexp": "^(https?://)?((www|m|music)\\.)?(youtube\\.com/(watch\\?(.*&)?v=[\\w-]{11}.*|(shorts|live|embed)/[\\w-]{11}.*|playlist\\?(.*&)?list=[\\w-]+.*|channel/UC[\\w-]{22}.*|@[^/?#]+.*)|youtu\\.be/[\\w-]{11}.*)$",
     "description": "Xem video, danh sách phát, kênh và phát trực tiếp trên YouTube",
@@ -19,5 +19,23 @@
     "toc": "toc.js",
     "chap": "chap.js",
     "track": "track.js"
+  },
+  "config": {
+    "EXPLORE_RANK": {
+      "title": "Mục Trang chủ",
+      "subtitle": "Mục hiện ở tab Trang chủ; các mục còn lại thành chip",
+      "mode": "select",
+      "format": "single",
+      "values": ["Thịnh hành: video nhạc Việt Nam", "Đang phát trực tiếp", "Tin tức", "Thể thao", "Trò chơi", "Danh sách phát âm nhạc"],
+      "default": "Thịnh hành: video nhạc Việt Nam"
+    },
+    "EXPLORE_LAYOUT": {
+      "title": "Kiểu hiển thị mục",
+      "subtitle": "Chỉ áp cho tab Trang chủ",
+      "mode": "select",
+      "format": "single",
+      "values": ["Xếp hạng (đánh số)", "Danh sách", "Lưới", "Hàng ngang"],
+      "default": "Xếp hạng (đánh số)"
+    }
   }
 }
