@@ -2,7 +2,7 @@
   "metadata": {
     "name": "101kks",
     "author": "HuongMT",
-    "version": 11,
+    "version": 12,
     "source": "https://101kks.com",
     "regexp": "^https?://101kks\\.com/book/\\d+\\.html$",
     "description": "Đọc truyện trên trang 101kks.com",
@@ -11,6 +11,7 @@
     "type": "chinese_novel"
   },
   "script": {
+    "explore": "explore.js",
     "home": "home.js",
     "detail": "detail.js",
     "toc": "toc.js",
@@ -54,6 +55,84 @@
       "mode": "input",
       "format": "text",
       "default": "false"
+    },
+    "EXPLORE_RANK": {
+      "title": "Bảng xếp hạng Trang chủ",
+      "subtitle": "Bảng hiện ở tab Trang chủ; các bảng còn lại thành chip",
+      "mode": "select",
+      "format": "single",
+      "values": [
+        "人氣",
+        "推薦",
+        "新書",
+        "日點擊榜",
+        "月點擊榜",
+        "總點擊榜",
+        "收藏榜"
+      ],
+      "default": "人氣"
+    },
+    "EXPLORE_LAYOUT": {
+      "title": "Kiểu hiển thị bảng",
+      "subtitle": "Chỉ áp cho tab Trang chủ",
+      "mode": "select",
+      "format": "single",
+      "values": [
+        "Xếp hạng (đánh số)",
+        "Danh sách",
+        "Lưới",
+        "Hàng ngang"
+      ],
+      "default": "Xếp hạng (đánh số)"
+    },
+    "FILTER_UPDATE_CLASS": {
+      "title": "Phân loại 最近更新",
+      "subtitle": "Chỉ áp cho tab 最近更新",
+      "mode": "select",
+      "format": "single",
+      "values": [
+        "全部分類",
+        "玄幻奇幻",
+        "武俠仙俠",
+        "現代都市",
+        "歷史軍事",
+        "科幻小說",
+        "遊戲競技",
+        "恐怖靈異",
+        "言情小說",
+        "動漫同人",
+        "其他類型"
+      ],
+      "default": "全部分類"
+    },
+    "FILTER_SORT": {
+      "title": "Sắp xếp",
+      "subtitle": "Áp cho các tab phân loại (trừ 最近更新). Tên theo tiêu đề trang của 101kks",
+      "mode": "select",
+      "format": "single",
+      "values": [
+        "人氣",
+        "推薦",
+        "新書",
+        "日點擊榜",
+        "月點擊榜",
+        "總點擊榜",
+        "收藏榜",
+        "最新入庫",
+        "最近更新"
+      ],
+      "default": "人氣"
+    },
+    "FILTER_STATUS": {
+      "title": "Trạng thái",
+      "subtitle": "全本 = chỉ truyện đã hoàn thành (Trang chủ, 最近更新 và các tab phân loại)",
+      "mode": "select",
+      "format": "single",
+      "values": [
+        "不限",
+        "全本"
+      ],
+      "default": "不限"
     }
   }
 }
