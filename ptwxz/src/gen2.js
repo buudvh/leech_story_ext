@@ -17,8 +17,8 @@ function execute(url, page) {
         let data = [];
         elms.forEach(e => {
             var bookElm = e.select("td:nth-child(1) > a");
-            if (!bookElm) return;
             var link = bookElm.attr("href");
+            if (!link) return; // dòng tiêu đề bảng (<th>) không có link truyện
             data.push({
                 name: e.select("td:nth-child(1) > a").text(),
                 link: link,

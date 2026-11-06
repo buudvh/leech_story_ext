@@ -1,47 +1,50 @@
 load('libs.js');
 load('config.js');
-load('common.js');
+load('gbk.js');
 
+// Tìm trên trang piaotia (không qua STV): /modules/article/search.php theo tên truyện, từ khoá mã GBK (gbk.js).
+// Kết quả là bảng truyện như trang thể loại (tên | chương mới | tác giả | …), phân trang ở #pagelink. Khớp đúng một
+// truyện thì trang chuyển thẳng sang trang truyện ⇒ trả một mục lấy từ trang đó (mã truyện ở link "加入书架").
 function execute(key, page) {
-    let arrKey = key.split("&");
-    if (!page) page = '1';
-    let sort = 'update';
-    if (arrKey.length == 2) {
-        sort = arrKey[1];
-    }
+    page = page || '1';
+    var url = BASE_URL + '/modules/article/search.php?searchtype=articlename&searchkey=' +
+        GBK.encode(String(key || '').trim()) + '&page=' + page;
+    try {
+        var response = fetch(url);
+        if (!response.ok) return Response.error('fetch ' + url + ' failed: status ' + response.status);
+        var doc = response.html('gbk');
 
-    var url = STVHOST + '/io/searchtp/searchBooks/?findinname=' + encodeURIComponent(arrKey[0]) +
-        '&sort=' + sort + '&host=ptwxz&minc=0&tag=&p=' + page;
+        var title = $.Q(doc, '#content h1').text().trim();
+        var bid = ($.Q(doc, 'a[href*="addbookcase"]').attr('href') || '').match(/bid=(\d+)/);
+        if (title && bid) {
+            var id = bid[1];
+            var folder = id.length <= 3 ? '0' : id.slice(0, id.length - 3);
+            return Response.success([{
+                name: title,
+                link: BASE_URL + '/bookinfo/' + folder + '/' + id + '.html',
+                cover: buildCover(id),
+                description: '',
+                host: BASE_URL
+            }]);
+        }
 
-    if (key.indexOf("find=") === 0) {
-        url = STVHOST + '/io/searchtp/searchBooks/?find=' + encodeURIComponent(arrKey[0].replace("find=", "")) +
-            '&sort=' + sort + '&host=ptwxz&minc=0&tag=&p=' + page;
-    }
-    let response = fetch(url);
-
-    if (!response.ok) return Response.error('fetch ' + url + ' failed: status ' + response.status);
-
-    let doc = response.html()
-    let next = parseInt(page, 10) + 1;
-    let el = doc.select("a.booksearch")
-    let data = [];
-    el.forEach(e => {
-        let stv_story_link = e.select("a").first().attr("href");
-        let bookid = stv_story_link.split("/")[4];
-        data.push({
-            name: toCapitalize(e.select(".searchbooktitle").first().text()),
-            link: BASE_URL + '/bookinfo/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '.html',
-            cover: 'https://www.piaotia.com/files/article/image/' +
-                bookid.slice(0, bookid.length - 3) + '/' +
-                bookid + '/' +
-                bookid + 's.jpg',
-            description: e.select("div > span.searchtag").first().text() + "|" + e.select("div > span.searchbookauthor").first().text()
-                + "\n" + e.select("div > span.lhr").last().text(),
-            source: e.select("div > span.searchtag").first().text().trim(),
+        var data = [];
+        $.QA(doc, 'table.grid tr').forEach(function (e) {
+            var book = $.Q(e, 'td a');
+            var link = book.attr('href');
+            if (!link || link.indexOf('/bookinfo/') < 0) return;
+            data.push({
+                name: book.text().trim(),
+                link: link,
+                cover: buildCover(getBookid(link)),
+                description: '作者: ' + $.Q(e, 'td', 2).text().trim() + '\n最新: ' + $.Q(e, 'td', 1).text().trim(),
+                host: BASE_URL
+            });
         });
-    });
 
-    data = data.filter(p => p.source == "ptwxz");
-
-    return Response.success(data, next.toString());
+        var next = $.Q(doc, '#pagelink strong + a').text().trim();
+        return Response.success(data, next);
+    } catch (error) {
+        return Response.error('Url: ' + url + '\nMessage: ' + error.message);
+    }
 }
