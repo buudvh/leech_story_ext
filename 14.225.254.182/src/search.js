@@ -1,4 +1,7 @@
 load('common.js');
+load('filter_host.js');
+load('filter.js');
+load('filter_sort.js');
 
 function execute(query, page) {
     page = parseInt(page, 10) || 1;

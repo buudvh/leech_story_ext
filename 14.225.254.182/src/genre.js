@@ -1,4 +1,5 @@
 load('common.js');
+load('filter_host.js');
 
 // Nhãn lấy từ dữ liệu bộ lọc của STV (searchfaceted.json) theo nguồn đang chọn, xếp theo số truyện.
 function execute() {

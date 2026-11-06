@@ -1,4 +1,8 @@
 load('config.js');
+load('gender.js');
+
+// Trang Review (/review) chỉ lọc theo giới tính (`cat`, cùng mã) và xếp Mới nhất / Cũ nhất (ô FILTER_REVIEW_SORT).
+var REVIEW_SORTS = { 'Mới nhất': '', 'Cũ nhất': 'oldest' };
 
 // Tab Review: truyện có bài review, một mục mỗi bài (mỗi bài có hai bản HTML: điện thoại và máy tính ⇒ lấy bản đầu).
 // Không tự bỏ truyện trùng: app tự lọc trùng khi hiện, còn đếm số mục thô của trang (< 10 ⇒ coi như hết trang) nên
@@ -9,9 +13,9 @@ function execute(url, page) {
     url = String(url || '/review');
     if (url.indexOf('http') !== 0) url = BASE_URL + url;
     var params = [];
-    var cat = filterCode('FILTER_GENDER');
+    var cat = genderCode();
     if (cat && !hasParam(url, 'cat')) params.push('cat=' + cat);
-    var order = REVIEW_SORTS[configValue('FILTER_REVIEW_SORT')] || '';
+    var order = REVIEW_SORTS[configText(typeof FILTER_REVIEW_SORT !== 'undefined' ? FILTER_REVIEW_SORT : '')] || '';
     if (order && !hasParam(url, 'order')) params.push('order=' + order);
     if (params.length) url += (url.indexOf('?') < 0 ? '?' : '&') + params.join('&');
 

@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Wiki dịch Truyện Nam",
     "author": "HuongMT",
-    "version": 10,
+    "version": 11,
     "source": "https://wikicv.org",
     "regexp": "(www.)?(.*?)wiki(.*?)/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang Wiki Dịch, review ở thông tin truyện. Bộ lọc (sắp xếp, tình trạng, giới tính, nguồn gốc, độ dài, thời đại, kết thúc) ở mục Cấu hình; danh sách và tìm kiếm cần đăng nhập Wiki Dịch",

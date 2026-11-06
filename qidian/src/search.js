@@ -1,5 +1,7 @@
 load('libs.js');
 load('common.js');
+load('filter.js');
+load('filter_sort.js');
 
 function execute(key, page) {
     // Sắp xếp/số chương/loại/trạng thái lấy từ cấu hình; bỏ phần sau "&" của từ khoá.

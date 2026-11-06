@@ -1,5 +1,18 @@
 load('crypto.js');
 load('config.js');
+load('filter.js');
+load('channel.js');
+
+// Đủ 5 bộ lọc trong cấu hình. Hằng config được app tiêm vào dạng chuỗi; không khai lại các tên này bằng var/let/const.
+function readFilters() {
+    return {
+        channel: channelFilter(),
+        words: filterCode('words', typeof FILTER_WORDS !== 'undefined' ? FILTER_WORDS : ''),
+        update: filterCode('update', typeof FILTER_UPDATE !== 'undefined' ? FILTER_UPDATE : ''),
+        status: filterCode('status', typeof FILTER_STATUS !== 'undefined' ? FILTER_STATUS : ''),
+        sort: filterCode('sort', typeof FILTER_SORT !== 'undefined' ? FILTER_SORT : '')
+    };
+}
 
 // Danh sách truyện của trang 书库 theo phân loại, ghép đủ 5 bộ lọc trong cấu hình.
 // input: "<category1>|<category2>" ("a" = tất cả).

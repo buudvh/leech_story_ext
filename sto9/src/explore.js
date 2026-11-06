@@ -1,18 +1,29 @@
 load('libs.js');
 load('config.js');
+load('ranking.js');
+
+// Bảng xếp hạng của Trang chủ (ô EXPLORE_RANK): tên như trang sto9 + kiểu URL. Bỏ 新書 (nút 連載 của trang trỏ tới đây),
+// 最新入庫, 最近更新 (không phải bảng xếp hạng lượt đọc).
+var RANKINGS = [
+    ['人氣', 'weekvisit'], ['推薦', 'allvote'], ['日點擊榜', 'dayvisit'], ['月點擊榜', 'monthvisit'],
+    ['總點擊榜', 'allvisit'], ['收藏榜', 'goodnum']
+];
+
+// Kiểu hiển thị bảng của Trang chủ (ô EXPLORE_LAYOUT) -> `type` của section.
+var EXPLORE_LAYOUTS = { 'Xếp hạng (đánh số)': 'ranking', 'Danh sách': 'list', 'Lưới': 'grid', 'Hàng ngang': 'horizontal_list' };
 
 // Trang chủ: hàng chip "Bảng khác" (các bảng không chọn, bấm mở đủ bảng qua gen.js "rank:<kiểu>") rồi bảng đang chọn ở
 // ô "Bảng xếp hạng Trang chủ" (EXPLORE_RANK), cả trang đầu, kiểu hiển thị theo ô EXPLORE_LAYOUT (mặc định ranking).
 // 全部分類, Trạng thái theo cấu hình. Chỉ tải một bảng.
 function execute() {
-    var picked = configText('EXPLORE_RANK');
+    var picked = configText(typeof EXPLORE_RANK !== 'undefined' ? EXPLORE_RANK : '');
     var chosen = RANKINGS[0];
     RANKINGS.forEach(function (rank) {
         if (rank[0] === picked) chosen = rank;
     });
-    var layout = EXPLORE_LAYOUTS[configText('EXPLORE_LAYOUT')] || 'ranking';
+    var layout = EXPLORE_LAYOUTS[configText(typeof EXPLORE_LAYOUT !== 'undefined' ? EXPLORE_LAYOUT : '')] || 'ranking';
 
-    var url = listUrl('rank:' + chosen[1], '1');
+    var url = rankUrl(chosen[1], '1');
     var response = crawler.get(url);
     if (!response.ok) return Response.error('Url ' + url + '\nStatus ' + response.status);
     // App không lọc giúp mục của explore: bỏ mục không tên và trùng link.

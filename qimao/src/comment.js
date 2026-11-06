@@ -1,5 +1,6 @@
 load('crypto.js');
 load('config.js');
+load('comment_mode.js');
 
 // Bình luận (API app, cùng chữ ký, không cần đăng nhập). input: '{"bookId":"…","sort":"0|1"}' (0 nổi bật, 1 mới nhất).
 // Trả lời không tải ở đây — mỗi bình luận một lượt gọi làm trang đầu mất ~30 s. Bình luận có trả lời khai `reply_count`

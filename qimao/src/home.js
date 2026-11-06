@@ -1,9 +1,11 @@
 load('crypto.js');
 load('config.js');
+load('filter.js');
+load('channel.js');
 
 // Tab "全部" + các 作品分类 cấp 1 của kênh đang lọc (kênh khác phân loại ⇒ 0 truyện, nên không hiện).
 function execute() {
-    var channel = readFilters().channel;
+    var channel = channelFilter();
     var tabs = [{ title: '全部', input: 'a|a', script: 'cat.js' }];
     loadCategories().forEach(function (c) {
         if (channel === 'a' || String(c.type) === channel) {

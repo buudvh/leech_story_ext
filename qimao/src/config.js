@@ -11,49 +11,10 @@ var IMEI_IP = '2937357107';
 var WEB_PAGE_SIZE = 15;
 var DEFAULT_COVER = 'https://raw.githubusercontent.com/buudvh/leech_story_ext/main/asset/cover1.jpg';
 
-// ---- Bộ lọc (config select) ----
+// File này được mọi script nạp nên không nhắc tên ô cấu hình nào (nút Bộ lọc của tab hiện mọi ô mà script của tab và
+// các file nó nạp nhắc tới): bộ lọc ở filter.js + channel.js, ô bình luận ở comment_mode.js — chỉ script cần mới nạp.
 
-// Chữ hiển thị trong config -> mã của trang 书库 (classify/select-option). Phải khớp đúng `values` trong plugin.json.
-var FILTER_CODES = {
-    channel: { 'Tất cả': 'a', 'Nam (男生原创)': '0', 'Nữ (女生原创)': '1', 'Sách xuất bản (出版图书)': '2' },
-    words: {
-        'Tất cả': 'a', 'Dưới 300.000 chữ': '1', '300.000–500.000 chữ': '2', '500.000–1 triệu chữ': '3',
-        '1–2 triệu chữ': '4', 'Trên 2 triệu chữ': '5'
-    },
-    update: { 'Tất cả': 'a', 'Trong 3 ngày': '1', 'Trong 7 ngày': '2', 'Trong 30 ngày': '3' },
-    status: { 'Tất cả': 'a', 'Hoàn thành': '1', 'Đang ra': '0' },
-    sort: {
-        'Lượt nhấp (按点击量)': 'click', 'Tổng số chữ (按总字数)': 'words_num',
-        'Mới cập nhật (最近更新)': 'update_time', 'Lượt lưu (按收藏数)': 'favorite_uv'
-    }
-};
-// Mã dùng khi chữ không có trong bảng (chưa cấu hình, hoặc chữ của bản cũ).
-var FILTER_DEFAULTS = { channel: 'a', words: 'a', update: 'a', status: 'a', sort: 'click' };
-
-function filterCode(group, label) {
-    var table = FILTER_CODES[group];
-    var key = (label == null ? '' : String(label)).trim();
-    if (table && Object.prototype.hasOwnProperty.call(table, key)) return table[key];
-    return FILTER_DEFAULTS[group];
-}
-
-// Hằng config được app tiêm vào dạng chuỗi; không khai lại các tên này bằng var/let/const.
-function readFilters() {
-    return {
-        channel: filterCode('channel', typeof FILTER_CHANNEL !== 'undefined' ? FILTER_CHANNEL : ''),
-        words: filterCode('words', typeof FILTER_WORDS !== 'undefined' ? FILTER_WORDS : ''),
-        update: filterCode('update', typeof FILTER_UPDATE !== 'undefined' ? FILTER_UPDATE : ''),
-        status: filterCode('status', typeof FILTER_STATUS !== 'undefined' ? FILTER_STATUS : ''),
-        sort: filterCode('sort', typeof FILTER_SORT !== 'undefined' ? FILTER_SORT : '')
-    };
-}
-
-// Cấu hình bình luận (COMMENT_MODE) -> 'off' | 'on'. Giá trị của v2 ("Tối đa 20 phản hồi…", "Tất cả phản hồi") = bật:
-// từ v3 trả lời tải khi bấm (reply.js), không còn giới hạn số phản hồi.
-function commentMode() {
-    var key = (typeof COMMENT_MODE !== 'undefined' && COMMENT_MODE != null ? String(COMMENT_MODE) : '').trim();
-    return key === 'Tắt bình luận' ? 'off' : 'on';
-}
+// ---- Bình luận ----
 
 // Nội dung một bình luận / trả lời của API app: thoát HTML, xuống dòng -> <br>, ảnh không chữ -> "[Ảnh]".
 function commentText(item) {

@@ -1,4 +1,6 @@
 load('config.js');
+load('gender.js');
+load('filter.js');
 
 // Danh sách truyện: tab Home, thể loại / nhãn, cùng tác giả. URL /tim-kiem được ghép bộ lọc của Cấu hình; trang bắt
 // đăng nhập ⇒ báo lỗi để người dùng mở link lỗi đăng nhập.

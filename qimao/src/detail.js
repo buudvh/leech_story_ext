@@ -1,5 +1,6 @@
 load('crypto.js');
 load('config.js');
+load('comment_mode.js');
 
 function formatTime(seconds) {
     var time = parseInt(seconds, 10);

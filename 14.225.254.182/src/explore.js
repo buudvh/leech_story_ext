@@ -1,4 +1,6 @@
 load('common.js');
+load('filter_host.js');
+load('filter.js');
 
 // Trang chủ: hàng chip "Bảng khác" (các bảng không chọn, bấm mở đủ bảng qua tag.js "rank:<mã>") rồi bảng đang chọn ở
 // ô "Bảng xếp hạng Trang chủ" (EXPLORE_RANK), cả trang đầu, kiểu hiển thị theo ô EXPLORE_LAYOUT (mặc định ranking).

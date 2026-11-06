@@ -11,74 +11,23 @@ var DEFAULT_GEN = [
     {"title": "言情小说", "input": "/novels/newhot_8_0_{0}.html", "script": "gen.js"},
 ];
 
-// ---- Phân loại + bộ lọc (config select) ----
-// Phân loại của trang (/novels/class): tên -> mã 0..10. Chữ phải khớp `values` của FILTER_UPDATE_CLASS trong plugin.json.
+// ---- Phân loại ----
+// File này được mọi script nạp nên không nhắc tên ô cấu hình nào (nút Bộ lọc của tab hiện mọi ô mà script của tab và
+// các file nó nạp nhắc tới): ô Phân loại 最近更新 / Sắp xếp đọc ở gen.js, ô Trạng thái ở ranking.js, ô bảng Trang chủ ở
+// explore.js.
+
+// Phân loại của trang (/novels/class): tên -> mã 0..10 (home.js dựng tab, gen.js tra mã). Chữ phải khớp `values` của ô
+// Phân loại 最近更新 trong plugin.json.
 var CLASSES = [
     ['全部分類', '0'], ['玄幻奇幻', '1'], ['武俠仙俠', '2'], ['現代都市', '3'], ['歷史軍事', '4'], ['科幻小說', '5'],
     ['遊戲競技', '6'], ['恐怖靈異', '7'], ['言情小說', '8'], ['動漫同人', '9'], ['其他類型', '10']
 ];
 
-// Kiểu sắp xếp của bảng xếp hạng: /novels/<kiểu>_<phân loại>_<0|1 全本>_<trang>.html. Tên theo trang sto9 (nút 人氣 /
-// 推薦 / 新書, các kiểu khác là trang ẩn cùng mẫu URL, tên lấy theo tiêu đề trang).
-var SORTS = {
-    '人氣': 'weekvisit', '推薦': 'allvote', '新書': 'newhot', '日點擊榜': 'dayvisit', '月點擊榜': 'monthvisit',
-    '總點擊榜': 'allvisit', '收藏榜': 'goodnum', '最新入庫': 'postdate', '最近更新': 'lastupdate',
-    // Tên của v5–v6 (có ngoặc) — cấu hình đã lưu vẫn hiểu đúng.
-    '人氣 (周點擊榜)': 'weekvisit', '推薦 (總推薦榜)': 'allvote', '新書 (新書榜)': 'newhot'
-};
-
-function configText(name) {
-    var value = '';
-    try {
-        if (name === 'FILTER_UPDATE_CLASS' && typeof FILTER_UPDATE_CLASS !== 'undefined') value = FILTER_UPDATE_CLASS;
-        else if (name === 'FILTER_SORT' && typeof FILTER_SORT !== 'undefined') value = FILTER_SORT;
-        else if (name === 'FILTER_STATUS' && typeof FILTER_STATUS !== 'undefined') value = FILTER_STATUS;
-        else if (name === 'EXPLORE_RANK' && typeof EXPLORE_RANK !== 'undefined') value = EXPLORE_RANK;
-        else if (name === 'EXPLORE_LAYOUT' && typeof EXPLORE_LAYOUT !== 'undefined') value = EXPLORE_LAYOUT;
-    } catch (e) {}
+// Giá trị một ô cấu hình (hằng app tiêm vào dạng chuỗi, đọc bằng `typeof KEY !== 'undefined' ? KEY : ''` ở file cần) ->
+// chuỗi đã bỏ khoảng trắng hai đầu.
+function configText(value) {
     return value == null ? '' : String(value).trim();
 }
-
-function classCode(name) {
-    for (var i = 0; i < CLASSES.length; i++) {
-        if (CLASSES[i][0] === name) return CLASSES[i][1];
-    }
-    return '0';
-}
-
-// URL một trang danh sách theo input của tab:
-// - "update"     : tab 最近更新, /novels/class/<phân loại của ô FILTER_UPDATE_CLASS>_<trang>.html;
-// - "class:<mã>" : tab phân loại, bảng xếp hạng theo ô Sắp xếp + Trạng thái. 新書 + 全本 trang không có dữ liệu
-//                  (0–4 truyện) ⇒ dùng 最新入庫 + 全本;
-// - còn lại      : URL tương đối kiểu cũ (`{0}` đã được app thay bằng số trang).
-function listUrl(input, page) {
-    if (input === 'update') {
-        return BASE_URL + '/novels/class/' + classCode(configText('FILTER_UPDATE_CLASS')) + '_' + page + '.html';
-    }
-    var match = /^class:(\d+)$/.exec(input);
-    if (match) {
-        var sort = SORTS[configText('FILTER_SORT')] || 'weekvisit';
-        var full = configText('FILTER_STATUS') === '全本' ? '1' : '0';
-        if (sort === 'newhot' && full === '1') sort = 'postdate';
-        return BASE_URL + '/novels/' + sort + '_' + match[1] + '_' + full + '_' + page + '.html';
-    }
-    // "rank:<kiểu>": một bảng xếp hạng của Trang chủ (explore) — 全部分類, kiểu cố định, Trạng thái theo cấu hình.
-    match = /^rank:([a-z]+)$/.exec(input);
-    if (match) {
-        return BASE_URL + '/novels/' + match[1] + '_0_' + (configText('FILTER_STATUS') === '全本' ? '1' : '0') + '_' + page + '.html';
-    }
-    return String.format(BASE_URL + input, page);
-}
-
-// Bảng xếp hạng của Trang chủ (explore.js, ô EXPLORE_RANK): tên như trang sto9 + kiểu URL. Bỏ 新書 (nút 連載 của trang
-// trỏ tới đây), 最新入庫, 最近更新 (không phải bảng xếp hạng lượt đọc).
-var RANKINGS = [
-    ['人氣', 'weekvisit'], ['推薦', 'allvote'], ['日點擊榜', 'dayvisit'], ['月點擊榜', 'monthvisit'],
-    ['總點擊榜', 'allvisit'], ['收藏榜', 'goodnum']
-];
-
-// Kiểu hiển thị bảng của Trang chủ (ô EXPLORE_LAYOUT) -> `type` của section.
-var EXPLORE_LAYOUTS = { 'Xếp hạng (đánh số)': 'ranking', 'Danh sách': 'list', 'Lưới': 'grid', 'Hàng ngang': 'horizontal_list' };
 
 // Danh sách truyện của trang danh mục / xếp hạng (#article_list_content). Dùng chung cho gen.js và explore.js.
 function parseNovelList(doc) {

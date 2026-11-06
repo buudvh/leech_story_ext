@@ -1,5 +1,6 @@
 load('crypto.js');
 load('config.js');
+load('filter.js');
 
 // Tìm qua API app (xếp hạng tốt hơn bản web, bản web còn bỏ qua mọi bộ lọc). API này chỉ có:
 // số chữ (ngưỡng một phía), hoàn thành, và xếp theo tổng số chữ; kênh và thời gian cập nhật không áp được.
@@ -7,6 +8,15 @@ load('config.js');
 var SEARCH_WORDS = { '1': ['2', 0], '2': ['4', 500000], '3': ['5', 1000000], '4': ['6', 2000000], '5': ['7', 0] };
 // Lọc cận trên có thể làm rỗng một trang ⇒ đọc thêm tối đa vài trang cho tới khi có kết quả.
 var SEARCH_MAX_PAGES = 3;
+
+// Chỉ các ô API tìm áp được (số chữ, tình trạng, sắp xếp). Hằng config được app tiêm vào dạng chuỗi.
+function searchFilters() {
+    return {
+        words: filterCode('words', typeof FILTER_WORDS !== 'undefined' ? FILTER_WORDS : ''),
+        status: filterCode('status', typeof FILTER_STATUS !== 'undefined' ? FILTER_STATUS : ''),
+        sort: filterCode('sort', typeof FILTER_SORT !== 'undefined' ? FILTER_SORT : '')
+    };
+}
 
 function searchParams(key, pageNo, filters) {
     var params = { gender: '3', imei_ip: IMEI_IP, page: String(pageNo), wd: key };
@@ -33,7 +43,7 @@ function execute(key, page) {
     key = String(key || '').trim();
     if (!key) return Response.success([], '');
     var pageNo = parseInt(page, 10) || 1;
-    var filters = readFilters();
+    var filters = searchFilters();
     var limit = (SEARCH_WORDS[filters.words] || [])[1] || 0;
     try {
         for (var round = 0; round < SEARCH_MAX_PAGES; round++) {

@@ -1,5 +1,7 @@
 load('libs.js');
 load('common.js');
+load('filter.js');
+load('filter_sort.js');
 
 // input: "cat:<mã thể loại>" | "tag:<slug>" | "rank:<mã sort>" (bảng xếp hạng của explore: mọi thể loại, sắp xếp cố
 // định theo bảng) | kiểu cũ "slug,&update". Sắp xếp (trừ "rank:")/số chương/loại/trạng thái lấy từ cấu hình.

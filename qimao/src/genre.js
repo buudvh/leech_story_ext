@@ -1,9 +1,11 @@
 load('crypto.js');
 load('config.js');
+load('filter.js');
+load('channel.js');
 
 // Thể loại = 二级分类 của trang 书库, chỉ lấy các phân loại thuộc kênh đang lọc.
 function execute() {
-    var channel = readFilters().channel;
+    var channel = channelFilter();
     var genres = [];
     loadCategories().forEach(function (c) {
         if (channel !== 'a' && String(c.type) !== channel) return;

@@ -1,4 +1,6 @@
 load('config.js');
+load('gender.js');
+load('filter.js');
 
 // Tìm kiếm áp cả bộ lọc của Cấu hình (Giới tính "Tất cả" để tìm mọi loại truyện). Cần đăng nhập.
 function execute(key, page) {
