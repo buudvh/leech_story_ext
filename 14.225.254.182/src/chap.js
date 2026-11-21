@@ -22,6 +22,10 @@ function execute(url) {
         "    if (!node) {\n" +
         "        return JSON.stringify({ ready: false, failed: false, reason: 'Content node not found' });\n" +
         "    }\n" +
+        // Trang chưa có focus (trình duyệt đang thu nhỏ / chạy ẩn) thì STV chờ người thật chạm mới tải chương
+        "    if ((node.textContent || '').indexOf('Nhấp vào để tải chương') >= 0) {\n" +
+        "        return JSON.stringify({ ready: false, failed: false, reason: 'needs_click' });\n" +
+        "    }\n" +
         "    var nameholder = document.querySelector('#bookchapnameholder');\n" +
         "    var title = nameholder ? nameholder.textContent.trim() : '';\n" +
         "    if (!title || title === '_') {\n" +
@@ -150,12 +154,20 @@ function execute(url) {
         browser.launch(url, 30000);
         var state = browser.waitForReady(probeScript, 20000, 250, 2);
 
-        // Hết giờ vì captcha: giữ trình duyệt mở thêm 60 s cho người dùng giải, không gọi gotox()
-        var isCaptcha = !state.ready && state.timedOut === true && probeReason(browser, probeScript) === "captcha";
-        if (isCaptcha) {
-            console.log("⚠️ STV yêu cầu captcha, chờ người dùng giải trong trình duyệt...");
+        // Trang chờ người thật (captcha, hoặc "Nhấp vào để tải chương" khi trình duyệt thu nhỏ / chưa có focus): giữ trình duyệt
+        // mở cho người dùng, KHÔNG gọi gotox() — gọi tự động khi trang chưa có focus thì STV trả mã 5 / 4002. Tối đa 2 lượt 60 s
+        // (chạm xong STV có thể hiện tiếp captcha).
+        var userWaitReason = "";
+        for (var round = 0; round < 2 && !state.ready && state.timedOut === true; round++) {
+            var waitingFor = probeReason(browser, probeScript);
+            if (waitingFor !== "captcha" && waitingFor !== "needs_click") break;
+            userWaitReason = waitingFor;
+            console.log(waitingFor === "captcha"
+                ? "⚠️ STV yêu cầu captcha, chờ người dùng giải trong trình duyệt..."
+                : "⚠️ STV chờ chạm \"Nhấp vào để tải chương\" (trình duyệt đang thu nhỏ / chưa có focus), chờ người dùng...");
             state = browser.waitForReady(probeScript, 60000, 500, 2);
         }
+        var isCaptcha = userWaitReason !== "";
 
         if (!state.ready && !isCaptcha) {
             var reason = state.reason || "";
@@ -171,6 +183,9 @@ function execute(url) {
         if (state.ready) {
             finalResult = browser.callJs(extractionScript, 0);
         } else if (isCaptcha && state.timedOut === true) {
+            if (probeReason(browser, probeScript) === "needs_click") {
+                return Response.error("STV cần chạm \"Nhấp vào để tải chương\" trong trình duyệt \"Tải chương\" (mở nút trình duyệt thu nhỏ), rồi tải lại chương.");
+            }
             return Response.error("STV yêu cầu xác minh captcha. Hãy giải captcha trong trình duyệt \"Tải chương\" rồi tải lại chương.");
         } else {
             return Response.error("Không thể tải nội dung chương truyện. Lý do: " + readableReason(state.reason));
